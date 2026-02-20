@@ -19,10 +19,17 @@ async function withRetry<T>(fn: () => Promise<T>, retries = 3, delay = 2000): Pr
   }
 }
 
-// Fix: Implemented generateChargingAdvice to provide expert text responses
+const getApiKey = () => {
+  const key = import.meta.env.VITE_GEMINI_API_KEY || import.meta.env.GEMINI_API_KEY;
+  if (!key) {
+    console.warn("VITE_GEMINI_API_KEY is not set. AI features will not work.");
+  }
+  return key || 'MISSING_API_KEY'; // Prevent absolute crash but calls will fail
+};
+
 export const generateChargingAdvice = async (userPrompt: string) => {
   return withRetry(async () => {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey: getApiKey() });
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: `Du är en expert på elbilsladdning hos Clean Charge AB. Svara kortfattat och professionellt på svenska. Fråga: ${userPrompt}`,
@@ -34,7 +41,7 @@ export const generateChargingAdvice = async (userPrompt: string) => {
 // New: Generate market insights with search grounding, wrapped in retry logic
 export const generateMarketInsights = async () => {
   return withRetry(async () => {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey: getApiKey() });
     return await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: "Ge en professionell och dagsaktuell sammanfattning (på svenska) om de senaste nyheterna, testerna och trenderna för elbilsladdning i Sverige 2024/2025. Inkludera information om märken som Easee, Zaptec, Charge Amps och Wallbox, samt betallösningar som Monta och Spirii. VIKTIGT: Använd ingen markdown-formatering (inga stjärnor eller hashtaggar), svara med ren text.",
@@ -47,7 +54,7 @@ export const generateMarketInsights = async () => {
 
 // New: Create a stateful chat session for the widget with Google Search enabled
 export const createChatSession = () => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const ai = new GoogleGenAI({ apiKey: getApiKey() });
   return ai.chats.create({
     model: 'gemini-3-flash-preview',
     config: {
@@ -74,7 +81,7 @@ export const createChatSession = () => {
 // Fix: Implemented generateVisualConcept using gemini-2.5-flash-image for high-quality image generation
 export const generateVisualConcept = async (prompt: string) => {
   return withRetry(async () => {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey: getApiKey() });
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash-image',
       contents: {
@@ -100,7 +107,7 @@ export const generateVisualConcept = async (prompt: string) => {
 // Fix: Implemented cloneImage for image-to-image editing using gemini-2.5-flash-image
 export const cloneImage = async (base64Data: string, mimeType: string, prompt: string) => {
   return withRetry(async () => {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey: getApiKey() });
     
     // Strip data URL prefix if present to extract pure base64 data
     const cleanBase64 = base64Data.includes('base64,') 
