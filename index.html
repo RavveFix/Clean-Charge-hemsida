@@ -84,22 +84,53 @@
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Space+Mono&display=swap"
       rel="stylesheet"
     >
     <style type="text/tailwindcss">
       :root {
+        /* Clean Charge Brand Green */
         --brand-green: #00b182;
         --brand-green-hover: #008e68;
+
+        /* Preset C - Brutalist Signal adapted */
+        --bg-primary: #f5f3ee;
+        --bg-surface: #e8e4dd;
+        --text-primary: #111111;
+        --text-secondary: rgba(17, 17, 17, 0.7);
+
+        /* Legacy vars for compatibility if needed */
         --monta-blue: #003dff;
-        --brand-dark: #171717;
-        --brand-light: #f8fafc;
-        --brand-text: #0e5a60;
+        --brand-dark: #111111;
+        --brand-light: #f5f3ee;
       }
       body {
-        font-family: "Inter", sans-serif;
-        color: var(--brand-text);
-        background-color: #ffffff;
+        font-family: "Space Grotesk", sans-serif;
+        color: var(--text-primary);
+        background-color: var(--bg-primary);
+        position: relative;
+      }
+
+      /* Global Noise Overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 50;
+        opacity: 0.05;
+        background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+      }
+
+      .font-serif-drama {
+        font-family: "DM Serif Display", serif;
+      }
+
+      .font-mono-data {
+        font-family: "Space Mono", monospace;
       }
       .font-monta {
         font-family: "Instrument Sans", sans-serif;
@@ -372,7 +403,7 @@
       }
     </style>
   </head>
-  <body class="antialiased hero-gradient">
+  <body class="antialiased">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

@@ -77,7 +77,7 @@ const App: React.FC = () => {
       
       <main className="flex-grow">
         {activeTab === 'home' && (
-          <div className="animate-in fade-in duration-500">
+          <div className="animate-in fade-in duration-500 bg-[#f5f3ee]">
             <Hero 
               onNavigate={scrollToProducts} 
               onNavigateToPayment={() => {
@@ -85,19 +85,10 @@ const App: React.FC = () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             />
-            <StatsStrip />
-            <VideoSection />
+            {/* The cinematic flow */}
+            <FeaturesBento />
             <SolutionsSection onNavigate={setActiveTab} />
-      <FeaturesBento />
-            <GroundingInsights />
-            <MontaSection onNavigate={setActiveTab} />
-            <div className="py-24 bg-slate-50/50">
-              <div className="container mx-auto px-6 mb-12 text-center">
-                <h2 className="text-4xl font-black text-slate-800 tracking-tight mb-4 uppercase">Populära Laddboxar</h2>
-                <p className="text-slate-500 font-medium">Våra mest efterfrågade laddlösningar för nordiska förhållanden.</p>
-              </div>
-              <ProductGrid limit={4} onAddToCart={addToCart} />
-            </div>
+            <AboutSection />
           </div>
         )}
         
