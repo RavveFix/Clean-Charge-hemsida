@@ -1,7 +1,0 @@
-{
-  "/kontakt/page": "app/kontakt/page.js",
-  "/om-oss/page": "app/om-oss/page.js",
-  "/support/page": "app/support/page.js",
-  "/page": "app/page.js",
-  "/publik/page": "app/publik/page.js"
-}
