@@ -28,7 +28,7 @@ const PreFooterCTA: React.FC = () => {
   return (
     <section
       ref={ref}
-      className={`mx-4 md:mx-10 mb-20 rounded-[4rem] overflow-hidden relative transition-all duration-1000 ease-out ${visible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-[0.98]'}`}
+      className={`mx-4 md:mx-10 mb-20 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden relative transition-all duration-1000 ease-out ${visible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-[0.98]'}`}
     >
       {/* Background System */}
       <div className="absolute inset-0 bg-[#020617]" />
@@ -46,7 +46,7 @@ const PreFooterCTA: React.FC = () => {
       {/* Decorative Border Beam */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cc-green to-transparent opacity-50 shadow-[0_0_20px_rgba(0,177,130,0.5)]" />
 
-      <div className="relative z-10 px-8 md:px-20 py-32 md:py-48">
+      <div className="relative z-10 px-5 md:px-20 py-20 md:py-48">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-20 lg:gap-32 items-center">
             
@@ -58,7 +58,7 @@ const PreFooterCTA: React.FC = () => {
               </div>
 
               <div className="relative">
-                <h2 className="text-6xl md:text-8xl lg:text-[7rem] font-black text-white tracking-tighter leading-[0.85] uppercase">
+                <h2 className="text-4xl sm:text-5xl md:text-8xl lg:text-[7rem] font-black text-white tracking-tighter leading-[0.85] uppercase">
                   Laddbox.
                   <br />
                   <span className="relative">
@@ -82,17 +82,17 @@ const PreFooterCTA: React.FC = () => {
                 Vi bygger framtidens laddinfrastruktur. Från offert till färdig installation på rekordtid, med marknadens ledande produkter.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-6 pt-4">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Link
                   href="/kontakt"
-                  className="shimmer-btn group bg-cc-green text-white px-10 py-6 rounded-2xl font-black text-base uppercase tracking-widest flex items-center justify-center gap-4 hover:shadow-[0_20px_50px_rgba(0,177,130,0.3)] hover:-translate-y-1 transition-all duration-500 active:scale-95"
+                  className="shimmer-btn group bg-cc-green text-white px-6 md:px-10 py-5 md:py-6 rounded-2xl font-black text-sm md:text-base uppercase tracking-wider md:tracking-widest flex items-center justify-center gap-4 hover:shadow-[0_20px_50px_rgba(0,177,130,0.3)] hover:-translate-y-1 transition-all duration-500 active:scale-95 w-full sm:w-auto"
                 >
                   Boka kostnadsfri rådgivning
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-500" />
                 </Link>
                 <a
                   href="tel:0197604290"
-                  className="flex items-center justify-center gap-4 bg-white/5 border border-white/10 text-slate-200 px-10 py-6 rounded-2xl font-black text-base uppercase tracking-widest hover:bg-white/10 hover:border-white/20 hover:text-white transition-all duration-500 backdrop-blur-md"
+                  className="flex items-center justify-center gap-4 bg-white/5 border border-white/10 text-slate-200 px-6 md:px-10 py-5 md:py-6 rounded-2xl font-black text-sm md:text-base uppercase tracking-wider md:tracking-widest hover:bg-white/10 hover:border-white/20 hover:text-white transition-all duration-500 backdrop-blur-md w-full sm:w-auto"
                 >
                   <PhoneCall className="w-5 h-5" />
                   Ring 019-760 42 90
@@ -109,13 +109,13 @@ const PreFooterCTA: React.FC = () => {
                 {perks.map((perk, i) => (
                   <div
                     key={i}
-                    className={`card-hover group relative bg-white/[0.03] backdrop-blur-xl border border-white/10 p-6 rounded-3xl flex items-start space-x-6 transition-all duration-700 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'}`}
+                    className={`card-hover group relative bg-white/[0.03] backdrop-blur-xl border border-white/10 p-5 md:p-6 rounded-3xl flex items-start space-x-4 md:space-x-6 transition-all duration-700 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'}`}
                     style={{ transitionDelay: `${400 + i * 150}ms` }}
                   >
                     {/* Floating Glow on Hover */}
                     <div className="absolute inset-0 bg-cc-green/0 group-hover:bg-cc-green/[0.03] rounded-3xl transition-colors duration-500" />
                     
-                    <div className="relative shrink-0 w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-cc-green group-hover:bg-cc-green group-hover:text-white group-hover:border-cc-green group-hover:shadow-[0_0_20px_rgba(0,177,130,0.4)] transition-all duration-500 group-hover:rotate-[10deg]">
+                    <div className="relative shrink-0 w-12 h-12 md:w-14 md:h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-cc-green group-hover:bg-cc-green group-hover:text-white group-hover:border-cc-green group-hover:shadow-[0_0_20px_rgba(0,177,130,0.4)] transition-all duration-500 group-hover:rotate-[10deg]">
                       {perk.icon}
                     </div>
                     

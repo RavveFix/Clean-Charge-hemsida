@@ -87,7 +87,7 @@ const SolutionsSection: React.FC = () => {
             <Link
               key={solution.id}
               href={solution.href}
-              className="solution-card group flex flex-col bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className="solution-card group flex flex-col bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <div className="relative h-[200px] sm:h-[240px] overflow-hidden">
                 <img
@@ -96,7 +96,7 @@ const SolutionsSection: React.FC = () => {
                   className="solution-image absolute top-[-15%] left-0 w-full h-[130%] object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
               </div>
-              <div className="p-6 md:p-8 flex flex-col flex-grow bg-white">
+              <div className="p-5 md:p-8 flex flex-col flex-grow bg-white">
                 <div className="mb-4 md:mb-6 text-slate-700">{solution.icon}</div>
                 <h3 className="text-xl md:text-2xl font-bold text-text-primary mb-2 md:mb-3 leading-tight">{solution.title}</h3>
                 <p className="text-text-secondary leading-relaxed mb-6 md:mb-8 flex-grow text-sm md:text-base">{solution.desc}</p>

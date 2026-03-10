@@ -26,7 +26,7 @@ const PrivateChargingSection: React.FC = () => {
                                 <span className="text-xs font-bold uppercase tracking-widest">För Villa & Radhus</span>
                             </div>
                             
-                            <h1 className="text-5xl md:text-[5rem] font-black text-slate-800 tracking-tighter uppercase leading-[0.9]">
+                            <h1 className="text-3xl sm:text-4xl md:text-[5rem] font-black text-slate-800 tracking-tighter uppercase leading-tight md:leading-[0.9]">
                                 Ladda Hemma <br/> <span className="text-cc-green">Laddbox för Villa.</span>
                             </h1>
                             
@@ -126,7 +126,7 @@ const PrivateChargingSection: React.FC = () => {
                     </div>
                     
                     <div className="md:w-1/2">
-                         <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-10 rounded-[3rem] relative">
+                         <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-10 rounded-[3rem] relative">
                             <h3 className="text-2xl font-black mb-6 uppercase">Räkneexempel</h3>
                             <div className="space-y-4">
                                 <div className="flex justify-between items-center py-4 border-b border-white/10">
@@ -141,9 +141,9 @@ const PrivateChargingSection: React.FC = () => {
                                     <span className="text-slate-400 font-medium">Totalt innan avdrag</span>
                                     <span className="text-slate-400 font-bold line-through">13 900 kr</span>
                                 </div>
-                                <div className="bg-cc-green/20 p-6 rounded-2xl flex justify-between items-center mt-4 border border-cc-green/30">
-                                    <span className="text-cc-green font-black uppercase tracking-wider">Ditt Pris (Efter 50%)</span>
-                                    <span className="text-white text-2xl font-black">6 950 kr</span>
+                                <div className="bg-cc-green/20 p-4 md:p-6 rounded-2xl flex justify-between items-center mt-4 border border-cc-green/30">
+                                    <span className="text-cc-green font-black uppercase tracking-wider text-xs md:text-base">Ditt Pris (Efter 50%)</span>
+                                    <span className="text-white text-xl md:text-2xl font-black">6 950 kr</span>
                                 </div>
                             </div>
                          </div>
@@ -162,7 +162,7 @@ const PrivateChargingSection: React.FC = () => {
 
                     <div className="grid lg:grid-cols-2 gap-10">
                         {privateProducts.map((product) => (
-                             <div key={product.id} className="group bg-white rounded-[3.5rem] p-10 border border-slate-100 hover:border-cc-green/30 hover:shadow-2xl hover:shadow-cc-green/10 transition-all duration-500 flex flex-col md:flex-row gap-10 items-center">
+                             <div key={product.id} className="group bg-white rounded-[2rem] md:rounded-[3.5rem] p-6 md:p-10 border border-slate-100 hover:border-cc-green/30 hover:shadow-2xl hover:shadow-cc-green/10 transition-all duration-500 flex flex-col md:flex-row gap-8 md:gap-10 items-center">
                                 <div className="w-full md:w-1/2 aspect-square bg-slate-50 rounded-[2.5rem] p-8 flex items-center justify-center relative overflow-hidden">
                                      <div className="absolute inset-0 bg-cc-green/5 rounded-[2.5rem] transform scale-0 group-hover:scale-100 transition-transform duration-700 rounded-full"></div>
                                     <img src={product.image} alt={product.name} className="w-full h-full object-contain relative z-10 group-hover:scale-110 transition-transform duration-700" />
@@ -218,7 +218,7 @@ const PrivateChargingSection: React.FC = () => {
                              { icon: Smartphone, title: "Smart App-styrning", desc: "Starta, stoppa och schemalägg laddningen direkt i mobilen. Få full kontroll över förbrukning och historik." },
                              { icon: Zap, title: "Lastbalansering", desc: "Vi installerar dynamisk lastbalansering som skyddar din huvudsäkring när du lagar mat och laddar samtidigt." }
                          ].map((item, i) => (
-                             <div key={i} className="bg-white p-12 rounded-[3rem] shadow-sm border border-slate-100 hover:shadow-2xl hover:border-cc-green/20 transition-all duration-500 group">
+                             <div key={i} className="bg-white p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] shadow-sm border border-slate-100 hover:shadow-2xl hover:border-cc-green/20 transition-all duration-500 group">
                                  <div className="w-16 h-16 bg-cc-green/10 rounded-2xl flex items-center justify-center mb-8 text-cc-green group-hover:scale-110 transition-transform">
                                      <item.icon className="w-8 h-8" />
                                  </div>

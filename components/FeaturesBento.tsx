@@ -57,13 +57,13 @@ const FeaturesBento: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
           {/* Card 1: Load Balancing */}
-          <div className="bg-white rounded-[32px] p-8 md:p-10 relative overflow-hidden flex flex-col justify-between border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] min-h-[400px] md:h-[440px]">
+          <div className="bg-white rounded-[24px] md:rounded-[32px] p-6 md:p-10 relative overflow-hidden flex flex-col justify-between border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] min-h-[400px] md:h-[440px]">
             <div>
               <div className="mb-6">
                 <Activity strokeWidth={1.5} className="w-8 h-8 text-slate-800" />
               </div>
               <h3 className="text-xl md:text-[22px] font-bold text-text-primary mb-3 tracking-tight">Dynamisk Lastbalansering</h3>
-              <p className="text-text-secondary text-sm md:text-[15px] leading-relaxed max-w-[260px]">Skyddar din hus huvudsäkring genom att automatiskt fördela strömmen optimalt.</p>
+              <p className="text-text-secondary text-sm md:text-[15px] leading-relaxed max-w-full sm:max-w-[260px]">Skyddar din hus huvudsäkring genom att automatiskt fördela strömmen optimalt.</p>
             </div>
             
             {/* Shuffler UI */}
@@ -106,13 +106,13 @@ const FeaturesBento: React.FC = () => {
           </div>
 
           {/* Card 2: Climate Tested */}
-          <div className="bg-[#0b1021] rounded-[32px] p-10 relative overflow-hidden h-[440px] flex flex-col justify-between shadow-[0_20px_40px_rgba(11,16,33,0.15)]">
+          <div className="bg-[#0b1021] rounded-[24px] md:rounded-[32px] p-6 md:p-10 relative overflow-hidden h-[440px] flex flex-col justify-between shadow-[0_20px_40px_rgba(11,16,33,0.15)]">
             <div>
               <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6">
                 <ShieldCheck strokeWidth={1.5} className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-[22px] font-bold text-white mb-3 tracking-tight">Nordiskt Klimatanpassad</h3>
-              <p className="text-slate-400 text-[15px] leading-relaxed max-w-[260px]">Hårdvara byggd för att motstå extrem kyla, snö och regn utan att kompromissa med prestandan.</p>
+              <p className="text-slate-400 text-[15px] leading-relaxed max-w-full sm:max-w-[260px]">Hårdvara byggd för att motstå extrem kyla, snö och regn utan att kompromissa med prestandan.</p>
             </div>
             
             {/* Terminal UI -> Typewriter Widget */}
@@ -131,13 +131,13 @@ const FeaturesBento: React.FC = () => {
           </div>
 
           {/* Card 3: Monta Integration */}
-          <div className="bg-[#f5f8ff] rounded-[32px] p-10 relative overflow-hidden h-[440px] flex flex-col justify-between border border-[#e2e8f0]/40 shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
+          <div className="bg-[#f5f8ff] rounded-[24px] md:rounded-[32px] p-6 md:p-10 relative overflow-hidden h-[440px] flex flex-col justify-between border border-[#e2e8f0]/40 shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
             <div>
               <div className="w-12 h-12 rounded-2xl bg-white border border-[#dbe4ff] flex items-center justify-center mb-6 shadow-sm">
                 <Smartphone strokeWidth={1.5} className="w-5 h-5 text-[#3b82f6]" />
               </div>
               <h3 className="text-[22px] font-bold text-text-primary mb-3 tracking-tight">Sömlös App-integration</h3>
-              <p className="text-text-secondary text-[15px] leading-relaxed max-w-[260px]">Full kontroll i mobilen via Monta. Schemalägg laddning, följ kostnader och dela din laddare.</p>
+              <p className="text-text-secondary text-[15px] leading-relaxed max-w-full sm:max-w-[260px]">Full kontroll i mobilen via Monta. Schemalägg laddning, följ kostnader och dela din laddare.</p>
             </div>
             
             {/* Modern App UI Mockup snippet */}
