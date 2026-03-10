@@ -9,43 +9,43 @@ const MontaSection: React.FC = () => {
   const montaImage = "/Charge_grey.png";
 
   return (
-    <section className="py-24 bg-white overflow-hidden font-monta">
+    <section className="py-16 md:py-24 bg-white overflow-hidden font-monta">
       <div className="container mx-auto px-6">
-        <div className="bg-[#003DFF] rounded-[3rem] p-12 md:p-20 text-white relative overflow-hidden mb-20 shadow-2xl shadow-blue-900/20">
+        <div className="bg-[#003DFF] rounded-[2.5rem] md:rounded-[3rem] p-8 sm:p-12 md:p-20 text-white relative overflow-hidden mb-16 md:mb-20 shadow-2xl shadow-blue-900/20">
           <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
             <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
               <path d="M0,100 C30,80 70,120 100,100 L100,0 L0,0 Z" fill="white" />
             </svg>
           </div>
           
-          <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
-            <div className="space-y-10">
-              <div className="space-y-6">
-                <div className="inline-block pb-4">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
+            <div className="space-y-8 md:space-y-10">
+              <div className="space-y-4 md:space-y-6">
+                <div className="inline-block pb-2 md:pb-4">
                   <img 
                     src="https://monta.com/app/themes/monta-sage-latest/public/build/assets/Monta_Logo-6IYbGNWl.svg" 
                     alt="Monta Logo" 
-                    className="h-12 w-auto brightness-0 invert transition-transform hover:scale-105 duration-300"
+                    className="h-8 md:h-12 w-auto brightness-0 invert transition-transform hover:scale-105 duration-300"
                   />
                 </div>
                 <div className="flex items-center space-x-3 text-blue-200">
-                  <span className="text-[10px] font-black uppercase tracking-[0.3em]">Authorized Operator Partner</span>
-                  <div className="h-px w-12 bg-blue-400"></div>
+                  <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em]">Authorized Operator Partner</span>
+                  <div className="h-px w-8 md:w-12 bg-blue-400"></div>
                 </div>
                 
-                <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.95] text-white uppercase">
+                <h2 className="text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-[0.95] text-white uppercase">
                   Marknadens smartaste <br />
                   <span className="text-blue-300 italic">Betallösning.</span>
                 </h2>
                 
-                <p className="text-xl text-blue-50 font-medium leading-relaxed max-w-xl opacity-90">
+                <p className="text-lg md:text-xl text-blue-50 font-medium leading-relaxed max-w-xl opacity-90">
                   Vi fokuserar på kraftfulla betallösningar för publika anläggningar. Med Monta automatiserar ni debiteringsflödet och gör era laddstationer till en lönsam tillgång.
                 </p>
               </div>
               
               <Link 
                 href="/monta"
-                className="inline-flex items-center bg-white text-[#003DFF] px-12 py-5 rounded-full font-black text-lg transition-all hover:bg-blue-50 hover:shadow-xl active:scale-95 group"
+                className="inline-flex items-center justify-center w-full sm:w-auto bg-white text-[#003DFF] px-10 md:px-12 py-4 md:py-5 rounded-full font-black text-base md:text-lg transition-all hover:bg-blue-50 hover:shadow-xl active:scale-95 group"
               >
                 Läs mer om Monta Hub
                 <ArrowRight className="ml-3 group-hover:translate-x-1 transition-transform" />

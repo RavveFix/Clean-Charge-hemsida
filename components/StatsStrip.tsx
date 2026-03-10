@@ -83,7 +83,7 @@ const StatsStrip: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-white border-y border-slate-100 relative overflow-hidden">
+    <section className="py-12 md:py-28 bg-white border-y border-slate-100 relative overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-[0.025] pointer-events-none">
         <svg width="100%" height="100%">
@@ -100,12 +100,12 @@ const StatsStrip: React.FC = () => {
       <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-cc-green to-transparent opacity-30" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-cc-green/8 text-cc-green px-5 py-2 rounded-full border border-cc-green/15 mb-6">
+        <div className="text-center mb-12 md:mb-16">
+          <div className="inline-flex items-center space-x-2 bg-cc-green/8 text-cc-green px-5 py-2 rounded-full border border-cc-green/15 mb-4 md:mb-6">
             <Zap className="w-3.5 h-3.5 fill-cc-green" />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em]">Bevisad Expertis</span>
+            <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em]">Bevisad Expertis</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-black text-slate-800 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-800 tracking-tight">
             Siffrorna talar för sig själva.
           </h2>
         </div>

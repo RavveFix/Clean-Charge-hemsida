@@ -45,25 +45,25 @@ const FeaturesBento: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section className="py-16 md:py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl">
-        <div className="mb-16 text-center mx-auto">
-          <h2 className="text-4xl md:text-5xl lg:text-[2.75rem] font-[800] text-text-primary tracking-tight mb-4">
+        <div className="mb-12 md:mb-16 text-center mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] font-[800] text-text-primary tracking-tight mb-4">
             Framtidens teknik, idag.
           </h2>
-          <p className="text-text-secondary text-[17px] font-medium max-w-2xl mx-auto">Smarta funktioner designade för att göra din vardag enklare och din laddning effektivare.</p>
+          <p className="text-text-secondary text-base md:text-[17px] font-medium max-w-2xl mx-auto">Smarta funktioner designade för att göra din vardag enklare och din laddning effektivare.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
           {/* Card 1: Load Balancing */}
-          <div className="bg-white rounded-[32px] p-10 relative overflow-hidden flex flex-col justify-between border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] h-[440px]">
+          <div className="bg-white rounded-[32px] p-8 md:p-10 relative overflow-hidden flex flex-col justify-between border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] min-h-[400px] md:h-[440px]">
             <div>
               <div className="mb-6">
                 <Activity strokeWidth={1.5} className="w-8 h-8 text-slate-800" />
               </div>
-              <h3 className="text-[22px] font-bold text-text-primary mb-3 tracking-tight">Dynamisk Lastbalansering</h3>
-              <p className="text-text-secondary text-[15px] leading-relaxed max-w-[260px]">Skyddar din hus huvudsäkring genom att automatiskt fördela strömmen optimalt.</p>
+              <h3 className="text-xl md:text-[22px] font-bold text-text-primary mb-3 tracking-tight">Dynamisk Lastbalansering</h3>
+              <p className="text-text-secondary text-sm md:text-[15px] leading-relaxed max-w-[260px]">Skyddar din hus huvudsäkring genom att automatiskt fördela strömmen optimalt.</p>
             </div>
             
             {/* Shuffler UI */}

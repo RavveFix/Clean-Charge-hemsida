@@ -71,14 +71,14 @@ const SolutionsSection: React.FC = () => {
   ];
 
   return (
-    <section ref={containerRef} className="py-32 bg-white">
+    <section ref={containerRef} className="py-20 md:py-32 bg-white">
       <div className="container mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto mb-20">
-          <span className="text-brand-green font-bold tracking-wider uppercase text-sm mb-3 block">Lösningar</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-text-primary tracking-tight mb-6">
-            Laddning anpassad för <br className="hidden md:block" />din verklighet.
+        <div className="text-center max-w-2xl mx-auto mb-16 md:mb-20">
+          <span className="text-brand-green font-bold tracking-wider uppercase text-xs sm:text-sm mb-3 block">Lösningar</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-text-primary tracking-tight mb-4 md:mb-6">
+            Laddning anpassad för <br className="hidden sm:block" />din verklighet.
           </h2>
-          <p className="text-text-secondary text-lg">
+          <p className="text-text-secondary text-base md:text-lg">
             Oavsett om du laddar hemma, på jobbet eller i föreningen har vi en helhetslösning som passar perfekt.
           </p>
         </div>
@@ -89,17 +89,17 @@ const SolutionsSection: React.FC = () => {
               href={solution.href}
               className="solution-card group flex flex-col bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="relative h-[240px] overflow-hidden">
+              <div className="relative h-[200px] sm:h-[240px] overflow-hidden">
                 <img
                   src={solution.image}
                   alt={solution.title}
                   className="solution-image absolute top-[-15%] left-0 w-full h-[130%] object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
               </div>
-              <div className="p-8 flex flex-col flex-grow bg-white">
-                <div className="mb-6 text-slate-700">{solution.icon}</div>
-                <h3 className="text-xl md:text-2xl font-bold text-text-primary mb-3 leading-tight">{solution.title}</h3>
-                <p className="text-text-secondary leading-relaxed mb-8 flex-grow text-sm md:text-base">{solution.desc}</p>
+              <div className="p-6 md:p-8 flex flex-col flex-grow bg-white">
+                <div className="mb-4 md:mb-6 text-slate-700">{solution.icon}</div>
+                <h3 className="text-xl md:text-2xl font-bold text-text-primary mb-2 md:mb-3 leading-tight">{solution.title}</h3>
+                <p className="text-text-secondary leading-relaxed mb-6 md:mb-8 flex-grow text-sm md:text-base">{solution.desc}</p>
                 <div className="flex items-center text-text-primary font-bold text-sm group-hover:text-brand-green transition-colors mt-auto">
                   Läs mer
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
