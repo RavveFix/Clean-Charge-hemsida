@@ -1,193 +1,159 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Activity, ShieldCheck, Zap, MousePointer2 } from 'lucide-react';
-import gsap from 'gsap';
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { Activity, ShieldCheck, Zap, Smartphone } from 'lucide-react';
 
 const FeaturesBento: React.FC = () => {
-  // Card 1 state: Diagnostic Shuffler
-  const [shufflerItems, setShufflerItems] = useState([
-    { id: 1, label: 'PHASE 1: 32A', active: true },
-    { id: 2, label: 'PHASE 2: 16A', active: false },
-    { id: 3, label: 'PHASE 3: 16A', active: false },
-  ]);
+  // Card 1 state: Diagnostic Shuffler -> Smart Load Balancing Visualizer
+  const [isBox1Active, setIsBox1Active] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setShufflerItems((prev) => {
-        const newItems = [...prev];
-        const last = newItems.pop();
-        if (last) newItems.unshift(last);
-        return newItems;
-      });
+      setIsBox1Active((prev) => !prev);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
-
   // Card 2 state: Telemetry Typewriter
   const typewriterText = "SYSTEM NOMINAL. TEMP: -24°C. HEATER ACTIVE. CHARGING MAINTAINED.";
   const [displayedText, setDisplayedText] = useState("");
   const [cursorVisible, setCursorVisible] = useState(true);
 
   useEffect(() => {
-    let i = 0;
-    const typingInterval = setInterval(() => {
-      setDisplayedText(typewriterText.substring(0, i));
-      i++;
-      if (i > typewriterText.length) {
-        clearInterval(typingInterval);
-        setTimeout(() => {
-            // Reset for continuous loop
-            setDisplayedText("");
-            i = 0;
-            // Optionally could completely loop it but let's just leave it typed once
-            // setDisplayedText("")
-        }, 5000)
-      }
-    }, 100);
+    let active = true;
+    const cursorInterval = setInterval(() => setCursorVisible((v) => !v), 500);
 
-    const cursorInterval = setInterval(() => {
-      setCursorVisible((v) => !v);
-    }, 500);
+    const runTyper = () => {
+      if (!active) return;
+      let i = 0;
+      setDisplayedText('');
+      const typingInterval = setInterval(() => {
+        if (!active) { clearInterval(typingInterval); return; }
+        i++;
+        setDisplayedText(typewriterText.substring(0, i));
+        if (i >= typewriterText.length) {
+          clearInterval(typingInterval);
+          setTimeout(() => { if (active) runTyper(); }, 3000);
+        }
+      }, 80);
+    };
 
+    runTyper();
     return () => {
-      clearInterval(typingInterval);
+      active = false;
       clearInterval(cursorInterval);
     };
   }, []);
-  
-  // Card 3 state: Cursor Scheduler
-  const schedulerRef = useRef<HTMLDivElement>(null);
-  const cursorRef = useRef<HTMLDivElement>(null);
-  const [activeDay, setActiveDay] = useState<number | null>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      if(!cursorRef.current || !schedulerRef.current) return;
-      
-      const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
-      const days = gsap.utils.toArray('.scheduler-day');
-      
-      // Animate Cursor
-      tl.to(cursorRef.current, { x: 50, y: 50, duration: 1, ease: "power2.inOut" })
-        .to(cursorRef.current, { scale: 0.8, duration: 0.1, yoyo: true, repeat: 1, onComplete: () => setActiveDay(2) }) // Click Day 3 (Tuesday)
-        .to(cursorRef.current, { x: 150, y: 120, duration: 1, ease: "power2.inOut", delay: 0.5 })
-        .to(cursorRef.current, { scale: 0.8, duration: 0.1, yoyo: true, repeat: 1, onComplete: () => {
-            // Fake Save click
-        }})
-        .to(cursorRef.current, { x: -20, y: -20, opacity: 0, duration: 0.5, delay: 0.5, onComplete: () => setActiveDay(null) })
-        .set(cursorRef.current, { opacity: 1 });
-        
-    }, schedulerRef);
-    return () => ctx.revert();
-  }, []);
 
   return (
-    <section className="py-24 bg-bg-surface font-space-grotesk overflow-hidden border-t border-text-primary/10">
-      <div className="container mx-auto px-6">
-        <div className="max-w-3xl mb-16">
-          <h2 className="text-5xl md:text-7xl font-bold text-text-primary tracking-tighter leading-none uppercase mb-6">
-            FUNCTIONAL <br />
-            <span className="font-serif-drama italic text-brand-green">ARTIFACTS.</span>
+    <section className="py-24 bg-white overflow-hidden">
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div className="mb-16 text-center mx-auto">
+          <h2 className="text-4xl md:text-5xl lg:text-[2.75rem] font-[800] text-text-primary tracking-tight mb-4">
+            Framtidens teknik, idag.
           </h2>
-          <p className="font-mono-data text-text-secondary">System capabilities mapped to physical hardware.</p>
+          <p className="text-text-secondary text-[17px] font-medium max-w-2xl mx-auto">Smarta funktioner designade för att göra din vardag enklare och din laddning effektivare.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
-          {/* Card 1: Diagnostic Shuffler (Smart Load Balancing) */}
-          <div className="bg-bg-primary rounded-[2rem] p-8 relative overflow-hidden group border border-text-primary/10 shadow-[8px_8px_0px_rgba(17,17,17,1)] h-[400px] flex flex-col justify-between">
+          {/* Card 1: Load Balancing */}
+          <div className="bg-white rounded-[32px] p-10 relative overflow-hidden flex flex-col justify-between border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] h-[440px]">
             <div>
-              <div className="flex items-center space-x-2 mb-6">
-                <Activity className="w-5 h-5 text-brand-green" />
-                <span className="font-mono-data text-xs uppercase tracking-widest text-text-primary">Diagnostic</span>
+              <div className="mb-6">
+                <Activity strokeWidth={1.5} className="w-8 h-8 text-slate-800" />
               </div>
-              <h3 className="text-2xl font-bold text-text-primary mb-2 uppercase tracking-tight">Smart Load Balancing</h3>
-              <p className="text-text-secondary font-mono-data text-xs leading-relaxed max-w-[200px]">Dynamic power distribution across multiple endpoints.</p>
+              <h3 className="text-[22px] font-bold text-text-primary mb-3 tracking-tight">Dynamisk Lastbalansering</h3>
+              <p className="text-text-secondary text-[15px] leading-relaxed max-w-[260px]">Skyddar din hus huvudsäkring genom att automatiskt fördela strömmen optimalt.</p>
             </div>
             
             {/* Shuffler UI */}
-            <div className="relative h-[120px] w-full mt-8 flex flex-col items-center justify-end">
-              {shufflerItems.map((item, index) => {
-                const isTop = index === 2;
-                return (
+            <div className="relative h-[100px] w-full mt-8 flex flex-col items-center justify-end">
+                  {/* Pill 2 */}
                   <div 
-                    key={item.id}
-                    className="absolute w-full max-w-[240px] border border-text-primary text-center py-3 px-4 font-mono-data text-sm flex justify-between items-center transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
-                    style={{
-                      bottom: `${(2 - index) * 16}px`,
-                      scale: isTop ? 1 : 1 - (2 - index) * 0.05,
-                      zIndex: index,
-                      opacity: isTop ? 1 : 0.5,
-                      backgroundColor: isTop ? 'var(--brand-green)' : 'var(--bg-primary)',
-                      color: isTop ? 'white' : 'var(--text-primary)',
-                      borderColor: isTop ? 'var(--brand-green)' : 'rgba(17,17,17,0.2)'
+                    className="absolute w-full max-w-[220px] rounded-2xl text-center py-3.5 px-5 text-[15px] font-semibold flex justify-between items-center transition-all duration-700 ease-in-out border"
+                    style={{ 
+                      bottom: !isBox1Active ? '8px' : '24px', 
+                      scale: !isBox1Active ? 1 : 0.95,
+                      zIndex: !isBox1Active ? 10 : 0,
+                      opacity: !isBox1Active ? 1 : 0.4,
+                      backgroundColor: !isBox1Active ? '#00b182' : '#f8fafc',
+                      color: !isBox1Active ? 'white' : '#64748b', // text-slate-500
+                      borderColor: !isBox1Active ? 'transparent' : '#f1f5f9', // border-slate-100
+                      boxShadow: !isBox1Active ? '0 10px 20px rgba(0,177,130,0.2)' : 'none'
                     }}
                   >
-                    <span>{item.label}</span>
-                    {isTop && <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>}
+                    <span>Laddbox 2: 16A</span>
+                    <span className={`w-2 h-2 rounded-full bg-white opacity-90 transition-opacity duration-300 ${!isBox1Active ? 'opacity-100' : 'opacity-0'}`}></span>
                   </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Card 2: Telemetry Typewriter (Nordic Climate) */}
-          <div className="bg-[#111111] rounded-[2rem] p-8 relative overflow-hidden group border border-white/10 shadow-[8px_8px_0px_rgba(0,177,130,1)] h-[400px] flex flex-col justify-between">
-            <div>
-              <div className="flex items-center space-x-2 mb-6">
-                <ShieldCheck className="w-5 h-5 text-brand-green" />
-                <span className="font-mono-data text-xs uppercase tracking-widest text-white/70">Telemetry</span>
-                <div className="ml-auto flex items-center space-x-2 bg-brand-green/20 px-2 py-1 rounded text-[10px] font-mono-data text-brand-green uppercase">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-green animate-pulse"></span>
-                  LIVE
-                </div>
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-2 uppercase tracking-tight">Nordic Climate Tested</h3>
-              <p className="text-white/60 font-mono-data text-xs leading-relaxed max-w-[200px]">Built to withstand extreme sub-zero temperatures.</p>
-            </div>
-            
-            {/* Typewriter UI */}
-            <div className="mt-8 bg-black/50 border border-white/10 p-4 rounded-xl min-h-[100px] font-mono-data text-xs text-brand-green leading-relaxed">
-              <span className="text-white/40 mr-2">&gt;</span>
-              {displayedText}
-              <span className={`inline-block w-2.5 h-[14px] bg-brand-green translate-y-1 ml-1 ${cursorVisible ? 'opacity-100' : 'opacity-0'}`}></span>
-            </div>
-          </div>
-
-          {/* Card 3: Cursor Protocol Scheduler (Monta App) */}
-          <div ref={schedulerRef} className="bg-bg-primary rounded-[2rem] p-8 relative overflow-hidden group border border-text-primary/10 shadow-[8px_8px_0px_rgba(17,17,17,1)] h-[400px] flex flex-col justify-between">
-            <div>
-              <div className="flex items-center space-x-2 mb-6">
-                <Zap className="w-5 h-5 text-brand-green" />
-                <span className="font-mono-data text-xs uppercase tracking-widest text-text-primary">Protocol</span>
-              </div>
-              <h3 className="text-2xl font-bold text-text-primary mb-2 uppercase tracking-tight">Seamless Integration</h3>
-              <p className="text-text-secondary font-mono-data text-xs leading-relaxed max-w-[200px]">Automate your charging schedule via Monta.</p>
-            </div>
-            
-            {/* Scheduler UI */}
-            <div className="relative mt-8 font-mono-data border border-text-primary/10 rounded-xl p-4 bg-white/50">
-              <div className="grid grid-cols-7 gap-1 text-center text-[10px] mb-2 text-text-secondary">
-                <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
-              </div>
-              <div className="grid grid-cols-7 gap-1">
-                {[0, 1, 2, 3, 4, 5, 6].map((day) => (
+                  {/* Pill 1 */}
                   <div 
-                    key={day} 
-                    className={`scheduler-day aspect-square rounded flex items-center justify-center text-xs transition-colors duration-300 ${activeDay === day ? 'bg-brand-green text-white font-bold scale-110 shadow-lg' : 'bg-bg-surface text-text-primary/50'}`}
+                    className="absolute w-full max-w-[220px] rounded-2xl text-center py-3.5 px-5 text-[15px] font-semibold flex justify-between items-center transition-all duration-700 ease-in-out border"
+                    style={{ 
+                      bottom: isBox1Active ? '8px' : '24px', 
+                      scale: isBox1Active ? 1 : 0.95,
+                      zIndex: isBox1Active ? 10 : 0,
+                      opacity: isBox1Active ? 1 : 0.4,
+                      backgroundColor: isBox1Active ? '#00b182' : '#f8fafc',
+                      color: isBox1Active ? 'white' : '#64748b',
+                      borderColor: isBox1Active ? 'transparent' : '#f1f5f9',
+                      boxShadow: isBox1Active ? '0 10px 20px rgba(0,177,130,0.2)' : 'none'
+                    }}
                   >
-                    {day + 1}
+                    <span>Laddbox 1: 32A</span>
+                    <span className={`w-2 h-2 rounded-full bg-white opacity-90 transition-opacity duration-300 ${isBox1Active ? 'opacity-100' : 'opacity-0'}`}></span>
                   </div>
-                ))}
+            </div>
+          </div>
+
+          {/* Card 2: Climate Tested */}
+          <div className="bg-[#0b1021] rounded-[32px] p-10 relative overflow-hidden h-[440px] flex flex-col justify-between shadow-[0_20px_40px_rgba(11,16,33,0.15)]">
+            <div>
+              <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6">
+                <ShieldCheck strokeWidth={1.5} className="w-6 h-6 text-white" />
               </div>
-              
-              <div className="mt-4 flex justify-end">
-                <div className="bg-text-primary text-white text-[10px] px-3 py-1.5 uppercase transition-transform active:scale-95">Save Config</div>
+              <h3 className="text-[22px] font-bold text-white mb-3 tracking-tight">Nordiskt Klimatanpassad</h3>
+              <p className="text-slate-400 text-[15px] leading-relaxed max-w-[260px]">Hårdvara byggd för att motstå extrem kyla, snö och regn utan att kompromissa med prestandan.</p>
+            </div>
+            
+            {/* Terminal UI -> Typewriter Widget */}
+            <div className="mt-8 bg-white/[0.03] border border-white/[0.06] p-5 rounded-2xl w-full font-mono">
+               <div className="flex justify-between items-center mb-4">
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">System Status</span>
+                  <span className="flex items-center gap-1.5 text-[10px] font-bold text-cc-green uppercase tracking-widest">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cc-green animate-pulse" />
+                    Live
+                  </span>
+               </div>
+               <div className="text-[13px] leading-[1.8] text-slate-300 min-h-[60px]">
+                  {displayedText}<span className={`inline-block w-[2px] h-[14px] bg-cc-green ml-0.5 align-middle transition-opacity ${cursorVisible ? 'opacity-100' : 'opacity-0'}`} />
+               </div>
+            </div>
+          </div>
+
+          {/* Card 3: Monta Integration */}
+          <div className="bg-[#f5f8ff] rounded-[32px] p-10 relative overflow-hidden h-[440px] flex flex-col justify-between border border-[#e2e8f0]/40 shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
+            <div>
+              <div className="w-12 h-12 rounded-2xl bg-white border border-[#dbe4ff] flex items-center justify-center mb-6 shadow-sm">
+                <Smartphone strokeWidth={1.5} className="w-5 h-5 text-[#3b82f6]" />
               </div>
-              
-              {/* Fake Cursor SVG */}
-              <div ref={cursorRef} className="absolute top-0 left-0 w-8 h-8 pointer-events-none z-20 text-brand-green drop-shadow-xl" style={{ x: -20, y: -20 }}>
-                <MousePointer2 className="w-6 h-6 fill-brand-green" />
-              </div>
+              <h3 className="text-[22px] font-bold text-text-primary mb-3 tracking-tight">Sömlös App-integration</h3>
+              <p className="text-text-secondary text-[15px] leading-relaxed max-w-[260px]">Full kontroll i mobilen via Monta. Schemalägg laddning, följ kostnader och dela din laddare.</p>
+            </div>
+            
+            {/* Modern App UI Mockup snippet */}
+            <div className="relative mt-8 bg-white rounded-2xl p-5 shadow-[0_8px_30px_rgba(0,0,0,0.06)] border border-slate-100/60 w-full mb-2">
+               <div className="flex items-center gap-4 mb-5">
+                  <div className="w-11 h-11 rounded-full bg-[#f8fafc] border border-slate-100 flex items-center justify-center">
+                     <Zap className="w-4 h-4 text-slate-400" />
+                  </div>
+                  <div>
+                     <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide mb-0.5">Kostnad denna månad</div>
+                     <div className="text-[20px] font-bold text-text-primary leading-none">345 kr</div>
+                  </div>
+               </div>
+               <div className="w-full bg-slate-100/80 rounded-full h-1.5 overflow-hidden">
+                  <div className="bg-[#003dff] h-full rounded-full w-[65%]"></div>
+               </div>
             </div>
           </div>
 

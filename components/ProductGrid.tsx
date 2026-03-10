@@ -1,3 +1,4 @@
+'use client';
 
 import React from 'react';
 import { PRODUCTS } from '../constants';
@@ -6,10 +7,10 @@ import { ShoppingCart, ShieldCheck, Star } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
-  onAddToCart: (product: Product) => void;
+  onAddToCart?: (product: Product) => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart = () => {} }) => {
   const isPremium = product.category === 'laddbox' || product.category === 'snabbladdare';
 
   return (
@@ -103,10 +104,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
 
 interface ProductGridProps {
   limit?: number;
-  onAddToCart: (product: Product) => void;
+  onAddToCart?: (product: Product) => void;
 }
 
-const ProductGrid: React.FC<ProductGridProps> = ({ limit, onAddToCart }) => {
+const ProductGrid: React.FC<ProductGridProps> = ({ limit, onAddToCart = () => {} }) => {
   const displayedProducts = limit ? PRODUCTS.slice(0, limit) : PRODUCTS;
 
   return (

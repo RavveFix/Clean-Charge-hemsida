@@ -1,9 +1,11 @@
+'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { Check, Zap, Smartphone, ShieldCheck, ArrowRight, Home, Star } from 'lucide-react';
 import { PRODUCTS } from '../constants';
 
-const PrivateChargingSection: React.FC<{ onNavigate: (tab: any) => void }> = ({ onNavigate }) => {
+const PrivateChargingSection: React.FC = () => {
     // Filter products for private use (usually simpler ones like Zaptec Go, Easee Charge Lite)
     const privateProducts = PRODUCTS.filter(p => p.id === 'zaptec-go' || p.id === 'easee-charge-lite');
 
@@ -33,13 +35,13 @@ const PrivateChargingSection: React.FC<{ onNavigate: (tab: any) => void }> = ({ 
                             </p>
                             
                             <div className="flex flex-col sm:flex-row gap-5 pt-4">
-                                 <button 
-                                    onClick={() => onNavigate('contact')} 
-                                    className="bg-cc-green text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-slate-900 transition-all shadow-xl shadow-cc-green/20 hover:scale-105 active:scale-95 flex items-center justify-center group"
+                                 <Link 
+                                    href="/kontakt"
+                                    className="inline-flex items-center justify-center bg-cc-green text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-slate-900 transition-all shadow-xl shadow-cc-green/20 hover:scale-105 active:scale-95 group"
                                 >
                                     Beställ Installation
                                     <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                                </button>
+                                </Link>
                                  <button 
                                     onClick={() => {
                                         const element = document.getElementById('products');
@@ -194,12 +196,12 @@ const PrivateChargingSection: React.FC<{ onNavigate: (tab: any) => void }> = ({ 
                                          <p className="text-4xl font-black text-slate-900 tracking-tight">{Math.round(product.price * 0.5).toLocaleString()} kr</p>
                                     </div>
                                     
-                                    <button 
-                                        onClick={() => onNavigate('contact')} 
-                                        className="w-full bg-slate-900 text-white py-4 rounded-2xl font-black text-sm uppercase tracking-wider hover:bg-cc-green transition-all shadow-lg hover:shadow-cc-green/20"
+                                    <Link 
+                                        href="/kontakt" 
+                                        className="w-full block text-center bg-slate-900 text-white py-4 rounded-2xl font-black text-sm uppercase tracking-wider hover:bg-cc-green transition-all shadow-lg hover:shadow-cc-green/20"
                                     >
                                         Välj {product.name}
-                                    </button>
+                                    </Link>
                                 </div>
                              </div>
                         ))}

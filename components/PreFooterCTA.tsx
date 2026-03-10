@@ -1,12 +1,11 @@
 
+'use client';
+
 import React, { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import { ArrowRight, Zap, PhoneCall, CheckCircle2, ShieldCheck, ZapIcon, CreditCard, HeadphonesIcon } from 'lucide-react';
 
-interface PreFooterCTAProps {
-  onNavigate?: (tab: any) => void;
-}
-
-const PreFooterCTA: React.FC<PreFooterCTAProps> = ({ onNavigate }) => {
+const PreFooterCTA: React.FC = () => {
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -84,13 +83,13 @@ const PreFooterCTA: React.FC<PreFooterCTAProps> = ({ onNavigate }) => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-6 pt-4">
-                <button
-                  onClick={() => onNavigate && onNavigate('contact')}
+                <Link
+                  href="/kontakt"
                   className="shimmer-btn group bg-cc-green text-white px-10 py-6 rounded-2xl font-black text-base uppercase tracking-widest flex items-center justify-center gap-4 hover:shadow-[0_20px_50px_rgba(0,177,130,0.3)] hover:-translate-y-1 transition-all duration-500 active:scale-95"
                 >
-                  Boka kostnadsfri rådgvining
+                  Boka kostnadsfri rådgivning
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-500" />
-                </button>
+                </Link>
                 <a
                   href="tel:0197604290"
                   className="flex items-center justify-center gap-4 bg-white/5 border border-white/10 text-slate-200 px-10 py-6 rounded-2xl font-black text-base uppercase tracking-widest hover:bg-white/10 hover:border-white/20 hover:text-white transition-all duration-500 backdrop-blur-md"

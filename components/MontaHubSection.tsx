@@ -1,12 +1,10 @@
+'use client';
 
 import React, { useEffect } from 'react';
-import { Smartphone, Globe, Zap, CreditCard, LayoutDashboard, ShieldCheck, ArrowLeft, Check, Terminal } from 'lucide-react';
+import Link from 'next/link';
+import { Globe, Zap, CreditCard, ArrowLeft, Check } from 'lucide-react';
 
-interface MontaHubSectionProps {
-  onNavigate: (tab: any) => void;
-}
-
-const MontaHubSection: React.FC<MontaHubSectionProps> = ({ onNavigate }) => {
+const MontaHubSection: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -20,16 +18,13 @@ const MontaHubSection: React.FC<MontaHubSectionProps> = ({ onNavigate }) => {
         <div className="absolute bottom-0 left-0 w-1/3 h-2/3 bg-cc-green/20 rounded-tr-full blur-3xl pointer-events-none"></div>
 
         <div className="container mx-auto px-6 relative z-10">
-          <button 
-            onClick={() => {
-              onNavigate('home');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
+          <Link 
+            href="/"
             className="group flex items-center space-x-2 text-blue-200 hover:text-white mb-8 transition-colors text-sm font-bold uppercase tracking-widest"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span>Tillbaka till start</span>
-          </button>
+          </Link>
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
@@ -160,15 +155,12 @@ const MontaHubSection: React.FC<MontaHubSectionProps> = ({ onNavigate }) => {
                   </li>
                 </ul>
 
-                <button 
-                  onClick={() => {
-                    onNavigate('commercial');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="bg-[#00C28A] text-[#020817] px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-white transition-all transform hover:scale-105 shadow-xl hover:shadow-[#00C28A]/20"
+                <Link 
+                  href="/foretag"
+                  className="inline-block bg-[#00C28A] text-[#020817] px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-white transition-all transform hover:scale-105 shadow-xl hover:shadow-[#00C28A]/20"
                 >
                   Läs mer för Företag
-                </button>
+                </Link>
               </div>
 
               <div className="relative group">
@@ -197,21 +189,20 @@ const MontaHubSection: React.FC<MontaHubSectionProps> = ({ onNavigate }) => {
         <div className="container mx-auto px-6">
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-8 uppercase tracking-tight">Redo att komma igång?</h2>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
-                <button 
-                    onClick={() => {
-                      onNavigate('products');
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }}
-                    className="bg-[#003DFF] text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-slate-900 transition-all shadow-xl hover:shadow-blue-900/20"
+                <Link 
+                    href="/produkter"
+                    className="inline-block bg-[#003DFF] text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-slate-900 transition-all shadow-xl hover:shadow-blue-900/20"
                 >
                     Se kompatibla boxar
-                </button>
-                <button 
-                    onClick={() => window.open('https://monta.com', '_blank')}
-                    className="bg-white text-slate-900 border-2 border-slate-200 px-10 py-5 rounded-full font-black uppercase tracking-widest hover:border-slate-900 transition-all"
+                </Link>
+                <a 
+                    href="https://monta.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-white text-slate-900 border-2 border-slate-200 px-10 py-5 rounded-full font-black uppercase tracking-widest hover:border-slate-900 transition-all"
                 >
                     Besök Monta.com
-                </button>
+                </a>
             </div>
         </div>
       </section>

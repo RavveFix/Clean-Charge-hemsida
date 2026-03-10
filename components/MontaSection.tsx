@@ -1,12 +1,10 @@
+'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { ShieldCheck, Smartphone, BarChart3, ArrowRight } from 'lucide-react';
 
-interface MontaSectionProps {
-  onNavigate?: (tab: any) => void;
-}
-
-const MontaSection: React.FC<MontaSectionProps> = ({ onNavigate }) => {
+const MontaSection: React.FC = () => {
   // Använder samma bild som tidigare för konsekvens
   const montaImage = "/Charge_grey.png";
 
@@ -45,13 +43,13 @@ const MontaSection: React.FC<MontaSectionProps> = ({ onNavigate }) => {
                 </p>
               </div>
               
-              <button 
-                onClick={() => onNavigate && onNavigate('monta-hub')}
-                className="bg-white text-[#003DFF] px-12 py-5 rounded-full font-black text-lg transition-all hover:bg-blue-50 hover:shadow-xl active:scale-95 flex items-center group"
+              <Link 
+                href="/monta"
+                className="inline-flex items-center bg-white text-[#003DFF] px-12 py-5 rounded-full font-black text-lg transition-all hover:bg-blue-50 hover:shadow-xl active:scale-95 group"
               >
                 Läs mer om Monta Hub
                 <ArrowRight className="ml-3 group-hover:translate-x-1 transition-transform" />
-              </button>
+              </Link>
             </div>
 
             <div className="relative">

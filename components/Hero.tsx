@@ -1,24 +1,32 @@
+'use client';
+
 import React, { useEffect, useRef } from 'react';
-import { ArrowRight, ArrowDown } from 'lucide-react';
+import Link from 'next/link';
+import { Zap } from 'lucide-react';
 import gsap from 'gsap';
+import MagneticButton from './MagneticButton';
+import { SplineScene } from './SplineScene';
 
-const HERO_IMAGE = "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=2670&auto=format&fit=crop";
-
-interface HeroProps {
-  onNavigate: () => void;
-  onNavigateToPayment?: () => void;
-}
-
-const Hero: React.FC<HeroProps> = ({ onNavigate, onNavigateToPayment }) => {
+const Hero: React.FC = () => {
   const containerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Staggered fade up for hero text elements
+      // Staggered clip-path reveal for hero text elements
       gsap.fromTo('.hero-anim', 
-        { y: 60, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.2, stagger: 0.15, ease: "power3.out", delay: 0.2 }
+        { y: 50, opacity: 0, clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)' },
+        { 
+          y: 0, 
+          opacity: 1, 
+          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', 
+          duration: 1.2, 
+          stagger: 0.15, 
+          ease: "power4.out", 
+          delay: 0.1 
+        }
       );
+
+      // No longer animating imageRef since we use Spline 3D scene now
     }, containerRef);
     return () => ctx.revert();
   }, []);
@@ -26,67 +34,81 @@ const Hero: React.FC<HeroProps> = ({ onNavigate, onNavigateToPayment }) => {
   return (
     <section 
       ref={containerRef}
-      className="relative h-[100dvh] w-full flex items-end overflow-hidden"
+      className="relative min-h-[90vh] md:min-h-screen w-full flex items-center overflow-hidden bg-white pt-32 lg:pt-40 pb-16"
     >
-      {/* Full Bleed Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src={HERO_IMAGE} 
-          alt="Raw concrete architecture"
-          className="w-full h-full object-cover origin-center scale-105"
-        />
-        {/* Heavy primary-to-black gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent"></div>
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10 w-full mb-16 md:mb-24 flex flex-col justify-end h-full">
-        {/* Signal Tag */}
-        <div className="hero-anim inline-flex items-center space-x-3 text-white border border-white/20 px-4 py-1.5 rounded-full backdrop-blur-md self-start mb-8">
-          <div className="w-2 h-2 rounded-full bg-brand-green animate-pulse"></div>
-          <span className="text-xs font-mono-data tracking-widest uppercase text-white/80">System Ready</span>
-        </div>
-
-        {/* Brutalist Signal Hero Line Pattern */}
-        <div className="mb-8">
-          <h1 className="hero-anim text-[10vw] md:text-[6rem] lg:text-[8rem] font-bold text-[#f5f3ee] leading-[0.9] tracking-tighter uppercase mb-0">
-            CONNECT THE
-          </h1>
-          <h1 className="hero-anim text-[15vw] md:text-[9rem] lg:text-[12rem] font-serif-drama italic text-brand-green leading-[0.8] tracking-tight -ml-1 md:-ml-2">
-            INFRASTRUCTURE.
-          </h1>
-        </div>
-        
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 md:gap-12 w-full border-t border-white/20 pt-8 mt-4 hero-anim">
-          <p className="font-mono-data text-white/70 max-w-sm text-sm leading-relaxed">
-            Intelligent charging networks engineered for raw performance and resilience. Built for a sustainable tomorrow.
-          </p>
+      <div className="container mx-auto px-6 relative z-10 w-full max-w-7xl">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
           
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button 
-              onClick={onNavigate}
-              className="group overflow-hidden relative px-8 py-5 flex items-center justify-center gap-3 bg-[#f5f3ee] text-[#111111] rounded-[2rem] font-bold text-sm tracking-widest uppercase transition-transform duration-300 hover:scale-[1.03] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
-            >
-              <span className="relative z-10">Explore Products</span>
-              <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0"></div>
-            </button>
+          {/* Text Content - Left Side */}
+          <div className="w-full lg:w-[55%] flex flex-col justify-center text-center lg:text-left">
+            
+            {/* Tag/Badge */}
+            <div className="hero-anim w-fit flex items-center space-x-2 bg-slate-50 text-slate-600 px-4 py-2 rounded-full border border-slate-100 self-center lg:self-start mb-8 lg:mb-10 transition-colors hover:bg-slate-100 cursor-default">
+              <Zap className="w-3.5 h-3.5" />
+              <span className="text-xs font-semibold tracking-wide">Auktoriserad Zaptec &amp; Monta Partner</span>
+            </div>
 
-            {onNavigateToPayment && (
-              <button 
-                onClick={onNavigateToPayment}
-                className="group px-8 py-5 rounded-[2rem] font-bold border border-white/20 text-white hover:bg-white/10 transition-colors duration-300 uppercase text-sm tracking-widest flex items-center justify-center gap-3 backdrop-blur-md"
-              >
-                Contact Sales
-              </button>
-            )}
+            <h1 className="hero-anim text-6xl md:text-7xl lg:text-[5.5rem] font-[800] text-text-primary tracking-tighter leading-[1.05] mb-8 lg:pr-10">
+              Vi levererar,{' '}<br/>
+              konfigurerar och{' '}<br/>
+              driftar er laddinfrastruktur.
+            </h1>
+            
+            <p className="hero-anim text-xl text-text-primary font-medium leading-relaxed mb-12 max-w-lg mx-auto lg:mx-0 pr-0 lg:pr-8">
+              Skalbara laddlösningar för företag och fastighetsbolag – från offert till färdig drift. Intelligent hårdvara möter sömlös mjukvara.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 hero-anim pt-4">
+              <Link href="/produkter">
+                <MagneticButton 
+                  strength={15}
+                  magneticRadius={60}
+                  className="group w-full sm:w-auto px-8 py-4 flex items-center justify-center gap-3 bg-white text-text-primary rounded-full font-bold text-[15px] transition-all duration-300 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] border border-slate-100"
+                >
+                  Utforska Produkter
+                </MagneticButton>
+              </Link>
+
+              <Link href="/kontakt">
+                <MagneticButton 
+                  strength={10}
+                  magneticRadius={50}
+                  className="group w-full sm:w-auto px-8 py-4 flex items-center justify-center gap-3 rounded-full font-bold text-[15px] border border-slate-200 text-text-primary hover:border-slate-300 hover:bg-slate-50 transition-all duration-300 shadow-sm"
+                >
+                  Kontakta oss
+                </MagneticButton>
+              </Link>
+            </div>
+
+            {/* Trust indicators */}
+            <div className="hero-anim mt-16 pt-10 border-t border-slate-100 flex items-center justify-center lg:justify-start gap-12 lg:gap-16 opacity-90">
+               <div className="text-sm font-semibold text-text-secondary">
+                  <span className="block text-[28px] font-bold text-text-primary leading-none mb-1">4.6/5</span>
+                  Kundnöjdhet
+               </div>
+               <div className="w-px h-12 bg-slate-200"></div>
+               <div className="text-sm font-semibold text-text-secondary">
+                  <span className="block text-[28px] font-bold text-text-primary leading-none mb-1">50 000+</span>
+                  Genomförda laddningar
+               </div>
+            </div>
+
           </div>
-        </div>
-        
-        <div className="absolute bottom-8 right-6 hidden md:flex items-center gap-3 text-white/50 hero-anim">
-           <span className="font-mono-data text-xs uppercase tracking-widest">Scroll to scan</span>
-           <div className="border border-white/20 rounded-full p-2">
-             <ArrowDown className="w-3 h-3 animate-bounce" />
-           </div>
+
+          {/* Visual Content - Right Side */}
+          <div className="w-full lg:w-[45%] relative flex justify-center lg:justify-end hero-anim mt-12 lg:mt-0">
+             <div className="relative w-full max-w-[500px] aspect-[4/5] lg:aspect-square flex items-center justify-center">
+                
+                {/* Spline 3D Scene */}
+                <div className="relative w-full h-full scale-125 md:scale-150 origin-center translate-x-4">
+                  <SplineScene 
+                    scene="https://prod.spline.design/NYnTe3YctwcC8ihb/scene.splinecode"
+                    className="w-full h-full"
+                  />
+                </div>
+             </div>
+          </div>
+
         </div>
       </div>
     </section>

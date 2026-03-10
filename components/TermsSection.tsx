@@ -1,3 +1,4 @@
+'use client';
 
 import React, { useEffect } from 'react';
 import { ShoppingBag, Truck, RefreshCw, CreditCard, CheckCircle2 } from 'lucide-react';

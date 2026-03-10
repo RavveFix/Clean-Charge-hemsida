@@ -1,3 +1,4 @@
+'use client';
 
 import React from 'react';
 import { Zap, Box, ArrowRight } from 'lucide-react';
@@ -18,9 +19,9 @@ const ProductHero: React.FC = () => {
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">Premium Sortiment</span>
           </div>
           
-          <h1 className="text-6xl md:text-8xl font-black text-slate-900 tracking-tighter leading-[0.85] uppercase mb-8">
+          <h1 className="text-6xl md:text-[7rem] font-black tracking-tighter leading-[0.85] uppercase mb-8">
             Hårdvara i <br />
-            <span className="text-cc-green italic">Världsklass.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cc-green to-[#34d399]">Världsklass.</span>
           </h1>
           
           <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-16">

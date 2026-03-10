@@ -1,103 +1,103 @@
+'use client';
+
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const AboutSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const textRef1 = useRef<HTMLParagraphElement>(null);
-  const textRef2 = useRef<HTMLHeadingElement>(null);
-  const bgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Parallax Background
-      if (bgRef.current) {
-        gsap.to(bgRef.current, {
-          yPercent: 30,
-          ease: "none",
+      gsap.fromTo('.stat-item', 
+        { y: 30, opacity: 0 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          duration: 0.8, 
+          stagger: 0.1, 
+          ease: "power2.out",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true
-          }
-        });
-      }
-
-      // Manual SplitText reveal (since SplitText is a club plugin, we'll simulate word by word with spans)
-      const animateText = (element: HTMLElement | null, delay = 0) => {
-        if (!element) return;
-        
-        // Wrap words in spans if not already done
-        if (!element.classList.contains('split-done')) {
-          const words = element.innerText.split(' ');
-          element.innerHTML = '';
-          words.forEach(word => {
-            const span = document.createElement('span');
-            span.className = 'inline-block overflow-hidden pb-1 mr-[0.25em]';
-            const innerSpan = document.createElement('span');
-            innerSpan.className = 'inline-block translate-y-[120%] opacity-0 word-anim';
-            innerSpan.innerText = word;
-            span.appendChild(innerSpan);
-            element.appendChild(span);
-          });
-          element.classList.add('split-done');
-        }
-
-        gsap.to(element.querySelectorAll('.word-anim'), {
-          y: "0%",
-          opacity: 1,
-          duration: 1,
-          stagger: 0.05,
-          ease: "power3.out",
-          delay: delay,
-          scrollTrigger: {
-            trigger: element,
             start: "top 80%",
           }
-        });
-      };
-
-      animateText(textRef1.current, 0);
-      animateText(textRef2.current, 0.4);
-
+        }
+      );
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen bg-[#0D0D12] overflow-hidden flex items-center justify-center py-32 z-10 border-t border-white/5">
-      {/* Parallaxing Organic Texture Image matching brutalist/organic feel */}
-      <div 
-        ref={bgRef}
-        className="absolute inset-0 -top-[30%] -bottom-[30%] z-0 opacity-15"
-        style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1518398450143-44165507740e?q=80&w=2938&auto=format&fit=crop")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          filter: 'grayscale(100%) contrast(150%)'
-        }}
-      />
-      
-      {/* Soft overlay to ensure readability */}
-      <div className="absolute inset-0 bg-[#0D0D12]/60 z-0"></div>
-
-      <div className="container mx-auto px-6 relative z-10 max-w-5xl">
-        <div className="flex flex-col gap-12 md:gap-24">
+    <section ref={sectionRef} className="py-32 bg-bg-surface overflow-hidden">
+      <div className="container mx-auto px-6 max-w-6xl">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
           
-          <div className="max-w-2xl">
-            <p ref={textRef1} className="font-mono-data text-white/50 text-xl md:text-2xl leading-relaxed uppercase tracking-widest">
-              Most infrastructure focuses on: generic enclosures and baseline compliance.
+          {/* Text Content */}
+          <div className="w-full lg:w-1/2">
+            <span className="text-brand-green font-bold tracking-wider uppercase text-sm mb-3 block">Varför Clean Charge?</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-text-primary tracking-tight mb-6 leading-tight">
+              Vi bygger infrastrukturen för imorgon.
+            </h2>
+            <p className="text-text-secondary text-lg leading-relaxed mb-8">
+              För oss handlar elbilsladdning inte bara om hårdvara, utan om en sömlös helhetsupplevelse. Som oberoende experter installerar vi branschens ledande märken med ett system som automatiskt hanterar lastbalansering, uppdateringar och debitering.
             </p>
+            
+            <div className="grid grid-cols-2 gap-8 pt-8 border-t border-slate-200">
+              <div className="stat-item">
+                <span className="block text-4xl font-bold text-text-primary mb-1">100%</span>
+                <span className="text-sm font-semibold text-text-secondary uppercase">Certifierade</span>
+              </div>
+              <div className="stat-item">
+                <span className="block text-4xl font-bold text-brand-green mb-1">24/7</span>
+                <span className="text-sm font-semibold text-text-secondary uppercase">Support & Service</span>
+              </div>
+            </div>
           </div>
 
-          <div className="w-full flex justify-end">
-            <h2 ref={textRef2} className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight leading-[1.1] text-white max-w-4xl text-right">
-              We focus on: <span className="font-serif-drama italic text-brand-green block mt-4 text-[1.2em] leading-[0.9]">PRECISION AND ENDURANCE.</span>
-            </h2>
+          {/* Trusted Partners Grid */}
+          <div className="w-full lg:w-1/2">
+             <div className="bg-white p-10 rounded-3xl shadow-sm border border-slate-100">
+                <h3 className="text-center text-sm font-bold text-slate-400 uppercase tracking-widest mb-10">Våra Hårdvaru & Mjukvarupartners</h3>
+                <div className="grid grid-cols-2 gap-8 items-center justify-items-center opacity-70">
+                   
+                   {/* Monta */}
+                   <div className="stat-item grayscale hover:grayscale-0 transition-all duration-300">
+                      <svg width="100" height="30" viewBox="0 0 55 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <text x="0" y="14" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="800" fill="#003dff">
+                          MONTA
+                        </text>
+                      </svg>
+                   </div>
+
+                   {/* Zaptec */}
+                   <div className="stat-item grayscale hover:grayscale-0 transition-all duration-300">
+                      <svg width="100" height="30" viewBox="0 0 60 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <text x="0" y="14" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="800" fill="#111111">
+                          ZAPTEC
+                        </text>
+                      </svg>
+                   </div>
+
+                   {/* Easee */}
+                   <div className="stat-item grayscale hover:grayscale-0 transition-all duration-300">
+                      <svg width="100" height="30" viewBox="0 0 50 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <text x="0" y="14" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="800" fill="#111111">
+                          EASEE
+                        </text>
+                      </svg>
+                   </div>
+
+                   {/* Autel */}
+                   <div className="stat-item grayscale hover:grayscale-0 transition-all duration-300">
+                      <svg width="100" height="30" viewBox="0 0 50 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <text x="0" y="14" fontFamily="Arial, sans-serif" fontSize="14" fontWeight="800" fill="#D2232A">
+                          AUTEL
+                        </text>
+                      </svg>
+                   </div>
+
+                </div>
+             </div>
           </div>
 
         </div>

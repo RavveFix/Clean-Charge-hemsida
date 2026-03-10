@@ -1,9 +1,11 @@
+'use client';
 
 import React from 'react';
-import { Building2, Zap, BarChart3, ArrowRight, CheckCircle2, LayoutGrid, Users, Coins } from 'lucide-react';
+import Link from 'next/link';
+import { Building2, ArrowRight, CheckCircle2, LayoutGrid, Users, Coins } from 'lucide-react';
 import { PRODUCTS } from '../constants';
 
-const CommercialChargingSection: React.FC<{ onNavigate: (tab: any) => void }> = ({ onNavigate }) => {
+const CommercialChargingSection: React.FC = () => {
     // Filtrera produkter för kommersiellt bruk
     const commercialProducts = PRODUCTS.filter(p => p.id === 'zaptec-pro' || p.id === 'autel-dh480');
 
@@ -47,20 +49,20 @@ const CommercialChargingSection: React.FC<{ onNavigate: (tab: any) => void }> = 
                         </div>
                         <h1 className="text-5xl md:text-[5rem] font-black tracking-tighter uppercase leading-[0.9] mb-8">
                             Publik <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cc-green to-[#003DFF]">Laddning.</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cc-green to-[#34d399]">Laddning.</span>
                         </h1>
                         <p className="text-xl md:text-2xl text-slate-300 font-medium leading-relaxed max-w-2xl mb-12">
                              Vi är experter på betallösningar för publika anläggningar. Clean Charge säkerställer att era laddstationer är driftsäkra, lättillgängliga och genererar intäkter från dag ett.
                         </p>
                         
                         <div className="flex flex-col sm:flex-row gap-6">
-                            <button 
-                                onClick={() => onNavigate('contact')}
+                            <Link 
+                                href="/kontakt"
                                 className="bg-cc-green text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-cc-green transition-all flex items-center justify-center group shadow-xl shadow-cc-green/20"
                             >
                                 Begär Offert
                                 <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                            </button>
+                            </Link>
                             <button 
                                 onClick={() => {
                                     const element = document.getElementById('commercial-products');
@@ -91,7 +93,7 @@ const CommercialChargingSection: React.FC<{ onNavigate: (tab: any) => void }> = 
                                 <p className="text-slate-500 font-medium leading-relaxed group-hover:text-slate-700 transition-colors duration-300">{item.desc}</p>
                                 
                                 {/* Subtle accent line that appears on hover */}
-                                <div className="h-1 w-0 bg-gradient-to-r from-cc-green to-[#003DFF] rounded-full mt-6 group-hover:w-full transition-all duration-500"></div>
+                                <div className="h-1 w-0 bg-gradient-to-r from-cc-green to-[#34d399] rounded-full mt-6 group-hover:w-full transition-all duration-500"></div>
                             </div>
                         ))}
                     </div>
@@ -102,16 +104,16 @@ const CommercialChargingSection: React.FC<{ onNavigate: (tab: any) => void }> = 
              <section id="commercial-products" className="py-24 bg-slate-50 border-t border-slate-200">
                 <div className="container mx-auto px-6">
                     <div className="mb-20 text-center max-w-3xl mx-auto">
-                        <div className="h-1 w-20 bg-[#003DFF] mx-auto mb-8"></div>
+                        <div className="h-1 w-20 bg-cc-green mx-auto mb-8"></div>
                         <h2 className="text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tight mb-6">Professionell Hårdvara</h2>
                         <p className="text-slate-500 text-xl font-medium">Vi arbetar uteslutande med marknadsledande tillverkare som garanterar driftsäkerhet och lång livslängd.</p>
                     </div>
 
                     <div className="grid lg:grid-cols-2 gap-10">
                          {commercialProducts.map((product) => (
-                            <div key={product.id} className="bg-white rounded-[3.5rem] p-10 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center group hover:shadow-2xl hover:border-[#003DFF]/20 transition-all duration-500">
+                            <div key={product.id} className="bg-white rounded-[3.5rem] p-10 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center group hover:shadow-2xl hover:border-cc-green/20 transition-all duration-500">
                                 <div className="w-full md:w-1/2 aspect-square bg-slate-50 rounded-[2.5rem] p-8 flex items-center justify-center relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-[#003DFF]/5 rounded-[2.5rem] transform scale-0 group-hover:scale-100 transition-transform duration-700 rounded-full"></div>
+                                    <div className="absolute inset-0 bg-cc-green/5 rounded-[2.5rem] transform scale-0 group-hover:scale-100 transition-transform duration-700 rounded-full"></div>
                                     <img src={product.image} alt={product.name} className="w-full h-full object-contain relative z-10 group-hover:scale-110 transition-transform duration-500" />
                                 </div>
                                 <div className="w-full md:w-1/2 space-y-6">
@@ -125,19 +127,19 @@ const CommercialChargingSection: React.FC<{ onNavigate: (tab: any) => void }> = 
                                     <ul className="space-y-3">
                                         {product.features.map((f, i) => (
                                             <li key={i} className="flex items-center space-x-3 text-xs font-bold text-slate-700 uppercase tracking-wide">
-                                                <div className="w-5 h-5 rounded-full bg-[#003DFF]/10 flex items-center justify-center">
-                                                    <CheckCircle2 className="w-3 h-3 text-[#003DFF]" />
+                                                <div className="w-5 h-5 rounded-full bg-cc-green/10 flex items-center justify-center">
+                                                    <CheckCircle2 className="w-3 h-3 text-cc-green" />
                                                 </div>
                                                 <span>{f}</span>
                                             </li>
                                         ))}
                                     </ul>
-                                    <button 
-                                        onClick={() => onNavigate('contact')}
-                                        className="w-full bg-slate-900 text-white py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-[#003DFF] transition-all shadow-lg hover:shadow-[#003DFF]/30 mt-4"
+                                    <Link 
+                                        href="/kontakt"
+                                        className="w-full block text-center bg-slate-900 text-white py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-cc-green transition-all shadow-lg hover:shadow-cc-green/30 mt-4"
                                     >
                                         Offertförfrågan
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                          ))}
@@ -146,17 +148,17 @@ const CommercialChargingSection: React.FC<{ onNavigate: (tab: any) => void }> = 
              </section>
 
              {/* CTA */}
-             <section className="py-24 bg-[#003DFF] text-white relative overflow-hidden">
+             <section className="py-24 bg-cc-green text-white relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-2/3 h-full bg-white/5 rounded-l-full blur-3xl pointer-events-none"></div>
                 <div className="container mx-auto px-6 relative z-10 text-center">
                     <h2 className="text-4xl md:text-6xl font-black mb-8 uppercase tracking-tight">Redo att växla upp?</h2>
-                    <p className="text-blue-100 text-xl max-w-2xl mx-auto mb-12 font-medium">Boka en kostnadsfri genomgång av er fastighet. Vi tar fram en skräddarsydd kalkyl som visar investering och återbetalningstid.</p>
-                    <button 
-                        onClick={() => onNavigate('contact')}
-                        className="bg-white text-[#003DFF] px-12 py-6 rounded-full font-black uppercase tracking-widest hover:bg-slate-900 hover:text-white transition-all shadow-2xl hover:scale-105 active:scale-95"
+                    <p className="text-white/90 text-xl max-w-2xl mx-auto mb-12 font-medium">Boka en kostnadsfri genomgång av er fastighet. Vi tar fram en skräddarsydd kalkyl som visar investering och återbetalningstid.</p>
+                    <Link 
+                        href="/kontakt"
+                        className="inline-block bg-white text-cc-green px-12 py-6 rounded-full font-black uppercase tracking-widest hover:bg-slate-900 hover:text-white transition-all shadow-2xl hover:scale-105 active:scale-95"
                     >
                         Boka Platsbesök
-                    </button>
+                    </Link>
                 </div>
              </section>
         </div>

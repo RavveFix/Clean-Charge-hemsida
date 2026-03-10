@@ -1,3 +1,4 @@
+'use client';
 
 import React, { useState } from 'react';
 import { FileText, Wrench, AlertTriangle, Download, ChevronRight, CheckCircle2, Search } from 'lucide-react';

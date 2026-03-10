@@ -20,12 +20,13 @@ async function withRetry<T>(fn: () => Promise<T>, retries = 3, delay = 2000): Pr
 }
 
 const getApiKey = () => {
-  const key = import.meta.env.VITE_GEMINI_API_KEY || import.meta.env.GEMINI_API_KEY;
+  const key = process.env.NEXT_PUBLIC_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
   if (!key) {
-    console.warn("VITE_GEMINI_API_KEY is not set. AI features will not work.");
+    console.warn("NEXT_PUBLIC_GEMINI_API_KEY is not set. AI features will not work.");
   }
   return key || 'MISSING_API_KEY'; // Prevent absolute crash but calls will fail
 };
+
 
 export const generateChargingAdvice = async (userPrompt: string) => {
   return withRetry(async () => {

@@ -77,7 +77,7 @@ const App: React.FC = () => {
       
       <main className="flex-grow">
         {activeTab === 'home' && (
-          <div className="animate-in fade-in duration-500 bg-[#f5f3ee]">
+          <div className="animate-in fade-in duration-500 bg-white">
             <Hero 
               onNavigate={scrollToProducts} 
               onNavigateToPayment={() => {
@@ -86,6 +86,7 @@ const App: React.FC = () => {
               }}
             />
             {/* The cinematic flow */}
+            <VideoSection />
             <FeaturesBento />
             <SolutionsSection onNavigate={setActiveTab} />
             <AboutSection />
