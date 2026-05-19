@@ -18,11 +18,11 @@ const SupportSection: React.FC = () => {
   return (
     <div className="bg-white font-monta min-h-screen animate-in fade-in duration-500">
       {/* Header */}
-      <section className="bg-slate-900 text-white py-24 relative overflow-hidden">
+      <section className="bg-slate-900 text-white py-16 sm:py-24 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#003DFF]/20 rounded-full blur-[150px]"></div>
-        <div className="container mx-auto px-6 relative z-10 text-center">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center">
           <p className="text-cc-green font-black uppercase tracking-[0.2em] mb-4">Clean Charge Support</p>
-          <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">Hur kan vi <br/><span className="text-[#003DFF]">hjälpa dig?</span></h1>
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-black mb-6 sm:mb-8 tracking-tighter">Hur kan vi <br/><span className="text-[#003DFF]">hjälpa dig?</span></h1>
           
           <div className="max-w-xl mx-auto relative">
             <input 
@@ -38,7 +38,7 @@ const SupportSection: React.FC = () => {
       {/* Navigation Tabs */}
       <div className="border-b border-slate-100 sticky top-20 bg-white/95 backdrop-blur-md z-40">
         <div className="container mx-auto px-6">
-          <div className="flex justify-center space-x-2 md:space-x-8 overflow-x-auto py-4">
+          <div className="flex justify-start sm:justify-center space-x-2 md:space-x-8 overflow-x-auto py-4 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
             {[
               { id: 'manuals', label: 'Manualer & Dokument', icon: FileText },
               { id: 'installation', label: 'Installationsprocess', icon: Wrench },
@@ -47,7 +47,7 @@ const SupportSection: React.FC = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
+                className={`flex items-center space-x-1.5 sm:space-x-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
                   activeTab === tab.id 
                     ? 'bg-slate-900 text-white shadow-lg' 
                     : 'text-slate-500 hover:bg-slate-50'
@@ -62,8 +62,8 @@ const SupportSection: React.FC = () => {
       </div>
 
       {/* Content Area */}
-      <section className="py-24 bg-slate-50 min-h-[600px]">
-        <div className="container mx-auto px-6 max-w-5xl">
+      <section className="py-14 sm:py-24 bg-slate-50 min-h-[400px] sm:min-h-[600px]">
+        <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
           
           {/* MANUALS TAB */}
           {activeTab === 'manuals' && (
@@ -88,18 +88,18 @@ const SupportSection: React.FC = () => {
           {/* INSTALLATION TAB */}
           {activeTab === 'installation' && (
             <div className="space-y-12 animate-in slide-in-from-bottom-4 duration-500">
-              <div className="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm text-center">
+              <div className="bg-white p-6 sm:p-10 rounded-[1.5rem] sm:rounded-[3rem] border border-slate-100 shadow-sm text-center">
                 <h2 className="text-3xl font-black text-slate-800 mb-4">Så går en installation till</h2>
                 <p className="text-slate-500 max-w-2xl mx-auto">Från beställning till första laddning. Vi sköter allt det tekniska och administrativa.</p>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-3 gap-4 sm:gap-8">
                 {[
                   { step: "01", title: "Beställning & Granskning", desc: "När du lagt din order kontaktar vi dig för att stämma av förutsättningarna (säkring, kabeldragning)." },
                   { step: "02", title: "Installation & Konfiguration", desc: "Vår certifierade elektriker monterar laddboxen, drar kabel och konfigurerar lastbalansering." },
                   { step: "03", title: "Igångkörning & App", desc: "Vi hjälper dig komma igång med appen (Monta/Easee/Zaptec) och visar hur allt fungerar." }
                 ].map((item, i) => (
-                  <div key={i} className="relative p-8 bg-white rounded-[2.5rem] border border-slate-100">
+                  <div key={i} className="relative p-5 sm:p-8 bg-white rounded-[1.5rem] sm:rounded-[2.5rem] border border-slate-100">
                     <span className="text-6xl font-black text-slate-100 absolute top-4 right-6">{item.step}</span>
                     <div className="relative z-10">
                       <div className="w-10 h-10 bg-cc-green rounded-full flex items-center justify-center text-white mb-6">
@@ -116,7 +116,7 @@ const SupportSection: React.FC = () => {
 
           {/* ERROR REPORT TAB */}
           {activeTab === 'error' && (
-            <div className="max-w-2xl mx-auto bg-white p-10 rounded-[3rem] shadow-xl border border-slate-100 animate-in slide-in-from-bottom-4 duration-500">
+            <div className="max-w-2xl mx-auto bg-white p-6 sm:p-10 rounded-[1.5rem] sm:rounded-[3rem] shadow-xl border border-slate-100 animate-in slide-in-from-bottom-4 duration-500">
               <div className="text-center mb-10">
                 <div className="w-16 h-16 bg-red-50 text-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <AlertTriangle className="w-8 h-8" />

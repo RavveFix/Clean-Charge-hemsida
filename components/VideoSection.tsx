@@ -6,7 +6,8 @@ import React from 'react';
 const VideoSection: React.FC = () => {
   return (
     <section className="relative w-full overflow-hidden bg-white">
-      <div className="relative aspect-video w-full max-w-7xl mx-auto shadow-[0_20px_50px_rgba(0,0,0,0.15)] overflow-hidden rounded-3xl md:rounded-[2.5rem] mt-8 mb-20 isolate transform-gpu">
+      <div className="relative aspect-video w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
+      <div className="relative w-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] sm:shadow-[0_20px_50px_rgba(0,0,0,0.15)] overflow-hidden rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] mt-4 sm:mt-8 mb-12 sm:mb-20 isolate transform-gpu">
         <video
           className="w-full h-full object-cover rounded-3xl md:rounded-[2.5rem]"
           autoPlay
@@ -32,6 +33,7 @@ const VideoSection: React.FC = () => {
             <span className="text-xs font-bold text-white uppercase tracking-widest">Live Experience</span>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

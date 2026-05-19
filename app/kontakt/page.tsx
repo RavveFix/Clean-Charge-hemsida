@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import ContactSection from '@/components/ContactSection';
@@ -12,7 +13,16 @@ export const metadata: Metadata = {
 export default function KontaktPage() {
   return (
     <ClientLayout>
-      <ContactSection />
+      <Suspense fallback={
+        <div className="min-h-screen bg-slate-950 flex items-center justify-center text-white font-monta">
+          <div className="text-center space-y-4">
+            <div className="w-12 h-12 border-4 border-cc-green border-t-transparent rounded-full animate-spin mx-auto"></div>
+            <p className="text-xs font-black uppercase tracking-widest text-slate-400">Laddar formulär...</p>
+          </div>
+        </div>
+      }>
+        <ContactSection />
+      </Suspense>
     </ClientLayout>
   );
 }

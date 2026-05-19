@@ -30,7 +30,7 @@ const CommercialChargingSection: React.FC = () => {
     return (
         <div className="bg-white font-monta animate-in fade-in duration-500">
              {/* Hero Section */}
-            <section className="relative py-24 md:py-32 bg-slate-900 text-white overflow-hidden min-h-[80vh] flex items-center">
+            <section className="relative py-16 sm:py-24 md:py-32 bg-slate-900 text-white overflow-hidden min-h-[60vh] sm:min-h-[80vh] flex items-center">
                  {/* Background effects */}
                  <div className="absolute inset-0 z-0">
                     <img 
@@ -41,24 +41,24 @@ const CommercialChargingSection: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/40"></div>
                  </div>
                  
-                 <div className="container mx-auto px-6 relative z-10">
+                 <div className="container mx-auto px-4 sm:px-6 relative z-10">
                     <div className="max-w-4xl animate-in fade-in slide-in-from-bottom-8 duration-1000">
                         <div className="inline-flex items-center space-x-2 text-cc-green mb-6 border border-cc-green/20 bg-cc-green/10 px-4 py-2 rounded-full backdrop-blur-md">
                              <Building2 className="w-4 h-4" />
                              <span className="text-xs font-bold uppercase tracking-widest">För Företag & BRF</span>
                         </div>
-                        <h1 className="text-5xl md:text-[5rem] font-black tracking-tighter uppercase leading-[0.9] mb-8">
+                        <h1 className="text-3xl sm:text-5xl md:text-[5rem] font-black tracking-tighter uppercase leading-[0.9] mb-6 sm:mb-8">
                             Publik <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cc-green to-[#34d399]">Laddning.</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-slate-300 font-medium leading-relaxed max-w-2xl mb-12">
+                        <p className="text-base sm:text-xl md:text-2xl text-slate-300 font-medium leading-relaxed max-w-2xl mb-8 sm:mb-12">
                              Vi är experter på betallösningar för publika anläggningar. Clean Charge säkerställer att era laddstationer är driftsäkra, lättillgängliga och genererar intäkter från dag ett.
                         </p>
                         
-                        <div className="flex flex-col sm:flex-row gap-6">
+                        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
                             <Link 
                                 href="/kontakt"
-                                className="bg-cc-green text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-cc-green transition-all flex items-center justify-center group shadow-xl shadow-cc-green/20"
+                                className="bg-cc-green text-white px-8 sm:px-10 py-4 sm:py-5 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-cc-green transition-all flex items-center justify-center group shadow-xl shadow-cc-green/20 text-sm sm:text-base"
                             >
                                 Begär Offert
                                 <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -78,13 +78,13 @@ const CommercialChargingSection: React.FC = () => {
             </section>
 
             {/* Value Props - Premium Hover Effects */}
-            <section className="py-24 bg-white relative">
-                <div className="container mx-auto px-6">
-                    <div className="grid md:grid-cols-3 gap-12">
+            <section className="py-14 sm:py-24 bg-white relative">
+                <div className="container mx-auto px-4 sm:px-6">
+                    <div className="grid md:grid-cols-3 gap-6 sm:gap-12">
                         {valueProps.map((item, i) => (
                             <div 
                                 key={i} 
-                                className="group p-10 rounded-[2.5rem] border border-slate-100 hover:shadow-[0_20px_60px_-15px_rgba(0,177,130,0.25)] hover:border-cc-green/30 transition-all duration-500 bg-slate-50 hover:bg-white hover:scale-[1.03] hover:-translate-y-1"
+                                className="group p-6 sm:p-10 rounded-[1.5rem] sm:rounded-[2.5rem] border border-slate-100 hover:shadow-[0_20px_60px_-15px_rgba(0,177,130,0.25)] hover:border-cc-green/30 transition-all duration-500 bg-slate-50 hover:bg-white hover:scale-[1.03] hover:-translate-y-1"
                             >
                                 <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 text-slate-900 group-hover:bg-cc-green transition-all duration-300 shadow-sm group-hover:shadow-lg group-hover:shadow-cc-green/20 group-hover:scale-110">
                                     <item.icon className="w-8 h-8" />
@@ -102,16 +102,16 @@ const CommercialChargingSection: React.FC = () => {
 
              {/* Products Grid */}
              <section id="commercial-products" className="py-24 bg-slate-50 border-t border-slate-200">
-                <div className="container mx-auto px-6">
+                <div className="container mx-auto px-4 sm:px-6">
                     <div className="mb-20 text-center max-w-3xl mx-auto">
                         <div className="h-1 w-20 bg-cc-green mx-auto mb-8"></div>
-                        <h2 className="text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tight mb-6">Professionell Hårdvara</h2>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tight mb-4 sm:mb-6">Professionell Hårdvara</h2>
                         <p className="text-slate-500 text-xl font-medium">Vi arbetar uteslutande med marknadsledande tillverkare som garanterar driftsäkerhet och lång livslängd.</p>
                     </div>
 
-                    <div className="grid lg:grid-cols-2 gap-10">
+                    <div className="grid lg:grid-cols-2 gap-6 sm:gap-10">
                          {commercialProducts.map((product) => (
-                            <div key={product.id} className="bg-white rounded-[3.5rem] p-10 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-10 items-center group hover:shadow-2xl hover:border-cc-green/20 transition-all duration-500">
+                            <div key={product.id} className="bg-white rounded-[2rem] sm:rounded-[3.5rem] p-6 sm:p-10 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-6 sm:gap-10 items-center group hover:shadow-2xl hover:border-cc-green/20 transition-all duration-500">
                                 <div className="w-full md:w-1/2 aspect-square bg-slate-50 rounded-[2.5rem] p-8 flex items-center justify-center relative overflow-hidden">
                                     <div className="absolute inset-0 bg-cc-green/5 rounded-[2.5rem] transform scale-0 group-hover:scale-100 transition-transform duration-700 rounded-full"></div>
                                     <img src={product.image} alt={product.name} className="w-full h-full object-contain relative z-10 group-hover:scale-110 transition-transform duration-500" />
@@ -150,9 +150,9 @@ const CommercialChargingSection: React.FC = () => {
              {/* CTA */}
              <section className="py-24 bg-cc-green text-white relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-2/3 h-full bg-white/5 rounded-l-full blur-3xl pointer-events-none"></div>
-                <div className="container mx-auto px-6 relative z-10 text-center">
-                    <h2 className="text-4xl md:text-6xl font-black mb-8 uppercase tracking-tight">Redo att växla upp?</h2>
-                    <p className="text-white/90 text-xl max-w-2xl mx-auto mb-12 font-medium">Boka en kostnadsfri genomgång av er fastighet. Vi tar fram en skräddarsydd kalkyl som visar investering och återbetalningstid.</p>
+                <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center">
+                    <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-6 sm:mb-8 uppercase tracking-tight">Redo att växla upp?</h2>
+                    <p className="text-white/90 text-base sm:text-xl max-w-2xl mx-auto mb-8 sm:mb-12 font-medium">Boka en kostnadsfri genomgång av er fastighet. Vi tar fram en skräddarsydd kalkyl som visar investering och återbetalningstid.</p>
                     <Link 
                         href="/kontakt"
                         className="inline-block bg-white text-cc-green px-12 py-6 rounded-full font-black uppercase tracking-widest hover:bg-slate-900 hover:text-white transition-all shadow-2xl hover:scale-105 active:scale-95"

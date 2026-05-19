@@ -78,6 +78,14 @@ const jsonLd = {
     opens: '08:00',
     closes: '17:00',
   },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Sweden',
+  },
+  sameAs: [
+    'https://www.facebook.com/cleancharge',
+    'https://www.linkedin.com/company/clean-charge-ab',
+  ],
 };
 
 export default function RootLayout({
@@ -88,14 +96,31 @@ export default function RootLayout({
   return (
     <html lang="sv" className={instrumentSans.variable} suppressHydrationWarning>
       <head>
+        {/* Performance: preconnect to critical third-party origins */}
+        <link rel="preconnect" href="https://prod.spline.design" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cleancharge.se" />
+        <link rel="dns-prefetch" href="https://www.elprisetjustnu.se" />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body className="antialiased font-sans bg-white text-slate-900" suppressHydrationWarning>
-        {children}
+        {/* Accessibility: skip-to-content link */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:bg-cc-green focus:text-white focus:px-6 focus:py-3 focus:rounded-full focus:font-bold focus:text-sm focus:shadow-xl"
+        >
+          Hoppa till innehåll
+        </a>
+        <div id="main-content">
+          {children}
+        </div>
       </body>
     </html>
   );
 }
+

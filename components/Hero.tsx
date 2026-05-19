@@ -113,6 +113,14 @@ const Hero: React.FC = () => {
 
         </div>
       </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 animate-bounce z-10" style={{ animationDuration: '2.5s' }}>
+        <span className="text-[8px] font-black uppercase tracking-[0.4em] text-slate-400 hidden sm:block">Scrolla</span>
+        <div className="w-5 h-8 rounded-full border-2 border-slate-300 flex items-start justify-center pt-1.5">
+          <div className="w-1 h-1.5 rounded-full bg-cc-green animate-pulse" />
+        </div>
+      </div>
     </section>
   );
 };

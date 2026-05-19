@@ -59,17 +59,17 @@ const StatItem: React.FC<StatItemProps> = ({ value, suffix, label, sublabel, ico
       className={`flex flex-col items-center text-center group transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      <div className="w-14 h-14 rounded-2xl bg-cc-green/10 flex items-center justify-center mb-5 group-hover:bg-cc-green group-hover:scale-110 transition-all duration-300">
-        <Icon className="w-6 h-6 text-cc-green group-hover:text-white transition-colors" />
+      <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-cc-green/10 flex items-center justify-center mb-3 sm:mb-5 group-hover:bg-cc-green group-hover:scale-110 transition-all duration-300">
+        <Icon className="w-4 h-4 sm:w-6 sm:h-6 text-cc-green group-hover:text-white transition-colors" />
       </div>
       <div className="flex items-end justify-center gap-1 mb-2">
-        <span className="text-5xl md:text-6xl font-black text-slate-800 tracking-tighter leading-none tabular-nums">
+        <span className="text-3xl sm:text-5xl md:text-6xl font-black text-slate-800 tracking-tighter leading-none tabular-nums">
           {count.toLocaleString('sv-SE')}
         </span>
-        <span className="text-3xl font-black text-cc-green mb-1">{suffix}</span>
+        <span className="text-xl sm:text-3xl font-black text-cc-green mb-1">{suffix}</span>
       </div>
-      <p className="text-sm font-black uppercase tracking-[0.15em] text-slate-700">{label}</p>
-      <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">{sublabel}</p>
+      <p className="text-[11px] sm:text-sm font-black uppercase tracking-[0.1em] sm:tracking-[0.15em] text-slate-700">{label}</p>
+      <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1 hidden sm:block">{sublabel}</p>
     </div>
   );
 };
@@ -83,7 +83,7 @@ const StatsStrip: React.FC = () => {
   ];
 
   return (
-    <section className="py-12 md:py-28 bg-white border-y border-slate-100 relative overflow-hidden">
+    <section className="py-10 sm:py-12 md:py-28 bg-white border-y border-slate-100 relative overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-[0.025] pointer-events-none">
         <svg width="100%" height="100%">
@@ -99,8 +99,8 @@ const StatsStrip: React.FC = () => {
       {/* Left accent line */}
       <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-cc-green to-transparent opacity-30" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-12 md:mb-16">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <div className="inline-flex items-center space-x-2 bg-cc-green/8 text-cc-green px-5 py-2 rounded-full border border-cc-green/15 mb-4 md:mb-6">
             <Zap className="w-3.5 h-3.5 fill-cc-green" />
             <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em]">Bevisad Expertis</span>
@@ -110,7 +110,7 @@ const StatsStrip: React.FC = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 md:gap-12">
           {stats.map((stat, i) => (
             <React.Fragment key={i}>
               <StatItem {...stat} />
@@ -122,11 +122,11 @@ const StatsStrip: React.FC = () => {
         </div>
 
         {/* Partner logos strip */}
-        <div className="mt-20 pt-16 border-t border-slate-100">
-          <p className="text-center text-[9px] font-black uppercase tracking-[0.4em] text-slate-300 mb-10">
+        <div className="mt-12 sm:mt-20 pt-10 sm:pt-16 border-t border-slate-100">
+          <p className="text-center text-[9px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-slate-300 mb-6 sm:mb-10">
             Auktoriserad partner för
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-12 md:gap-20">
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-12 md:gap-20">
             {['EASEE', 'ZAPTEC', 'MONTA', 'AUTEL'].map((brand) => (
               <span
                 key={brand}

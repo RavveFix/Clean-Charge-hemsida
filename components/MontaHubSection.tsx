@@ -17,7 +17,7 @@ const MontaHubSection: React.FC = () => {
         <div className="absolute top-0 right-0 w-2/3 h-full bg-white/5 rounded-l-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-1/3 h-2/3 bg-cc-green/20 rounded-tr-full blur-3xl pointer-events-none"></div>
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <Link 
             href="/"
             className="group flex items-center space-x-2 text-blue-200 hover:text-white mb-8 transition-colors text-sm font-bold uppercase tracking-widest"
@@ -37,34 +37,34 @@ const MontaHubSection: React.FC = () => {
                 <span className="text-[10px] font-bold uppercase tracking-widest border-l border-white/20 pl-3">Powered by Clean Charge</span>
               </div>
               
-              <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight">
+              <h1 className="text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-tight">
                 Ett operativsystem <br />
                 <span className="text-blue-300">för elbilister.</span>
               </h1>
               
-              <p className="text-xl text-blue-100 font-medium leading-relaxed max-w-xl">
+              <p className="text-base sm:text-xl text-blue-100 font-medium leading-relaxed max-w-xl">
                 Monta Hub är mer än bara en app. Det är plattformen som kopplar ihop din laddbox med energimarknaden, betalsystem och hela Europas laddnätverk.
               </p>
             </div>
 
             <div className="relative">
-              <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white/10 aspect-video group">
+              <div className="relative z-10 rounded-[1.5rem] sm:rounded-[3rem] overflow-hidden shadow-2xl border-2 sm:border-4 border-white/10 aspect-video group">
                 <img 
                   src="/Charge_2.png" 
                   alt="Monta App Dashboard" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#003DFF]/80 to-transparent"></div>
-                <div className="absolute bottom-8 left-8 right-8">
-                  <div className="bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/20">
-                    <div className="flex justify-between items-end">
+                <div className="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8">
+                  <div className="bg-white/10 backdrop-blur-md p-3 sm:p-6 rounded-xl sm:rounded-3xl border border-white/20">
+                    <div className="flex justify-between items-end gap-4">
                       <div>
-                        <p className="text-blue-200 text-xs font-bold uppercase tracking-widest mb-1">Status</p>
-                        <p className="text-white font-black text-2xl">SmartCharge Aktiv</p>
+                        <p className="text-blue-200 text-[9px] sm:text-xs font-bold uppercase tracking-widest mb-1">Status</p>
+                        <p className="text-white font-black text-base sm:text-2xl">SmartCharge Aktiv</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-blue-200 text-xs font-bold uppercase tracking-widest mb-1">Sparat idag</p>
-                        <p className="text-cc-green font-black text-2xl">-42 kr</p>
+                        <p className="text-blue-200 text-[9px] sm:text-xs font-bold uppercase tracking-widest mb-1">Sparat idag</p>
+                        <p className="text-cc-green font-black text-base sm:text-2xl">-42 kr</p>
                       </div>
                     </div>
                   </div>
@@ -77,13 +77,13 @@ const MontaHubSection: React.FC = () => {
 
       {/* Feature Grid */}
       <section className="py-24 bg-slate-50">
-        <div className="container mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl font-black text-slate-800 uppercase tracking-tight mb-6">Varför välja Monta?</h2>
-            <p className="text-slate-500 text-lg font-medium">Vi integrerar Monta som standard i våra installationer för att ge dig full frihet och kontroll.</p>
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-20">
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-800 uppercase tracking-tight mb-4 sm:mb-6">Varför välja Monta?</h2>
+            <p className="text-slate-500 text-base sm:text-lg font-medium">Vi integrerar Monta som standard i våra installationer för att ge dig full frihet och kontroll.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
                 icon: Zap,
@@ -104,7 +104,7 @@ const MontaHubSection: React.FC = () => {
                 desc: "Vi erbjuder fysiska kortläsare för drop-in laddning, samt fullt stöd för Apple Pay och Google Pay i appen."
               }
             ].map((feat, i) => (
-              <div key={i} className="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div key={i} className="bg-white p-6 sm:p-10 rounded-[1.5rem] sm:rounded-[2.5rem] shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 <div className={`w-14 h-14 ${feat.color} rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg`}>
                   <feat.icon className="w-7 h-7" />
                 </div>
@@ -118,22 +118,22 @@ const MontaHubSection: React.FC = () => {
 
       {/* For BRF/Companies - Monta Style */}
       <section className="py-24 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="bg-[#020817] rounded-[3rem] p-12 md:p-24 text-white relative overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="bg-[#020817] rounded-[1.5rem] sm:rounded-[3rem] p-6 sm:p-12 md:p-24 text-white relative overflow-hidden">
             {/* Background Gradient */}
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#003DFF]/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
             
-            <div className="grid lg:grid-cols-2 gap-20 relative z-10 items-center">
+            <div className="grid lg:grid-cols-2 gap-10 sm:gap-20 relative z-10 items-center">
               <div>
-                <h2 className="text-5xl md:text-6xl font-black mb-8 leading-[1.1] tracking-tight">
+                <h2 className="text-3xl sm:text-5xl md:text-6xl font-black mb-6 sm:mb-8 leading-[1.1] tracking-tight">
                   Full kontroll på <br/>flottan.
                 </h2>
                 
-                <p className="text-slate-400 text-lg mb-12 leading-relaxed max-w-lg">
+                <p className="text-slate-400 text-base sm:text-lg mb-8 sm:mb-12 leading-relaxed max-w-lg">
                   För BRF:er och företag erbjuder Monta en kraftfull portal. Hantera användare, sätt priser och få automatiska utbetalningar utan manuell handpåläggning.
                 </p>
                 
-                <ul className="space-y-5 mb-12">
+                <ul className="space-y-3 sm:space-y-5 mb-8 sm:mb-12">
                   {[
                     "Automatisk debitering av medlemmar",
                     "Fysiska kortterminaler för gäster",
@@ -157,7 +157,7 @@ const MontaHubSection: React.FC = () => {
 
                 <Link 
                   href="/foretag"
-                  className="inline-block bg-[#00C28A] text-[#020817] px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-white transition-all transform hover:scale-105 shadow-xl hover:shadow-[#00C28A]/20"
+                  className="inline-block bg-[#00C28A] text-[#020817] px-8 sm:px-10 py-4 sm:py-5 rounded-full font-black uppercase tracking-widest hover:bg-white transition-all transform hover:scale-105 shadow-xl hover:shadow-[#00C28A]/20 text-sm sm:text-base"
                 >
                   Läs mer för Företag
                 </Link>
@@ -186,8 +186,8 @@ const MontaHubSection: React.FC = () => {
 
       {/* CTA */}
       <section className="py-24 bg-slate-50 border-t border-slate-200 text-center">
-        <div className="container mx-auto px-6">
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-8 uppercase tracking-tight">Redo att komma igång?</h2>
+        <div className="container mx-auto px-4 sm:px-6">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-slate-900 mb-6 sm:mb-8 uppercase tracking-tight">Redo att komma igång?</h2>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
                 <Link 
                     href="/produkter"

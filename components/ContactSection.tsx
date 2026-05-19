@@ -1,15 +1,24 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Mail, Phone, MapPin, Send, MessageSquare, User, CheckCircle2, ArrowRight, Clock } from 'lucide-react';
 
 const ContactSection: React.FC = () => {
+  const searchParams = useSearchParams();
   const [submitted, setSubmitted] = useState(false);
   const [focused, setFocused] = useState<string | null>(null);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    
+    // Read product query parameter and automatically construct a highly professional lead text
+    const product = searchParams.get('product');
+    if (product) {
+      setMessage(`Hej!\n\nJag vill gärna begära en offert och kostnadsfri rådgivning för installation av laddboxen ${product}.\n\nKontakta mig så snart som möjligt!`);
+    }
+  }, [searchParams]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,7 +29,7 @@ const ContactSection: React.FC = () => {
     <div className="bg-white animate-in fade-in duration-500 font-monta">
 
       {/* ── Page Hero ─────────────────────────────────── */}
-      <section className="relative py-28 md:py-36 bg-slate-950 overflow-hidden">
+      <section className="relative py-20 sm:py-28 md:py-36 bg-slate-950 overflow-hidden">
         {/* Green glow */}
         <div className="absolute top-0 left-1/3 w-[700px] h-[700px] bg-cc-green/20 rounded-full blur-[200px] -translate-y-1/2 pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cc-green/10 rounded-full blur-[120px] pointer-events-none" />
@@ -37,22 +46,22 @@ const ContactSection: React.FC = () => {
           </svg>
         </div>
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-3xl">
             <div className="inline-flex items-center space-x-3 bg-cc-green/10 text-cc-green px-5 py-2.5 rounded-full border border-cc-green/20 mb-10">
               <MessageSquare className="w-4 h-4" />
               <span className="text-[10px] font-black uppercase tracking-[0.3em]">Vi finns här för dig</span>
             </div>
-            <h1 className="text-6xl md:text-[7rem] font-black text-white tracking-tighter leading-[0.88] uppercase mb-8">
+            <h1 className="text-4xl sm:text-6xl md:text-[7rem] font-black text-white tracking-tighter leading-[0.88] uppercase mb-6 sm:mb-8">
               Kom i<br />
               <span className="text-cc-green">Kontakt.</span>
             </h1>
-            <p className="text-xl text-slate-400 font-medium leading-relaxed max-w-xl">
+            <p className="text-base sm:text-xl text-slate-400 font-medium leading-relaxed max-w-xl">
               Oavsett om du representerar en BRF, ett företag eller vill ladda hemma – våra experter hjälper dig hitta rätt lösning.
             </p>
 
             {/* Quick stats row */}
-            <div className="flex flex-wrap gap-10 mt-12 pt-10 border-t border-white/10">
+            <div className="flex flex-wrap gap-6 sm:gap-10 mt-8 sm:mt-12 pt-8 sm:pt-10 border-t border-white/10">
               {[
                 { label: 'Svarstid', value: '< 2h' },
                 { label: 'Monta Operatörsbetyg', value: '4.6 ★' },
@@ -70,12 +79,12 @@ const ContactSection: React.FC = () => {
 
       {/* ── Form + Info ──────────────────────────────── */}
       <section className="py-20 md:py-28 bg-slate-50">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-5 gap-8 xl:gap-16 items-start">
 
             {/* Form – 3 cols */}
             <div className="lg:col-span-3">
-              <div className="bg-white rounded-[3rem] p-8 md:p-12 shadow-xl shadow-slate-200/60 border border-slate-100">
+              <div className="bg-white rounded-[1.5rem] sm:rounded-[3rem] p-5 sm:p-8 md:p-12 shadow-xl shadow-slate-200/60 border border-slate-100">
                 {submitted ? (
                   <div className="flex flex-col items-center justify-center py-20 text-center space-y-6">
                     <div className="w-20 h-20 bg-cc-green/10 rounded-full flex items-center justify-center">
@@ -147,6 +156,8 @@ const ContactSection: React.FC = () => {
                       <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Meddelande</label>
                       <textarea
                         id="message"
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
                         placeholder="Berätta mer om ditt behov..."
                         onFocus={() => setFocused('message')}
                         onBlur={() => setFocused(null)}

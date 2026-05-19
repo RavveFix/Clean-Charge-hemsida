@@ -8,6 +8,8 @@ import ChatWidget from '@/components/ChatWidget';
 import PreFooterCTA from '@/components/PreFooterCTA';
 import CustomCursor from '@/components/CustomCursor';
 import LiveImpactWidget from '@/components/LiveImpactWidget';
+import ScrollToTop from '@/components/ScrollToTop';
+import PageTransition from '@/components/PageTransition';
 
 interface ClientLayoutProps {
   children: React.ReactNode;
@@ -36,12 +38,15 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
     <>
       <CustomCursor />
       <LiveImpactWidget />
+      <ScrollToTop />
       <Navbar
         activeTab={getActiveTab()}
         onSearchClick={() => setIsChatOpen(true)}
       />
       <main className="flex-grow">
-        {children}
+        <PageTransition>
+          {children}
+        </PageTransition>
       </main>
       {showPreFooter && <PreFooterCTA />}
       <Footer />
@@ -49,3 +54,4 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
     </>
   );
 }
+
