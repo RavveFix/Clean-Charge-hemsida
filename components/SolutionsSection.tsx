@@ -47,7 +47,7 @@ const SolutionsSection: React.FC = () => {
     {
       id: 'private',
       title: 'För Elektriker & Grossister',
-      desc: 'Vi erbjuder anpassade laddlösningar och support för er som installerar mot privatpersoner. Nyttja Grön Teknik-avdraget direkt och säkerställ en premiumupplevelse för kund.',
+      desc: 'Vi erbjuder anpassade laddlösningar och support för er som installerar hos privatpersoner. Nyttja Grön Teknik-avdraget direkt och säkerställ en premiumupplevelse för kund.',
       icon: <Home className="w-5 h-5 text-brand-green" />,
       image: '/images/solutions/installer.png',
       href: '/privat',
@@ -71,14 +71,14 @@ const SolutionsSection: React.FC = () => {
   ];
 
   return (
-    <section ref={containerRef} className="py-20 md:py-32 bg-white">
-      <div className="container mx-auto px-6">
+    <section ref={containerRef} className="py-14 sm:py-20 md:py-32 bg-white">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center max-w-2xl mx-auto mb-16 md:mb-20">
           <span className="text-brand-green font-bold tracking-wider uppercase text-xs sm:text-sm mb-3 block">Lösningar</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-text-primary tracking-tight mb-4 md:mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-text-primary tracking-tight mb-3 sm:mb-4 md:mb-6">
             Laddning anpassad för <br className="hidden sm:block" />din verklighet.
           </h2>
-          <p className="text-text-secondary text-base md:text-lg">
+          <p className="text-text-secondary text-sm sm:text-base md:text-lg">
             Oavsett om du laddar hemma, på jobbet eller i föreningen har vi en helhetslösning som passar perfekt.
           </p>
         </div>
