@@ -45,25 +45,25 @@ const FeaturesBento: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-16 md:py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-6 max-w-7xl">
+    <section className="py-12 sm:py-16 md:py-24 bg-white overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
         <div className="mb-12 md:mb-16 text-center mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] font-[800] text-text-primary tracking-tight mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-[2.75rem] font-[800] text-text-primary tracking-tight mb-3 sm:mb-4">
             Framtidens teknik, idag.
           </h2>
-          <p className="text-text-secondary text-base md:text-[17px] font-medium max-w-2xl mx-auto">Smarta funktioner designade för att göra din vardag enklare och din laddning effektivare.</p>
+          <p className="text-text-secondary text-sm sm:text-base md:text-[17px] font-medium max-w-2xl mx-auto">Smarta funktioner designade för att göra din vardag enklare och din laddning effektivare.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
           {/* Card 1: Load Balancing */}
-          <div className="bg-white rounded-[24px] md:rounded-[32px] p-6 md:p-10 relative overflow-hidden flex flex-col justify-between border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] min-h-[400px] md:h-[440px]">
+          <div className="bg-white rounded-[20px] sm:rounded-[24px] md:rounded-[32px] p-5 sm:p-6 md:p-10 relative overflow-hidden flex flex-col justify-between border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] min-h-[340px] sm:min-h-[400px] md:h-[440px]">
             <div>
               <div className="mb-6">
                 <Activity strokeWidth={1.5} className="w-8 h-8 text-slate-800" />
               </div>
               <h3 className="text-xl md:text-[22px] font-bold text-text-primary mb-3 tracking-tight">Dynamisk Lastbalansering</h3>
-              <p className="text-text-secondary text-sm md:text-[15px] leading-relaxed max-w-full sm:max-w-[260px]">Skyddar din hus huvudsäkring genom att automatiskt fördela strömmen optimalt.</p>
+              <p className="text-text-secondary text-sm md:text-[15px] leading-relaxed max-w-full sm:max-w-[260px]">Skyddar husets huvudsäkring genom att automatiskt fördela strömmen optimalt.</p>
             </div>
             
             {/* Shuffler UI */}
@@ -106,38 +106,38 @@ const FeaturesBento: React.FC = () => {
           </div>
 
           {/* Card 2: Climate Tested */}
-          <div className="bg-[#0b1021] rounded-[24px] md:rounded-[32px] p-6 md:p-10 relative overflow-hidden h-[440px] flex flex-col justify-between shadow-[0_20px_40px_rgba(11,16,33,0.15)]">
+          <div className="bg-[#0b1021] rounded-[20px] sm:rounded-[24px] md:rounded-[32px] p-5 sm:p-6 md:p-10 relative overflow-hidden min-h-[360px] sm:h-[440px] flex flex-col justify-between shadow-[0_20px_40px_rgba(11,16,33,0.15)]">
             <div>
               <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6">
                 <ShieldCheck strokeWidth={1.5} className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-[22px] font-bold text-white mb-3 tracking-tight">Nordiskt Klimatanpassad</h3>
-              <p className="text-slate-400 text-[15px] leading-relaxed max-w-full sm:max-w-[260px]">Hårdvara byggd för att motstå extrem kyla, snö och regn utan att kompromissa med prestandan.</p>
+              <h3 className="text-lg sm:text-[22px] font-bold text-white mb-2 sm:mb-3 tracking-tight">Nordiskt Klimatanpassad</h3>
+              <p className="text-slate-400 text-xs sm:text-[15px] leading-relaxed max-w-full sm:max-w-[260px]">Hårdvara byggd för att motstå extrem kyla, snö och regn utan att kompromissa med prestandan.</p>
             </div>
             
             {/* Terminal UI -> Typewriter Widget */}
             <div className="mt-8 bg-white/[0.03] border border-white/[0.06] p-5 rounded-2xl w-full font-mono">
                <div className="flex justify-between items-center mb-4">
                   <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">System Status</span>
-                  <span className="flex items-center gap-1.5 text-[10px] font-bold text-cc-green uppercase tracking-widest">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cc-green animate-pulse" />
+                  <span className="flex items-center gap-1.5 text-[10px] font-bold text-brand-green uppercase tracking-widest">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-green animate-pulse" />
                     Live
                   </span>
                </div>
-               <div className="text-[13px] leading-[1.8] text-slate-300 min-h-[60px]">
-                  {displayedText}<span className={`inline-block w-[2px] h-[14px] bg-cc-green ml-0.5 align-middle transition-opacity ${cursorVisible ? 'opacity-100' : 'opacity-0'}`} />
+               <div className="text-[11px] sm:text-[12px] md:text-[13px] font-mono leading-[1.8] text-slate-300 min-h-[60px] break-words whitespace-pre-wrap">
+                  {displayedText}<span className={`inline-block w-[2px] h-[14px] bg-brand-green ml-0.5 align-middle transition-opacity ${cursorVisible ? 'opacity-100' : 'opacity-0'}`} />
                </div>
             </div>
           </div>
 
           {/* Card 3: Monta Integration */}
-          <div className="bg-[#f5f8ff] rounded-[24px] md:rounded-[32px] p-6 md:p-10 relative overflow-hidden h-[440px] flex flex-col justify-between border border-[#e2e8f0]/40 shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
+          <div className="bg-[#f5f8ff] rounded-[20px] sm:rounded-[24px] md:rounded-[32px] p-5 sm:p-6 md:p-10 relative overflow-hidden min-h-[360px] sm:h-[440px] flex flex-col justify-between border border-[#e2e8f0]/40 shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
             <div>
               <div className="w-12 h-12 rounded-2xl bg-white border border-[#dbe4ff] flex items-center justify-center mb-6 shadow-sm">
                 <Smartphone strokeWidth={1.5} className="w-5 h-5 text-[#3b82f6]" />
               </div>
-              <h3 className="text-[22px] font-bold text-text-primary mb-3 tracking-tight">Sömlös App-integration</h3>
-              <p className="text-text-secondary text-[15px] leading-relaxed max-w-full sm:max-w-[260px]">Full kontroll i mobilen via Monta. Schemalägg laddning, följ kostnader och dela din laddare.</p>
+              <h3 className="text-lg sm:text-[22px] font-bold text-text-primary mb-2 sm:mb-3 tracking-tight">Sömlös App-integration</h3>
+              <p className="text-text-secondary text-xs sm:text-[15px] leading-relaxed max-w-full sm:max-w-[260px]">Full kontroll i mobilen via Monta. Schemalägg laddning, följ kostnader och dela din laddare.</p>
             </div>
             
             {/* Modern App UI Mockup snippet */}
