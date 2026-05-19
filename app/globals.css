@@ -257,9 +257,66 @@ body {
     background: var(--brand-green);
 }
 
+/* Hide scrollbar but keep scroll */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
 /* Smooth focus rings */
 :focus-visible {
     outline: 2px solid var(--brand-green);
     outline-offset: 3px;
     border-radius: 8px;
+}
+
+/* Premium Border Beam Effect */
+.border-beam-card {
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+.border-beam-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 0deg,
+        transparent 45%,
+        var(--brand-green) 50%,
+        #34d399 55%,
+        transparent 60%
+    );
+    animation: rotate-beam 6s linear infinite;
+    pointer-events: none;
+    z-index: -2;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.border-beam-card:hover::before {
+    opacity: 1;
+}
+.border-beam-card::after {
+    content: '';
+    position: absolute;
+    inset: 1.5px;
+    background: inherit;
+    border-radius: inherit;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes rotate-beam {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
