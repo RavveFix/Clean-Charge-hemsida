@@ -102,7 +102,7 @@ const Hero: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-cc-green/5 to-blue-500/5 rounded-full blur-[100px] -z-10 animate-pulse" />
                 
                 {/* Spline 3D Scene */}
-                <div className="relative w-full h-full scale-100 sm:scale-125 md:scale-150 origin-center translate-x-0 sm:translate-x-4">
+                <div className="relative w-full h-full scale-100 sm:scale-110 md:scale-120 lg:scale-110 xl:scale-120 origin-center translate-x-0">
                   <SplineScene 
                     scene="https://prod.spline.design/NYnTe3YctwcC8ihb/scene.splinecode"
                     className="w-full h-full"
