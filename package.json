@@ -15,7 +15,7 @@
     "@splinetool/runtime": "^1.12.61",
     "gsap": "^3.14.2",
     "lucide-react": "^0.563.0",
-    "next": "^15.2.0",
+    "next": "^16.2.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
