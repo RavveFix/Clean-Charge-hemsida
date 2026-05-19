@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
-import { ShoppingCart, Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -12,15 +12,11 @@ gsap.registerPlugin(ScrollTrigger);
 interface NavbarProps {
   activeTab?: string;
   onSearchClick?: () => void;
-  cartCount?: number;
-  onCartClick?: () => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({
   activeTab,
   onSearchClick,
-  cartCount = 0,
-  onCartClick,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [logoError, setLogoError] = useState(false);
@@ -109,18 +105,7 @@ const Navbar: React.FC<NavbarProps> = ({
             <span>019-760 42 90</span>
           </a>
 
-          <button
-            onClick={onCartClick}
-            className="relative p-2 rounded-full hover:bg-slate-100 transition-colors"
-            aria-label="Varukorg"
-          >
-            <ShoppingCart className="w-5 h-5" />
-            {cartCount > 0 && (
-              <span className="absolute top-1 right-1 bg-brand-green text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold text-white leading-none">
-                {cartCount}
-              </span>
-            )}
-          </button>
+
 
           <button
             className="lg:hidden p-2 rounded-full hover:bg-slate-100 transition-colors"

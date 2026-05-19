@@ -1,16 +1,16 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { PRODUCTS } from '../constants';
 import { Product } from '../types';
-import { ShoppingCart, ShieldCheck, Star } from 'lucide-react';
+import { ShieldCheck, Star, ArrowRight } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
-  onAddToCart?: (product: Product) => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart = () => {} }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const isPremium = product.category === 'laddbox' || product.category === 'snabbladdare';
 
   return (
@@ -87,14 +87,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart = () => 
                 {product.price > 0 ? `${product.price.toLocaleString()} kr` : 'Offert'}
               </p>
             </div>
-            <button
-              onClick={() => onAddToCart(product)}
-              className="shimmer-btn bg-slate-900 text-white px-6 py-3 rounded-2xl font-black uppercase tracking-widest text-[10px] flex items-center gap-3 hover:bg-cc-green hover:shadow-2xl hover:shadow-cc-green/30 transition-all active:scale-95 group/btn"
-              aria-label="Lägg i varukorg"
+            <Link
+              href={`/kontakt?product=${encodeURIComponent(product.name)}`}
+              className="shimmer-btn bg-slate-900 text-white px-6 py-3.5 rounded-2xl font-black uppercase tracking-widest text-[10px] flex items-center gap-3 hover:bg-cc-green hover:shadow-2xl hover:shadow-cc-green/30 transition-all active:scale-95 group/btn"
+              aria-label="Begär Offert"
             >
-              Köp
-              <ShoppingCart className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
-            </button>
+              Begär Offert
+              <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+            </Link>
           </div>
         </div>
       </div>
@@ -104,17 +104,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart = () => 
 
 interface ProductGridProps {
   limit?: number;
-  onAddToCart?: (product: Product) => void;
 }
 
-const ProductGrid: React.FC<ProductGridProps> = ({ limit, onAddToCart = () => {} }) => {
+const ProductGrid: React.FC<ProductGridProps> = ({ limit }) => {
   const displayedProducts = limit ? PRODUCTS.slice(0, limit) : PRODUCTS;
 
   return (
     <div className="container mx-auto px-6">
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch">
         {displayedProducts.map((product) => (
-          <ProductCard key={product.id} product={product} onAddToCart={onAddToCart} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </div>
