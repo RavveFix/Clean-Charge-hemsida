@@ -28,7 +28,7 @@ const PreFooterCTA: React.FC = () => {
   return (
     <section
       ref={ref}
-      className={`mx-4 md:mx-10 mb-20 rounded-[2.5rem] md:rounded-[4rem] overflow-hidden relative transition-all duration-1000 ease-out ${visible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-[0.98]'}`}
+      className={`mx-3 sm:mx-4 md:mx-10 mb-10 sm:mb-20 rounded-[1.5rem] sm:rounded-[2.5rem] md:rounded-[4rem] overflow-hidden relative transition-all duration-1000 ease-out ${visible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-[0.98]'}`}
     >
       {/* Background System */}
       <div className="absolute inset-0 bg-[#020617]" />
@@ -46,19 +46,19 @@ const PreFooterCTA: React.FC = () => {
       {/* Decorative Border Beam */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cc-green to-transparent opacity-50 shadow-[0_0_20px_rgba(0,177,130,0.5)]" />
 
-      <div className="relative z-10 px-5 md:px-20 py-20 md:py-48">
+      <div className="relative z-10 px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-20 md:py-32 lg:py-40">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-20 lg:gap-32 items-center">
+          <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 md:gap-12 lg:gap-16 xl:gap-24 items-center">
             
             {/* Left: Dynamic Headlines */}
-            <div className="space-y-14">
+            <div className="space-y-8 sm:space-y-14">
               <div className="inline-flex items-center space-x-3 bg-white/5 backdrop-blur-xl px-6 py-2.5 rounded-full border border-white/10 group cursor-default">
                 <div className="w-2 h-2 rounded-full bg-cc-green animate-pulse shadow-[0_0_10px_rgba(0,177,130,1)]" />
                 <span className="text-[11px] font-bold text-slate-300 uppercase tracking-[0.4em] group-hover:text-white transition-colors">Starta din resa idag</span>
               </div>
 
               <div className="relative">
-                <h2 className="text-4xl sm:text-5xl md:text-8xl lg:text-[7rem] font-black text-white tracking-tighter leading-[0.85] uppercase">
+                <h2 className="text-3xl sm:text-4xl md:text-7xl lg:text-[7rem] font-black text-white tracking-tighter leading-[0.85] uppercase">
                   Laddbox.
                   <br />
                   <span className="relative">
@@ -71,28 +71,28 @@ const PreFooterCTA: React.FC = () => {
                 </h2>
                 <div className="mt-8 flex items-center space-x-4">
                   <div className="h-0.5 w-12 bg-cc-green rounded-full" />
-                  <span className="text-slate-400 text-3xl md:text-5xl font-black uppercase flex items-center gap-2">
+                  <span className="text-slate-400 text-2xl sm:text-3xl md:text-5xl font-black uppercase flex items-center gap-2">
                     Klart
-                    <CheckCircle2 className="w-8 h-8 text-cc-green" />
+                    <CheckCircle2 className="w-6 h-6 sm:w-8 sm:h-8 text-cc-green" />
                   </span>
                 </div>
               </div>
 
-              <p className="text-slate-400 text-xl font-medium leading-relaxed max-w-lg">
+              <p className="text-slate-400 text-base sm:text-xl font-medium leading-relaxed max-w-lg">
                 Vi bygger framtidens laddinfrastruktur. Från offert till färdig installation på rekordtid, med marknadens ledande produkter.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Link
                   href="/kontakt"
-                  className="shimmer-btn group bg-cc-green text-white px-6 md:px-10 py-5 md:py-6 rounded-2xl font-black text-sm md:text-base uppercase tracking-wider md:tracking-widest flex items-center justify-center gap-4 hover:shadow-[0_20px_50px_rgba(0,177,130,0.3)] hover:-translate-y-1 transition-all duration-500 active:scale-95 w-full sm:w-auto"
+                  className="shimmer-btn group bg-cc-green text-white px-6 md:px-10 py-4 sm:py-5 md:py-6 rounded-2xl font-black text-xs sm:text-sm md:text-base uppercase tracking-wider md:tracking-widest flex items-center justify-center gap-3 sm:gap-4 hover:shadow-[0_20px_50px_rgba(0,177,130,0.3)] hover:-translate-y-1 transition-all duration-500 active:scale-95 w-full sm:w-auto"
                 >
                   Boka kostnadsfri rådgivning
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-500" />
                 </Link>
                 <a
                   href="tel:0197604290"
-                  className="flex items-center justify-center gap-4 bg-white/5 border border-white/10 text-slate-200 px-6 md:px-10 py-5 md:py-6 rounded-2xl font-black text-sm md:text-base uppercase tracking-wider md:tracking-widest hover:bg-white/10 hover:border-white/20 hover:text-white transition-all duration-500 backdrop-blur-md w-full sm:w-auto"
+                  className="flex items-center justify-center gap-3 sm:gap-4 bg-white/5 border border-white/10 text-slate-200 px-6 md:px-10 py-4 sm:py-5 md:py-6 rounded-2xl font-black text-xs sm:text-sm md:text-base uppercase tracking-wider md:tracking-widest hover:bg-white/10 hover:border-white/20 hover:text-white transition-all duration-500 backdrop-blur-md w-full sm:w-auto"
                 >
                   <PhoneCall className="w-5 h-5" />
                   Ring 019-760 42 90
@@ -109,7 +109,7 @@ const PreFooterCTA: React.FC = () => {
                 {perks.map((perk, i) => (
                   <div
                     key={i}
-                    className={`card-hover group relative bg-white/[0.03] backdrop-blur-xl border border-white/10 p-5 md:p-6 rounded-3xl flex items-start space-x-4 md:space-x-6 transition-all duration-700 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'}`}
+                    className={`card-hover group relative bg-white/[0.03] backdrop-blur-xl border border-white/10 p-5 md:p-6 rounded-3xl flex items-start space-x-4 transition-all duration-700 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
                     style={{ transitionDelay: `${400 + i * 150}ms` }}
                   >
                     {/* Floating Glow on Hover */}
