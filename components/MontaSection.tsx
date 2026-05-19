@@ -9,16 +9,16 @@ const MontaSection: React.FC = () => {
   const montaImage = "/Charge_grey.png";
 
   return (
-    <section className="py-16 md:py-24 bg-white overflow-hidden font-monta">
-      <div className="container mx-auto px-6">
-        <div className="bg-[#003DFF] rounded-[2.5rem] md:rounded-[3rem] p-8 sm:p-12 md:p-20 text-white relative overflow-hidden mb-16 md:mb-20 shadow-2xl shadow-blue-900/20">
+    <section className="py-12 sm:py-16 md:py-24 bg-white overflow-hidden font-monta">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="bg-[#003DFF] rounded-[1.5rem] sm:rounded-[2.5rem] md:rounded-[3rem] p-6 sm:p-8 md:p-12 lg:p-20 text-white relative overflow-hidden mb-12 sm:mb-16 md:mb-20 shadow-2xl shadow-blue-900/20">
           <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
             <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
               <path d="M0,100 C30,80 70,120 100,100 L100,0 L0,0 Z" fill="white" />
             </svg>
           </div>
           
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-20 items-center relative z-10">
             <div className="space-y-8 md:space-y-10">
               <div className="space-y-4 md:space-y-6">
                 <div className="inline-block pb-2 md:pb-4">
@@ -33,19 +33,19 @@ const MontaSection: React.FC = () => {
                   <div className="h-px w-8 md:w-12 bg-blue-400"></div>
                 </div>
                 
-                <h2 className="text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-[0.95] text-white uppercase">
+                <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-black tracking-tighter leading-[1.05] text-white uppercase">
                   Marknadens smartaste <br />
                   <span className="text-blue-300 italic">Betallösning.</span>
                 </h2>
                 
-                <p className="text-lg md:text-xl text-blue-50 font-medium leading-relaxed max-w-xl opacity-90">
+                <p className="text-sm sm:text-lg md:text-xl text-blue-50 font-medium leading-relaxed max-w-xl opacity-90">
                   Vi fokuserar på kraftfulla betallösningar för publika anläggningar. Med Monta automatiserar ni debiteringsflödet och gör era laddstationer till en lönsam tillgång.
                 </p>
               </div>
               
               <Link 
                 href="/monta"
-                className="inline-flex items-center justify-center w-full sm:w-auto bg-white text-[#003DFF] px-10 md:px-12 py-4 md:py-5 rounded-full font-black text-base md:text-lg transition-all hover:bg-blue-50 hover:shadow-xl active:scale-95 group"
+                className="inline-flex items-center justify-center w-full sm:w-auto bg-white text-[#003DFF] px-8 sm:px-10 md:px-12 py-3.5 sm:py-4 md:py-5 rounded-full font-black text-sm sm:text-base md:text-lg transition-all hover:bg-blue-50 hover:shadow-xl active:scale-95 group"
               >
                 Läs mer om Monta Hub
                 <ArrowRight className="ml-3 group-hover:translate-x-1 transition-transform" />
@@ -64,18 +64,18 @@ const MontaSection: React.FC = () => {
                   />
                 </div>
                 
-                {/* Overlapping Image - Admin Interface */}
-                <div className="absolute -bottom-8 -right-8 w-2/3 rounded-[2rem] overflow-hidden shadow-2xl bg-slate-900 border-4 border-white group hover:scale-105 transition-all duration-500 cursor-pointer">
+                {/* Overlapping Image - Admin Interface (Glassmorphic Polish & Sizing) */}
+                <div className="absolute -bottom-4 -right-4 sm:-bottom-8 sm:-right-8 w-[60%] sm:w-1/2 md:w-[60%] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,61,255,0.15)] bg-slate-950/90 border border-white/80 backdrop-blur-md group hover:scale-105 transition-all duration-500 cursor-pointer">
                   <img 
                     src="/Charge_1.png" 
                     alt="Monta Admin Interface" 
-                    className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-700" 
+                    className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100" 
                   />
                   
                   {/* Badge on the admin interface */}
-                  <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md px-3 py-2 rounded-xl shadow-lg flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-xs font-black text-slate-900 uppercase tracking-wider">Live Dashboard</span>
+                  <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 bg-white/95 backdrop-blur-md px-2 sm:px-3 py-1 sm:py-2 rounded-lg sm:rounded-xl shadow-lg flex items-center gap-1.5 sm:gap-2">
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span className="text-[8px] sm:text-xs font-black text-slate-900 uppercase tracking-wider">Live Dashboard</span>
                   </div>
                 </div>
               </div>
@@ -118,7 +118,7 @@ const MontaSection: React.FC = () => {
           ].map((feature, i) => (
             <div
               key={i}
-              className="relative p-10 rounded-[2.5rem] border border-slate-100 bg-white hover:shadow-2xl hover:shadow-blue-500/8 hover:-translate-y-2 transition-all duration-500 group overflow-hidden"
+              className="relative p-6 sm:p-10 rounded-[1.5rem] sm:rounded-[2.5rem] border border-slate-100 bg-white hover:shadow-2xl hover:shadow-blue-500/8 hover:-translate-y-2 transition-all duration-500 group overflow-hidden"
             >
               {/* Number accent */}
               <span className="absolute top-8 right-10 text-[72px] font-black text-slate-50 leading-none select-none group-hover:text-blue-50 transition-colors duration-500">
