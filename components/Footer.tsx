@@ -6,17 +6,25 @@ import { Facebook, Youtube, Instagram, Mail, Phone, MapPin, Zap, Linkedin } from
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-white text-charcoal pt-32 pb-16 border-t border-slate-100 font-monta">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-32">
-          <div className="space-y-10">
+    <footer className="bg-white text-slate-600 pt-16 sm:pt-24 md:pt-32 pb-10 sm:pb-16 border-t border-slate-100 font-monta">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 md:gap-16 mb-16 sm:mb-24 md:mb-32">
+          <div className="space-y-6 sm:space-y-10 col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-1">
             <div className="space-y-4">
               <div className="flex items-center">
                 <img
                   src="https://cleancharge.se/wp-content/uploads/CC_logo_1row_5.svg"
                   alt="Clean Charge AB"
-                  className="h-10 w-auto"
+                  className="h-10 w-auto object-contain"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    const fallback = document.getElementById('footer-text-logo-fallback');
+                    if (fallback) fallback.classList.remove('hidden');
+                  }}
                 />
+                <span id="footer-text-logo-fallback" className="hidden text-2xl font-black text-slate-900 tracking-tighter uppercase font-sans">
+                  Clean Charge<span className="text-brand-green">.</span>
+                </span>
               </div>
               <div className="space-y-3">
                 <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">In partnership with</span>
@@ -91,7 +99,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="pt-16 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div className="pt-8 sm:pt-16 border-t border-slate-100 flex flex-col gap-6 sm:gap-8 md:flex-row md:justify-between md:items-center">
           <div className="flex flex-col md:flex-row items-center gap-6">
             <div className="flex items-center space-x-6">
               <p className="text-[11px] font-black uppercase tracking-widest text-slate-400">© 2026 Clean Charge AB</p>
@@ -101,7 +109,7 @@ const Footer: React.FC = () => {
             <div className="hidden md:block h-4 w-px bg-slate-100"></div>
             <p className="text-[10px] md:text-[11px] font-black uppercase tracking-widest text-slate-400">Design by Rávon Eric Albin Strawder & AI</p>
           </div>
-          <div className="flex space-x-12">
+          <div className="flex flex-wrap gap-4 sm:gap-6 md:gap-12 justify-center md:justify-end">
             <Link href="/integritetspolicy" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-slate-700 transition-colors">Integritetspolicy</Link>
             <Link href="/villkor" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-slate-700 transition-colors">Köpvillkor</Link>
             <Link href="/cookies" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-slate-700 transition-colors">Cookies</Link>
