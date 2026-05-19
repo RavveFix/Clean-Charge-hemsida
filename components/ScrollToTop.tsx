@@ -34,7 +34,7 @@ const ScrollToTop: React.FC = () => {
     <button
       onClick={scrollToTop}
       aria-label="Scrolla till toppen"
-      className={`fixed bottom-24 right-6 z-[130] w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 group ${
+      className={`fixed bottom-6 right-6 z-[130] w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 group ${
         visible
           ? 'opacity-100 translate-y-0 scale-100'
           : 'opacity-0 translate-y-4 scale-75 pointer-events-none'

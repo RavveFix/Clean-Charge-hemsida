@@ -11,12 +11,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface NavbarProps {
   activeTab?: string;
-  onSearchClick?: () => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({
   activeTab,
-  onSearchClick,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [logoError, setLogoError] = useState(false);
