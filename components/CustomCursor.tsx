@@ -2,11 +2,16 @@
 
 import React, { useEffect, useState } from 'react';
 
+// Use module-level variables to persist mouse position between page/route client-side transitions,
+// ensuring the cursor never jumps to (0,0) or resets when navigating!
+let globalMousePosition = { x: 0, y: 0 };
+let globalHasMoved = false;
+
 const CustomCursor: React.FC = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [trail, setTrail] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState(() => globalMousePosition);
+  const [trail, setTrail] = useState(() => globalMousePosition);
   const [isHovering, setIsHovering] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(() => globalHasMoved);
 
   useEffect(() => {
     // Only enable on desktop/pointing devices
@@ -14,10 +19,11 @@ const CustomCursor: React.FC = () => {
     const mediaQuery = window.matchMedia('(pointer: fine)');
     if (!mediaQuery.matches) return;
 
-    setIsVisible(true);
-
     const handleMouseMove = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      globalMousePosition = { x: e.clientX, y: e.clientY };
+      globalHasMoved = true;
+      setPosition(globalMousePosition);
+      setIsVisible(true);
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -32,12 +38,24 @@ const CustomCursor: React.FC = () => {
       setIsHovering(!!isClickable);
     };
 
+    const handleMouseLeave = () => {
+      setIsVisible(false);
+    };
+
+    const handleMouseEnter = () => {
+      setIsVisible(true);
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseover', handleMouseOver);
+    document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('mouseenter', handleMouseEnter);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseover', handleMouseOver);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('mouseenter', handleMouseEnter);
     };
   }, []);
 
@@ -47,7 +65,6 @@ const CustomCursor: React.FC = () => {
     
     const updateTrail = () => {
       setTrail((prev) => {
-        // Smooth lerp (linear interpolation) with 0.15 factor for smooth lagging trail
         const dx = position.x - prev.x;
         const dy = position.y - prev.y;
         return {
@@ -62,7 +79,8 @@ const CustomCursor: React.FC = () => {
     return () => cancelAnimationFrame(animationFrameId);
   }, [position, isVisible]);
 
-  if (!isVisible) return null;
+  // Safeguard: Hide cursor if it's uninitialized or positioned at the exact top-left coordinate (0,0)
+  if (!isVisible || (position.x === 0 && position.y === 0)) return null;
 
   return (
     <>
