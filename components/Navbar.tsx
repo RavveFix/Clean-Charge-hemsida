@@ -23,6 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({
   onCartClick,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [logoError, setLogoError] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const router = useRouter();
   const pathname = usePathname();
@@ -66,11 +67,18 @@ const Navbar: React.FC<NavbarProps> = ({
           className="flex items-center cursor-pointer shrink-0"
           onClick={() => setIsMenuOpen(false)}
         >
-          <img
-            src="https://cleancharge.se/wp-content/uploads/CC_logo_1row_5.svg"
-            alt="Clean Charge AB"
-            className="h-6 md:h-7 lg:h-8 w-auto transition-all duration-500"
-          />
+          {logoError ? (
+            <span className="text-lg md:text-xl font-black tracking-tight text-slate-800">
+              Clean <span className="text-brand-green">Charge</span>
+            </span>
+          ) : (
+            <img
+              src="https://cleancharge.se/wp-content/uploads/CC_logo_1row_5.svg"
+              alt="Clean Charge AB"
+              className="h-6 md:h-7 lg:h-8 w-auto transition-all duration-500"
+              onError={() => setLogoError(true)}
+            />
+          )}
         </Link>
 
         {/* Desktop Links */}
@@ -126,7 +134,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`lg:hidden fixed inset-0 bg-bg-primary z-50 transition-all duration-500 ease-in-out flex flex-col justify-center items-center ${
+        className={`lg:hidden fixed inset-0 bg-white z-[150] transition-all duration-500 ease-in-out flex flex-col pt-24 pb-12 overflow-y-auto ${
           isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
         }`}
       >
@@ -136,31 +144,31 @@ const Navbar: React.FC<NavbarProps> = ({
         >
           <X className="w-8 h-8" />
         </button>
-        <div className="flex flex-col items-center space-y-8 w-full px-8">
+        <div className="flex flex-col items-center space-y-6 w-full px-8">
           {navLinks.map((tab) => (
             <Link
               key={tab.id}
               href={tab.href}
               onClick={() => setIsMenuOpen(false)}
-              className={`text-4xl font-bold tracking-tight ${
-                isActive(tab.href) ? 'text-brand-green' : 'text-text-primary'
+              className={`text-2xl sm:text-3xl font-black uppercase tracking-tight ${
+                isActive(tab.href) ? 'text-brand-green' : 'text-slate-800'
               }`}
             >
               {tab.label}
             </Link>
           ))}
-          <div className="pt-12 w-full space-y-4">
+          <div className="pt-10 w-full space-y-4 max-w-sm mx-auto">
             <a
               href="tel:0197604290"
-              className="w-full flex items-center justify-center gap-3 bg-slate-100 text-text-primary text-lg font-bold uppercase tracking-widest py-5 rounded-[2rem]"
+              className="w-full flex items-center justify-center gap-3 bg-slate-50 border border-slate-100 text-slate-800 text-base font-black uppercase tracking-widest py-5 rounded-[2rem] hover:bg-slate-100 transition-all"
             >
-              <Phone className="w-5 h-5" />
+              <Phone className="w-5 h-5 text-brand-green" />
               019-760 42 90
             </a>
             <Link
               href="/kontakt"
               onClick={() => setIsMenuOpen(false)}
-              className="w-full block text-center bg-brand-green text-white text-lg font-bold uppercase tracking-widest py-6 rounded-[2rem] shadow-xl hover:scale-[1.02] transition-transform"
+              className="w-full block text-center bg-brand-green text-white text-base font-black uppercase tracking-widest py-5 rounded-[2rem] shadow-xl shadow-brand-green/20 active:scale-95 transition-all"
             >
               Kontakta oss
             </Link>
