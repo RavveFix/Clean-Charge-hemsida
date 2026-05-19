@@ -1,16 +1,17 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Leaf, Activity, Zap, TrendingDown, ChevronRight, Sparkles } from 'lucide-react';
+import { Leaf, Activity, Zap, TrendingDown, ChevronRight } from 'lucide-react';
 
 const LiveImpactWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [co2Saved, setCo2Saved] = useState(12437.24);
   const [kwhDelivered, setKwhDelivered] = useState(87943.6);
   const [activeSessions, setActiveSessions] = useState(42);
+  const [spotPrice, setSpotPrice] = useState<number | null>(null);
 
+  // 1. Client-side tick update representing active EV charging on the network
   useEffect(() => {
-    // Real-time ticking updates representing ongoing EV charging on the Clean Charge grid
     const interval = setInterval(() => {
       setCo2Saved((prev) => prev + 0.034);
       setKwhDelivered((prev) => prev + 0.052);
@@ -23,6 +24,38 @@ const LiveImpactWidget: React.FC = () => {
     }, 1200);
 
     return () => clearInterval(interval);
+  }, []);
+
+  // 2. Fetch GENUINE Swedish spot electricity price (SE3 Stockholm zone) in real-time
+  useEffect(() => {
+    const fetchSpotPrice = async () => {
+      try {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hour = now.getHours();
+        
+        // Fetch public SE3 prices for the current day
+        const response = await fetch(`https://www.elprisetjustnu.se/api/v1/prices/${year}/${month}-${day}_SE3.json`);
+        if (response.ok) {
+          const data = await response.json();
+          const currentHourData = data[hour];
+          if (currentHourData) {
+            // Convert SEK_per_kWh to Swedish öre (multiply by 100) and round to integer
+            const priceInOre = Math.round(currentHourData.SEK_per_kWh * 100);
+            setSpotPrice(priceInOre);
+          }
+        }
+      } catch (err) {
+        console.error("Kunde inte hämta realtidselpris:", err);
+      }
+    };
+
+    fetchSpotPrice();
+    // Refresh electricity prices every 30 minutes to stay perfectly synchronized
+    const priceInterval = setInterval(fetchSpotPrice, 30 * 60 * 1000);
+    return () => clearInterval(priceInterval);
   }, []);
 
   return (
@@ -102,7 +135,7 @@ const LiveImpactWidget: React.FC = () => {
               <p className="text-[10px] text-slate-500 font-medium mt-1">100% spårbar el från sol och vind.</p>
             </div>
 
-            {/* Stat 3: Grid Load & Intensity */}
+            {/* Stat 3: Grid Load & Spot Price */}
             <div className="flex justify-between items-center gap-3 pt-1">
               <div className="flex-1 bg-white/[0.02] border border-white/[0.04] p-3 rounded-2xl flex items-center justify-between">
                 <div>
@@ -114,10 +147,12 @@ const LiveImpactWidget: React.FC = () => {
               
               <div className="flex-1 bg-white/[0.02] border border-white/[0.04] p-3 rounded-2xl flex items-center justify-between">
                 <div>
-                  <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest block leading-none mb-1">CO₂-Intensitet</span>
-                  <span className="text-sm font-black text-white tracking-tight tabular-nums">22g<span className="text-[8px] font-medium text-slate-400">/kWh</span></span>
+                  <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest block leading-none mb-1">Spotpris (SE3)</span>
+                  <span className="text-sm font-black text-white tracking-tight tabular-nums">
+                    {spotPrice !== null ? `${spotPrice} öre` : 'Laddar...'}
+                  </span>
                 </div>
-                <Sparkles className="w-3.5 h-3.5 text-cc-green" />
+                <Zap className="w-3.5 h-3.5 text-cc-green" />
               </div>
             </div>
 
