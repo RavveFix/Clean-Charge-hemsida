@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ChatWidget from '@/components/ChatWidget';
 import PreFooterCTA from '@/components/PreFooterCTA';
+import CustomCursor from '@/components/CustomCursor';
 
 interface ClientLayoutProps {
   children: React.ReactNode;
@@ -32,6 +33,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
 
   return (
     <>
+      <CustomCursor />
       <Navbar
         activeTab={getActiveTab()}
         onSearchClick={() => setIsChatOpen(true)}
