@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Zap, Shield, BarChart3, Wrench } from 'lucide-react';
+import { breadcrumbJsonLd, faqJsonLd } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
-  title: 'Laddbox för Företag – AC & DC Laddstationer',
+  title: 'Laddbox för Företag – AC & DC',
   description:
     'Clean Charge AB installerar och driftar laddboxar för företag i hela Sverige. Auktoriserad Zaptec & Monta-partner. Få en kostnadsfri offert idag – ring 019-760 42 90.',
   keywords: [
@@ -41,6 +42,38 @@ const jsonLd = {
   serviceType: 'EV Charging Installation',
 };
 
+const breadcrumb = breadcrumbJsonLd([
+  { name: 'För Företag', path: '/foretag' },
+]);
+
+const faq = faqJsonLd([
+  {
+    question: 'Hur lång tid tar en installation av laddboxar?',
+    answer:
+      'En typisk installation för 4–10 laddboxar tar 1–2 dagar efter att projektering och elanmälan är klara. Hela processen från offert till driftsatta laddare brukar ta 3–6 veckor beroende på nätägarens handläggningstid.',
+  },
+  {
+    question: 'Vad kostar en laddbox för företag?',
+    answer:
+      'Hårdvarukostnaden för en Zaptec Pro börjar på cirka 12 000 kr exkl. moms per uttag. Installation, projektering och konfiguration tillkommer. Vi erbjuder kostnadsfria offerter där hela paketkostnaden specificeras.',
+  },
+  {
+    question: 'Kan ni hjälpa med fakturering till anställda som laddar?',
+    answer:
+      'Ja. Via Monta-plattformen kan varje anställd ladda med eget RFID-kort eller app och faktureras separat för sin förbrukning. Företaget kan också välja att stå för kostnaden eller dela den enligt en intern policy.',
+  },
+  {
+    question: 'Behöver vi uppgradera vår elanslutning?',
+    answer:
+      'Oftast inte. Vi installerar smart lastbalansering som dynamiskt fördelar tillgänglig effekt mellan laddarna och övrig fastighetsförbrukning. Det innebär att ni kan ha många laddare utan att höja huvudsäkringen.',
+  },
+  {
+    question: 'Vilken support får vi efter installation?',
+    answer:
+      'Vi övervakar era laddare på distans och agerar proaktivt vid driftstörningar. Support finns tillgänglig under kontorstid via telefon 019-760 42 90 och e-post. Garantihantering ingår i vårt drift- och serviceavtal.',
+  },
+]);
+
 const benefits = [
   { icon: <Zap className="w-6 h-6" />, title: 'Snabb installation', desc: 'Från offert till färdig installation på rekordtid med minimal störning för er verksamhet.' },
   { icon: <Shield className="w-6 h-6" />, title: 'Certifierade installatörer', desc: 'Alla installationer utförs av behöriga elektriker med STARK-auktorisation.' },
@@ -65,6 +98,14 @@ export default function ForetagPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
       />
 
       {/* Hero */}

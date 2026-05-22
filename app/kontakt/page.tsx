@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import ContactSection from '@/components/ContactSection';
+import { breadcrumbJsonLd } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   title: 'Kontakta Oss – Offert & Rådgivning',
@@ -10,9 +11,15 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.cleancharge.se/kontakt' },
 };
 
+const breadcrumb = breadcrumbJsonLd([{ name: 'Kontakt', path: '/kontakt' }]);
+
 export default function KontaktPage() {
   return (
     <ClientLayout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
       <Suspense fallback={
         <div className="min-h-screen bg-slate-950 flex items-center justify-center text-white font-monta">
           <div className="text-center space-y-4">

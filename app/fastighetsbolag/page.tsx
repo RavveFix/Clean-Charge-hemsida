@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Building2, Users, TrendingUp, Settings } from 'lucide-react';
+import { breadcrumbJsonLd } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
-  title: 'Laddbox Fastighetsbolag & Bostadsrättsförening – BRF',
+  title: 'Laddbox BRF & Fastighetsbolag',
   description:
     'Laddboxar för fastighetsbolag och BRF i hela Sverige. Clean Charge AB projekter, installerar och driftar laddinfrastruktur med smart lastbalansering och debiteringshantering. Ring 019-760 42 90.',
   keywords: [
@@ -40,6 +41,10 @@ const jsonLd = {
   description: 'Laddinfrastruktur för fastighetsbolag, bostadsrättsföreningar och hyresfastigheter.',
   serviceType: 'EV Charging Installation for Real Estate',
 };
+
+const breadcrumb = breadcrumbJsonLd([
+  { name: 'För BRF & Fastighet', path: '/fastighetsbolag' },
+]);
 
 const benefits = [
   {
@@ -81,6 +86,10 @@ export default function FastighetsbolagPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
 
       {/* Hero */}
