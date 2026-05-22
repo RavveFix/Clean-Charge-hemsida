@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Instrument_Sans, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 
@@ -35,6 +35,9 @@ export const metadata: Metadata = {
     'elbilsladdning Sverige',
     'Clean Charge',
   ],
+  authors: [{ name: 'Clean Charge AB' }],
+  creator: 'Clean Charge AB',
+  publisher: 'Clean Charge AB',
   openGraph: {
     type: 'website',
     locale: 'sv_SE',
@@ -43,55 +46,122 @@ export const metadata: Metadata = {
     title: 'Clean Charge AB | Laddbox för Företag & Fastighetsbolag',
     description:
       'Vi levererar, konfigurerar och driftar er laddinfrastruktur – helt klart. Auktoriserad Zaptec & Monta-partner.',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Clean Charge AB | Laddbox för Företag & Fastighetsbolag',
     description:
       'Vi levererar, konfigurerar och driftar er laddinfrastruktur – helt klart.',
-    images: ['/og-image.jpg'],
   },
   alternates: {
     canonical: 'https://www.cleancharge.se',
+    languages: {
+      'sv-SE': 'https://www.cleancharge.se',
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
+  ],
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
+
+const SITE_URL = 'https://www.cleancharge.se';
+const LOGO_URL = `${SITE_URL}/logo.png`;
+
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'Clean Charge AB',
-  image: 'https://www.cleancharge.se/logo.png',
-  '@id': 'https://www.cleancharge.se',
-  url: 'https://www.cleancharge.se',
-  telephone: '+46197604290',
-  email: 'info@cleancharge.se',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Dialoggatan 12B',
-    addressLocality: 'Örebro',
-    postalCode: '70374',
-    addressCountry: 'SE',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 59.278,
-    longitude: 15.197,
-  },
-  priceRange: '$$',
-  openingHoursSpecification: {
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-    opens: '08:00',
-    closes: '17:00',
-  },
-  areaServed: {
-    '@type': 'Country',
-    name: 'Sweden',
-  },
-  sameAs: [
-    'https://www.facebook.com/cleancharge',
-    'https://www.linkedin.com/company/clean-charge-ab',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}#organization`,
+      name: 'Clean Charge AB',
+      url: SITE_URL,
+      logo: {
+        '@type': 'ImageObject',
+        url: LOGO_URL,
+        width: 512,
+        height: 512,
+      },
+      foundingDate: '2021',
+      founders: [{ '@type': 'Person', name: 'Ravon Eric Albin Strawder' }],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: '+46197604290',
+        contactType: 'customer service',
+        email: 'info@cleancharge.se',
+        areaServed: 'SE',
+        availableLanguage: ['Swedish', 'English'],
+      },
+      sameAs: [
+        'https://www.facebook.com/cleancharge',
+        'https://www.linkedin.com/company/clean-charge-ab',
+      ],
+    },
+    {
+      '@type': 'LocalBusiness',
+      '@id': `${SITE_URL}#localbusiness`,
+      name: 'Clean Charge AB',
+      image: LOGO_URL,
+      logo: LOGO_URL,
+      url: SITE_URL,
+      telephone: '+46197604290',
+      email: 'info@cleancharge.se',
+      description:
+        'Auktoriserad Zaptec & Monta-partner som installerar och driftar laddboxar för företag och fastighetsbolag i Sverige.',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Dialoggatan 12B',
+        addressLocality: 'Örebro',
+        postalCode: '70374',
+        addressCountry: 'SE',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 59.278,
+        longitude: 15.197,
+      },
+      openingHoursSpecification: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: [
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+        ],
+        opens: '08:00',
+        closes: '17:00',
+      },
+      areaServed: { '@type': 'Country', name: 'Sweden' },
+      sameAs: [
+        'https://www.facebook.com/cleancharge',
+        'https://www.linkedin.com/company/clean-charge-ab',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}#website`,
+      url: SITE_URL,
+      name: 'Clean Charge AB',
+      publisher: { '@id': `${SITE_URL}#organization` },
+      inLanguage: 'sv-SE',
+    },
   ],
 };
 
@@ -107,7 +177,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://prod.spline.design" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://cleancharge.se" />
         <link rel="dns-prefetch" href="https://www.elprisetjustnu.se" />
 
         <script
@@ -130,4 +199,3 @@ export default function RootLayout({
     </html>
   );
 }
-
