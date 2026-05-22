@@ -122,7 +122,7 @@ const CommercialChargingSection: React.FC = () => {
                                 </div>
                                 <div className="w-full md:w-1/2 space-y-6">
                                     <div className="space-y-3">
-                                        <div className="inline-block bg-slate-900 text-white text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
+                                        <div className="inline-block bg-slate-900 text-white text-[12px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
                                             {product.category === 'snabbladdare' ? 'DC High Power' : 'AC Professional'}
                                         </div>
                                         <h3 className="text-3xl font-black text-slate-900 leading-[0.9] uppercase tracking-tight">{product.name}</h3>

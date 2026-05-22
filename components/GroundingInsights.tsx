@@ -77,7 +77,7 @@ const GroundingInsights: React.FC = () => {
               <div className="space-y-6">
                 <div className="inline-flex items-center space-x-3 bg-cc-green/10 text-cc-green px-5 py-2.5 rounded-full border border-cc-green/20 backdrop-blur-md">
                   <Globe className="w-4 h-4 animate-spin-slow" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.3em]">Multi-Brand Intelligence</span>
+                  <span className="text-[12px] font-black uppercase tracking-[0.3em]">Multi-Brand Intelligence</span>
                 </div>
                 
                 <h2 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.85] uppercase">
@@ -100,8 +100,8 @@ const GroundingInsights: React.FC = () => {
                   <div key={i} className="flex flex-col space-y-2 p-5 bg-white/5 rounded-[2rem] border border-white/10 hover:border-cc-green/30 transition-all group">
                     <item.icon className="w-5 h-5 text-cc-green group-hover:scale-110 transition-transform" />
                     <div>
-                      <p className="text-[10px] font-black uppercase tracking-widest text-white">{item.label}</p>
-                      <p className="text-[9px] font-medium text-slate-500 uppercase tracking-widest">{item.sub}</p>
+                      <p className="text-[12px] font-black uppercase tracking-widest text-white">{item.label}</p>
+                      <p className="text-[12px] font-medium text-slate-500 uppercase tracking-widest">{item.sub}</p>
                     </div>
                   </div>
                 ))}
@@ -139,13 +139,13 @@ const GroundingInsights: React.FC = () => {
                   </div>
                   <div className="text-center space-y-3">
                     <p className="text-white font-black uppercase tracking-[0.5em] text-sm">Deep Web Analysis</p>
-                    <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Ansluter till marknadsdata...</p>
+                    <p className="text-slate-500 text-[12px] font-bold uppercase tracking-widest">Ansluter till marknadsdata...</p>
                   </div>
                 </div>
               ) : (
                 <div className="space-y-10 animate-in fade-in slide-in-from-bottom-12 duration-1000 flex-grow">
                   {error && (
-                    <div className="flex items-center space-x-3 bg-amber-500/10 border border-amber-500/20 p-4 rounded-2xl text-amber-400 text-[10px] font-black uppercase tracking-widest">
+                    <div className="flex items-center space-x-3 bg-amber-500/10 border border-amber-500/20 p-4 rounded-2xl text-amber-400 text-[12px] font-black uppercase tracking-widest">
                       <AlertCircle className="w-4 h-4" />
                       <span>{error}</span>
                     </div>
@@ -159,7 +159,7 @@ const GroundingInsights: React.FC = () => {
 
                   {sources.length > 0 && (
                     <div className="pt-10 border-t border-white/10 mt-auto">
-                      <p className="text-[9px] font-black uppercase tracking-[0.4em] text-slate-500 mb-8 flex items-center">
+                      <p className="text-[12px] font-black uppercase tracking-[0.4em] text-slate-500 mb-8 flex items-center">
                         <div className="w-2 h-2 bg-cc-green rounded-full mr-3 animate-pulse"></div>
                         Verifierade Källor & Nyheter
                       </p>
@@ -172,7 +172,7 @@ const GroundingInsights: React.FC = () => {
                             rel="noopener noreferrer"
                             className="flex items-center justify-between p-5 rounded-[1.5rem] bg-white/5 border border-white/5 hover:bg-white/10 hover:border-cc-green/40 transition-all group/source"
                           >
-                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover/source:text-white truncate mr-4">{source.title}</span>
+                            <span className="text-[12px] font-black uppercase tracking-widest text-slate-400 group-hover/source:text-white truncate mr-4">{source.title}</span>
                             <ExternalLink className="w-4 h-4 text-cc-green shrink-0" />
                           </a>
                         ))}

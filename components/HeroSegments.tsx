@@ -31,7 +31,7 @@ const HeroSegments: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
         <div className="flex items-end justify-between mb-7 sm:mb-10">
           <div>
-            <span className="text-cc-green font-black tracking-[0.3em] uppercase text-[10px] mb-2 block">
+            <span className="text-cc-green font-black tracking-[0.3em] uppercase text-[12px] mb-2 block">
               Välj din väg
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight leading-tight">
@@ -40,7 +40,7 @@ const HeroSegments: React.FC = () => {
           </div>
           <Link
             href="/produkter"
-            className="hidden sm:inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-slate-700 transition-colors"
+            className="hidden sm:inline-flex items-center gap-2 text-[12px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-slate-700 transition-colors"
           >
             Alla produkter
             <ArrowRight className="w-3.5 h-3.5" />
@@ -69,7 +69,7 @@ const HeroSegments: React.FC = () => {
                   {desc}
                 </p>
 
-                <div className="mt-auto inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-cc-green transition-colors">
+                <div className="mt-auto inline-flex items-center gap-2 text-[12px] font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-cc-green transition-colors">
                   Läs mer
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>

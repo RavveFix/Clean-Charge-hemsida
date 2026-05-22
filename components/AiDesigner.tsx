@@ -66,7 +66,7 @@ const AiDesigner: React.FC<AiDesignerProps> = ({ initialPrompt }) => {
             <div className="space-y-4">
               <div className="inline-flex items-center space-x-2 bg-cc-green text-white px-4 py-1.5 rounded-full">
                 <Sparkles className="w-4 h-4 fill-white" />
-                <span className="text-[10px] font-black uppercase tracking-[0.2em]">Nano Banana Vision v2.5</span>
+                <span className="text-[12px] font-black uppercase tracking-[0.2em]">Nano Banana Vision v2.5</span>
               </div>
               <h2 className="text-5xl font-black text-slate-800 tracking-tighter leading-tight">AI Studio & Cloner.</h2>
               <p className="text-slate-500 text-lg font-medium leading-relaxed">
@@ -84,14 +84,14 @@ const AiDesigner: React.FC<AiDesignerProps> = ({ initialPrompt }) => {
               
               {/* Image Upload Area */}
               <div className="space-y-4">
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block ml-2">Referensbild (Valfritt)</label>
+                <label className="text-[12px] font-bold text-slate-400 uppercase tracking-widest block ml-2">Referensbild (Valfritt)</label>
                 {!sourceImage ? (
                   <div 
                     onClick={() => fileInputRef.current?.click()}
                     className="group cursor-pointer aspect-video border-2 border-dashed border-slate-200 rounded-3xl flex flex-col items-center justify-center bg-white hover:border-cc-green hover:bg-cc-green/5 transition-all duration-300"
                   >
                     <Upload className="w-8 h-8 text-slate-300 group-hover:text-cc-green mb-2 transition-colors" />
-                    <p className="text-[10px] font-bold text-slate-400 group-hover:text-cc-green uppercase tracking-widest">Klicka för att ladda upp</p>
+                    <p className="text-[12px] font-bold text-slate-400 group-hover:text-cc-green uppercase tracking-widest">Klicka för att ladda upp</p>
                     <input 
                       type="file" 
                       ref={fileInputRef} 
@@ -110,14 +110,14 @@ const AiDesigner: React.FC<AiDesignerProps> = ({ initialPrompt }) => {
                       <X className="w-4 h-4" />
                     </button>
                     <div className="absolute inset-0 bg-cc-green/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <p className="text-white font-black uppercase text-[10px] tracking-widest">Bild vald för kloning</p>
+                      <p className="text-white font-black uppercase text-[12px] tracking-widest">Bild vald för kloning</p>
                     </div>
                   </div>
                 )}
               </div>
 
               <div className="space-y-4">
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block ml-2">
+                <label className="text-[12px] font-bold text-slate-400 uppercase tracking-widest block ml-2">
                   {sourceImage ? 'Förfina kloningen' : 'Beskriv visionen'}
                 </label>
                 <textarea 
@@ -167,11 +167,11 @@ const AiDesigner: React.FC<AiDesignerProps> = ({ initialPrompt }) => {
                   <div className="flex space-x-8">
                     <div className="text-center">
                       <p className="text-slate-800 font-black">1024px</p>
-                      <p className="text-[9px] uppercase font-bold tracking-widest">Resolution</p>
+                      <p className="text-[12px] uppercase font-bold tracking-widest">Resolution</p>
                     </div>
                     <div className="text-center border-l border-slate-100 pl-8">
                       <p className="text-slate-800 font-black">16:9</p>
-                      <p className="text-[9px] uppercase font-bold tracking-widest">Aspect Ratio</p>
+                      <p className="text-[12px] uppercase font-bold tracking-widest">Aspect Ratio</p>
                     </div>
                   </div>
                   <p className="text-xs font-medium italic">"Real-time visual rendering powered by Clean Charge Vision Engine"</p>

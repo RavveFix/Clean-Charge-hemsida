@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
                 </span>
               </div>
               <div className="space-y-3">
-                <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">In partnership with</span>
+                <span className="text-[12px] font-black uppercase tracking-widest text-slate-400">In partnership with</span>
                 <div className="flex flex-wrap items-center gap-6">
                   {['MONTA', 'ZAPTEC', 'EASEE', 'AUTEL'].map((brand) => (
                     <span key={brand} className="text-sm font-black text-slate-300 opacity-40 hover:opacity-60 transition-opacity">{brand}</span>
@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="text-[11px] font-black uppercase tracking-[0.3em] mb-10 text-cc-green">Lösningar</h4>
+            <h4 className="text-[12px] font-black uppercase tracking-[0.3em] mb-10 text-cc-green">Lösningar</h4>
             <ul className="space-y-5">
               {[
                 { label: 'För Privatpersoner', href: '/privat' },
@@ -79,7 +79,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="text-[11px] font-black uppercase tracking-[0.3em] mb-10 text-cc-green">Support</h4>
+            <h4 className="text-[12px] font-black uppercase tracking-[0.3em] mb-10 text-cc-green">Support</h4>
             <ul className="space-y-5">
               {[
                 { label: 'Support & Manualer', href: '/support' },
@@ -97,20 +97,20 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="text-[11px] font-black uppercase tracking-[0.3em] mb-10 text-cc-green">Kontakt</h4>
+            <h4 className="text-[12px] font-black uppercase tracking-[0.3em] mb-10 text-cc-green">Kontakt</h4>
             <ul className="space-y-5">
               <li><span className="text-sm font-bold text-slate-500">Dialoggatan 12B, Örebro</span></li>
               <li><a href="mailto:info@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors inline-flex items-center min-h-[44px]">info@cleancharge.se</a></li>
               <li><a href="tel:0197604290" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors inline-flex items-center min-h-[44px]">019-760 42 90</a></li>
               <li className="pt-4 space-y-1">
                 <p className="text-sm font-bold text-slate-800 leading-tight">Ravon Eric Albin Strawder</p>
-                <p className="text-[9px] font-black text-cc-green uppercase tracking-widest">Teknik & Drift</p>
+                <p className="text-[12px] font-black text-cc-green uppercase tracking-widest">Teknik & Drift</p>
                 <a href="tel:0722110026" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors flex items-center min-h-[44px]">072-211 00 26</a>
                 <a href="mailto:ravon.strawder@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors flex items-center min-h-[44px]">ravon.strawder@cleancharge.se</a>
               </li>
               <li className="pt-4 space-y-1">
                 <p className="text-sm font-bold text-slate-800 leading-tight">Elisabeth Lindh</p>
-                <p className="text-[9px] font-black text-cc-green uppercase tracking-widest">Säljansvarig</p>
+                <p className="text-[12px] font-black text-cc-green uppercase tracking-widest">Säljansvarig</p>
                 <a href="tel:019333099" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors flex items-center min-h-[44px]">019-33 30 99</a>
                 <a href="mailto:elisabeth.lindh@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors flex items-center min-h-[44px]">elisabeth.lindh@cleancharge.se</a>
               </li>
@@ -121,7 +121,7 @@ const Footer: React.FC = () => {
         <div className="pt-8 sm:pt-16 border-t border-slate-100 flex flex-col gap-6 sm:gap-8 md:flex-row md:justify-between md:items-center">
           <div className="flex flex-col md:flex-row items-center gap-6">
             <div className="flex items-center space-x-6">
-              <p className="text-[11px] font-black uppercase tracking-widest text-slate-400">© 2026 Clean Charge AB</p>
+              <p className="text-[12px] font-black uppercase tracking-widest text-slate-400">© 2026 Clean Charge AB</p>
               <div className="h-4 w-px bg-slate-100"></div>
               <Image
                 src="https://monta.com/app/themes/monta-sage-latest/public/build/assets/logo_soc2-t2-BsbIKEuK.png"
@@ -133,12 +133,12 @@ const Footer: React.FC = () => {
               />
             </div>
             <div className="hidden md:block h-4 w-px bg-slate-100"></div>
-            <p className="text-[10px] md:text-[11px] font-black uppercase tracking-widest text-slate-400">Design by Rávon Eric Albin Strawder & AI</p>
+            <p className="text-[12px] md:text-[12px] font-black uppercase tracking-widest text-slate-400">Design by Rávon Eric Albin Strawder & AI</p>
           </div>
           <div className="flex flex-wrap gap-4 sm:gap-6 md:gap-12 justify-center md:justify-end">
-            <Link href="/integritetspolicy" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-slate-700 transition-colors">Integritetspolicy</Link>
-            <Link href="/villkor" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-slate-700 transition-colors">Köpvillkor</Link>
-            <Link href="/cookies" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-slate-700 transition-colors">Cookies</Link>
+            <Link href="/integritetspolicy" className="text-[12px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-slate-700 transition-colors">Integritetspolicy</Link>
+            <Link href="/villkor" className="text-[12px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-slate-700 transition-colors">Köpvillkor</Link>
+            <Link href="/cookies" className="text-[12px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-slate-700 transition-colors">Cookies</Link>
           </div>
         </div>
       </div>

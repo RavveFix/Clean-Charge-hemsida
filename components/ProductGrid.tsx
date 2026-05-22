@@ -35,7 +35,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             {isPremium && (
               <div className="glass-card px-4 py-1.5 rounded-full shadow-lg flex items-center space-x-2 border border-white/50 animate-float">
                 <ShieldCheck className="w-3.5 h-3.5 text-cc-green" />
-                <span className="text-[9px] font-black uppercase tracking-widest text-slate-800">Premium Choice</span>
+                <span className="text-[12px] font-black uppercase tracking-widest text-slate-800">Premium Choice</span>
               </div>
             )}
           </div>
@@ -48,10 +48,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <div className="flex justify-between items-start gap-2">
             <div>
               <h3 className="text-xl font-black text-slate-900 tracking-tight leading-none group-hover:text-cc-green transition-colors">{product.name}</h3>
-              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">{product.category === 'snabbladdare' ? 'DC Snabbladdare' : 'AC Laddbox'}</p>
+              <p className="text-[12px] font-black text-slate-400 uppercase tracking-widest mt-2">{product.category === 'snabbladdare' ? 'DC Snabbladdare' : 'AC Laddbox'}</p>
             </div>
             <div className="flex flex-col items-end shrink-0">
-               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Verifierad</span>
+               <span className="text-[12px] font-bold text-slate-400 uppercase tracking-tighter">Verifierad</span>
             </div>
           </div>
 
@@ -62,7 +62,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           {/* Tags */}
           <div className="flex flex-wrap gap-2 pt-1">
             {product.features?.slice(0, 2).map((f, i) => (
-              <span key={i} className="text-[9px] font-black uppercase tracking-widest text-slate-400 border border-slate-100 px-2 py-1 rounded-lg group-hover:border-cc-green/20 transition-colors">
+              <span key={i} className="text-[12px] font-black uppercase tracking-widest text-slate-400 border border-slate-100 px-2 py-1 rounded-lg group-hover:border-cc-green/20 transition-colors">
                 {f}
               </span>
             ))}
@@ -73,16 +73,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <div className="space-y-1">
               {product.price > 0 ? (
                 <>
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] opacity-80">Pris inkl. rot</p>
+                  <p className="text-[12px] font-black text-slate-400 uppercase tracking-[0.2em] opacity-80">Pris inkl. rot</p>
                   <p className="text-2xl font-black text-slate-900 tracking-tighter">{product.price.toLocaleString()} kr</p>
                 </>
               ) : (
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] opacity-80">Pris på förfrågan</p>
+                <p className="text-[12px] font-black text-slate-400 uppercase tracking-[0.2em] opacity-80">Pris på förfrågan</p>
               )}
             </div>
             <Link
               href={`/kontakt?product=${encodeURIComponent(product.name)}`}
-              className="shimmer-btn bg-slate-900 text-white px-6 py-3.5 rounded-2xl font-black uppercase tracking-widest text-[10px] flex items-center gap-3 hover:bg-cc-green hover:shadow-2xl hover:shadow-cc-green/30 transition-all active:scale-95 group/btn"
+              className="shimmer-btn bg-slate-900 text-white px-6 py-3.5 rounded-2xl font-black uppercase tracking-widest text-[12px] flex items-center gap-3 hover:bg-cc-green hover:shadow-2xl hover:shadow-cc-green/30 transition-all active:scale-95 group/btn"
               aria-label="Begär Offert"
             >
               Begär Offert

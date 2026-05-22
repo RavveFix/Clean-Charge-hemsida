@@ -42,7 +42,7 @@ export default function NotFound() {
     <ClientLayout>
       <section className="min-h-[80vh] flex items-center justify-center bg-white px-6 py-32">
         <div className="max-w-3xl w-full text-center">
-          <p className="text-[11px] font-black uppercase tracking-[0.3em] text-cc-green mb-6">
+          <p className="text-[12px] font-black uppercase tracking-[0.3em] text-cc-green mb-6">
             404 – Sidan kunde inte hittas
           </p>
           <h1 className="text-5xl sm:text-7xl md:text-8xl font-black text-slate-900 tracking-tighter leading-[0.95] mb-6">

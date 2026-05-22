@@ -78,7 +78,7 @@ const LiveImpactWidget: React.FC = () => {
             <span className="absolute w-2 h-2 rounded-full bg-cc-green animate-ping" />
             <span className="relative w-2 h-2 rounded-full bg-cc-green" />
           </div>
-          <span className="text-[10px] font-black uppercase tracking-widest text-slate-300">Live Grid</span>
+          <span className="text-[12px] font-black uppercase tracking-widest text-slate-300">Live Grid</span>
           <div className="h-3 w-[1px] bg-slate-800" />
           <div className="flex items-center space-x-1.5">
             <Leaf className="w-3.5 h-3.5 text-cc-green fill-cc-green/10" />
@@ -101,7 +101,7 @@ const LiveImpactWidget: React.FC = () => {
               </div>
               <div>
                 <h4 className="text-xs font-black text-white uppercase tracking-widest leading-none">Clean Impact</h4>
-                <span className="text-[9px] font-bold text-cc-green uppercase tracking-widest flex items-center gap-1 mt-1">
+                <span className="text-[12px] font-bold text-cc-green uppercase tracking-widest flex items-center gap-1 mt-1">
                   <span className="w-1 h-1 rounded-full bg-cc-green animate-pulse" />
                   Sveriges elnät i realtid
                 </span>
@@ -121,25 +121,25 @@ const LiveImpactWidget: React.FC = () => {
             {/* Stat 1: CO2 Saved */}
             <div className="bg-white/[0.02] border border-white/[0.04] p-4 rounded-3xl">
               <div className="flex justify-between items-center mb-1">
-                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Klimatbesparing (CO₂ sparat)</span>
+                <span className="text-[12px] font-black text-slate-400 uppercase tracking-widest">Klimatbesparing (CO₂ sparat)</span>
                 <TrendingDown className="w-3.5 h-3.5 text-cc-green" />
               </div>
               <div className="text-2xl font-black text-white tracking-tight tabular-nums">
                 {co2Saved.toLocaleString('sv-SE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} <span className="text-xs font-semibold text-cc-green">kg</span>
               </div>
-              <p className="text-[10px] text-slate-500 font-medium mt-1">Jämfört med traditionell fossildrift.</p>
+              <p className="text-[12px] text-slate-500 font-medium mt-1">Jämfört med traditionell fossildrift.</p>
             </div>
 
             {/* Stat 2: Green Electricity */}
             <div className="bg-white/[0.02] border border-white/[0.04] p-4 rounded-3xl">
               <div className="flex justify-between items-center mb-1">
-                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Grön El Levererad</span>
+                <span className="text-[12px] font-black text-slate-400 uppercase tracking-widest">Grön El Levererad</span>
                 <Zap className="w-3.5 h-3.5 text-cc-green" />
               </div>
               <div className="text-2xl font-black text-white tracking-tight tabular-nums">
                 {kwhDelivered.toLocaleString('sv-SE', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} <span className="text-xs font-semibold text-cc-green">kWh</span>
               </div>
-              <p className="text-[10px] text-slate-500 font-medium mt-1">100% spårbar el från sol och vind.</p>
+              <p className="text-[12px] text-slate-500 font-medium mt-1">100% spårbar el från sol och vind.</p>
             </div>
 
             {/* Stat 3: Grid Load & Spot Price */}

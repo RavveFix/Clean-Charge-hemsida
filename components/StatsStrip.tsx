@@ -68,8 +68,8 @@ const StatItem: React.FC<StatItemProps> = ({ value, suffix, label, sublabel, ico
         </span>
         <span className="text-xl sm:text-3xl font-black text-cc-green mb-1">{suffix}</span>
       </div>
-      <p className="text-[11px] sm:text-sm font-black uppercase tracking-[0.1em] sm:tracking-[0.15em] text-slate-700">{label}</p>
-      <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1 hidden sm:block">{sublabel}</p>
+      <p className="text-[12px] sm:text-sm font-black uppercase tracking-[0.1em] sm:tracking-[0.15em] text-slate-700">{label}</p>
+      <p className="text-[12px] sm:text-[12px] font-bold uppercase tracking-widest text-slate-400 mt-1 hidden sm:block">{sublabel}</p>
     </div>
   );
 };
@@ -103,7 +103,7 @@ const StatsStrip: React.FC = () => {
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <div className="inline-flex items-center space-x-2 bg-cc-green/8 text-cc-green px-5 py-2 rounded-full border border-cc-green/15 mb-4 md:mb-6">
             <Zap className="w-3.5 h-3.5 fill-cc-green" />
-            <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em]">Bevisad Expertis</span>
+            <span className="text-[12px] md:text-[12px] font-black uppercase tracking-[0.3em]">Bevisad Expertis</span>
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-800 tracking-tight">
             Siffrorna talar för sig själva.
@@ -123,7 +123,7 @@ const StatsStrip: React.FC = () => {
 
         {/* Partner logos strip */}
         <div className="mt-12 sm:mt-20 pt-10 sm:pt-16 border-t border-slate-100">
-          <p className="text-center text-[9px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-slate-300 mb-6 sm:mb-10">
+          <p className="text-center text-[12px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-slate-300 mb-6 sm:mb-10">
             Auktoriserad partner för
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-12 md:gap-20">

@@ -38,7 +38,7 @@ const MontaHubSection: React.FC = () => {
                   unoptimized
                   className="h-4 w-auto brightness-0 invert"
                 />
-                <span className="text-[10px] font-bold uppercase tracking-widest border-l border-white/20 pl-3">Powered by Clean Charge</span>
+                <span className="text-[12px] font-bold uppercase tracking-widest border-l border-white/20 pl-3">Powered by Clean Charge</span>
               </div>
               
               <h1 className="text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-tight">
@@ -65,11 +65,11 @@ const MontaHubSection: React.FC = () => {
                   <div className="bg-white/10 backdrop-blur-md p-3 sm:p-6 rounded-xl sm:rounded-3xl border border-white/20">
                     <div className="flex justify-between items-end gap-4">
                       <div>
-                        <p className="text-blue-200 text-[9px] sm:text-xs font-bold uppercase tracking-widest mb-1">Status</p>
+                        <p className="text-blue-200 text-[12px] sm:text-xs font-bold uppercase tracking-widest mb-1">Status</p>
                         <p className="text-white font-black text-base sm:text-2xl">SmartCharge Aktiv</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-blue-200 text-[9px] sm:text-xs font-bold uppercase tracking-widest mb-1">Sparat idag</p>
+                        <p className="text-blue-200 text-[12px] sm:text-xs font-bold uppercase tracking-widest mb-1">Sparat idag</p>
                         <p className="text-cc-green font-black text-base sm:text-2xl">-42 kr</p>
                       </div>
                     </div>
@@ -183,7 +183,7 @@ const MontaHubSection: React.FC = () => {
                 </div>
                 
                 {/* Floating badge aligned to screenshot */}
-                <div className="absolute top-6 right-6 z-20 bg-[#00C28A] text-[#020817] px-4 py-2 rounded-lg font-black text-[10px] uppercase tracking-wider shadow-lg animate-pulse">
+                <div className="absolute top-6 right-6 z-20 bg-[#00C28A] text-[#020817] px-4 py-2 rounded-lg font-black text-[12px] uppercase tracking-wider shadow-lg animate-pulse">
                   Live Dashboard
                 </div>
               </div>

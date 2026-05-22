@@ -71,7 +71,7 @@ export default function OmOssPage() {
                 </div>
                 <div>
                   <p className="text-2xl font-black text-slate-900 tracking-tighter leading-none">{f.value}</p>
-                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1.5">{f.label}</p>
+                  <p className="text-[12px] font-black uppercase tracking-widest text-slate-400 mt-1.5">{f.label}</p>
                 </div>
               </div>
             ))}
@@ -116,7 +116,7 @@ export default function OmOssPage() {
           <div className="grid md:grid-cols-3 gap-5 sm:gap-8">
             {VALUES.map((v, i) => (
               <div key={v.title} className="bg-white p-7 sm:p-10 rounded-3xl border border-slate-100 hover:border-cc-green/30 hover:shadow-xl hover:shadow-cc-green/5 transition-all">
-                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-cc-green mb-5">{String(i + 1).padStart(2, '0')}</p>
+                <p className="text-[12px] font-black uppercase tracking-[0.3em] text-cc-green mb-5">{String(i + 1).padStart(2, '0')}</p>
                 <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mb-3">{v.title}</h3>
                 <p className="text-sm sm:text-base text-slate-500 font-medium leading-relaxed">{v.body}</p>
               </div>
@@ -146,7 +146,7 @@ export default function OmOssPage() {
                     <span className="text-3xl sm:text-4xl font-black text-cc-green tracking-tighter">RS</span>
                   </div>
                   <div className="flex-1">
-                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-cc-green mb-2">Teknik & Drift</p>
+                    <p className="text-[12px] font-black uppercase tracking-[0.3em] text-cc-green mb-2">Teknik & Drift</p>
                     <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-4">Ravon Eric Albin Strawder</h3>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
                       <a href="tel:0722110026" className="inline-flex items-center gap-2.5 text-sm font-bold text-slate-300 hover:text-cc-green transition-colors">
@@ -169,7 +169,7 @@ export default function OmOssPage() {
                     <span className="text-3xl sm:text-4xl font-black text-cc-green tracking-tighter">EL</span>
                   </div>
                   <div className="flex-1">
-                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-cc-green mb-2">Säljansvarig</p>
+                    <p className="text-[12px] font-black uppercase tracking-[0.3em] text-cc-green mb-2">Säljansvarig</p>
                     <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-4">Elisabeth Lindh</h3>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
                       <a href="tel:019333099" className="inline-flex items-center gap-2.5 text-sm font-bold text-slate-300 hover:text-cc-green transition-colors">

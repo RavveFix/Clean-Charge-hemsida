@@ -86,7 +86,7 @@ const PrivateChargingSection: React.FC = () => {
                                     </div>
                                     <div>
                                         <p className="font-black text-slate-800 uppercase text-lg">Smart Laddning</p>
-                                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Optimera kostnaden</p>
+                                        <p className="text-[12px] font-bold text-slate-400 uppercase tracking-widest">Optimera kostnaden</p>
                                     </div>
                                 </div>
                                 <p className="text-slate-500 text-sm font-medium">Vi ställer in din laddare att ladda när elpriset är som lägst.</p>
@@ -119,11 +119,11 @@ const PrivateChargingSection: React.FC = () => {
                         <div className="grid grid-cols-2 gap-4 sm:gap-6">
                             <div className="bg-white/5 p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
                                 <p className="text-2xl sm:text-4xl font-black text-white mb-2">50%</p>
-                                <p className="text-[10px] font-bold text-cc-green uppercase tracking-widest">På totalkostnaden</p>
+                                <p className="text-[12px] font-bold text-cc-green uppercase tracking-widest">På totalkostnaden</p>
                             </div>
                             <div className="bg-white/5 p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-white/10 hover:bg-white/10 transition-colors">
                                 <p className="text-2xl sm:text-4xl font-black text-white mb-2">0 kr</p>
-                                <p className="text-[10px] font-bold text-cc-green uppercase tracking-widest">Administrationsavgift</p>
+                                <p className="text-[12px] font-bold text-cc-green uppercase tracking-widest">Administrationsavgift</p>
                             </div>
                         </div>
                     </div>
@@ -177,7 +177,7 @@ const PrivateChargingSection: React.FC = () => {
                                             <div className="flex">
                                                 {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3" style={{ fill: '#00b182', color: '#00b182' }} />)}
                                             </div>
-                                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Premium Choice</span>
+                                            <span className="text-[12px] font-bold text-slate-400 uppercase tracking-widest">Premium Choice</span>
                                         </div>
                                     </div>
                                     
@@ -195,7 +195,7 @@ const PrivateChargingSection: React.FC = () => {
                                     </ul>
                                     
                                     <div className="pt-6 mt-2 border-t border-slate-100">
-                                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Pris med Grön Teknik</p>
+                                         <p className="text-[12px] font-black text-slate-400 uppercase tracking-widest mb-1">Pris med Grön Teknik</p>
                                          <p className="text-4xl font-black text-slate-900 tracking-tight">{Math.round(product.price * 0.5).toLocaleString()} kr</p>
                                     </div>
                                     

@@ -33,7 +33,7 @@ const MontaSection: React.FC = () => {
                   />
                 </div>
                 <div className="flex items-center space-x-3 text-blue-200">
-                  <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em]">Authorized Operator Partner</span>
+                  <span className="text-[12px] md:text-[12px] font-black uppercase tracking-[0.3em]">Authorized Operator Partner</span>
                   <div className="h-px w-8 md:w-12 bg-blue-400"></div>
                 </div>
                 
@@ -95,7 +95,7 @@ const MontaSection: React.FC = () => {
         <div className="flex items-center justify-between mb-10">
           <div className="flex items-center space-x-3">
             <div className="h-px w-12 bg-slate-200" />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">Vad du får med Monta</span>
+            <span className="text-[12px] font-black uppercase tracking-[0.3em] text-slate-400">Vad du får med Monta</span>
           </div>
           <div className="h-px flex-1 bg-slate-100 ml-8 hidden md:block" />
         </div>
@@ -146,7 +146,7 @@ const MontaSection: React.FC = () => {
 
                 <div className="pt-5 border-t border-slate-50 flex items-baseline gap-2">
                   <span className="text-2xl font-black text-[#003DFF] tracking-tighter">{feature.stat}</span>
-                  <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">{feature.statLabel}</span>
+                  <span className="text-[12px] font-black uppercase tracking-widest text-slate-400">{feature.statLabel}</span>
                 </div>
               </div>
             </div>

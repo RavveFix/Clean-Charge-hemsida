@@ -128,17 +128,17 @@ const SupportSection: React.FC = () => {
               <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Serienummer (Laddbox)</label>
+                    <label className="text-[12px] font-black uppercase tracking-widest text-slate-400 ml-4">Serienummer (Laddbox)</label>
                     <input type="text" className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 font-medium focus:outline-none focus:border-red-400 transition-all" placeholder="T.ex. ZAP-12345" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Telefon</label>
+                    <label className="text-[12px] font-black uppercase tracking-widest text-slate-400 ml-4">Telefon</label>
                     <input type="tel" className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 font-medium focus:outline-none focus:border-red-400 transition-all" placeholder="Ditt nummer" />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Beskrivning av felet</label>
+                  <label className="text-[12px] font-black uppercase tracking-widest text-slate-400 ml-4">Beskrivning av felet</label>
                   <textarea className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 font-medium h-32 resize-none focus:outline-none focus:border-red-400 transition-all" placeholder="Lyser laddboxen rött? Vad hände innan felet uppstod?" />
                 </div>
 

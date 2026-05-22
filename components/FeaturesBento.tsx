@@ -118,13 +118,13 @@ const FeaturesBento: React.FC = () => {
             {/* Terminal UI -> Typewriter Widget */}
             <div className="mt-8 bg-white/[0.03] border border-white/[0.06] p-5 rounded-2xl w-full font-mono">
                <div className="flex justify-between items-center mb-4">
-                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">System Status</span>
-                  <span className="flex items-center gap-1.5 text-[10px] font-bold text-brand-green uppercase tracking-widest">
+                  <span className="text-[12px] font-bold text-slate-500 uppercase tracking-widest">System Status</span>
+                  <span className="flex items-center gap-1.5 text-[12px] font-bold text-brand-green uppercase tracking-widest">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-green animate-pulse" />
                     Live
                   </span>
                </div>
-               <div className="text-[11px] sm:text-[12px] md:text-[13px] font-mono leading-[1.8] text-slate-300 min-h-[60px] break-words whitespace-pre-wrap">
+               <div className="text-[12px] sm:text-[12px] md:text-[13px] font-mono leading-[1.8] text-slate-300 min-h-[60px] break-words whitespace-pre-wrap">
                   {displayedText}<span className={`inline-block w-[2px] h-[14px] bg-brand-green ml-0.5 align-middle transition-opacity ${cursorVisible ? 'opacity-100' : 'opacity-0'}`} />
                </div>
             </div>
@@ -147,7 +147,7 @@ const FeaturesBento: React.FC = () => {
                      <Zap className="w-4 h-4 text-slate-400" />
                   </div>
                   <div>
-                     <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide mb-0.5">Kostnad denna månad</div>
+                     <div className="text-[12px] font-semibold text-slate-500 uppercase tracking-wide mb-0.5">Kostnad denna månad</div>
                      <div className="text-[20px] font-bold text-text-primary leading-none">345 kr</div>
                   </div>
                </div>

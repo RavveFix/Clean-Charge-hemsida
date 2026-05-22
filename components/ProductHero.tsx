@@ -16,7 +16,7 @@ const ProductHero: React.FC = () => {
         <div className="max-w-4xl">
           <div className="inline-flex items-center space-x-3 bg-slate-50 border border-slate-100 px-4 py-2 rounded-full mb-8 shadow-sm">
             <Box className="w-4 h-4 text-cc-green" />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500">Premium Sortiment</span>
+            <span className="text-[12px] font-black uppercase tracking-[0.3em] text-slate-500">Premium Sortiment</span>
           </div>
           
           <h1 className="text-4xl sm:text-6xl md:text-[7rem] font-black tracking-tighter leading-[0.85] uppercase mb-6 sm:mb-8">

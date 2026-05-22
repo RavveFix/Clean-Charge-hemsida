@@ -54,7 +54,7 @@ const PreFooterCTA: React.FC = () => {
             <div className="space-y-8 sm:space-y-14">
               <div className="inline-flex items-center space-x-3 bg-white/5 backdrop-blur-xl px-6 py-2.5 rounded-full border border-white/10 group cursor-default">
                 <div className="w-2 h-2 rounded-full bg-cc-green animate-pulse shadow-[0_0_10px_rgba(0,177,130,1)]" />
-                <span className="text-[11px] font-bold text-slate-300 uppercase tracking-[0.4em] group-hover:text-white transition-colors">Starta din resa idag</span>
+                <span className="text-[12px] font-bold text-slate-300 uppercase tracking-[0.4em] group-hover:text-white transition-colors">Starta din resa idag</span>
               </div>
 
               <div className="relative">

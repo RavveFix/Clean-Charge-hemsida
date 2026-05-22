@@ -79,7 +79,7 @@ const ContactSection: React.FC = () => {
           <div className="max-w-3xl">
             <div className="inline-flex items-center space-x-3 bg-cc-green/10 text-cc-green px-5 py-2.5 rounded-full border border-cc-green/20 mb-10">
               <MessageSquare className="w-4 h-4" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em]">Vi finns här för dig</span>
+              <span className="text-[12px] font-black uppercase tracking-[0.3em]">Vi finns här för dig</span>
             </div>
             <h1 className="text-4xl sm:text-6xl md:text-[7rem] font-black text-white tracking-tighter leading-[0.88] uppercase mb-6 sm:mb-8">
               Kom i<br />
@@ -98,7 +98,7 @@ const ContactSection: React.FC = () => {
               ].map((s, i) => (
                 <div key={i} className="space-y-1">
                   <p className="text-2xl font-black text-white tracking-tighter">{s.value}</p>
-                  <p className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-500">{s.label}</p>
+                  <p className="text-[12px] font-black uppercase tracking-[0.3em] text-slate-500">{s.label}</p>
                 </div>
               ))}
             </div>
@@ -147,7 +147,7 @@ const ContactSection: React.FC = () => {
                         { id: 'phone', label: 'Telefon', type: 'tel', placeholder: '070 - 123 45 67' },
                       ].map(({ id, label, type, placeholder }) => (
                         <div key={id} className="space-y-2">
-                          <label htmlFor={id} className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">{label}</label>
+                          <label htmlFor={id} className="text-[12px] font-black uppercase tracking-widest text-slate-400 ml-1">{label}</label>
                           <input
                             id={id}
                             name={id}
@@ -162,7 +162,7 @@ const ContactSection: React.FC = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="email" className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">E-post</label>
+                      <label htmlFor="email" className="text-[12px] font-black uppercase tracking-widest text-slate-400 ml-1">E-post</label>
                       <input
                         id="email"
                         name="email"
@@ -175,7 +175,7 @@ const ContactSection: React.FC = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="subject" className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Ärende</label>
+                      <label htmlFor="subject" className="text-[12px] font-black uppercase tracking-widest text-slate-400 ml-1">Ärende</label>
                       <select
                         id="subject"
                         name="subject"
@@ -191,7 +191,7 @@ const ContactSection: React.FC = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="message" className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Meddelande</label>
+                      <label htmlFor="message" className="text-[12px] font-black uppercase tracking-widest text-slate-400 ml-1">Meddelande</label>
                       <textarea
                         id="message"
                         name="message"
@@ -263,7 +263,7 @@ const ContactSection: React.FC = () => {
                   <div>
                     <h3 className="text-sm font-black text-slate-800 group-hover:text-cc-green transition-colors">{item.title}</h3>
                     <p className="text-base font-bold text-slate-700">{item.content}</p>
-                    <p className="text-[9px] font-black uppercase tracking-widest text-slate-400 mt-0.5">{item.sub}</p>
+                    <p className="text-[12px] font-black uppercase tracking-widest text-slate-400 mt-0.5">{item.sub}</p>
                   </div>
                   <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-cc-green ml-auto shrink-0 group-hover:translate-x-1 transition-all" />
                 </a>
@@ -276,7 +276,7 @@ const ContactSection: React.FC = () => {
                     <User className="w-6 h-6 text-cc-green" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-[9px] font-black uppercase tracking-[0.3em] text-cc-green mb-1">Teknik & Drift</p>
+                    <p className="text-[12px] font-black uppercase tracking-[0.3em] text-cc-green mb-1">Teknik & Drift</p>
                     <h3 className="text-base font-black text-slate-900 mb-3">Ravon Eric Albin Strawder</h3>
                     <div className="space-y-2">
                       <a href="tel:0722110026" className="flex items-center gap-3 text-slate-500 hover:text-cc-green transition-colors text-sm font-bold">
@@ -298,7 +298,7 @@ const ContactSection: React.FC = () => {
                     <User className="w-6 h-6 text-cc-green" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-[9px] font-black uppercase tracking-[0.3em] text-cc-green mb-1">Säljansvarig</p>
+                    <p className="text-[12px] font-black uppercase tracking-[0.3em] text-cc-green mb-1">Säljansvarig</p>
                     <h3 className="text-base font-black text-slate-900 mb-3">Elisabeth Lindh</h3>
                     <div className="space-y-2">
                       <a href="tel:019333099" className="flex items-center gap-3 text-slate-500 hover:text-cc-green transition-colors text-sm font-bold">
