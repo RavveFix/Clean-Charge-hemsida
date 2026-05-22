@@ -7,12 +7,14 @@ import { Mail, Phone, MapPin, Send, MessageSquare, User, CheckCircle2, ArrowRigh
 const ContactSection: React.FC = () => {
   const searchParams = useSearchParams();
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [focused, setFocused] = useState<string | null>(null);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    
+
     // Read product query parameter and automatically construct a highly professional lead text
     const product = searchParams.get('product');
     if (product) {
@@ -20,9 +22,36 @@ const ContactSection: React.FC = () => {
     }
   }, [searchParams]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (submitting) return;
+    setErrorMsg(null);
+    setSubmitting(true);
+    try {
+      const fd = new FormData(e.currentTarget);
+      const payload = {
+        name: String(fd.get('name') ?? ''),
+        phone: String(fd.get('phone') ?? ''),
+        email: String(fd.get('email') ?? ''),
+        subject: String(fd.get('subject') ?? ''),
+        message: String(fd.get('message') ?? ''),
+        website: String(fd.get('website') ?? ''),
+      };
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data?.error || 'Något gick fel. Försök igen eller ring oss direkt.');
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : 'Något gick fel.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -106,6 +135,12 @@ const ContactSection: React.FC = () => {
                       <p className="text-slate-400 text-sm font-medium">Fyll i formuläret så hör vi av oss inom kort.</p>
                     </div>
 
+                    {/* Honeypot — dolt för människor, bot fyller i */}
+                    <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+                      <label htmlFor="website">Webbplats (lämna tomt)</label>
+                      <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+                    </div>
+
                     <div className="grid md:grid-cols-2 gap-5">
                       {[
                         { id: 'name', label: 'Namn', type: 'text', placeholder: 'Förnamn Efternamn' },
@@ -169,11 +204,18 @@ const ContactSection: React.FC = () => {
                       />
                     </div>
 
+                    {errorMsg && (
+                      <div role="alert" className="bg-red-50 border border-red-200 text-red-800 text-sm font-medium rounded-2xl px-5 py-4">
+                        {errorMsg}
+                      </div>
+                    )}
+
                     <button
                       type="submit"
-                      className="w-full bg-slate-900 text-white font-black uppercase tracking-[0.2em] py-5 rounded-2xl hover:bg-cc-green transition-all duration-300 shadow-lg hover:shadow-cc-green/25 flex items-center justify-center space-x-3 group active:scale-95"
+                      disabled={submitting}
+                      className="w-full bg-slate-900 text-white font-black uppercase tracking-[0.2em] py-5 rounded-2xl hover:bg-cc-green transition-all duration-300 shadow-lg hover:shadow-cc-green/25 flex items-center justify-center space-x-3 group active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-slate-900"
                     >
-                      <span>Skicka Meddelande</span>
+                      <span>{submitting ? 'Skickar…' : 'Skicka Meddelande'}</span>
                       <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </button>
                   </form>
