@@ -108,6 +108,7 @@ const Footer: React.FC = () => {
               <li className="pt-4 space-y-1">
                 <p className="text-sm font-bold text-slate-800 leading-tight">Elisabeth Lindh</p>
                 <p className="text-[9px] font-black text-cc-green uppercase tracking-widest">Säljansvarig</p>
+                <a href="tel:019333099" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors block">019-33 30 99</a>
                 <a href="mailto:elisabeth.lindh@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors block">elisabeth.lindh@cleancharge.se</a>
               </li>
             </ul>

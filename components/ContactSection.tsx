@@ -259,6 +259,10 @@ const ContactSection: React.FC = () => {
                     <p className="text-[9px] font-black uppercase tracking-[0.3em] text-cc-green mb-1">Säljansvarig</p>
                     <h3 className="text-base font-black text-slate-900 mb-3">Elisabeth Lindh</h3>
                     <div className="space-y-2">
+                      <a href="tel:019333099" className="flex items-center gap-3 text-slate-500 hover:text-cc-green transition-colors text-sm font-bold">
+                        <Phone className="w-3.5 h-3.5" />
+                        019-33 30 99
+                      </a>
                       <a href="mailto:elisabeth.lindh@cleancharge.se" className="flex items-center gap-3 text-slate-500 hover:text-cc-green transition-colors text-sm font-bold">
                         <Mail className="w-3.5 h-3.5" />
                         elisabeth.lindh@cleancharge.se

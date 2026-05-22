@@ -165,6 +165,10 @@ export default function OmOssPage() {
                     <p className="text-[10px] font-black uppercase tracking-[0.3em] text-cc-green mb-2">Säljansvarig</p>
                     <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-4">Elisabeth Lindh</h3>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
+                      <a href="tel:019333099" className="inline-flex items-center gap-2.5 text-sm font-bold text-slate-300 hover:text-cc-green transition-colors">
+                        <Phone className="w-4 h-4" />
+                        019-33 30 99
+                      </a>
                       <a href="mailto:elisabeth.lindh@cleancharge.se" className="inline-flex items-center gap-2.5 text-sm font-bold text-slate-300 hover:text-cc-green transition-colors">
                         <Mail className="w-4 h-4" />
                         elisabeth.lindh@cleancharge.se
