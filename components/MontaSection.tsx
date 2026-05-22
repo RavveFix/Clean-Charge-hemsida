@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ShieldCheck, Smartphone, BarChart3, ArrowRight } from 'lucide-react';
 
 const MontaSection: React.FC = () => {
@@ -22,9 +23,12 @@ const MontaSection: React.FC = () => {
             <div className="space-y-8 md:space-y-10">
               <div className="space-y-4 md:space-y-6">
                 <div className="inline-block pb-2 md:pb-4">
-                  <img 
-                    src="https://monta.com/app/themes/monta-sage-latest/public/build/assets/Monta_Logo-6IYbGNWl.svg" 
-                    alt="Monta Logo" 
+                  <Image
+                    src="https://monta.com/app/themes/monta-sage-latest/public/build/assets/Monta_Logo-6IYbGNWl.svg"
+                    alt="Monta"
+                    width={160}
+                    height={48}
+                    unoptimized
                     className="h-8 md:h-12 w-auto brightness-0 invert transition-transform hover:scale-105 duration-300"
                   />
                 </div>
@@ -57,19 +61,23 @@ const MontaSection: React.FC = () => {
               <div className="relative">
                 {/* Background Image - App Collage */}
                 <div className="rounded-[2.5rem] overflow-hidden shadow-2xl bg-white border-4 border-white/10 transform hover:scale-[1.02] transition-all duration-500">
-                  <img 
+                  <Image
                     src="/images/brand/Charge_2.png"
-                    alt="Monta Charge App Collage"
-                    className="w-full h-auto object-cover" 
+                    alt="Monta Charge-appen visar laddstationer och tariffer"
+                    width={800}
+                    height={600}
+                    className="w-full h-auto object-cover"
                   />
                 </div>
                 
                 {/* Overlapping Image - Admin Interface (Glassmorphic Polish & Sizing) */}
                 <div className="absolute -bottom-4 -right-4 sm:-bottom-8 sm:-right-8 w-[60%] sm:w-1/2 md:w-[60%] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,61,255,0.15)] bg-slate-950/90 border border-white/80 backdrop-blur-md group hover:scale-105 transition-all duration-500 cursor-pointer">
-                  <img 
+                  <Image
                     src="/images/brand/Charge_1.png"
-                    alt="Monta Admin Interface"
-                    className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100" 
+                    alt="Monta admin-gränssnitt för drift av laddstationer"
+                    width={600}
+                    height={400}
+                    className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100"
                   />
                   
                   {/* Badge on the admin interface */}

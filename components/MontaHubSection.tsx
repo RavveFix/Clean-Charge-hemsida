@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Globe, Zap, CreditCard, ArrowLeft, Check } from 'lucide-react';
 
 const MontaHubSection: React.FC = () => {
@@ -29,10 +30,13 @@ const MontaHubSection: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <div className="inline-flex items-center space-x-3 bg-white/10 border border-white/20 px-5 py-2 rounded-full backdrop-blur-md">
-                <img 
-                  src="https://monta.com/app/themes/monta-sage-latest/public/build/assets/Monta_Logo-6IYbGNWl.svg" 
-                  alt="Monta" 
-                  className="h-4 brightness-0 invert" 
+                <Image
+                  src="https://monta.com/app/themes/monta-sage-latest/public/build/assets/Monta_Logo-6IYbGNWl.svg"
+                  alt="Monta"
+                  width={80}
+                  height={16}
+                  unoptimized
+                  className="h-4 w-auto brightness-0 invert"
                 />
                 <span className="text-[10px] font-bold uppercase tracking-widest border-l border-white/20 pl-3">Powered by Clean Charge</span>
               </div>
@@ -49,10 +53,12 @@ const MontaHubSection: React.FC = () => {
 
             <div className="relative">
               <div className="relative z-10 rounded-[1.5rem] sm:rounded-[3rem] overflow-hidden shadow-2xl border-2 sm:border-4 border-white/10 aspect-video group">
-                <img 
+                <Image
                   src="/images/brand/Charge_2.png"
-                  alt="Monta App Dashboard"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  alt="Monta-appens dashboard för elbilsladdning"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#003DFF]/80 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8">
@@ -166,10 +172,12 @@ const MontaHubSection: React.FC = () => {
               <div className="relative group">
                 <div className="relative z-10 p-2 bg-gradient-to-b from-slate-700 to-slate-900 rounded-[2.8rem] shadow-2xl">
                     <div className="rounded-[2.5rem] overflow-hidden bg-[#0a0f1c] border border-slate-800">
-                      <img 
+                      <Image
                         src="/images/brand/Charge_1.png"
-                        alt="Monta Admin Dashboard"
-                        className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105" 
+                        alt="Monta admin-dashboard"
+                        width={600}
+                        height={400}
+                        className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>
                 </div>

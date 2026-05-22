@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
 import { Menu, X, Phone } from 'lucide-react';
 import gsap from 'gsap';
@@ -66,9 +67,12 @@ const Navbar: React.FC<NavbarProps> = ({
               Clean <span className="text-brand-green">Charge</span>
             </span>
           ) : (
-            <img
+            <Image
               src="/images/brand/cc-logo.png"
               alt="Clean Charge AB"
+              width={160}
+              height={40}
+              priority
               className="h-6 md:h-7 lg:h-8 w-auto transition-all duration-500"
               onError={() => setLogoError(true)}
             />

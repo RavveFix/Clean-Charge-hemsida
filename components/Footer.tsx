@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Facebook, Youtube, Instagram, Mail, Phone, MapPin, Zap, Linkedin } from 'lucide-react';
 
 const Footer: React.FC = () => {
@@ -12,9 +13,11 @@ const Footer: React.FC = () => {
           <div className="space-y-6 sm:space-y-10 col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-1">
             <div className="space-y-4">
               <div className="flex items-center">
-                <img
+                <Image
                   src="/images/brand/cc-logo.png"
                   alt="Clean Charge AB"
+                  width={200}
+                  height={50}
                   className="h-10 w-auto object-contain"
                   onError={(e) => {
                     e.currentTarget.style.display = 'none';
@@ -120,7 +123,14 @@ const Footer: React.FC = () => {
             <div className="flex items-center space-x-6">
               <p className="text-[11px] font-black uppercase tracking-widest text-slate-400">© 2026 Clean Charge AB</p>
               <div className="h-4 w-px bg-slate-100"></div>
-              <img src="https://monta.com/app/themes/monta-sage-latest/public/build/assets/logo_soc2-t2-BsbIKEuK.png" className="h-8 opacity-30 grayscale" alt="SOC2" />
+              <Image
+                src="https://monta.com/app/themes/monta-sage-latest/public/build/assets/logo_soc2-t2-BsbIKEuK.png"
+                width={80}
+                height={32}
+                className="h-8 w-auto opacity-30 grayscale"
+                alt="SOC 2 Type II certified"
+                unoptimized
+              />
             </div>
             <div className="hidden md:block h-4 w-px bg-slate-100"></div>
             <p className="text-[10px] md:text-[11px] font-black uppercase tracking-widest text-slate-400">Design by Rávon Eric Albin Strawder & AI</p>

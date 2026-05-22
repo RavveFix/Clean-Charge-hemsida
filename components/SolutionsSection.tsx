@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Home, Building2, Building } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -90,10 +91,12 @@ const SolutionsSection: React.FC = () => {
               className="solution-card group flex flex-col bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <div className="relative h-[200px] sm:h-[240px] overflow-hidden">
-                <img
+                <Image
                   src={solution.image}
                   alt={solution.title}
-                  className="solution-image absolute top-[-15%] left-0 w-full h-[130%] object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="solution-image !top-[-15%] !h-[130%] object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
               </div>
               <div className="p-5 md:p-8 flex flex-col flex-grow bg-white">

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Check, Zap, Smartphone, ShieldCheck, ArrowRight, Home, Star } from 'lucide-react';
 import { PRODUCTS } from '../constants';
 
@@ -70,10 +71,12 @@ const PrivateChargingSection: React.FC = () => {
 
                         <div className="relative lg:h-[600px] hidden lg:block">
                             <div className="absolute inset-0 bg-gradient-to-tr from-cc-green/20 to-transparent rounded-[4rem] transform rotate-3"></div>
-                            <img 
-                                src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&q=80&w=1200" 
-                                alt="Modern villa med elbil" 
-                                className="w-full h-full object-cover rounded-[4rem] shadow-2xl relative z-10 border-4 border-white"
+                            <Image
+                                src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&q=80&w=1200"
+                                alt="Villa med elbil och laddbox hemma"
+                                fill
+                                sizes="(max-width: 1024px) 0, 50vw"
+                                className="object-cover rounded-[4rem] shadow-2xl relative z-10 border-4 border-white"
                             />
                             {/* Floating Card */}
                             <div className="absolute -bottom-10 -left-10 bg-white p-6 rounded-3xl shadow-xl z-20 max-w-xs border border-slate-100 animate-bounce-slow">
@@ -165,7 +168,7 @@ const PrivateChargingSection: React.FC = () => {
                              <div key={product.id} className="group bg-white rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[3.5rem] p-5 sm:p-6 md:p-10 border border-slate-100 hover:border-cc-green/30 hover:shadow-2xl hover:shadow-cc-green/10 transition-all duration-500 flex flex-col md:flex-row gap-6 sm:gap-8 md:gap-10 items-center">
                                 <div className="w-full md:w-1/2 aspect-square bg-slate-50 rounded-[2.5rem] p-8 flex items-center justify-center relative overflow-hidden">
                                      <div className="absolute inset-0 bg-cc-green/5 rounded-[2.5rem] transform scale-0 group-hover:scale-100 transition-transform duration-700 rounded-full"></div>
-                                    <img src={product.image} alt={product.name} className="w-full h-full object-contain relative z-10 group-hover:scale-110 transition-transform duration-700" />
+                                    <Image src={product.image} alt={product.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain relative z-10 group-hover:scale-110 transition-transform duration-700" />
                                 </div>
                                 <div className="w-full md:w-1/2 space-y-6">
                                     <div>
