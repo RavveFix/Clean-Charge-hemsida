@@ -20,10 +20,17 @@
 }
 
 body {
-    font-family: "Instrument Sans", sans-serif;
+    font-family: var(--font-instrument-sans), "Instrument Sans", sans-serif;
     color: var(--text-primary);
     background-color: var(--bg-primary);
     position: relative;
+}
+
+/* Display font for hero headings — sets character without per-component overrides.
+   Tailwind utility classes (e.g. font-sans) still win when explicitly applied. */
+h1, h2 {
+    font-family: var(--font-display), "Space Grotesk", sans-serif;
+    letter-spacing: -0.025em;
 }
 
 /* ===== Custom Utility Classes ===== */

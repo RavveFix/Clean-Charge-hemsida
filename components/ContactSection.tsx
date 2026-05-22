@@ -112,9 +112,10 @@ const ContactSection: React.FC = () => {
                         { id: 'phone', label: 'Telefon', type: 'tel', placeholder: '070 - 123 45 67' },
                       ].map(({ id, label, type, placeholder }) => (
                         <div key={id} className="space-y-2">
-                          <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">{label}</label>
+                          <label htmlFor={id} className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">{label}</label>
                           <input
                             id={id}
+                            name={id}
                             type={type}
                             placeholder={placeholder}
                             onFocus={() => setFocused(id)}
@@ -126,9 +127,10 @@ const ContactSection: React.FC = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">E-post</label>
+                      <label htmlFor="email" className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">E-post</label>
                       <input
                         id="email"
+                        name="email"
                         type="email"
                         placeholder="namn@exempel.se"
                         onFocus={() => setFocused('email')}
@@ -138,9 +140,10 @@ const ContactSection: React.FC = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Ärende</label>
+                      <label htmlFor="subject" className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Ärende</label>
                       <select
                         id="subject"
+                        name="subject"
                         onFocus={() => setFocused('subject')}
                         onBlur={() => setFocused(null)}
                         className={`w-full bg-slate-50 border rounded-2xl px-5 py-4 font-medium text-slate-800 focus:outline-none transition-all duration-200 appearance-none cursor-pointer ${focused === 'subject' ? 'border-cc-green bg-white' : 'border-slate-100'}`}
@@ -153,9 +156,10 @@ const ContactSection: React.FC = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Meddelande</label>
+                      <label htmlFor="message" className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Meddelande</label>
                       <textarea
                         id="message"
+                        name="message"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder="Berätta mer om ditt behov..."
@@ -223,7 +227,7 @@ const ContactSection: React.FC = () => {
                 </a>
               ))}
 
-              {/* Personal contact */}
+              {/* Personal contacts */}
               <div className="bg-white p-6 rounded-[2rem] border border-slate-100 hover:border-cc-green/30 hover:shadow-xl hover:shadow-cc-green/5 transition-all duration-300">
                 <div className="flex items-start gap-5">
                   <div className="w-14 h-14 rounded-2xl bg-slate-900 flex items-center justify-center shrink-0">
@@ -240,6 +244,24 @@ const ContactSection: React.FC = () => {
                       <a href="mailto:ravon.strawder@cleancharge.se" className="flex items-center gap-3 text-slate-500 hover:text-cc-green transition-colors text-sm font-bold">
                         <Mail className="w-3.5 h-3.5" />
                         ravon.strawder@cleancharge.se
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white p-6 rounded-[2rem] border border-slate-100 hover:border-cc-green/30 hover:shadow-xl hover:shadow-cc-green/5 transition-all duration-300">
+                <div className="flex items-start gap-5">
+                  <div className="w-14 h-14 rounded-2xl bg-slate-900 flex items-center justify-center shrink-0">
+                    <User className="w-6 h-6 text-cc-green" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-[9px] font-black uppercase tracking-[0.3em] text-cc-green mb-1">Säljansvarig</p>
+                    <h3 className="text-base font-black text-slate-900 mb-3">Elisabeth Lindh</h3>
+                    <div className="space-y-2">
+                      <a href="mailto:elisabeth.lindh@cleancharge.se" className="flex items-center gap-3 text-slate-500 hover:text-cc-green transition-colors text-sm font-bold">
+                        <Mail className="w-3.5 h-3.5" />
+                        elisabeth.lindh@cleancharge.se
                       </a>
                     </div>
                   </div>

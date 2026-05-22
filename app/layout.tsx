@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Instrument_Sans } from 'next/font/google';
+import { Instrument_Sans, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 
 const instrumentSans = Instrument_Sans({
@@ -8,6 +8,13 @@ const instrumentSans = Instrument_Sans({
   style: ['normal', 'italic'],
   display: 'swap',
   variable: '--font-instrument-sans',
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['500', '600', '700'],
+  display: 'swap',
+  variable: '--font-display',
 });
 
 export const metadata: Metadata = {
@@ -94,7 +101,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="sv" className={instrumentSans.variable} suppressHydrationWarning>
+    <html lang="sv" className={`${instrumentSans.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
       <head>
         {/* Performance: preconnect to critical third-party origins */}
         <link rel="preconnect" href="https://prod.spline.design" crossOrigin="anonymous" />

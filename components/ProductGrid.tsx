@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { PRODUCTS } from '../constants';
 import { Product } from '../types';
-import { ShieldCheck, Star, ArrowRight } from 'lucide-react';
+import { ShieldCheck, ArrowRight } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -45,21 +45,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <div className="flex justify-between items-start gap-2">
             <div>
               <h3 className="text-xl font-black text-slate-900 tracking-tight leading-none group-hover:text-cc-green transition-colors">{product.name}</h3>
-              <div className="flex items-center gap-2 mt-2">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star 
-                      key={i} 
-                      className="w-2.5 h-2.5" 
-                      style={{ 
-                        fill: i < 4 ? '#00b182' : 'rgba(0,177,130,0.2)', 
-                        color: i < 4 ? '#00b182' : 'rgba(0,177,130,0.2)' 
-                      }} 
-                    />
-                  ))}
-                </div>
-                <span className="text-[10px] font-black text-cc-green uppercase tracking-widest bg-cc-green/5 px-2 py-0.5 rounded-md">Bäst i test</span>
-              </div>
+              <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">{product.category === 'snabbladdare' ? 'DC Snabbladdare' : 'AC Laddbox'}</p>
             </div>
             <div className="flex flex-col items-end shrink-0">
                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Verifierad</span>

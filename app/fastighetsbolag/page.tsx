@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Building2, Users, TrendingUp, Settings } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Laddbox Fastighetsbolag & Bostadsrättsförening – BRF | Clean Charge AB',
+  title: 'Laddbox Fastighetsbolag & Bostadsrättsförening – BRF',
   description:
     'Laddboxar för fastighetsbolag och BRF i hela Sverige. Clean Charge AB projekter, installerar och driftar laddinfrastruktur med smart lastbalansering och debiteringshantering. Ring 019-760 42 90.',
   keywords: [

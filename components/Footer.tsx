@@ -39,8 +39,18 @@ const Footer: React.FC = () => {
               Vi skapar smartare laddlösningar för en hållbar framtid. Som din certifierade Zaptec-partner och Monta-operatör garanterar vi högsta kvalitet.
             </p>
             <div className="flex space-x-4">
-              {[Facebook, Instagram, Youtube, Linkedin].map((Icon, idx) => (
-                <a key={idx} href="#" className="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center hover:bg-[#003DFF] transition-all group">
+              {[
+                { Icon: Facebook, href: 'https://www.facebook.com/cleancharge', label: 'Facebook' },
+                { Icon: Linkedin, href: 'https://www.linkedin.com/company/clean-charge-ab', label: 'LinkedIn' },
+              ].map(({ Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center hover:bg-cc-green transition-all group"
+                >
                   <Icon className="w-5 h-5 text-slate-700 group-hover:text-white group-hover:scale-110 transition-transform" />
                 </a>
               ))}
@@ -52,12 +62,12 @@ const Footer: React.FC = () => {
             <ul className="space-y-5">
               {[
                 { label: 'För Privatpersoner', href: '/privat' },
-                { label: 'För Företag', href: '/publik' },
-                { label: 'För BRF', href: '/publik' },
+                { label: 'För Företag', href: '/foretag' },
+                { label: 'För BRF', href: '/fastighetsbolag' },
                 { label: 'Snabbladdning (DC)', href: '/dc-laddstation' },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="text-sm font-bold text-slate-500 hover:text-[#003DFF] transition-colors">
+                  <Link href={item.href} className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors">
                     {item.label}
                   </Link>
                 </li>
@@ -70,12 +80,12 @@ const Footer: React.FC = () => {
             <ul className="space-y-5">
               {[
                 { label: 'Support & Manualer', href: '/support' },
-                { label: 'Installation', href: '/support' },
+                { label: 'Installation', href: '/support#installation' },
                 { label: 'Monta Hjälpcenter', href: 'https://monta.com/se/help-center/' },
                 { label: 'Felanmälan', href: '/kontakt' },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="text-sm font-bold text-slate-500 hover:text-[#003DFF] transition-colors">
+                  <Link href={item.href} className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors">
                     {item.label}
                   </Link>
                 </li>
@@ -87,13 +97,18 @@ const Footer: React.FC = () => {
             <h4 className="text-[11px] font-black uppercase tracking-[0.3em] mb-10 text-cc-green">Kontakt</h4>
             <ul className="space-y-5">
               <li><span className="text-sm font-bold text-slate-500">Dialoggatan 12B, Örebro</span></li>
-              <li><a href="mailto:info@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-[#003DFF] transition-colors">info@cleancharge.se</a></li>
-              <li><a href="tel:0197604290" className="text-sm font-bold text-slate-500 hover:text-[#003DFF] transition-colors">019-760 42 90</a></li>
+              <li><a href="mailto:info@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors">info@cleancharge.se</a></li>
+              <li><a href="tel:0197604290" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors">019-760 42 90</a></li>
               <li className="pt-4 space-y-1">
                 <p className="text-sm font-bold text-slate-800 leading-tight">Ravon Eric Albin Strawder</p>
                 <p className="text-[9px] font-black text-cc-green uppercase tracking-widest">Delägare</p>
-                <a href="tel:0722110026" className="text-sm font-bold text-slate-500 hover:text-[#003DFF] transition-colors block">072-211 00 26</a>
-                <a href="mailto:ravon.strawder@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-[#003DFF] transition-colors block">ravon.strawder@cleancharge.se</a>
+                <a href="tel:0722110026" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors block">072-211 00 26</a>
+                <a href="mailto:ravon.strawder@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors block">ravon.strawder@cleancharge.se</a>
+              </li>
+              <li className="pt-4 space-y-1">
+                <p className="text-sm font-bold text-slate-800 leading-tight">Elisabeth Lindh</p>
+                <p className="text-[9px] font-black text-cc-green uppercase tracking-widest">Säljansvarig</p>
+                <a href="mailto:elisabeth.lindh@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors block">elisabeth.lindh@cleancharge.se</a>
               </li>
             </ul>
           </div>

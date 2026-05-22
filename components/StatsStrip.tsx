@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Zap, Award, MapPin, Clock } from 'lucide-react';
+import { Zap, Star, Calendar, Clock } from 'lucide-react';
 
 interface StatItemProps {
   value: number;
@@ -77,8 +77,8 @@ const StatItem: React.FC<StatItemProps> = ({ value, suffix, label, sublabel, ico
 const StatsStrip: React.FC = () => {
   const stats = [
     { value: 50000, suffix: '+', label: 'Genomförda laddningar', sublabel: 'Via Monta-plattformen', icon: Zap, delay: 0 },
-    { value: 4, suffix: '.6★', label: 'Monta Operatörsbetyg', sublabel: 'Verifierat av våra användare', icon: Award, delay: 150 },
-    { value: 4, suffix: ' år', label: 'Års erfarenhet', sublabel: 'Grundat 2021', icon: Clock, delay: 300 },
+    { value: 4, suffix: '.6★', label: 'Monta Operatörsbetyg', sublabel: 'Verifierat av våra användare', icon: Star, delay: 150 },
+    { value: 4, suffix: ' år', label: 'Års erfarenhet', sublabel: 'Grundat 2021', icon: Calendar, delay: 300 },
     { value: 2, suffix: 'h', label: 'Svarstid support', sublabel: 'Under kontorstid', icon: Clock, delay: 450 },
   ];
 

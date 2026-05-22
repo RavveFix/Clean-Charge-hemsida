@@ -19,9 +19,10 @@ const config: Config = {
         'text-secondary': 'var(--text-secondary)',
       },
       fontFamily: {
-        sans: ['Instrument Sans', 'sans-serif'],
-        'serif-drama': ['Instrument Sans', 'sans-serif'],
-        monta: ['Instrument Sans', 'sans-serif'],
+        sans: ['var(--font-instrument-sans)', 'Instrument Sans', 'sans-serif'],
+        display: ['var(--font-display)', 'Space Grotesk', 'sans-serif'],
+        'serif-drama': ['var(--font-display)', 'Space Grotesk', 'sans-serif'],
+        monta: ['var(--font-instrument-sans)', 'Instrument Sans', 'sans-serif'],
       },
       animation: {
         'spin-slow': 'spin-slow 12s linear infinite',

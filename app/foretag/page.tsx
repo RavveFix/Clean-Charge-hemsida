@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Zap, Shield, BarChart3, Wrench } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Laddbox för Företag – AC & DC Laddstationer | Clean Charge AB',
+  title: 'Laddbox för Företag – AC & DC Laddstationer',
   description:
     'Clean Charge AB installerar och driftar laddboxar för företag i hela Sverige. Auktoriserad Zaptec & Monta-partner. Få en kostnadsfri offert idag – ring 019-760 42 90.',
   keywords: [

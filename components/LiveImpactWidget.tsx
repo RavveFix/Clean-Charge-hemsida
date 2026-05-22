@@ -5,10 +5,15 @@ import { Leaf, Activity, Zap, TrendingDown, ChevronRight } from 'lucide-react';
 
 const LiveImpactWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [co2Saved, setCo2Saved] = useState(12437.24);
   const [kwhDelivered, setKwhDelivered] = useState(87943.6);
   const [activeSessions, setActiveSessions] = useState(42);
   const [spotPrice, setSpotPrice] = useState<number | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // 1. Client-side tick update representing active EV charging on the network
   useEffect(() => {
@@ -57,6 +62,8 @@ const LiveImpactWidget: React.FC = () => {
     const priceInterval = setInterval(fetchSpotPrice, 30 * 60 * 1000);
     return () => clearInterval(priceInterval);
   }, []);
+
+  if (!mounted) return null;
 
   return (
     <div className="fixed bottom-6 left-6 z-[140] pointer-events-auto font-monta">
