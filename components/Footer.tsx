@@ -101,7 +101,7 @@ const Footer: React.FC = () => {
               <li><a href="tel:0197604290" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors">019-760 42 90</a></li>
               <li className="pt-4 space-y-1">
                 <p className="text-sm font-bold text-slate-800 leading-tight">Ravon Eric Albin Strawder</p>
-                <p className="text-[9px] font-black text-cc-green uppercase tracking-widest">Delägare</p>
+                <p className="text-[9px] font-black text-cc-green uppercase tracking-widest">Teknik & Drift</p>
                 <a href="tel:0722110026" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors block">072-211 00 26</a>
                 <a href="mailto:ravon.strawder@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors block">ravon.strawder@cleancharge.se</a>
               </li>

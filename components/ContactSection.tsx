@@ -234,7 +234,7 @@ const ContactSection: React.FC = () => {
                     <User className="w-6 h-6 text-cc-green" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-[9px] font-black uppercase tracking-[0.3em] text-cc-green mb-1">Delägare</p>
+                    <p className="text-[9px] font-black uppercase tracking-[0.3em] text-cc-green mb-1">Teknik & Drift</p>
                     <h3 className="text-base font-black text-slate-900 mb-3">Ravon Eric Albin Strawder</h3>
                     <div className="space-y-2">
                       <a href="tel:0722110026" className="flex items-center gap-3 text-slate-500 hover:text-cc-green transition-colors text-sm font-bold">

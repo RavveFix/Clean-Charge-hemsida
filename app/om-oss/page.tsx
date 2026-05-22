@@ -139,7 +139,7 @@ export default function OmOssPage() {
                     <span className="text-3xl sm:text-4xl font-black text-cc-green tracking-tighter">RS</span>
                   </div>
                   <div className="flex-1">
-                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-cc-green mb-2">Delägare</p>
+                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-cc-green mb-2">Teknik & Drift</p>
                     <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-4">Ravon Eric Albin Strawder</h3>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
                       <a href="tel:0722110026" className="inline-flex items-center gap-2.5 text-sm font-bold text-slate-300 hover:text-cc-green transition-colors">
