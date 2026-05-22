@@ -105,14 +105,14 @@ const Footer: React.FC = () => {
               <li className="pt-4 space-y-1">
                 <p className="text-sm font-bold text-slate-800 leading-tight">Ravon Eric Albin Strawder</p>
                 <p className="text-[9px] font-black text-cc-green uppercase tracking-widest">Teknik & Drift</p>
-                <a href="tel:0722110026" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors inline-flex items-center min-h-[44px] block">072-211 00 26</a>
-                <a href="mailto:ravon.strawder@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors inline-flex items-center min-h-[44px] block">ravon.strawder@cleancharge.se</a>
+                <a href="tel:0722110026" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors flex items-center min-h-[44px]">072-211 00 26</a>
+                <a href="mailto:ravon.strawder@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors flex items-center min-h-[44px]">ravon.strawder@cleancharge.se</a>
               </li>
               <li className="pt-4 space-y-1">
                 <p className="text-sm font-bold text-slate-800 leading-tight">Elisabeth Lindh</p>
                 <p className="text-[9px] font-black text-cc-green uppercase tracking-widest">Säljansvarig</p>
-                <a href="tel:019333099" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors inline-flex items-center min-h-[44px] block">019-33 30 99</a>
-                <a href="mailto:elisabeth.lindh@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors inline-flex items-center min-h-[44px] block">elisabeth.lindh@cleancharge.se</a>
+                <a href="tel:019333099" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors flex items-center min-h-[44px]">019-33 30 99</a>
+                <a href="mailto:elisabeth.lindh@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors flex items-center min-h-[44px]">elisabeth.lindh@cleancharge.se</a>
               </li>
             </ul>
           </div>
