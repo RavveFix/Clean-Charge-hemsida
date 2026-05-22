@@ -32,12 +32,14 @@ export default async function Image() {
             textTransform: 'uppercase',
           }}
         >
-          Clean Charge<span style={{ color: '#00b182' }}>.</span>
+          <span style={{ display: 'flex' }}>Clean Charge</span>
+          <span style={{ color: '#00b182', display: 'flex' }}>.</span>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div
             style={{
+              display: 'flex',
               fontSize: 92,
               fontWeight: 900,
               lineHeight: 1.02,
@@ -45,11 +47,11 @@ export default async function Image() {
               marginBottom: 28,
             }}
           >
-            Laddbox för företag
-            <br />& fastighetsbolag.
+            Laddbox för företag & fastighetsbolag.
           </div>
           <div
             style={{
+              display: 'flex',
               fontSize: 30,
               opacity: 0.85,
               maxWidth: 950,
