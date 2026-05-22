@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
             <div className="space-y-4">
               <div className="flex items-center">
                 <img
-                  src="https://cleancharge.se/wp-content/uploads/CC_logo_1row_5.svg"
+                  src="/images/brand/cc-logo.jpg"
                   alt="Clean Charge AB"
                   className="h-10 w-auto object-contain"
                   onError={(e) => {
