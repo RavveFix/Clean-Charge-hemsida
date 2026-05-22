@@ -112,7 +112,7 @@ const FeaturesBento: React.FC = () => {
                 <ShieldCheck strokeWidth={1.5} className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-lg sm:text-[22px] font-bold text-white mb-2 sm:mb-3 tracking-tight">Nordiskt Klimatanpassad</h3>
-              <p className="text-slate-400 text-xs sm:text-[15px] leading-relaxed max-w-full sm:max-w-[260px]">Hårdvara byggd för att motstå extrem kyla, snö och regn utan att kompromissa med prestandan.</p>
+              <p className="text-slate-400 text-sm sm:text-[15px] leading-relaxed max-w-full sm:max-w-[260px]">Hårdvara byggd för att motstå extrem kyla, snö och regn utan att kompromissa med prestandan.</p>
             </div>
             
             {/* Terminal UI -> Typewriter Widget */}
@@ -137,7 +137,7 @@ const FeaturesBento: React.FC = () => {
                 <Smartphone strokeWidth={1.5} className="w-5 h-5 text-[#3b82f6]" />
               </div>
               <h3 className="text-lg sm:text-[22px] font-bold text-text-primary mb-2 sm:mb-3 tracking-tight">Sömlös App-integration</h3>
-              <p className="text-text-secondary text-xs sm:text-[15px] leading-relaxed max-w-full sm:max-w-[260px]">Full kontroll i mobilen via Monta. Schemalägg laddning, följ kostnader och dela din laddare.</p>
+              <p className="text-text-secondary text-sm sm:text-[15px] leading-relaxed max-w-full sm:max-w-[260px]">Full kontroll i mobilen via Monta. Schemalägg laddning, följ kostnader och dela din laddare.</p>
             </div>
             
             {/* Modern App UI Mockup snippet */}
