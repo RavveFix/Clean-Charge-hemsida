@@ -110,7 +110,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
 
           <button
-            className="lg:hidden p-2 rounded-full hover:bg-slate-100 transition-colors"
+            className="lg:hidden p-3 rounded-full hover:bg-slate-100 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? 'Stäng meny' : 'Öppna meny'}
           >
@@ -137,7 +137,7 @@ const Navbar: React.FC<NavbarProps> = ({
               key={tab.id}
               href={tab.href}
               onClick={() => setIsMenuOpen(false)}
-              className={`text-2xl sm:text-3xl font-black uppercase tracking-tight ${
+              className={`text-2xl sm:text-3xl font-black uppercase tracking-tight inline-flex items-center min-h-[48px] px-4 ${
                 isActive(tab.href) ? 'text-brand-green' : 'text-slate-800'
               }`}
             >

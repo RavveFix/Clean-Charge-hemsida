@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
                 { label: 'Snabbladdning (DC)', href: '/dc-laddstation' },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors">
+                  <Link href={item.href} className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors inline-flex items-center min-h-[44px]">
                     {item.label}
                   </Link>
                 </li>
@@ -88,7 +88,7 @@ const Footer: React.FC = () => {
                 { label: 'Felanmälan', href: '/kontakt' },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors">
+                  <Link href={item.href} className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors inline-flex items-center min-h-[44px]">
                     {item.label}
                   </Link>
                 </li>
@@ -100,19 +100,19 @@ const Footer: React.FC = () => {
             <h4 className="text-[11px] font-black uppercase tracking-[0.3em] mb-10 text-cc-green">Kontakt</h4>
             <ul className="space-y-5">
               <li><span className="text-sm font-bold text-slate-500">Dialoggatan 12B, Örebro</span></li>
-              <li><a href="mailto:info@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors">info@cleancharge.se</a></li>
-              <li><a href="tel:0197604290" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors">019-760 42 90</a></li>
+              <li><a href="mailto:info@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors inline-flex items-center min-h-[44px]">info@cleancharge.se</a></li>
+              <li><a href="tel:0197604290" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors inline-flex items-center min-h-[44px]">019-760 42 90</a></li>
               <li className="pt-4 space-y-1">
                 <p className="text-sm font-bold text-slate-800 leading-tight">Ravon Eric Albin Strawder</p>
                 <p className="text-[9px] font-black text-cc-green uppercase tracking-widest">Teknik & Drift</p>
-                <a href="tel:0722110026" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors block">072-211 00 26</a>
-                <a href="mailto:ravon.strawder@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors block">ravon.strawder@cleancharge.se</a>
+                <a href="tel:0722110026" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors inline-flex items-center min-h-[44px] block">072-211 00 26</a>
+                <a href="mailto:ravon.strawder@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors inline-flex items-center min-h-[44px] block">ravon.strawder@cleancharge.se</a>
               </li>
               <li className="pt-4 space-y-1">
                 <p className="text-sm font-bold text-slate-800 leading-tight">Elisabeth Lindh</p>
                 <p className="text-[9px] font-black text-cc-green uppercase tracking-widest">Säljansvarig</p>
-                <a href="tel:019333099" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors block">019-33 30 99</a>
-                <a href="mailto:elisabeth.lindh@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors block">elisabeth.lindh@cleancharge.se</a>
+                <a href="tel:019333099" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors inline-flex items-center min-h-[44px] block">019-33 30 99</a>
+                <a href="mailto:elisabeth.lindh@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors inline-flex items-center min-h-[44px] block">elisabeth.lindh@cleancharge.se</a>
               </li>
             </ul>
           </div>
