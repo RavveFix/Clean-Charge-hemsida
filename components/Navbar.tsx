@@ -67,7 +67,7 @@ const Navbar: React.FC<NavbarProps> = ({
             </span>
           ) : (
             <img
-              src="/images/brand/cc-logo.jpg"
+              src="/images/brand/cc-logo.png"
               alt="Clean Charge AB"
               className="h-6 md:h-7 lg:h-8 w-auto transition-all duration-500"
               onError={() => setLogoError(true)}
