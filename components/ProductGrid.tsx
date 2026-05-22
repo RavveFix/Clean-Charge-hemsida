@@ -68,10 +68,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           {/* Price + CTA pinned to bottom */}
           <div className="pt-6 flex items-center justify-between border-t border-slate-50 mt-auto">
             <div className="space-y-1">
-              <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] opacity-80">Pris inkl. rot</p>
-              <p className="text-2xl font-black text-slate-900 tracking-tighter">
-                {product.price > 0 ? `${product.price.toLocaleString()} kr` : 'Offert'}
-              </p>
+              {product.price > 0 ? (
+                <>
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] opacity-80">Pris inkl. rot</p>
+                  <p className="text-2xl font-black text-slate-900 tracking-tighter">{product.price.toLocaleString()} kr</p>
+                </>
+              ) : (
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] opacity-80">Pris på förfrågan</p>
+              )}
             </div>
             <Link
               href={`/kontakt?product=${encodeURIComponent(product.name)}`}
