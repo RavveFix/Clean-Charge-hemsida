@@ -146,7 +146,7 @@ const LiveImpactWidget: React.FC = () => {
             <div className="flex justify-between items-center gap-3 pt-1">
               <div className="flex-1 bg-white/[0.02] border border-white/[0.04] p-3 rounded-2xl flex items-center justify-between">
                 <div>
-                  <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest block leading-none mb-1">Aktiv Laddning</span>
+                  <span className="text-xs font-black text-slate-500 uppercase tracking-widest block leading-none mb-1">Aktiv Laddning</span>
                   <span className="text-sm font-black text-white tracking-tight tabular-nums">{activeSessions} st</span>
                 </div>
                 <Activity className="w-4 h-4 text-cc-green animate-pulse" />
@@ -154,7 +154,7 @@ const LiveImpactWidget: React.FC = () => {
               
               <div className="flex-1 bg-white/[0.02] border border-white/[0.04] p-3 rounded-2xl flex items-center justify-between">
                 <div>
-                  <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest block leading-none mb-1">Spotpris (SE3)</span>
+                  <span className="text-xs font-black text-slate-500 uppercase tracking-widest block leading-none mb-1">Spotpris (SE3)</span>
                   <span className="text-sm font-black text-white tracking-tight tabular-nums">
                     {spotPrice !== null ? `${spotPrice} öre` : 'Laddar...'}
                   </span>

@@ -112,7 +112,7 @@ const ContactSection: React.FC = () => {
           <div className="grid lg:grid-cols-5 gap-8 xl:gap-16 items-start">
 
             {/* Form – 3 cols */}
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-3 min-w-0">
               <div className="bg-white rounded-[1.5rem] sm:rounded-[3rem] p-5 sm:p-8 md:p-12 shadow-xl shadow-slate-200/60 border border-slate-100">
                 {submitted ? (
                   <div className="flex flex-col items-center justify-center py-20 text-center space-y-6">
@@ -224,7 +224,7 @@ const ContactSection: React.FC = () => {
             </div>
 
             {/* Info Cards – 2 cols */}
-            <div className="lg:col-span-2 space-y-5">
+            <div className="lg:col-span-2 space-y-5 min-w-0">
 
               {/* Quick contact cards */}
               {[

@@ -119,7 +119,7 @@ const GroundingInsights: React.FC = () => {
                 </div>
                 <div className="flex flex-col items-start">
                   <span>Uppdatera Engine</span>
-                  <span className="text-[8px] text-slate-500 opacity-60">Status: {loading ? 'Söker...' : 'Online'}</span>
+                  <span className="text-xs text-slate-500 opacity-60">Status: {loading ? 'Söker...' : 'Online'}</span>
                 </div>
               </button>
             </div>

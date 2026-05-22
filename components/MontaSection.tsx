@@ -83,7 +83,7 @@ const MontaSection: React.FC = () => {
                   {/* Badge on the admin interface */}
                   <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 bg-white/95 backdrop-blur-md px-2 sm:px-3 py-1 sm:py-2 rounded-lg sm:rounded-xl shadow-lg flex items-center gap-1.5 sm:gap-2">
                     <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-[8px] sm:text-xs font-black text-slate-900 uppercase tracking-wider">Live Dashboard</span>
+                    <span className="text-xs font-black text-slate-900 uppercase tracking-wider">Live Dashboard</span>
                   </div>
                 </div>
               </div>
