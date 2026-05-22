@@ -50,8 +50,8 @@ const MontaHubSection: React.FC = () => {
             <div className="relative">
               <div className="relative z-10 rounded-[1.5rem] sm:rounded-[3rem] overflow-hidden shadow-2xl border-2 sm:border-4 border-white/10 aspect-video group">
                 <img 
-                  src="/Charge_2.png" 
-                  alt="Monta App Dashboard" 
+                  src="/images/brand/Charge_2.png"
+                  alt="Monta App Dashboard"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#003DFF]/80 to-transparent"></div>
@@ -167,8 +167,8 @@ const MontaHubSection: React.FC = () => {
                 <div className="relative z-10 p-2 bg-gradient-to-b from-slate-700 to-slate-900 rounded-[2.8rem] shadow-2xl">
                     <div className="rounded-[2.5rem] overflow-hidden bg-[#0a0f1c] border border-slate-800">
                       <img 
-                        src="/Charge_1.png" 
-                        alt="Monta Admin Dashboard" 
+                        src="/images/brand/Charge_1.png"
+                        alt="Monta Admin Dashboard"
                         className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105" 
                       />
                     </div>

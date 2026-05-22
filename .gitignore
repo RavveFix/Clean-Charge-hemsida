@@ -36,3 +36,9 @@ build
 .env*.local
 .pnp*
 .pnp.js
+
+# Tooling artefakter
+.playwright-mcp/
+*.tsbuildinfo
+CLAUDE.md
+src/

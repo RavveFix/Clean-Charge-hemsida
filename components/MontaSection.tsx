@@ -6,7 +6,7 @@ import { ShieldCheck, Smartphone, BarChart3, ArrowRight } from 'lucide-react';
 
 const MontaSection: React.FC = () => {
   // Använder samma bild som tidigare för konsekvens
-  const montaImage = "/Charge_grey.png";
+  const montaImage = "/images/brand/Charge_grey.png";
 
   return (
     <section className="py-12 sm:py-16 md:py-24 bg-white overflow-hidden font-monta">
@@ -58,8 +58,8 @@ const MontaSection: React.FC = () => {
                 {/* Background Image - App Collage */}
                 <div className="rounded-[2.5rem] overflow-hidden shadow-2xl bg-white border-4 border-white/10 transform hover:scale-[1.02] transition-all duration-500">
                   <img 
-                    src="/Charge_2.png" 
-                    alt="Monta Charge App Collage" 
+                    src="/images/brand/Charge_2.png"
+                    alt="Monta Charge App Collage"
                     className="w-full h-auto object-cover" 
                   />
                 </div>
@@ -67,8 +67,8 @@ const MontaSection: React.FC = () => {
                 {/* Overlapping Image - Admin Interface (Glassmorphic Polish & Sizing) */}
                 <div className="absolute -bottom-4 -right-4 sm:-bottom-8 sm:-right-8 w-[60%] sm:w-1/2 md:w-[60%] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,61,255,0.15)] bg-slate-950/90 border border-white/80 backdrop-blur-md group hover:scale-105 transition-all duration-500 cursor-pointer">
                   <img 
-                    src="/Charge_1.png" 
-                    alt="Monta Admin Interface" 
+                    src="/images/brand/Charge_1.png"
+                    alt="Monta Admin Interface"
                     className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100" 
                   />
                   

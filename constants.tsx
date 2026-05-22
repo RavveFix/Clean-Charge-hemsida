@@ -36,7 +36,7 @@ export const PRODUCTS: Product[] = [
     description: 'Fullt modulär 480 kW allt-i-ett-laddare. Ultrasnabb laddning med 98% drifttid, optimerad för publika nätverk och flottor.',
     category: 'snabbladdare',
     features: ['480 kW effekt', 'Modulär arkitektur', '98% Uptime'],
-    image: '/autel-dh480-product.png'
+    image: '/images/products/autel-dh480-product.png'
   }
 ];
 
@@ -50,13 +50,13 @@ export const SOLUTIONS: Solution[] = [
   {
     title: 'Lönsam Laddning',
     description: 'Fokus på betallösningen. Vi hjälper företag att tjäna pengar på sina laddplatser med automatiserad debitering.',
-    image: '/juice-YX-BmnafcJE-unsplash.jpg',
+    image: '/images/hero/juice-YX-BmnafcJE-unsplash.jpg',
     link: '#/foretag'
   },
   {
     title: 'Publika Anläggningar',
     description: 'Vi tar hand om era publika laddstationer. Driftsäkerhet och service i världsklass för maximal tillgänglighet.',
-    image: '/autel-dh480-lifestyle.jpg',
+    image: '/images/products/autel-dh480-lifestyle.jpg',
     link: '#/brf'
   }
 ];
