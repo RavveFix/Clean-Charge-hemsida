@@ -9,7 +9,7 @@ export const PRODUCTS: Product[] = [
     description: 'Världens minsta 22kW laddare. Prisbelönt skandinavisk design som kombinerar kraft med minimalism.',
     category: 'laddbox',
     features: ['22kW effekt', 'Norsk design', 'Väderbeständig (IP54)'],
-    image: 'https://cleancharge.se/wp-content/uploads/Zaptec-go-4.png'
+    image: '/images/products/zaptec-go.png'
   },
   {
     id: 'zaptec-pro',
@@ -18,7 +18,7 @@ export const PRODUCTS: Product[] = [
     description: 'Den ultimata lösningen för större anläggningar och BRF. Levererar intelligent lastbalansering och 4G-stöd.',
     category: 'laddbox',
     features: ['Integrerad 4G', 'Fasbalansering', 'Skalbar design'],
-    image: 'https://cleancharge.se/wp-content/uploads/Zaptec-pro-1-1.png'
+    image: '/images/products/zaptec-pro.png'
   },
   {
     id: 'easee-charge-lite',
@@ -27,7 +27,7 @@ export const PRODUCTS: Product[] = [
     description: 'Smart, kraftfull och säker. Easee Charge Lite är designad för enkelhet och passar alla bilar och elnät.',
     category: 'laddbox',
     features: ['Lokal kontroll', 'Helt automatiserad', 'Kompakt storlek'],
-    image: 'https://easee.com/wp-content/uploads/2025/05/wave-wall.jpg'
+    image: '/images/products/easee-charge-lite.jpg'
   },
   {
     id: 'autel-dh480',
