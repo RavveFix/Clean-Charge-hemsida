@@ -2,10 +2,22 @@
 
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { Zap } from 'lucide-react';
 import gsap from 'gsap';
 import MagneticButton from './MagneticButton';
-import { SplineScene } from './SplineScene';
+
+const SplineScene = dynamic(
+  () => import('./SplineScene').then((m) => m.SplineScene),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-10 h-10 border-4 border-slate-200 border-t-brand-green rounded-full animate-spin" />
+      </div>
+    ),
+  },
+);
 
 const Hero: React.FC = () => {
   const containerRef = useRef<HTMLElement>(null);

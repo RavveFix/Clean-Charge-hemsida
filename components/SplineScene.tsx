@@ -77,9 +77,11 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
                     <div className="w-10 h-10 border-4 border-slate-200 border-t-brand-green rounded-full animate-spin" />
                 </div>
             )}
-            <canvas 
-                ref={canvasRef} 
-                className="w-full h-full absolute inset-0 outline-none" 
+            <canvas
+                ref={canvasRef}
+                aria-hidden="true"
+                role="presentation"
+                className="w-full h-full absolute inset-0 outline-none"
             />
         </div>
     );
