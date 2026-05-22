@@ -3,6 +3,9 @@ import Link from 'next/link';
 import ClientLayout from '@/app/ClientLayout';
 import AboutSection from '@/components/AboutSection';
 import { MapPin, Calendar, Award, Users, Phone, Mail, ArrowRight } from 'lucide-react';
+import { breadcrumbJsonLd } from '@/lib/jsonld';
+
+const breadcrumb = breadcrumbJsonLd([{ name: 'Om Oss', path: '/om-oss' }]);
 
 export const metadata: Metadata = {
   title: 'Om Oss',
@@ -36,6 +39,10 @@ const FACTS = [
 export default function OmOssPage() {
   return (
     <ClientLayout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
       {/* Hero */}
       <section className="relative pt-32 sm:pt-40 pb-16 sm:pb-24 bg-white overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cc-green/5 rounded-full blur-[140px] -translate-y-1/3 translate-x-1/4 pointer-events-none" />

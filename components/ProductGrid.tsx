@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { PRODUCTS } from '../constants';
 import { Product } from '../types';
 import { ShieldCheck, ArrowRight } from 'lucide-react';
@@ -21,10 +22,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000 shine-glass"></div>
 
         <div className="relative aspect-square mb-6 overflow-hidden rounded-[2rem] bg-slate-50/50 flex items-center justify-center p-6 transition-all group-hover:bg-white">
-          <img
+          <Image
             src={product.image}
-            alt={product.name}
-            className="w-full h-full object-contain group-hover:scale-110 group-hover:rotate-2 transition-all duration-700 relative z-10 drop-shadow-2xl"
+            alt={`${product.name} – ${product.category === 'laddbox' ? 'AC laddbox' : 'DC snabbladdare'}`}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-contain group-hover:scale-110 group-hover:rotate-2 transition-all duration-700 relative z-10 drop-shadow-2xl"
           />
           
           {/* Badge Overlay */}

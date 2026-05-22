@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Building2, ArrowRight, CheckCircle2, LayoutGrid, Users, Coins } from 'lucide-react';
 import { PRODUCTS } from '../constants';
 
@@ -33,10 +34,13 @@ const CommercialChargingSection: React.FC = () => {
             <section className="relative py-16 sm:py-24 md:py-32 bg-slate-900 text-white overflow-hidden min-h-[60vh] sm:min-h-[80vh] flex items-center">
                  {/* Background effects */}
                  <div className="absolute inset-0 z-0">
-                    <img 
-                        src="https://images.unsplash.com/photo-1695653422715-991ec3a0db7a?auto=format&fit=crop&q=80&w=1200" 
-                        alt="Kommersiell laddning bakgrund" 
-                        className="w-full h-full object-cover opacity-30"
+                    <Image
+                        src="https://images.unsplash.com/photo-1695653422715-991ec3a0db7a?auto=format&fit=crop&q=80&w=1200"
+                        alt="Publik laddstation för elbilar"
+                        fill
+                        priority
+                        sizes="100vw"
+                        className="object-cover opacity-30"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/40"></div>
                  </div>
@@ -114,7 +118,7 @@ const CommercialChargingSection: React.FC = () => {
                             <div key={product.id} className="bg-white rounded-[2rem] sm:rounded-[3.5rem] p-6 sm:p-10 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-6 sm:gap-10 items-center group hover:shadow-2xl hover:border-cc-green/20 transition-all duration-500">
                                 <div className="w-full md:w-1/2 aspect-square bg-slate-50 rounded-[2.5rem] p-8 flex items-center justify-center relative overflow-hidden">
                                     <div className="absolute inset-0 bg-cc-green/5 rounded-[2.5rem] transform scale-0 group-hover:scale-100 transition-transform duration-700 rounded-full"></div>
-                                    <img src={product.image} alt={product.name} className="w-full h-full object-contain relative z-10 group-hover:scale-110 transition-transform duration-500" />
+                                    <Image src={product.image} alt={product.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain relative z-10 group-hover:scale-110 transition-transform duration-500" />
                                 </div>
                                 <div className="w-full md:w-1/2 space-y-6">
                                     <div className="space-y-3">

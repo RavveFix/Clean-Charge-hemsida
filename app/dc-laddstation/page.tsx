@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Zap, Timer, Globe, ShieldCheck } from 'lucide-react';
+import { breadcrumbJsonLd } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
-  title: 'DC Laddstation Installation – Snabbladdare för Publik & Kommersiell Drift',
+  title: 'DC Laddstation – Snabbladdare Publik Drift',
   description:
     'Clean Charge AB installerar DC-snabbladdare för publika och kommersiella anläggningar i Sverige. OCPP-kompatibelt, betalningslösning ingår. Kontakta oss för offert – 019-760 42 90.',
   keywords: [
@@ -40,6 +41,10 @@ const jsonLd = {
   description: 'Installation och drift av DC-snabbladdare för publik och kommersiell användning.',
   serviceType: 'DC EV Fast Charging Installation',
 };
+
+const breadcrumb = breadcrumbJsonLd([
+  { name: 'DC Laddstation', path: '/dc-laddstation' },
+]);
 
 const benefits = [
   {
@@ -81,6 +86,10 @@ export default function DcLaddstationPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
 
       {/* Hero */}
