@@ -19,11 +19,16 @@
     --brand-light: #f5f3ee;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     font-family: var(--font-instrument-sans), "Instrument Sans", sans-serif;
     color: var(--text-primary);
     background-color: var(--bg-primary);
     position: relative;
+    overflow-x: hidden;
 }
 
 /* Display font for hero headings — sets character without per-component overrides.

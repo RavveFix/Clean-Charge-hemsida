@@ -51,7 +51,7 @@ const FeaturesBento: React.FC = () => {
           <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-[2.75rem] font-[800] text-text-primary tracking-tight mb-3 sm:mb-4">
             Framtidens teknik, idag.
           </h2>
-          <p className="text-text-secondary text-sm sm:text-base md:text-[17px] font-medium max-w-2xl mx-auto">Smarta funktioner designade för att göra din vardag enklare och din laddning effektivare.</p>
+          <p className="text-text-secondary text-sm sm:text-base md:text-[17px] font-medium max-w-prose mx-auto">Smarta funktioner designade för att göra din vardag enklare och din laddning effektivare.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

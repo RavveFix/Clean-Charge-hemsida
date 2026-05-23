@@ -110,7 +110,7 @@ const CommercialChargingSection: React.FC = () => {
                     <div className="mb-20 text-center max-w-3xl mx-auto">
                         <div className="h-1 w-20 bg-cc-green mx-auto mb-8"></div>
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tight mb-4 sm:mb-6">Professionell Hårdvara</h2>
-                        <p className="text-slate-500 text-xl font-medium">Vi arbetar uteslutande med marknadsledande tillverkare som garanterar driftsäkerhet och lång livslängd.</p>
+                        <p className="text-slate-500 text-xl font-medium max-w-prose mx-auto">Vi arbetar uteslutande med marknadsledande tillverkare som garanterar driftsäkerhet och lång livslängd.</p>
                     </div>
 
                     <div className="grid lg:grid-cols-2 gap-6 sm:gap-10">

@@ -112,7 +112,7 @@ const PrivateChargingSection: React.FC = () => {
                             50% Avdrag <br />
                             <span className="text-cc-green">Direkt.</span>
                         </h2>
-                        <p className="text-slate-400 text-sm sm:text-lg leading-relaxed mb-6 sm:mb-8 font-medium">
+                        <p className="text-slate-400 text-sm sm:text-lg leading-relaxed mb-6 sm:mb-8 font-medium max-w-prose">
                             När du beställer installation av laddbox via oss får du 50% avdrag på både material och arbetskostnad direkt på fakturan (Grön Teknik). Vi sköter all administration och kontakt med Skatteverket åt dig.
                         </p>
                         

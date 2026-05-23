@@ -38,7 +38,7 @@ const AboutSection: React.FC = () => {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-text-primary tracking-tight mb-4 sm:mb-6 leading-tight">
               Vi bygger infrastrukturen för imorgon.
             </h2>
-            <p className="text-text-secondary text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
+            <p className="text-text-secondary text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 max-w-prose">
               För oss handlar elbilsladdning inte bara om hårdvara, utan om en sömlös helhetsupplevelse. Som oberoende experter installerar vi branschens ledande märken med ett system som automatiskt hanterar lastbalansering, uppdateringar och debitering.
             </p>
             
