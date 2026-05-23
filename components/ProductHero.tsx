@@ -5,7 +5,7 @@ import { Zap, Box, ArrowRight } from 'lucide-react';
 
 const ProductHero: React.FC = () => {
   return (
-    <section className="relative pt-24 sm:pt-32 pb-14 sm:pb-20 overflow-hidden bg-white">
+    <section className="relative pt-28 sm:pt-32 lg:pt-40 pb-14 sm:pb-20 overflow-hidden bg-white">
       {/* Aurora Background Layer */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-cc-green/10 rounded-full blur-[120px] animate-pulse"></div>

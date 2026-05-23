@@ -18,7 +18,7 @@ const SupportSection: React.FC = () => {
   return (
     <div className="bg-white font-monta min-h-screen animate-in fade-in duration-500">
       {/* Header */}
-      <section className="bg-slate-900 text-white pt-28 pb-16 sm:py-24 relative overflow-hidden">
+      <section className="bg-slate-900 text-white pt-28 pb-16 sm:py-24 lg:py-32 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#003DFF]/20 rounded-full blur-[150px]"></div>
         <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
           <p className="text-cc-green font-black uppercase tracking-[0.2em] mb-4">Clean Charge Support</p>
