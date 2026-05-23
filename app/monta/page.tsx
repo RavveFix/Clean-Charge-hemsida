@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   description:
     'Clean Charge AB programmerar och konfigurerar dina laddboxar med Monta som betalplattform. Vi sköter driften och ser till att laddarna alltid är online.',
   alternates: { canonical: 'https://www.cleancharge.se/monta' },
+  openGraph: {
+    title: 'Monta Hub – Operativsystem för Elbilister | Clean Charge AB',
+    description:
+      'SmartCharge, roaming till 500 000+ laddpunkter och betalning via app eller terminal. Authorized Operator Partner.',
+    url: 'https://www.cleancharge.se/monta',
+  },
 };
 
 const breadcrumb = breadcrumbJsonLd([

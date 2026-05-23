@@ -10,6 +10,12 @@ export const metadata: Metadata = {
   description:
     'Vi säljer och konfigurerar AC- och DC-laddboxar från Zaptec, Easee och Autel. Välj rätt laddbox för ditt företag eller fastighet.',
   alternates: { canonical: 'https://www.cleancharge.se/produkter' },
+  openGraph: {
+    title: 'Produkter – AC & DC Laddboxar | Clean Charge AB',
+    description:
+      'AC- och DC-laddboxar från Zaptec, Easee och Autel. Handplockade för driftsäkerhet och design.',
+    url: 'https://www.cleancharge.se/produkter',
+  },
 };
 
 const productListJsonLd = {
