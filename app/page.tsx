@@ -14,6 +14,12 @@ export const metadata: Metadata = {
   description:
     'Clean Charge AB levererar, konfigurerar och driftar laddboxar för företag och fastighetsbolag i hela Sverige. Auktoriserad Zaptec & Monta-partner. Få offert idag.',
   alternates: { canonical: 'https://www.cleancharge.se' },
+  openGraph: {
+    title: 'Clean Charge AB | Laddbox för Företag & Fastighetsbolag',
+    description:
+      'Vi levererar, konfigurerar och driftar er laddinfrastruktur – från offert till färdig drift. Auktoriserad Zaptec & Monta-partner.',
+    url: 'https://www.cleancharge.se',
+  },
 };
 
 export default function HomePage() {

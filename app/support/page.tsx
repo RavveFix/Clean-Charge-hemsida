@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   description:
     'Behöver du hjälp med din laddbox? Clean Charge AB erbjuder support under kontorstid. Ring 019-760 42 90 eller skicka ett mejl.',
   alternates: { canonical: 'https://www.cleancharge.se/support' },
+  openGraph: {
+    title: 'Support – Hjälp med din laddbox | Clean Charge AB',
+    description:
+      'Support måndag–fredag 08:00–17:00. Ring 019-760 42 90 eller mejla info@cleancharge.se så hjälper vi dig.',
+    url: 'https://www.cleancharge.se/support',
+  },
 };
 
 const breadcrumb = breadcrumbJsonLd([{ name: 'Support', path: '/support' }]);
