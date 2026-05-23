@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-[70vh] sm:min-h-[85vh] md:min-h-screen w-full flex items-center overflow-hidden bg-white pt-20 sm:pt-24 md:pt-32 lg:pt-40 pb-10 sm:pb-12 md:pb-16"
+      className="relative min-h-[70vh] sm:min-h-[85vh] md:min-h-screen w-full flex items-center overflow-hidden bg-white pt-28 sm:pt-32 md:pt-32 lg:pt-40 pb-10 sm:pb-12 md:pb-16"
     >
       <div className="container mx-auto px-4 sm:px-6 relative z-10 w-full max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-10 lg:gap-8">
