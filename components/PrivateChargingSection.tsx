@@ -19,7 +19,7 @@ const PrivateChargingSection: React.FC = () => {
                 {/* Decorative Elements */}
                 <div className="absolute bottom-10 left-10 w-32 h-32 bg-cc-green/10 rounded-full blur-xl animate-pulse"></div>
 
-                <div className="container mx-auto px-4 sm:px-6 relative z-10">
+                <div className="container mx-auto px-4 sm:px-6 relative z-10 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div className="space-y-8">
                             <div className="inline-flex items-center space-x-2 text-cc-green bg-white border border-slate-100 px-5 py-2.5 rounded-full shadow-sm">
@@ -102,7 +102,7 @@ const PrivateChargingSection: React.FC = () => {
                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cc-green rounded-full blur-[200px]"></div>
                 </div>
                 
-                <div className="container mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center gap-10 sm:gap-16 relative z-10">
+                <div className="container mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center gap-10 sm:gap-16 relative z-10 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
                     <div className="md:w-1/2 space-y-8">
                          <div className="inline-flex items-center space-x-2 text-cc-green mb-4">
                             <Zap className="w-4 h-4 fill-cc-green" />
@@ -156,7 +156,7 @@ const PrivateChargingSection: React.FC = () => {
 
             {/* Products Showcase */}
             <section id="products" className="py-16 sm:py-24 md:py-32">
-                <div className="container mx-auto px-4 sm:px-6">
+                <div className="container mx-auto px-4 sm:px-6 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
                     <div className="text-center mb-20 max-w-2xl mx-auto">
                         <div className="h-1 w-20 bg-cc-green mx-auto mb-8"></div>
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-800 uppercase tracking-tight mb-4 sm:mb-6">Våra Favoriter för Hemmet</h2>
@@ -214,7 +214,7 @@ const PrivateChargingSection: React.FC = () => {
 
              {/* Features */}
             <section className="py-16 sm:py-24 md:py-32 bg-slate-50 border-t border-slate-200">
-                 <div className="container mx-auto px-4 sm:px-6">
+                 <div className="container mx-auto px-4 sm:px-6 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
                      <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
                          {[
                              { icon: ShieldCheck, title: "Säker Installation", desc: "Våra elektriker är specialiserade på elbilsladdning och garanterar en installation enligt högsta säkerhetsstandard." },

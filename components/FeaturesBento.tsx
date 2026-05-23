@@ -46,7 +46,7 @@ const FeaturesBento: React.FC = () => {
 
   return (
     <section className="py-12 sm:py-16 md:py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
         <div className="mb-12 md:mb-16 text-center mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-[2.75rem] font-[800] text-text-primary tracking-tight mb-3 sm:mb-4">
             Framtidens teknik, idag.

@@ -73,7 +73,7 @@ const SolutionsSection: React.FC = () => {
 
   return (
     <section ref={containerRef} className="py-14 sm:py-20 md:py-32 bg-white">
-      <div className="container mx-auto px-4 sm:px-6">
+      <div className="container mx-auto px-4 sm:px-6 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
         <div className="text-center max-w-2xl mx-auto mb-16 md:mb-20">
           <span className="text-brand-green font-bold tracking-wider uppercase text-xs sm:text-sm mb-3 block">Lösningar</span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-text-primary tracking-tight mb-3 sm:mb-4 md:mb-6">
