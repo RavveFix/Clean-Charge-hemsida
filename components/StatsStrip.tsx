@@ -78,7 +78,7 @@ const StatsStrip: React.FC = () => {
   const stats = [
     { value: 50000, suffix: '+', label: 'Genomförda laddningar', sublabel: 'Via Monta-plattformen', icon: Zap, delay: 0 },
     { value: 4, suffix: '.6★', label: 'Monta Operatörsbetyg', sublabel: 'Verifierat av våra användare', icon: Star, delay: 150 },
-    { value: 4, suffix: ' år', label: 'Års erfarenhet', sublabel: 'Grundat 2021', icon: Calendar, delay: 300 },
+    { value: 5, suffix: ' år', label: 'Års erfarenhet', sublabel: 'Grundat 2021', icon: Calendar, delay: 300 },
     { value: 2, suffix: 'h', label: 'Svarstid support', sublabel: 'Under kontorstid', icon: Clock, delay: 450 },
   ];
 
