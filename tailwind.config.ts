@@ -7,6 +7,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        '3xl': '1920px',
+      },
       colors: {
         'brand-green': 'var(--brand-green)',
         'cc-green': 'var(--brand-green)',
