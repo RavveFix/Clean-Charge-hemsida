@@ -18,7 +18,7 @@ const MontaHubSection: React.FC = () => {
         <div className="absolute top-0 right-0 w-2/3 h-full bg-white/5 rounded-l-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-1/3 h-2/3 bg-cc-green/20 rounded-tr-full blur-3xl pointer-events-none"></div>
 
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
           <Link 
             href="/"
             className="group flex items-center space-x-2 text-blue-200 hover:text-white mb-8 transition-colors text-sm font-bold uppercase tracking-widest"
@@ -83,7 +83,7 @@ const MontaHubSection: React.FC = () => {
 
       {/* Feature Grid */}
       <section className="py-24 bg-slate-50">
-        <div className="container mx-auto px-4 sm:px-6">
+        <div className="container mx-auto px-4 sm:px-6 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-20">
             <h2 className="text-3xl sm:text-4xl font-black text-slate-800 uppercase tracking-tight mb-4 sm:mb-6">Varför välja Monta?</h2>
             <p className="text-slate-500 text-base sm:text-lg font-medium">Vi integrerar Monta som standard i våra installationer för att ge dig full frihet och kontroll.</p>
@@ -124,7 +124,7 @@ const MontaHubSection: React.FC = () => {
 
       {/* For BRF/Companies - Monta Style */}
       <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6">
+        <div className="container mx-auto px-4 sm:px-6 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
           <div className="bg-[#020817] rounded-[1.5rem] sm:rounded-[3rem] p-6 sm:p-12 md:p-24 text-white relative overflow-hidden">
             {/* Background Gradient */}
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#003DFF]/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
@@ -194,7 +194,7 @@ const MontaHubSection: React.FC = () => {
 
       {/* CTA */}
       <section className="py-24 bg-slate-50 border-t border-slate-200 text-center">
-        <div className="container mx-auto px-4 sm:px-6">
+        <div className="container mx-auto px-4 sm:px-6 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-slate-900 mb-6 sm:mb-8 uppercase tracking-tight">Redo att komma igång?</h2>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
                 <Link 

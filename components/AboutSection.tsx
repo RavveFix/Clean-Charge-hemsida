@@ -29,7 +29,7 @@ const AboutSection: React.FC = () => {
 
   return (
     <section ref={sectionRef} className="py-16 sm:py-24 md:py-32 bg-bg-surface overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
+      <div className="container mx-auto px-4 sm:px-6 max-w-6xl 2xl:max-w-7xl 3xl:max-w-[1400px]">
         <div className="flex flex-col lg:flex-row gap-10 sm:gap-16 lg:gap-24 items-center">
           
           {/* Text Content */}

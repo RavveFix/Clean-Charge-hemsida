@@ -75,7 +75,7 @@ const ContactSection: React.FC = () => {
           </svg>
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
           <div className="max-w-3xl">
             <div className="inline-flex items-center space-x-3 bg-cc-green/10 text-cc-green px-5 py-2.5 rounded-full border border-cc-green/20 mb-10">
               <MessageSquare className="w-4 h-4" />
@@ -108,7 +108,7 @@ const ContactSection: React.FC = () => {
 
       {/* ── Form + Info ──────────────────────────────── */}
       <section className="py-20 md:py-28 bg-slate-50">
-        <div className="container mx-auto px-4 sm:px-6">
+        <div className="container mx-auto px-4 sm:px-6 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
           <div className="grid lg:grid-cols-5 gap-8 xl:gap-16 items-start">
 
             {/* Form – 3 cols */}

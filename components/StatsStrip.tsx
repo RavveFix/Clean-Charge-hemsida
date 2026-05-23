@@ -99,7 +99,7 @@ const StatsStrip: React.FC = () => {
       {/* Left accent line */}
       <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-cc-green to-transparent opacity-30" />
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <div className="inline-flex items-center space-x-2 bg-cc-green/8 text-cc-green px-5 py-2 rounded-full border border-cc-green/15 mb-4 md:mb-6">
             <Zap className="w-3.5 h-3.5 fill-cc-green" />
