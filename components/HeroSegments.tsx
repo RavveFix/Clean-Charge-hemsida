@@ -28,13 +28,13 @@ const SEGMENTS = [
 const HeroSegments: React.FC = () => {
   return (
     <section className="bg-white py-10 sm:py-14 md:py-20 border-t border-slate-100">
-      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
         <div className="flex items-end justify-between mb-7 sm:mb-10">
           <div>
             <span className="text-cc-green font-black tracking-[0.3em] uppercase text-[12px] mb-2 block">
               Välj din väg
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight leading-tight">
+            <h2 className="text-[clamp(2rem,5vw,5rem)] font-black text-slate-900 tracking-tight leading-tight">
               Vad letar du efter?
             </h2>
           </div>
