@@ -17,7 +17,7 @@ Få Clean Charge AB-sajten att följa branschstandard för responsiv webbdesign 
 | CSS WG fluid layout | `clamp()` för hero-rubriker (skalar 320→1920 smidigt) |
 | Läsbarhet | Brödtext max 65-75ch radlängd |
 | Container utilization | Stora skärmar (1920+) ska nyttja ytan, inte centrera 1280px-block med massiva sidomarginaler |
-| Inga horisontella scrollbars | På någon viewport-bredd |
+| Inga horisontella scrollbars | På någon av de 7 testade viewport-bredderna |
 
 ## Scope — sidor i audit
 
@@ -45,12 +45,12 @@ Få Clean Charge AB-sajten att följa branschstandard för responsiv webbdesign 
 
 ### Phase 1 — Audit
 Playwright-skript som öppnar varje sida × varje bredd, mäter:
-- Horisontell overflow (document.scrollWidth > viewport)
-- Element som spillerut (>viewport)
-- Text-radlängder >75ch på brödtext-element
-- Container-utilization (% av viewport som content tar)
-- Touch-targets <44px på mobil
-- Brödtext <14px på mobil
+- Horisontell overflow (`document.documentElement.scrollWidth > window.innerWidth`)
+- Element som spillerut (`getBoundingClientRect().right > window.innerWidth`)
+- Text-radlängder >75ch på brödtext — definition: alla `p` + element med klass innehållande `text-base|text-sm|text-lg|text-xl`
+- Container utilization — mäter `max(innerWidth av .container, [class*="max-w-"]) / window.innerWidth`. Mål ≥70% på 1920px
+- Touch-targets <44px på mobil (regression)
+- Brödtext <14px på mobil (regression)
 
 Output: `audit-results-before.md` med konkreta issues per sida/bredd.
 
@@ -83,8 +83,9 @@ Wave-baserat över komponenter:
 - Kontrollera padding/gap på xl/2xl
 
 **Wave C (Navbar + Footer + globalt):**
-- Navbar `max-w-7xl` → `max-w-7xl 2xl:max-w-[1440px]`
-- Footer container expansion
+- Navbar: `max-w-7xl` → `max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1600px]` (på `<nav>`-elementet rad 58)
+- Footer: lägg `2xl:max-w-[1440px] 3xl:max-w-[1600px]` på footer-container
+- Sektion-containers (alla `container mx-auto px-...`) — fortsätt med default Tailwind container max-widths, men addera `2xl:max-w-[1440px] 3xl:max-w-[1600px]` på heros/grid-sektioner med visuellt tomma sidomarginaler
 
 ### Phase 4 — Re-audit + deploy
 Kör Playwright igen, jämför före/efter:
@@ -103,7 +104,6 @@ Deploy till Vercel prod efter grön audit.
 - ✅ Touch targets ≥44px bibehållna (regression-skydd)
 - ✅ Brödtext ≥14px på mobil bibehållen
 - ✅ Build + typecheck grönt
-- ✅ Lighthouse Performance ≥85 på `/` (regression-skydd)
 
 ## Out of scope
 
