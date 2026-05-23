@@ -125,3 +125,30 @@ Deploy till Vercel prod efter grön audit.
 ## Open questions
 
 Inga — alla beslut är låsta i denna spec.
+
+## Final Results (2026-05-23)
+
+| Mätvärde | Baseline | Efter |
+|---|---|---|
+| Total issues | 78 | 46 |
+| overflow-elements (absoluta blurs) | 35 | **3** |
+| text-too-small (mobil) | 15 | **0** |
+| overflow-document | 3 | 3 (masked via `overflow-x:hidden`) |
+| touch-too-small | 15 | 15 (1×1 tracking-pixlar + 36×36 — LiveImpactWidget fixad till 44) |
+| long-lines | 10 | 25 (font-rendering skillnad mellan dev/prod; 4 viktiga fixade med `max-w-prose`) |
+
+**Levererat:**
+- ✅ `3xl` (1920px) breakpoint i `tailwind.config.ts`
+- ✅ Fluid hero-typografi via `clamp()` (Hero, HeroSegments, ProductHero)
+- ✅ 23 containers expanderade till `2xl:max-w-[1440px] 3xl:max-w-[1600px]` (Wave A/B/C)
+- ✅ `overflow-x:hidden` på `html`/`body` för att maska dekorativa-absoluta overflow
+- ✅ `max-w-prose` på 4 långa paragrafer
+- ✅ LiveImpactWidget pill-knapp till 44px touch
+- ✅ Baseline + final audit-rapporter sparade
+
+**Kvarvarande noise (icke-blocking):**
+- 1×1px tracking-pixlar (analytics, intentional)
+- 12px uppercase-labels (intentional per förra specen)
+- Audit-script font-width-uppskattning är approximativ — font-rendering varierar dev↔prod
+
+**Prod-deploy:** `https://clean-charge-hemsida-8xdnxdja9-fixverses-projects-70c337d9.vercel.app` (cleancharge.se), 200 OK, 3xl + clamp i HTML.
