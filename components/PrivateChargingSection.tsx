@@ -13,7 +13,7 @@ const PrivateChargingSection: React.FC = () => {
     return (
         <div className="bg-white font-monta animate-in fade-in duration-500">
             {/* Hero */}
-            <section className="relative py-16 sm:py-24 md:py-32 bg-slate-50 overflow-hidden">
+            <section className="relative pt-28 pb-16 sm:py-24 md:py-32 bg-slate-50 overflow-hidden">
                 <div className="absolute top-0 right-0 w-2/3 h-full bg-cc-green/5 rounded-l-full blur-3xl pointer-events-none"></div>
                 
                 {/* Decorative Elements */}

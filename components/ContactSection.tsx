@@ -58,7 +58,7 @@ const ContactSection: React.FC = () => {
     <div className="bg-white animate-in fade-in duration-500 font-monta">
 
       {/* ── Page Hero ─────────────────────────────────── */}
-      <section className="relative py-20 sm:py-28 md:py-36 bg-slate-950 overflow-hidden">
+      <section className="relative pt-28 pb-20 sm:py-28 md:py-36 bg-slate-950 overflow-hidden">
         {/* Green glow */}
         <div className="absolute top-0 left-1/3 w-[700px] h-[700px] bg-cc-green/20 rounded-full blur-[200px] -translate-y-1/2 pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cc-green/10 rounded-full blur-[120px] pointer-events-none" />

@@ -31,7 +31,7 @@ const CommercialChargingSection: React.FC = () => {
     return (
         <div className="bg-white font-monta animate-in fade-in duration-500">
              {/* Hero Section */}
-            <section className="relative py-16 sm:py-24 md:py-32 bg-slate-900 text-white overflow-hidden min-h-[60vh] sm:min-h-[80vh] flex items-center">
+            <section className="relative pt-28 pb-16 sm:py-24 md:py-32 bg-slate-900 text-white overflow-hidden min-h-[60vh] sm:min-h-[80vh] flex items-center">
                  {/* Background effects */}
                  <div className="absolute inset-0 z-0">
                     <Image
