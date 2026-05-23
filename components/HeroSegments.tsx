@@ -34,7 +34,7 @@ const HeroSegments: React.FC = () => {
             <span className="text-cc-green font-black tracking-[0.3em] uppercase text-[12px] mb-2 block">
               Välj din väg
             </span>
-            <h2 className="text-[clamp(2rem,5vw,5rem)] font-black text-slate-900 tracking-tight leading-tight">
+            <h2 className="text-[clamp(1.5rem,3vw,2.5rem)] font-black text-slate-900 tracking-tight leading-tight">
               Vad letar du efter?
             </h2>
           </div>
