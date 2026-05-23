@@ -16,9 +16,16 @@ const CookiePolicySection: React.FC = () => {
                 <Cookie className="w-8 h-8" />
             </div>
           <h1 className="text-5xl font-black text-slate-800 mb-6 tracking-tight">Om Cookies</h1>
-          <p className="text-xl text-slate-500 leading-relaxed">
+          <p className="text-xl text-slate-500 leading-relaxed mb-8">
             Vi använder cookies för att ge dig en bättre upplevelse, analysera trafik och anpassa innehåll. Här förklarar vi hur det fungerar.
           </p>
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent('cc-open-consent'))}
+            className="inline-flex items-center justify-center min-h-[44px] px-6 py-3 rounded-full text-sm font-black text-white bg-cc-green hover:bg-cc-green/90 transition-colors shadow-lg shadow-cc-green/20"
+          >
+            Hantera samtycke
+          </button>
         </div>
       </section>
 

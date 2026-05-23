@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Instrument_Sans, Space_Grotesk } from 'next/font/google';
+import CookieBanner from '@/components/CookieBanner';
+import AnalyticsGate from '@/components/AnalyticsGate';
 import './globals.css';
 
 const instrumentSans = Instrument_Sans({
@@ -195,6 +197,8 @@ export default function RootLayout({
         <div id="main-content">
           {children}
         </div>
+        <CookieBanner />
+        <AnalyticsGate />
       </body>
     </html>
   );
