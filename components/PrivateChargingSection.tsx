@@ -181,7 +181,7 @@ const PrivateChargingSection: React.FC = () => {
                                         </div>
                                     </div>
                                     
-                                    <p className="text-slate-500 font-medium leading-relaxed">{product.description}</p>
+                                    <p className="text-slate-500 font-medium leading-relaxed max-w-prose">{product.description}</p>
                                     
                                     <ul className="space-y-3">
                                         {product.features.map((feature, idx) => (
@@ -226,7 +226,7 @@ const PrivateChargingSection: React.FC = () => {
                                      <item.icon className="w-8 h-8" />
                                  </div>
                                  <h3 className="text-2xl font-black text-slate-800 mb-4 uppercase tracking-tight">{item.title}</h3>
-                                 <p className="text-slate-500 font-medium leading-relaxed">{item.desc}</p>
+                                 <p className="text-slate-500 font-medium leading-relaxed max-w-prose">{item.desc}</p>
                              </div>
                          ))}
                      </div>

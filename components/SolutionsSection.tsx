@@ -79,7 +79,7 @@ const SolutionsSection: React.FC = () => {
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-text-primary tracking-tight mb-3 sm:mb-4 md:mb-6">
             Laddning anpassad för <br className="hidden sm:block" />din verklighet.
           </h2>
-          <p className="text-text-secondary text-sm sm:text-base md:text-lg">
+          <p className="text-text-secondary text-sm sm:text-base md:text-lg max-w-prose mx-auto">
             Oavsett om du laddar hemma, på jobbet eller i föreningen har vi en helhetslösning som passar perfekt.
           </p>
         </div>
@@ -102,7 +102,7 @@ const SolutionsSection: React.FC = () => {
               <div className="p-5 md:p-8 flex flex-col flex-grow bg-white">
                 <div className="mb-4 md:mb-6 text-slate-700">{solution.icon}</div>
                 <h3 className="text-xl md:text-2xl font-bold text-text-primary mb-2 md:mb-3 leading-tight">{solution.title}</h3>
-                <p className="text-text-secondary leading-relaxed mb-6 md:mb-8 flex-grow text-sm md:text-base">{solution.desc}</p>
+                <p className="text-text-secondary leading-relaxed mb-6 md:mb-8 flex-grow text-sm md:text-base max-w-prose">{solution.desc}</p>
                 <div className="flex items-center text-text-primary font-bold text-sm group-hover:text-brand-green transition-colors mt-auto">
                   Läs mer
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />

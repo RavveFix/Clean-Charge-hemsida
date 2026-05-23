@@ -65,7 +65,7 @@ const HeroSegments: React.FC = () => {
                 <h3 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight mb-2 group-hover:text-cc-green transition-colors">
                   {label}
                 </h3>
-                <p className="text-sm sm:text-[15px] text-slate-500 font-medium leading-relaxed mb-6">
+                <p className="text-sm sm:text-[15px] text-slate-500 font-medium leading-relaxed mb-6 max-w-prose">
                   {desc}
                 </p>
 

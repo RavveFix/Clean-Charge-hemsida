@@ -94,7 +94,7 @@ const CommercialChargingSection: React.FC = () => {
                                     <item.icon className="w-8 h-8" />
                                 </div>
                                 <h3 className="text-2xl font-black text-slate-900 mb-4 uppercase tracking-tight group-hover:text-cc-green transition-colors duration-300">{item.title}</h3>
-                                <p className="text-slate-500 font-medium leading-relaxed group-hover:text-slate-700 transition-colors duration-300">{item.desc}</p>
+                                <p className="text-slate-500 font-medium leading-relaxed group-hover:text-slate-700 transition-colors duration-300 max-w-prose">{item.desc}</p>
                                 
                                 {/* Subtle accent line that appears on hover */}
                                 <div className="h-1 w-0 bg-gradient-to-r from-cc-green to-[#34d399] rounded-full mt-6 group-hover:w-full transition-all duration-500"></div>
@@ -127,7 +127,7 @@ const CommercialChargingSection: React.FC = () => {
                                         </div>
                                         <h3 className="text-3xl font-black text-slate-900 leading-[0.9] uppercase tracking-tight">{product.name}</h3>
                                     </div>
-                                    <p className="text-slate-500 text-sm font-medium leading-relaxed">{product.description}</p>
+                                    <p className="text-slate-500 text-sm font-medium leading-relaxed max-w-prose">{product.description}</p>
                                     <ul className="space-y-3">
                                         {product.features.map((f, i) => (
                                             <li key={i} className="flex items-center space-x-3 text-xs font-bold text-slate-700 uppercase tracking-wide">

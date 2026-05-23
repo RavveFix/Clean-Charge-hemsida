@@ -20,7 +20,7 @@ const MontaSection: React.FC = () => {
           </div>
           
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-20 items-center relative z-10">
-            <div className="space-y-8 md:space-y-10">
+            <div className="space-y-8 md:space-y-10 min-w-0">
               <div className="space-y-4 md:space-y-6">
                 <div className="inline-block pb-2 md:pb-4">
                   <Image
@@ -56,16 +56,17 @@ const MontaSection: React.FC = () => {
               </Link>
             </div>
 
-            <div className="relative">
+            <div className="relative min-w-0">
               {/* Premium Dual-Image Layout */}
               <div className="relative">
                 {/* Background Image - App Collage */}
-                <div className="rounded-[2.5rem] overflow-hidden shadow-2xl bg-white border-4 border-white/10 transform hover:scale-[1.02] transition-all duration-500">
+                <div className="rounded-[2.5rem] overflow-hidden shadow-2xl bg-white border-4 border-white/10 transform hover:scale-[1.02] transition-all duration-500 w-full max-w-full">
                   <Image
                     src="/images/brand/Charge_2.png"
                     alt="Monta Charge-appen visar laddstationer och tariffer"
                     width={800}
                     height={600}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="w-full h-auto object-cover"
                   />
                 </div>
@@ -142,7 +143,7 @@ const MontaSection: React.FC = () => {
                 </div>
 
                 <h4 className="text-xl font-black text-slate-800 mb-3 tracking-tight">{feature.title}</h4>
-                <p className="text-slate-500 font-medium leading-relaxed text-sm mb-6">{feature.text}</p>
+                <p className="text-slate-500 font-medium leading-relaxed text-sm mb-6 max-w-prose">{feature.text}</p>
 
                 <div className="pt-5 border-t border-slate-50 flex items-baseline gap-2">
                   <span className="text-2xl font-black text-[#003DFF] tracking-tighter">{feature.stat}</span>
