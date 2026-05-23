@@ -55,7 +55,7 @@ const Navbar: React.FC<NavbarProps> = ({
     <>
       <nav
         ref={navRef}
-        className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-7xl transition-all duration-500 rounded-full px-6 lg:px-8 py-3 flex items-center justify-between bg-white/95 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-200/80 [&.scrolled]:shadow-[0_8px_30px_rgb(0,0,0,0.08)] [&.scrolled]:bg-white/98"
+        className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1600px] transition-all duration-500 rounded-full px-6 lg:px-8 py-3 flex items-center justify-between bg-white/95 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-200/80 [&.scrolled]:shadow-[0_8px_30px_rgb(0,0,0,0.08)] [&.scrolled]:bg-white/98"
       >
         <Link
           href="/"

@@ -45,7 +45,7 @@ const CommercialChargingSection: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900/40"></div>
                  </div>
                  
-                 <div className="container mx-auto px-4 sm:px-6 relative z-10">
+                 <div className="container mx-auto px-4 sm:px-6 relative z-10 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
                     <div className="max-w-4xl animate-in fade-in slide-in-from-bottom-8 duration-1000">
                         <div className="inline-flex items-center space-x-2 text-cc-green mb-6 border border-cc-green/20 bg-cc-green/10 px-4 py-2 rounded-full backdrop-blur-md">
                              <Building2 className="w-4 h-4" />
@@ -83,7 +83,7 @@ const CommercialChargingSection: React.FC = () => {
 
             {/* Value Props - Premium Hover Effects */}
             <section className="py-14 sm:py-24 bg-white relative">
-                <div className="container mx-auto px-4 sm:px-6">
+                <div className="container mx-auto px-4 sm:px-6 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
                     <div className="grid md:grid-cols-3 gap-6 sm:gap-12">
                         {valueProps.map((item, i) => (
                             <div 
@@ -106,11 +106,11 @@ const CommercialChargingSection: React.FC = () => {
 
              {/* Products Grid */}
              <section id="commercial-products" className="py-24 bg-slate-50 border-t border-slate-200">
-                <div className="container mx-auto px-4 sm:px-6">
+                <div className="container mx-auto px-4 sm:px-6 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
                     <div className="mb-20 text-center max-w-3xl mx-auto">
                         <div className="h-1 w-20 bg-cc-green mx-auto mb-8"></div>
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tight mb-4 sm:mb-6">Professionell Hårdvara</h2>
-                        <p className="text-slate-500 text-xl font-medium">Vi arbetar uteslutande med marknadsledande tillverkare som garanterar driftsäkerhet och lång livslängd.</p>
+                        <p className="text-slate-500 text-xl font-medium max-w-prose mx-auto">Vi arbetar uteslutande med marknadsledande tillverkare som garanterar driftsäkerhet och lång livslängd.</p>
                     </div>
 
                     <div className="grid lg:grid-cols-2 gap-6 sm:gap-10">
@@ -154,7 +154,7 @@ const CommercialChargingSection: React.FC = () => {
              {/* CTA */}
              <section className="py-24 bg-cc-green text-white relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-2/3 h-full bg-white/5 rounded-l-full blur-3xl pointer-events-none"></div>
-                <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center">
+                <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
                     <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-6 sm:mb-8 uppercase tracking-tight">Redo att växla upp?</h2>
                     <p className="text-white/90 text-base sm:text-xl max-w-2xl mx-auto mb-8 sm:mb-12 font-medium">Boka en kostnadsfri genomgång av er fastighet. Vi tar fram en skräddarsydd kalkyl som visar investering och återbetalningstid.</p>
                     <Link 

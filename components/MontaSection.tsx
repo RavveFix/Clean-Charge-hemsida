@@ -11,7 +11,7 @@ const MontaSection: React.FC = () => {
 
   return (
     <section className="py-12 sm:py-16 md:py-24 bg-white overflow-hidden font-monta">
-      <div className="container mx-auto px-4 sm:px-6">
+      <div className="container mx-auto px-4 sm:px-6 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
         <div className="bg-[#003DFF] rounded-[1.5rem] sm:rounded-[2.5rem] md:rounded-[3rem] p-6 sm:p-8 md:p-12 lg:p-20 text-white relative overflow-hidden mb-12 sm:mb-16 md:mb-20 shadow-2xl shadow-blue-900/20">
           <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
             <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">

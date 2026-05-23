@@ -103,7 +103,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ limit }) => {
   const displayedProducts = limit ? PRODUCTS.slice(0, limit) : PRODUCTS;
 
   return (
-    <div className="container mx-auto px-6">
+    <div className="container mx-auto px-6 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch">
         {displayedProducts.map((product) => (
           <ProductCard key={product.id} product={product} />

@@ -8,7 +8,7 @@ import { Facebook, Youtube, Instagram, Mail, Phone, MapPin, Zap, Linkedin } from
 const Footer: React.FC = () => {
   return (
     <footer className="bg-white text-slate-600 pt-16 sm:pt-24 md:pt-32 pb-10 sm:pb-16 border-t border-slate-100 font-monta">
-      <div className="container mx-auto px-4 sm:px-6">
+      <div className="container mx-auto px-4 sm:px-6 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 md:gap-16 mb-16 sm:mb-24 md:mb-32">
           <div className="space-y-6 sm:space-y-10 col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-1">
             <div className="space-y-4">

@@ -71,7 +71,7 @@ const LiveImpactWidget: React.FC = () => {
       {!isOpen ? (
         <button
           onClick={() => setIsOpen(true)}
-          className="group flex items-center space-x-3 bg-slate-900/90 hover:bg-slate-900 text-white pl-3.5 pr-4 py-3 rounded-full shadow-[0_20px_50px_rgba(0,177,130,0.25)] border border-cc-green/20 backdrop-blur-md transition-all duration-500 hover:scale-105 active:scale-95"
+          className="group flex items-center space-x-3 bg-slate-900/90 hover:bg-slate-900 text-white pl-3.5 pr-4 py-3 rounded-full shadow-[0_20px_50px_rgba(0,177,130,0.25)] border border-cc-green/20 backdrop-blur-md transition-all duration-500 hover:scale-105 active:scale-95 min-h-[44px]"
           aria-label="Visa miljörapport"
         >
           <div className="relative flex items-center justify-center">

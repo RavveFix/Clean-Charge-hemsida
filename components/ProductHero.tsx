@@ -12,14 +12,14 @@ const ProductHero: React.FC = () => {
         <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-600/5 rounded-full blur-[120px]"></div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
         <div className="max-w-4xl">
           <div className="inline-flex items-center space-x-3 bg-slate-50 border border-slate-100 px-4 py-2 rounded-full mb-8 shadow-sm">
             <Box className="w-4 h-4 text-cc-green" />
             <span className="text-[12px] font-black uppercase tracking-[0.3em] text-slate-500">Premium Sortiment</span>
           </div>
           
-          <h1 className="text-4xl sm:text-6xl md:text-[7rem] font-black tracking-tighter leading-[0.85] uppercase mb-6 sm:mb-8">
+          <h1 className="text-[clamp(1.75rem,4.5vw,4.5rem)] font-black tracking-tighter leading-[0.85] uppercase mb-6 sm:mb-8">
             Hårdvara i <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cc-green to-[#34d399]">Världsklass.</span>
           </h1>

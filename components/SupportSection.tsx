@@ -20,7 +20,7 @@ const SupportSection: React.FC = () => {
       {/* Header */}
       <section className="bg-slate-900 text-white py-16 sm:py-24 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#003DFF]/20 rounded-full blur-[150px]"></div>
-        <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
           <p className="text-cc-green font-black uppercase tracking-[0.2em] mb-4">Clean Charge Support</p>
           <h1 className="text-3xl sm:text-5xl md:text-7xl font-black mb-6 sm:mb-8 tracking-tighter">Hur kan vi <br/><span className="text-[#003DFF]">hjälpa dig?</span></h1>
           
@@ -37,7 +37,7 @@ const SupportSection: React.FC = () => {
 
       {/* Navigation Tabs */}
       <div className="border-b border-slate-100 sticky top-20 bg-white/95 backdrop-blur-md z-40">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
           <div className="flex justify-start sm:justify-center space-x-2 md:space-x-8 overflow-x-auto py-4 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
             {[
               { id: 'manuals', label: 'Manualer & Dokument', icon: FileText },
@@ -63,7 +63,7 @@ const SupportSection: React.FC = () => {
 
       {/* Content Area */}
       <section className="py-14 sm:py-24 bg-slate-50 min-h-[400px] sm:min-h-[600px]">
-        <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
+        <div className="container mx-auto px-4 sm:px-6 max-w-5xl 2xl:max-w-6xl 3xl:max-w-7xl">
           
           {/* MANUALS TAB */}
           {activeTab === 'manuals' && (
