@@ -4,7 +4,7 @@ import MontaHubSection from '@/components/MontaHubSection';
 import { breadcrumbJsonLd } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
-  title: 'Monta & IT-drift – Konfiguration av Laddboxar',
+  title: 'Monta & IT-drift – Konfiguration',
   description:
     'Clean Charge AB programmerar och konfigurerar dina laddboxar med Monta som betalplattform. Vi sköter driften och ser till att laddarna alltid är online.',
   alternates: { canonical: 'https://www.cleancharge.se/monta' },

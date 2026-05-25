@@ -4,7 +4,7 @@ import SupportSection from '@/components/SupportSection';
 import { breadcrumbJsonLd, faqJsonLd } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
-  title: 'Support',
+  title: 'Support & Hjälp med din Laddbox',
   description:
     'Behöver du hjälp med din laddbox? Clean Charge AB erbjuder support under kontorstid. Ring 019-760 42 90 eller skicka ett mejl.',
   alternates: { canonical: 'https://www.cleancharge.se/support' },
