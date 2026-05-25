@@ -6,13 +6,14 @@ import type { NextConfig } from 'next';
 // hydrering och Spline-runtime så länge vi inte kör nonce-baserad CSP.
 const contentSecurityPolicy = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://unpkg.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' data: https://fonts.gstatic.com",
   "img-src 'self' data: blob: https:",
-  "connect-src 'self' https://prod.spline.design https://*.spline.design https://va.vercel-scripts.com https://vitals.vercel-insights.com",
+  "media-src 'self' blob: https://videos.pexels.com",
+  "connect-src 'self' https://prod.spline.design https://*.spline.design https://unpkg.com https://www.elprisetjustnu.se https://fonts.googleapis.com https://fonts.gstatic.com https://va.vercel-scripts.com https://vitals.vercel-insights.com",
   "frame-src 'self' https://www.google.com https://maps.google.com",
-  "worker-src 'self' blob:",
+  "worker-src 'self' blob: https://unpkg.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
