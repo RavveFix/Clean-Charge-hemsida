@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     title: 'Laddbox Fastighetsbolag & BRF – Clean Charge AB',
     description: 'Komplett laddlösning för fastigheter. Från projektering till drift och debiteringshantering.',
     url: 'https://www.cleancharge.se/fastighetsbolag',
+    images: ['/opengraph-image'],
     type: 'website',
   },
   alternates: { canonical: 'https://www.cleancharge.se/fastighetsbolag' },

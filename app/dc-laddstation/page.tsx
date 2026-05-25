@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     title: 'DC Laddstation & Snabbladdare – Clean Charge AB',
     description: 'Installation av DC-snabbladdare för publika och kommersiella anläggningar. OCPP och betalning ingår.',
     url: 'https://www.cleancharge.se/dc-laddstation',
+    images: ['/opengraph-image'],
     type: 'website',
   },
   alternates: { canonical: 'https://www.cleancharge.se/dc-laddstation' },
@@ -31,6 +32,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: 'DC Laddstation Installation',
+  url: 'https://www.cleancharge.se/dc-laddstation',
   provider: {
     '@type': 'LocalBusiness',
     name: 'Clean Charge AB',

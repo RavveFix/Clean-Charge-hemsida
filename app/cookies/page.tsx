@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: 'Cookie-policy | Clean Charge AB',
     description: 'Information om vilka cookies vi använder och hur du hanterar dem.',
     url: 'https://www.cleancharge.se/cookies',
+    images: ['/opengraph-image'],
   },
 };
 

@@ -102,6 +102,9 @@ const jsonLd = {
       },
       foundingDate: '2021',
       founders: [{ '@type': 'Person', name: 'Ravon Eric Albin Strawder' }],
+      employee: [
+        { '@type': 'Person', name: 'Petra Lind', jobTitle: 'VD & Ekonomiansvarig' },
+      ],
       contactPoint: {
         '@type': 'ContactPoint',
         telephone: '+46197604290',

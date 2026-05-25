@@ -56,6 +56,18 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        // Apex → www (308) för att undvika duplicerat innehåll. Canonical,
+        // sitemap och robots pekar redan på www; detta tvingar dit besökare/bottar.
+        source: '/:path*',
+        has: [{ type: 'host', value: 'cleancharge.se' }],
+        destination: 'https://www.cleancharge.se/:path*',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

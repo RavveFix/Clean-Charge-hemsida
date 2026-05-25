@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     description:
       'Auktoriserad Zaptec- och Monta-partner från Örebro. Vi levererar komplett laddinfrastruktur för företag och fastighetsbolag.',
     url: 'https://www.cleancharge.se/om-oss',
+    images: ['/opengraph-image'],
   },
 };
 

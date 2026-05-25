@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description:
       '50% Grön Teknik-avdrag direkt på fakturan. Vi installerar marknadens säkraste laddboxar och sköter all administration åt dig.',
     url: 'https://www.cleancharge.se/privat',
+    images: ['/opengraph-image'],
   },
 };
 

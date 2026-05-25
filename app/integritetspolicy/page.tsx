@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: 'Integritetspolicy | Clean Charge AB',
     description: 'Så hanterar vi dina personuppgifter i enlighet med GDPR.',
     url: 'https://www.cleancharge.se/integritetspolicy',
+    images: ['/opengraph-image'],
   },
 };
 

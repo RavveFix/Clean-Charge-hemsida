@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description:
       'Support måndag–fredag 08:00–17:00. Ring 019-760 42 90 eller mejla info@cleancharge.se så hjälper vi dig.',
     url: 'https://www.cleancharge.se/support',
+    images: ['/opengraph-image'],
   },
 };
 

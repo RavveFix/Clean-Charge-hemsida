@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     title: 'Laddbox för Företag – Clean Charge AB',
     description: 'Skalbara laddlösningar för företag. Vi levererar, installerar och driftar – helt klart.',
     url: 'https://www.cleancharge.se/foretag',
+    images: ['/opengraph-image'],
     type: 'website',
   },
   alternates: { canonical: 'https://www.cleancharge.se/foretag' },
@@ -31,6 +32,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: 'Laddbox Installation för Företag',
+  url: 'https://www.cleancharge.se/foretag',
   provider: {
     '@type': 'LocalBusiness',
     name: 'Clean Charge AB',

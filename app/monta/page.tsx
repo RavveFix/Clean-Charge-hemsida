@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description:
       'SmartCharge, roaming till 500 000+ laddpunkter och betalning via app eller terminal. Authorized Operator Partner.',
     url: 'https://www.cleancharge.se/monta',
+    images: ['/opengraph-image'],
   },
 };
 

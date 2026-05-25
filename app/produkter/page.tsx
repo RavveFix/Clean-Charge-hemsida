@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     description:
       'AC- och DC-laddboxar från Zaptec, Easee och Autel. Handplockade för driftsäkerhet och design.',
     url: 'https://www.cleancharge.se/produkter',
+    images: ['/opengraph-image'],
   },
 };
 

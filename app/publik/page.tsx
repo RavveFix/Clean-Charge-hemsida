@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description:
       'Driftsäker hårdvara, automatisk debitering via Monta och full kontroll på drift och intäkter. 98% drifttid garanterat.',
     url: 'https://www.cleancharge.se/publik',
+    images: ['/opengraph-image'],
   },
 };
 

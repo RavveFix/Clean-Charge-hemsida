@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: 'Allmänna Villkor | Clean Charge AB',
     description: 'Köp- och leveransvillkor för Clean Charge AB:s tjänster och produkter.',
     url: 'https://www.cleancharge.se/villkor',
+    images: ['/opengraph-image'],
   },
 };
 
