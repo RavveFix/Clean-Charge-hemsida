@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PreFooterCTA from '@/components/PreFooterCTA';
-import CustomCursor from '@/components/CustomCursor';
 import LiveImpactWidget from '@/components/LiveImpactWidget';
 import ScrollToTop from '@/components/ScrollToTop';
 import PageTransition from '@/components/PageTransition';
@@ -34,7 +33,6 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
 
   return (
     <>
-      <CustomCursor />
       <LiveImpactWidget />
       <ScrollToTop />
       <Navbar
