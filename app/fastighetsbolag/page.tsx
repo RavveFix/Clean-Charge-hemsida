@@ -7,7 +7,7 @@ import { breadcrumbJsonLd } from '@/lib/jsonld';
 export const metadata: Metadata = {
   title: 'Laddbox BRF & Fastighetsbolag',
   description:
-    'Laddboxar för fastighetsbolag och BRF i hela Sverige. Clean Charge AB projekter, installerar och driftar laddinfrastruktur med smart lastbalansering och debiteringshantering. Ring 019-760 42 90.',
+    'Laddboxar för BRF och fastighetsbolag i hela Sverige. Vi projekterar, installerar och driftar med smart lastbalansering och debitering. Ring 019-760 42 90.',
   keywords: [
     'laddbox fastighetsbolag',
     'laddbox bostadsrättsförening',
