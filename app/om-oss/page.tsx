@@ -8,10 +8,16 @@ import { breadcrumbJsonLd } from '@/lib/jsonld';
 const breadcrumb = breadcrumbJsonLd([{ name: 'Om Oss', path: '/om-oss' }]);
 
 export const metadata: Metadata = {
-  title: 'Om Oss',
+  title: 'Om Oss – Laddexperter i Örebro',
   description:
-    'Clean Charge AB grundades 2021 i Örebro. Vi är en auktoriserad partner för Zaptec och Monta och hjälper företag och fastighetsbolag med komplett laddinfrastruktur.',
+    'Clean Charge AB grundades 2021 i Örebro. Auktoriserad partner för Zaptec och Monta – vi hjälper företag och fastighetsbolag med komplett laddinfrastruktur.',
   alternates: { canonical: 'https://www.cleancharge.se/om-oss' },
+  openGraph: {
+    title: 'Om Clean Charge AB – Laddexperter sedan 2021',
+    description:
+      'Auktoriserad Zaptec- och Monta-partner från Örebro. Vi levererar komplett laddinfrastruktur för företag och fastighetsbolag.',
+    url: 'https://www.cleancharge.se/om-oss',
+  },
 };
 
 const VALUES = [
