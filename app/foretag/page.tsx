@@ -7,7 +7,7 @@ import { breadcrumbJsonLd, faqJsonLd } from '@/lib/jsonld';
 export const metadata: Metadata = {
   title: 'Laddbox för Företag – AC & DC',
   description:
-    'Clean Charge AB installerar och driftar laddboxar för företag i hela Sverige. Auktoriserad Zaptec & Monta-partner. Få en kostnadsfri offert idag – ring 019-760 42 90.',
+    'Clean Charge AB installerar och driftar laddboxar för företag i hela Sverige. Auktoriserad Zaptec & Monta-partner. Kostnadsfri offert – ring 019-760 42 90.',
   keywords: [
     'laddbox företag',
     'laddstation kontor',

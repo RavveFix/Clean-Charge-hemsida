@@ -4,7 +4,7 @@ import CommercialChargingSection from '@/components/CommercialChargingSection';
 import { breadcrumbJsonLd, SITE_URL } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
-  title: 'Publik Laddning – Laddstation för Företag & Parkeringar',
+  title: 'Publik Laddning för Företag & Parkeringar',
   description:
     'Sätt upp publika laddstationer med Clean Charge AB. Vi installerar, konfigurerar och driftar laddinfrastruktur med Monta som betalplattform.',
   alternates: { canonical: 'https://www.cleancharge.se/publik' },

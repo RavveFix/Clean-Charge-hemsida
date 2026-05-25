@@ -8,10 +8,16 @@ import { breadcrumbJsonLd } from '@/lib/jsonld';
 const breadcrumb = breadcrumbJsonLd([{ name: 'Om Oss', path: '/om-oss' }]);
 
 export const metadata: Metadata = {
-  title: 'Om Oss',
+  title: 'Om Oss – Laddexperter i Örebro',
   description:
-    'Clean Charge AB grundades 2021 i Örebro. Vi är en auktoriserad partner för Zaptec och Monta och hjälper företag och fastighetsbolag med komplett laddinfrastruktur.',
+    'Clean Charge AB grundades 2021 i Örebro. Auktoriserad partner för Zaptec och Monta – vi hjälper företag och fastighetsbolag med komplett laddinfrastruktur.',
   alternates: { canonical: 'https://www.cleancharge.se/om-oss' },
+  openGraph: {
+    title: 'Om Clean Charge AB – Laddexperter sedan 2021',
+    description:
+      'Auktoriserad Zaptec- och Monta-partner från Örebro. Vi levererar komplett laddinfrastruktur för företag och fastighetsbolag.',
+    url: 'https://www.cleancharge.se/om-oss',
+  },
 };
 
 const VALUES = [
@@ -139,6 +145,25 @@ export default function OmOssPage() {
               </p>
             </div>
             <div className="lg:col-span-7 space-y-4 sm:space-y-5">
+              <div className="bg-slate-900 rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-12 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-48 h-48 bg-cc-green/20 rounded-full blur-3xl pointer-events-none" />
+                <div className="relative z-10 flex flex-col sm:flex-row items-start gap-6 sm:gap-10">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-cc-green/15 border border-cc-green/30 flex items-center justify-center shrink-0">
+                    <span className="text-3xl sm:text-4xl font-black text-cc-green tracking-tighter">PL</span>
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-[12px] font-black uppercase tracking-[0.3em] text-cc-green mb-2">VD & Ekonomiansvarig</p>
+                    <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-4">Petra Lind</h3>
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
+                      <a href="mailto:petra.lind@cleancharge.se" className="inline-flex items-center gap-2.5 text-sm font-bold text-slate-300 hover:text-cc-green transition-colors">
+                        <Mail className="w-4 h-4" />
+                        petra.lind@cleancharge.se
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="bg-slate-900 rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-12 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-48 h-48 bg-cc-green/20 rounded-full blur-3xl pointer-events-none" />
                 <div className="relative z-10 flex flex-col sm:flex-row items-start gap-6 sm:gap-10">
