@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Kontakta Oss – Offert & Rådgivning | Clean Charge AB',
     description:
-      'Kostnadsfri rådgivning och offert. Svar inom 2 timmar under kontorstid. Ring 019-760 42 90.',
+      'Kostnadsfri rådgivning och offert. Svar samma dag under kontorstid. Ring 019-760 42 90.',
     url: 'https://www.cleancharge.se/kontakt',
     images: ['/opengraph-image'],
   },

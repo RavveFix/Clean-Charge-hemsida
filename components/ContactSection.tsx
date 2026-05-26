@@ -72,7 +72,7 @@ const ContactSection: React.FC = () => {
                     </div>
                     <div className="space-y-3">
                       <h2 className="text-3xl font-black text-slate-800 tracking-tight">Tack för ditt meddelande!</h2>
-                      <p className="text-slate-500 font-medium max-w-sm">Vi återkommer inom 2 timmar under kontorstid. Du kan även nå oss direkt på telefon.</p>
+                      <p className="text-slate-500 font-medium max-w-sm">Vi återkommer samma dag under kontorstid. Du kan även nå oss direkt på telefon.</p>
                     </div>
                     <a href="tel:0197604290" className="inline-flex items-center gap-3 bg-cc-green text-white px-8 py-4 rounded-full font-black text-sm uppercase tracking-widest hover:bg-slate-900 transition-all">
                       <Phone className="w-4 h-4" />
@@ -190,7 +190,7 @@ const ContactSection: React.FC = () => {
                   icon: Mail,
                   title: 'Mejla oss',
                   content: 'info@cleancharge.se',
-                  sub: 'Svar inom 2 timmar',
+                  sub: 'Svar samma dag',
                   action: 'mailto:info@cleancharge.se',
                 },
                 {
@@ -272,7 +272,7 @@ const ContactSection: React.FC = () => {
                   <Clock className="w-8 h-8 text-white/80 shrink-0" />
                   <div>
                     <p className="text-sm font-black uppercase tracking-widest opacity-80 mb-1">Vårt löfte</p>
-                    <p className="font-black text-lg leading-tight">Svar inom 2 timmar<br /><span className="font-medium text-sm opacity-80">under kontorstid</span></p>
+                    <p className="font-black text-lg leading-tight">Svar samma dag<br /><span className="font-medium text-sm opacity-80">under kontorstid</span></p>
                   </div>
                 </div>
               </div>
