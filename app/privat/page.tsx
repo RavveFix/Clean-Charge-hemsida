@@ -54,7 +54,7 @@ const productList = {
         name: 'Easee Charge Lite',
         description:
           'Smart, kraftfull och säker. Easee Charge Lite är designad för enkelhet och passar alla bilar och elnät.',
-        image: `${SITE_URL}/images/products/easee-charge-lite.png`,
+        image: `${SITE_URL}/images/products/easee-charge-lite.jpg`,
         brand: { '@type': 'Brand', name: 'Easee' },
         category: 'AC Laddbox',
         offers: {

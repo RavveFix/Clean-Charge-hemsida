@@ -32,6 +32,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: 'Laddbox för Fastighetsbolag och BRF',
+  url: 'https://www.cleancharge.se/fastighetsbolag',
   provider: {
     '@type': 'LocalBusiness',
     name: 'Clean Charge AB',

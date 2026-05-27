@@ -56,7 +56,7 @@ const productList = {
         name: 'Autel MaxiCharger DH480',
         description:
           'Fullt modulär 480 kW allt-i-ett-laddare. Ultrasnabb laddning med 98% drifttid, optimerad för publika nätverk och flottor.',
-        image: `${SITE_URL}/images/products/autel-maxicharger.png`,
+        image: `${SITE_URL}/images/products/autel-dh480-product.png`,
         brand: { '@type': 'Brand', name: 'Autel' },
         category: 'DC Snabbladdare',
         offers: {
