@@ -5,7 +5,8 @@ import { breadcrumbJsonLd } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   title: 'Integritetspolicy',
-  description: 'Läs om hur Clean Charge AB hanterar dina personuppgifter.',
+  description:
+    'Clean Charge AB:s integritetspolicy – så samlar vi in, använder och skyddar dina personuppgifter enligt GDPR. Läs om dina rättigheter och hur du kontaktar oss.',
   alternates: { canonical: 'https://www.cleancharge.se/integritetspolicy' },
   openGraph: {
     title: 'Integritetspolicy | Clean Charge AB',
