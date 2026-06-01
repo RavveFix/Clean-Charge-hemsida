@@ -5,7 +5,8 @@ import { breadcrumbJsonLd } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   title: 'Cookie-policy',
-  description: 'Läs om hur Clean Charge AB använder cookies.',
+  description:
+    'Cookie-policy för Clean Charge AB – vilka cookies vi använder för funktion, statistik och marknadsföring, varför de behövs och hur du själv hanterar ditt samtycke.',
   alternates: { canonical: 'https://www.cleancharge.se/cookies' },
   openGraph: {
     title: 'Cookie-policy | Clean Charge AB',

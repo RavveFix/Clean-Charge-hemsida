@@ -5,7 +5,8 @@ import { breadcrumbJsonLd } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   title: 'Allmänna Villkor',
-  description: 'Läs Clean Charge AB:s allmänna villkor.',
+  description:
+    'Allmänna villkor för Clean Charge AB – köp, leverans, installation och garanti för laddboxar och laddtjänster till företag, fastighetsbolag och privatpersoner.',
   alternates: { canonical: 'https://www.cleancharge.se/villkor' },
   openGraph: {
     title: 'Allmänna Villkor | Clean Charge AB',
