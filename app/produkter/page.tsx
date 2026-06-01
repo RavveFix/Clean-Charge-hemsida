@@ -42,6 +42,7 @@ const productListJsonLd = {
               '@type': 'Offer',
               priceCurrency: 'SEK',
               price: product.price,
+              priceValidUntil: '2026-12-31',
               availability: 'https://schema.org/InStock',
               seller: { '@type': 'Organization', name: 'Clean Charge AB' },
             }
