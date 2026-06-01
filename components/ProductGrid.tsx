@@ -24,7 +24,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className="relative aspect-square mb-6 overflow-hidden rounded-[2rem] bg-slate-50/50 flex items-center justify-center p-6 transition-all group-hover:bg-white">
           <Image
             src={product.image}
-            alt={`${product.name} – ${product.category === 'laddbox' ? 'AC laddbox' : 'DC snabbladdare'}`}
+            alt={`${product.name} – ${product.category === 'laddbox' ? 'AC-laddbox' : 'DC-snabbladdare'}${product.features?.[0] ? `, ${product.features[0]}` : ''}`}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-contain group-hover:scale-110 group-hover:rotate-2 transition-all duration-700 relative z-10 drop-shadow-2xl"
