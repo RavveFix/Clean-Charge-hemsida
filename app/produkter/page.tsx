@@ -8,7 +8,7 @@ import { breadcrumbJsonLd, SITE_URL } from '@/lib/jsonld';
 export const metadata: Metadata = {
   title: 'Produkter – AC & DC Laddboxar',
   description:
-    'Vi säljer och konfigurerar AC- och DC-laddboxar från Zaptec, Easee och Autel. Välj rätt laddbox för ditt företag eller fastighet.',
+    'Köp och konfigurera AC- och DC-laddboxar från Zaptec, Easee och Autel hos Clean Charge AB. Vi hjälper dig välja rätt laddbox för företag, fastighet eller hem.',
   alternates: { canonical: 'https://www.cleancharge.se/produkter' },
   openGraph: {
     title: 'Produkter – AC & DC Laddboxar | Clean Charge AB',

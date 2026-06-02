@@ -6,7 +6,7 @@ import { Home, Zap, MessageSquare, Box } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Sidan kunde inte hittas (404)',
   description:
-    'Sidan du letar efter finns inte. Hitta tillbaka till Clean Charge AB:s startsida eller kontakta oss.',
+    'Sidan du letar efter finns inte längre. Hitta tillbaka till Clean Charge AB:s startsida, se våra laddboxar och tjänster eller kontakta oss på 019-760 42 90.',
   robots: { index: false, follow: true },
 };
 

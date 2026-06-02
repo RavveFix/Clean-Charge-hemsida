@@ -6,7 +6,7 @@ import { breadcrumbJsonLd, SITE_URL } from '@/lib/jsonld';
 export const metadata: Metadata = {
   title: 'Publik Laddning för Företag & Parkeringar',
   description:
-    'Sätt upp publika laddstationer med Clean Charge AB. Vi installerar, konfigurerar och driftar laddinfrastruktur med Monta som betalplattform.',
+    'Sätt upp publika laddstationer med Clean Charge AB. Vi installerar, konfigurerar och driftar laddinfrastrukturen med Monta som betalplattform – nyckelfärdigt.',
   alternates: { canonical: 'https://www.cleancharge.se/publik' },
   openGraph: {
     title: 'Publik Laddning – Laddstation för Företag & Parkeringar | Clean Charge AB',

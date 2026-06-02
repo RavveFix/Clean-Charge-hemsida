@@ -7,7 +7,7 @@ import { breadcrumbJsonLd } from '@/lib/jsonld';
 export const metadata: Metadata = {
   title: 'DC Laddstation – Snabbladdare Publik Drift',
   description:
-    'Clean Charge AB installerar DC-snabbladdare för publika och kommersiella anläggningar. OCPP-kompatibelt med betalning. Ring 019-760 42 90 för offert.',
+    'Clean Charge AB installerar DC-snabbladdare för publika och kommersiella anläggningar. OCPP-kompatibelt med betalning och drift. Ring 019-760 42 90 för offert.',
   keywords: [
     'DC laddstation installation',
     'snabbladdare installation',

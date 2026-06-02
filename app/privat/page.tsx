@@ -6,7 +6,7 @@ import { breadcrumbJsonLd, faqJsonLd, SITE_URL } from '@/lib/jsonld';
 export const metadata: Metadata = {
   title: 'Ladda Privat – Laddbox Hemma',
   description:
-    'Installera en laddbox hemma med Clean Charge AB. Vi hjälper dig välja rätt produkt, ordnar installation och sköter Monta-uppkopplingen.',
+    'Installera laddbox hemma med Clean Charge AB. Vi hjälper dig välja rätt produkt, ordnar installationen och sköter Monta-uppkopplingen – nyckelfärdigt åt dig.',
   alternates: { canonical: 'https://www.cleancharge.se/privat' },
   openGraph: {
     title: 'Ladda Privat – Laddbox Hemma | Clean Charge AB',

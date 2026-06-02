@@ -8,7 +8,7 @@ import { breadcrumbJsonLd } from '@/lib/jsonld';
 export const metadata: Metadata = {
   title: 'Kontakta Oss – Offert & Rådgivning',
   description:
-    'Kontakta Clean Charge AB för kostnadsfri rådgivning och offert. Ring 019-760 42 90 eller fyll i formuläret så återkommer vi inom 2 timmar.',
+    'Kontakta Clean Charge AB för kostnadsfri rådgivning och offert på laddboxar. Ring 019-760 42 90 eller fyll i formuläret så återkommer vi inom 2 timmar.',
   alternates: { canonical: 'https://www.cleancharge.se/kontakt' },
   openGraph: {
     title: 'Kontakta Oss – Offert & Rådgivning | Clean Charge AB',
