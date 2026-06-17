@@ -8,6 +8,7 @@ import StatsStrip from '@/components/StatsStrip';
 import SolutionsSection from '@/components/SolutionsSection';
 import AboutSection from '@/components/AboutSection';
 import ClientLayout from '@/app/ClientLayout';
+import { openGraphImages } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: { absolute: 'Clean Charge AB | Laddbox för Företag & Fastighetsbolag' },
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
     description:
       'Vi levererar, konfigurerar och driftar er laddinfrastruktur – från offert till färdig drift. Auktoriserad Zaptec & Monta-partner.',
     url: 'https://www.cleancharge.se',
+    images: openGraphImages(),
   },
 };
 

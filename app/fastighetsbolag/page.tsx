@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Building2, Users, TrendingUp, Settings } from 'lucide-react';
-import { breadcrumbJsonLd } from '@/lib/jsonld';
+import { breadcrumbJsonLd, serviceJsonLd } from '@/lib/jsonld';
+import { openGraphImages } from '@/lib/seo';
+import RelatedSolutions from '@/components/RelatedSolutions';
 
 export const metadata: Metadata = {
   title: 'Laddbox BRF & Fastighetsbolag',
@@ -22,27 +24,18 @@ export const metadata: Metadata = {
     title: 'Laddbox Fastighetsbolag & BRF – Clean Charge AB',
     description: 'Komplett laddlösning för fastigheter. Från projektering till drift och debiteringshantering.',
     url: 'https://www.cleancharge.se/fastighetsbolag',
-    images: ['/opengraph-image'],
+    images: openGraphImages('Laddbox för fastighetsbolag och BRF — projektering, installation och debitering'),
     type: 'website',
   },
   alternates: { canonical: 'https://www.cleancharge.se/fastighetsbolag' },
 };
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
+const jsonLd = serviceJsonLd({
   name: 'Laddbox för Fastighetsbolag och BRF',
-  url: 'https://www.cleancharge.se/fastighetsbolag',
-  provider: {
-    '@type': 'LocalBusiness',
-    name: 'Clean Charge AB',
-    telephone: '+46197604290',
-    url: 'https://www.cleancharge.se',
-  },
-  areaServed: 'SE',
+  path: '/fastighetsbolag',
   description: 'Laddinfrastruktur för fastighetsbolag, bostadsrättsföreningar och hyresfastigheter.',
   serviceType: 'EV Charging Installation for Real Estate',
-};
+});
 
 const breadcrumb = breadcrumbJsonLd([
   { name: 'För BRF & Fastighet', path: '/fastighetsbolag' },
@@ -185,6 +178,8 @@ export default function FastighetsbolagPage() {
           </div>
         </div>
       </section>
+
+      <RelatedSolutions current="fastighetsbolag" />
 
       {/* CTA */}
       <section className="py-24 bg-white">

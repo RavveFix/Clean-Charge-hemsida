@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Zap, Shield, BarChart3, Wrench } from 'lucide-react';
-import { breadcrumbJsonLd, faqJsonLd } from '@/lib/jsonld';
+import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/jsonld';
+import { openGraphImages } from '@/lib/seo';
+import RelatedSolutions from '@/components/RelatedSolutions';
 
 export const metadata: Metadata = {
   title: 'Laddbox för Företag – AC & DC',
@@ -22,27 +24,18 @@ export const metadata: Metadata = {
     title: 'Laddbox för Företag – Clean Charge AB',
     description: 'Skalbara laddlösningar för företag. Vi levererar, installerar och driftar – helt klart.',
     url: 'https://www.cleancharge.se/foretag',
-    images: ['/opengraph-image'],
+    images: openGraphImages('Laddbox för företag — installation, drift och Monta-konfiguration'),
     type: 'website',
   },
   alternates: { canonical: 'https://www.cleancharge.se/foretag' },
 };
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
+const jsonLd = serviceJsonLd({
   name: 'Laddbox Installation för Företag',
-  url: 'https://www.cleancharge.se/foretag',
-  provider: {
-    '@type': 'LocalBusiness',
-    name: 'Clean Charge AB',
-    telephone: '+46197604290',
-    url: 'https://www.cleancharge.se',
-  },
-  areaServed: 'SE',
+  path: '/foretag',
   description: 'Installation och drift av laddboxar för företag och arbetsplatser i Sverige.',
   serviceType: 'EV Charging Installation',
-};
+});
 
 const breadcrumb = breadcrumbJsonLd([
   { name: 'För Företag', path: '/foretag' },
@@ -201,6 +194,8 @@ export default function ForetagPage() {
           </div>
         </div>
       </section>
+
+      <RelatedSolutions current="foretag" />
 
       {/* CTA */}
       <section className="py-24 bg-white">

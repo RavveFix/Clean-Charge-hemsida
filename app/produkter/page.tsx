@@ -3,7 +3,9 @@ import ClientLayout from '@/app/ClientLayout';
 import ProductHero from '@/components/ProductHero';
 import ProductGrid from '@/components/ProductGrid';
 import { PRODUCTS } from '@/constants';
-import { breadcrumbJsonLd, SITE_URL } from '@/lib/jsonld';
+import { breadcrumbJsonLd, LOCAL_BUSINESS_ID, SITE_URL } from '@/lib/jsonld';
+import { openGraphImages } from '@/lib/seo';
+import RelatedSolutions from '@/components/RelatedSolutions';
 
 export const metadata: Metadata = {
   title: 'Produkter – AC & DC Laddboxar',
@@ -15,7 +17,7 @@ export const metadata: Metadata = {
     description:
       'AC- och DC-laddboxar från Zaptec, Easee och Autel. Handplockade för driftsäkerhet och design.',
     url: 'https://www.cleancharge.se/produkter',
-    images: ['/opengraph-image'],
+    images: openGraphImages('Produkter — AC- och DC-laddboxar från Zaptec, Easee och Autel'),
   },
 };
 
@@ -27,8 +29,10 @@ const productListJsonLd = {
     position: index + 1,
     item: {
       '@type': 'Product',
+      '@id': `${SITE_URL}/produkter#${product.id}`,
       name: product.name,
       description: product.description,
+      url: `${SITE_URL}/produkter#${product.id}`,
       image: `${SITE_URL}${product.image}`,
       brand: {
         '@type': 'Brand',
@@ -44,13 +48,15 @@ const productListJsonLd = {
               price: product.price,
               priceValidUntil: '2026-12-31',
               availability: 'https://schema.org/InStock',
-              seller: { '@type': 'Organization', name: 'Clean Charge AB' },
+              url: `${SITE_URL}/kontakt?product=${encodeURIComponent(product.name)}`,
+              seller: { '@id': LOCAL_BUSINESS_ID },
             }
           : {
               '@type': 'Offer',
               priceCurrency: 'SEK',
               availability: 'https://schema.org/InStock',
-              seller: { '@type': 'Organization', name: 'Clean Charge AB' },
+              url: `${SITE_URL}/kontakt?product=${encodeURIComponent(product.name)}`,
+              seller: { '@id': LOCAL_BUSINESS_ID },
               priceSpecification: {
                 '@type': 'PriceSpecification',
                 description: 'Offert på begäran',
@@ -81,6 +87,7 @@ export default function ProdukterPage() {
           <ProductGrid />
         </div>
       </div>
+      <RelatedSolutions current="produkter" />
     </ClientLayout>
   );
 }

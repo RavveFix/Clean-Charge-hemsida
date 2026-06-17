@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Zap, Timer, Globe, ShieldCheck } from 'lucide-react';
-import { breadcrumbJsonLd } from '@/lib/jsonld';
+import { breadcrumbJsonLd, serviceJsonLd } from '@/lib/jsonld';
+import { openGraphImages } from '@/lib/seo';
+import RelatedSolutions from '@/components/RelatedSolutions';
 
 export const metadata: Metadata = {
   title: 'DC Laddstation – Snabbladdare Publik Drift',
@@ -22,27 +24,18 @@ export const metadata: Metadata = {
     title: 'DC Laddstation & Snabbladdare – Clean Charge AB',
     description: 'Installation av DC-snabbladdare för publika och kommersiella anläggningar. OCPP och betalning ingår.',
     url: 'https://www.cleancharge.se/dc-laddstation',
-    images: ['/opengraph-image'],
+    images: openGraphImages('DC-laddstation och snabbladdare — publik drift med betalning och OCPP'),
     type: 'website',
   },
   alternates: { canonical: 'https://www.cleancharge.se/dc-laddstation' },
 };
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
+const jsonLd = serviceJsonLd({
   name: 'DC Laddstation Installation',
-  url: 'https://www.cleancharge.se/dc-laddstation',
-  provider: {
-    '@type': 'LocalBusiness',
-    name: 'Clean Charge AB',
-    telephone: '+46197604290',
-    url: 'https://www.cleancharge.se',
-  },
-  areaServed: 'SE',
+  path: '/dc-laddstation',
   description: 'Installation och drift av DC-snabbladdare för publik och kommersiell användning.',
   serviceType: 'DC EV Fast Charging Installation',
-};
+});
 
 const breadcrumb = breadcrumbJsonLd([
   { name: 'DC Laddstation', path: '/dc-laddstation' },
@@ -204,6 +197,8 @@ export default function DcLaddstationPage() {
           </div>
         </div>
       </section>
+
+      <RelatedSolutions current="dc-laddstation" />
 
       {/* CTA */}
       <section className="py-24 bg-white">

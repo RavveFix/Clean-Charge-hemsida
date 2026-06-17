@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import SupportSection from '@/components/SupportSection';
 import { breadcrumbJsonLd, faqJsonLd } from '@/lib/jsonld';
+import { openGraphImages } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Support & Hjälp med din Laddbox',
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     description:
       'Support måndag–fredag 08:00–17:00. Ring 019-760 42 90 eller mejla info@cleancharge.se så hjälper vi dig.',
     url: 'https://www.cleancharge.se/support',
-    images: ['/opengraph-image'],
+    images: openGraphImages('Support för laddbox — felsökning, garanti och hjälp med Monta'),
   },
 };
 

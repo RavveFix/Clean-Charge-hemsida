@@ -165,7 +165,7 @@ const PrivateChargingSection: React.FC = () => {
 
                     <div className="grid lg:grid-cols-2 gap-10">
                         {privateProducts.map((product) => (
-                             <div key={product.id} className="group bg-white rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[3.5rem] p-5 sm:p-6 md:p-10 border border-slate-100 hover:border-cc-green/30 hover:shadow-2xl hover:shadow-cc-green/10 transition-all duration-500 flex flex-col md:flex-row gap-6 sm:gap-8 md:gap-10 items-center">
+                             <div key={product.id} id={product.id} className="group bg-white rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[3.5rem] p-5 sm:p-6 md:p-10 border border-slate-100 hover:border-cc-green/30 hover:shadow-2xl hover:shadow-cc-green/10 transition-all duration-500 flex flex-col md:flex-row gap-6 sm:gap-8 md:gap-10 items-center scroll-mt-32">
                                 <div className="w-full md:w-1/2 aspect-square bg-slate-50 rounded-[2.5rem] p-8 flex items-center justify-center relative overflow-hidden">
                                      <div className="absolute inset-0 bg-cc-green/5 rounded-[2.5rem] transform scale-0 group-hover:scale-100 transition-transform duration-700 rounded-full"></div>
                                     <Image src={product.image} alt={`${product.name} – AC-laddbox för villa och radhus${product.features?.[0] ? `, ${product.features[0]}` : ''}`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain relative z-10 group-hover:scale-110 transition-transform duration-700" />

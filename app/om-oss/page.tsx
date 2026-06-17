@@ -3,9 +3,23 @@ import Link from 'next/link';
 import ClientLayout from '@/app/ClientLayout';
 import AboutSection from '@/components/AboutSection';
 import { MapPin, Calendar, Award, Users, Phone, Mail, ArrowRight } from 'lucide-react';
-import { breadcrumbJsonLd } from '@/lib/jsonld';
+import { LOCAL_BUSINESS_ID, ORGANIZATION_ID, SITE_URL, breadcrumbJsonLd } from '@/lib/jsonld';
+import { openGraphImages } from '@/lib/seo';
 
 const breadcrumb = breadcrumbJsonLd([{ name: 'Om Oss', path: '/om-oss' }]);
+
+const aboutPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  '@id': `${SITE_URL}/om-oss#aboutpage`,
+  url: `${SITE_URL}/om-oss`,
+  name: 'Om Clean Charge AB',
+  description:
+    'Clean Charge AB är en auktoriserad Zaptec- och Monta-partner från Örebro som levererar laddinfrastruktur för företag och fastighetsbolag.',
+  inLanguage: 'sv-SE',
+  mainEntity: { '@id': ORGANIZATION_ID },
+  about: { '@id': LOCAL_BUSINESS_ID },
+};
 
 export const metadata: Metadata = {
   title: 'Om Oss – Laddexperter i Örebro',
@@ -17,7 +31,7 @@ export const metadata: Metadata = {
     description:
       'Auktoriserad Zaptec- och Monta-partner från Örebro. Vi levererar komplett laddinfrastruktur för företag och fastighetsbolag.',
     url: 'https://www.cleancharge.se/om-oss',
-    images: ['/opengraph-image'],
+    images: openGraphImages('Om Clean Charge AB — laddexperter från Örebro sedan 2021'),
   },
 };
 
@@ -46,6 +60,10 @@ const FACTS = [
 export default function OmOssPage() {
   return (
     <ClientLayout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageJsonLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}

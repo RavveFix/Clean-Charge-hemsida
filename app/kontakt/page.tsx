@@ -3,7 +3,8 @@ import type { Metadata } from 'next';
 import { MessageSquare } from 'lucide-react';
 import ClientLayout from '@/app/ClientLayout';
 import ContactSection from '@/components/ContactSection';
-import { breadcrumbJsonLd } from '@/lib/jsonld';
+import { LOCAL_BUSINESS_ID, ORGANIZATION_ID, SITE_URL, breadcrumbJsonLd } from '@/lib/jsonld';
+import { openGraphImages } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Kontakta Oss – Offert & Rådgivning',
@@ -15,15 +16,40 @@ export const metadata: Metadata = {
     description:
       'Kostnadsfri rådgivning och offert. Svar samma dag under kontorstid. Ring 019-760 42 90.',
     url: 'https://www.cleancharge.se/kontakt',
-    images: ['/opengraph-image'],
+    images: openGraphImages('Kontakta Clean Charge AB — kostnadsfri rådgivning och offert'),
   },
 };
 
 const breadcrumb = breadcrumbJsonLd([{ name: 'Kontakt', path: '/kontakt' }]);
 
+const contactPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  '@id': `${SITE_URL}/kontakt#contactpage`,
+  url: `${SITE_URL}/kontakt`,
+  name: 'Kontakta Clean Charge AB',
+  description:
+    'Kontakt, offert och rådgivning för laddboxar, DC-laddstationer och drift av laddinfrastruktur.',
+  inLanguage: 'sv-SE',
+  mainEntity: { '@id': ORGANIZATION_ID },
+  about: { '@id': LOCAL_BUSINESS_ID },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+46197604290',
+    email: 'info@cleancharge.se',
+    contactType: 'sales and customer service',
+    areaServed: 'SE',
+    availableLanguage: ['Swedish', 'English'],
+  },
+};
+
 export default function KontaktPage() {
   return (
     <ClientLayout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageJsonLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
