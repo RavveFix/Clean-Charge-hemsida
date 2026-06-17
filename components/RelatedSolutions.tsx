@@ -78,7 +78,10 @@ export default function RelatedSolutions({ current }: { current: SolutionKey }) 
             >
               <h3 className="text-xl font-black text-slate-900 mb-3">{item.title}</h3>
               <p className="text-slate-500 text-sm leading-relaxed mb-6 flex-grow">{item.desc}</p>
-              <span className="inline-flex items-center gap-2 text-[#00b182] font-bold text-sm uppercase tracking-wider mt-auto">
+              <span
+                aria-hidden="true"
+                className="inline-flex items-center gap-2 text-[#00b182] font-bold text-sm uppercase tracking-wider mt-auto"
+              >
                 Läs mer
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
