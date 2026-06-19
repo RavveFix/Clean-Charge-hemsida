@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import SupportSection from '@/components/SupportSection';
+import FaqSection from '@/components/FaqSection';
 import { breadcrumbJsonLd, faqJsonLd } from '@/lib/jsonld';
 import { openGraphImages } from '@/lib/seo';
 
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
 
 const breadcrumb = breadcrumbJsonLd([{ name: 'Support', path: '/support' }]);
 
-const faq = faqJsonLd([
+const faqEntries = [
   {
     question: 'Vad gör jag om min laddbox inte fungerar?',
     answer:
@@ -46,7 +47,9 @@ const faq = faqJsonLd([
     answer:
       'Ja. Många kunder börjar med några laddare och bygger ut efter hand. Vi hjälper er att projektera utbyggnaden så att lastbalansering och elinstallation klarar den nya kapaciteten utan att huvudsäkringen behöver höjas.',
   },
-]);
+];
+
+const faq = faqJsonLd(faqEntries);
 
 export default function SupportPage() {
   return (
@@ -60,6 +63,7 @@ export default function SupportPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
       />
       <SupportSection />
+      <FaqSection entries={faqEntries} />
     </ClientLayout>
   );
 }

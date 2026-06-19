@@ -5,6 +5,7 @@ import { CheckCircle2, Phone, ArrowRight, Zap, Shield, BarChart3, Wrench } from 
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/jsonld';
 import { openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
+import FaqSection from '@/components/FaqSection';
 
 export const metadata: Metadata = {
   title: 'Laddbox för Företag – AC & DC',
@@ -41,7 +42,7 @@ const breadcrumb = breadcrumbJsonLd([
   { name: 'För Företag', path: '/foretag' },
 ]);
 
-const faq = faqJsonLd([
+const faqEntries = [
   {
     question: 'Hur lång tid tar en installation av laddboxar?',
     answer:
@@ -67,7 +68,9 @@ const faq = faqJsonLd([
     answer:
       'Vi övervakar era laddare på distans och agerar proaktivt vid driftstörningar. Support finns tillgänglig under kontorstid via telefon 019-760 42 90 och e-post. Garantihantering ingår i vårt drift- och serviceavtal.',
   },
-]);
+];
+
+const faq = faqJsonLd(faqEntries);
 
 const benefits = [
   { icon: <Zap className="w-6 h-6" />, title: 'Snabb installation', desc: 'Från offert till färdig installation på rekordtid med minimal störning för er verksamhet.' },
@@ -194,6 +197,8 @@ export default function ForetagPage() {
           </div>
         </div>
       </section>
+
+      <FaqSection entries={faqEntries} />
 
       <RelatedSolutions current="foretag" />
 

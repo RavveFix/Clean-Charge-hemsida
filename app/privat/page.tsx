@@ -4,6 +4,7 @@ import PrivateChargingSection from '@/components/PrivateChargingSection';
 import { breadcrumbJsonLd, faqJsonLd, LOCAL_BUSINESS_ID, SITE_URL } from '@/lib/jsonld';
 import { openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
+import FaqSection from '@/components/FaqSection';
 
 export const metadata: Metadata = {
   title: 'Ladda Privat – Laddbox Hemma',
@@ -80,7 +81,7 @@ const productList = {
   ],
 };
 
-const faq = faqJsonLd([
+const faqEntries = [
   {
     question: 'Hur fungerar 50% Grön Teknik-avdraget?',
     answer:
@@ -106,7 +107,9 @@ const faq = faqJsonLd([
     answer:
       'Ja. Vi ger 3 års produktgaranti på laddboxen och 2 års arbetsgaranti på installationen. Vid fel hjälper vi dig först felsöka på distans innan ett servicebesök bokas.',
   },
-]);
+];
+
+const faq = faqJsonLd(faqEntries);
 
 export default function PrivatPage() {
   return (
@@ -124,6 +127,7 @@ export default function PrivatPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
       />
       <PrivateChargingSection />
+      <FaqSection entries={faqEntries} />
       <RelatedSolutions current="privat" />
     </ClientLayout>
   );
