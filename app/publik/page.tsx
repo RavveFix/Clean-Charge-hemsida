@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import CommercialChargingSection from '@/components/CommercialChargingSection';
-import { breadcrumbJsonLd, LOCAL_BUSINESS_ID, SITE_URL } from '@/lib/jsonld';
+import { breadcrumbJsonLd, faqJsonLd, LOCAL_BUSINESS_ID, SITE_URL } from '@/lib/jsonld';
 import { openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
+import FaqSection from '@/components/FaqSection';
 
 export const metadata: Metadata = {
   title: 'Publik Laddning för Företag & Parkeringar',
@@ -22,6 +23,36 @@ export const metadata: Metadata = {
 const breadcrumb = breadcrumbJsonLd([
   { name: 'Publik Laddning', path: '/publik' },
 ]);
+
+const faqEntries = [
+  {
+    question: 'Hur tar vi betalt av dem som laddar?',
+    answer:
+      'Betalning och debitering sker automatiskt via Monta-plattformen. Ni sätter prissättningen och får full kontroll över både drift och intäkter, medan användarna betalar enkelt via app eller kort.',
+  },
+  {
+    question: 'Vilken hårdvara använder ni för publik laddning?',
+    answer:
+      'Vi installerar driftsäker hårdvara anpassad efter anläggningen – till exempel Zaptec Pro (AC med intelligent lastbalansering och 4G) och Autel MaxiCharger DH480 (modulär 480 kW DC-snabbladdare).',
+  },
+  {
+    question: 'Hur hög drifttid kan vi räkna med?',
+    answer:
+      'Vår publika laddinfrastruktur är byggd för hög tillgänglighet med driftsäker hårdvara och fjärrövervakning dygnet runt – med omkring 98 % drifttid.',
+  },
+  {
+    question: 'Är lösningen nyckelfärdig – sköter ni installation och drift?',
+    answer:
+      'Ja. Vi installerar, konfigurerar och driftar hela laddinfrastrukturen nyckelfärdigt, med Monta som betalplattform och löpande fjärrövervakning så att stationerna alltid fungerar.',
+  },
+  {
+    question: 'Var passar publika laddstationer?',
+    answer:
+      'Publika laddstationer passar företag, parkeringar, handelsplatser och laddnätverk – platser där besökare, kunder eller anställda ska kunna ladda och betala enkelt.',
+  },
+];
+
+const faq = faqJsonLd(faqEntries);
 
 const productList = {
   '@context': 'https://schema.org',
@@ -93,7 +124,12 @@ export default function PublikPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productList) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
+      />
       <CommercialChargingSection />
+      <FaqSection entries={faqEntries} />
       <RelatedSolutions current="publik" />
     </ClientLayout>
   );

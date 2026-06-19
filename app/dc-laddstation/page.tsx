@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Zap, Timer, Globe, ShieldCheck } from 'lucide-react';
-import { breadcrumbJsonLd, serviceJsonLd } from '@/lib/jsonld';
+import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/jsonld';
 import { openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
+import FaqSection from '@/components/FaqSection';
 
 export const metadata: Metadata = {
   title: 'DC Laddstation – Snabbladdare Publik Drift',
@@ -40,6 +41,36 @@ const jsonLd = serviceJsonLd({
 const breadcrumb = breadcrumbJsonLd([
   { name: 'DC Laddstation', path: '/dc-laddstation' },
 ]);
+
+const faqEntries = [
+  {
+    question: 'Hur snabbt laddar en DC-snabbladdare?',
+    answer:
+      'En DC-snabbladdare på 50–360 kW laddar ett genomsnittligt elbilsbatteri till cirka 80 % på 20–40 minuter, beroende på laddarens effekt och bilmodell.',
+  },
+  {
+    question: 'Vilka laddstandarder och betalsätt stöds?',
+    answer:
+      'Våra DC-laddare stöder CCS och CHAdeMO och är OCPP-kompatibla. Betalning kan ske via app, kreditkort eller RFID, och systemet fungerar med nätverk som Monta, Recharge, Mer och ZapMap.',
+  },
+  {
+    question: 'Kan vi tjäna pengar på en publik laddstation?',
+    answer:
+      'Ja. Ni sätter er egen prissättning och tar betalt via app eller kort, så anläggningen kan generera intäkter från dag ett. Vi hjälper er att sätta upp intäktsmodellen och prissättningen.',
+  },
+  {
+    question: 'Vad ingår i en DC-installation?',
+    answer:
+      'Vi levererar nyckelfärdigt: behovsanalys och nätanslutningsutredning, projektering inklusive elnäts- och bygganmälan, installation av DC-laddare (50–360 kW), konfiguration i OCPP-backend, betalningslösning, skyltning, driftsättning samt fjärrövervakning och driftsupport.',
+  },
+  {
+    question: 'Var passar DC-snabbladdare bäst?',
+    answer:
+      'DC-snabbladdare passar publika parkeringar, handelsplatser, köpcentrum och motorvägsrastplatser – platser där bilar ska laddas snabbt under en kort stunds besök.',
+  },
+];
+
+const faq = faqJsonLd(faqEntries);
 
 const benefits = [
   {
@@ -85,6 +116,10 @@ export default function DcLaddstationPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
       />
 
       {/* Hero */}
@@ -197,6 +232,8 @@ export default function DcLaddstationPage() {
           </div>
         </div>
       </section>
+
+      <FaqSection entries={faqEntries} />
 
       <RelatedSolutions current="dc-laddstation" />
 
