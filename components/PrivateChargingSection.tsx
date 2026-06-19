@@ -75,6 +75,7 @@ const PrivateChargingSection: React.FC = () => {
                                 src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&q=80&w=1200"
                                 alt="Villa med elbil och laddbox hemma"
                                 fill
+                                priority
                                 sizes="(max-width: 1024px) 0, 50vw"
                                 className="object-cover rounded-[4rem] shadow-2xl relative z-10 border-4 border-white"
                             />
