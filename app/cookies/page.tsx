@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import CookiePolicySection from '@/components/CookiePolicySection';
+import RelatedSolutions from '@/components/RelatedSolutions';
 import { breadcrumbJsonLd } from '@/lib/jsonld';
 import { openGraphImages } from '@/lib/seo';
 
@@ -31,6 +32,7 @@ export default function CookiesPage() {
       <div className="pt-32">
         <CookiePolicySection />
       </div>
+      <RelatedSolutions />
     </ClientLayout>
   );
 }

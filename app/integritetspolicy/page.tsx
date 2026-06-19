@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import PrivacyPolicySection from '@/components/PrivacyPolicySection';
+import RelatedSolutions from '@/components/RelatedSolutions';
 import { breadcrumbJsonLd } from '@/lib/jsonld';
 import { openGraphImages } from '@/lib/seo';
 
@@ -31,6 +32,7 @@ export default function IntegritetspolicyPage() {
       <div className="pt-32">
         <PrivacyPolicySection />
       </div>
+      <RelatedSolutions />
     </ClientLayout>
   );
 }

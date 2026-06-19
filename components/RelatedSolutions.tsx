@@ -57,8 +57,10 @@ const RELATED: Record<SolutionKey, SolutionKey[]> = {
   produkter: ['foretag', 'privat', 'fastighetsbolag'],
 };
 
-export default function RelatedSolutions({ current }: { current: SolutionKey }) {
-  const items = RELATED[current].map((key) => LINKS[key]);
+const DEFAULT_RELATED: SolutionKey[] = ['privat', 'foretag', 'produkter'];
+
+export default function RelatedSolutions({ current }: { current?: SolutionKey }) {
+  const items = (current ? RELATED[current] : DEFAULT_RELATED).map((key) => LINKS[key]);
 
   return (
     <section className="py-24 bg-slate-50 border-t border-slate-100">
