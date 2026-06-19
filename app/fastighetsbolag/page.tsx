@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Building2, Users, TrendingUp, Settings } from 'lucide-react';
-import { breadcrumbJsonLd, serviceJsonLd } from '@/lib/jsonld';
+import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/jsonld';
 import { openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
+import FaqSection from '@/components/FaqSection';
 
 export const metadata: Metadata = {
   title: 'Laddbox BRF & Fastighetsbolag',
@@ -40,6 +41,36 @@ const jsonLd = serviceJsonLd({
 const breadcrumb = breadcrumbJsonLd([
   { name: 'För BRF & Fastighet', path: '/fastighetsbolag' },
 ]);
+
+const faqEntries = [
+  {
+    question: 'Hur fungerar individuell debitering för boende?',
+    answer:
+      'Via Monta-plattformen faktureras varje boende eller hyresgäst automatiskt för sin faktiska förbrukning. Föreningen eller fastighetsägaren slipper hantera mellanhavanden och varje användare betalar bara för det den laddar.',
+  },
+  {
+    question: 'Kan vi börja med några laddare och bygga ut senare?',
+    answer:
+      'Ja. Lösningen är skalbar – börja med ett fåtal laddare och bygg ut efterhand när efterfrågan ökar. Vi förbereder infrastrukturen så att en framtida utbyggnad blir enkel och kostnadseffektiv.',
+  },
+  {
+    question: 'Behöver fastigheten uppgradera elanslutningen?',
+    answer:
+      'Oftast inte. Vi installerar smart lastbalansering (Dynamic Power Balance) som dynamiskt fördelar tillgänglig effekt mellan laddarna och fastighetens övriga förbrukning, så att elnätets kapacitet aldrig överskrids.',
+  },
+  {
+    question: 'Vad ingår i en installation för BRF eller fastighetsbolag?',
+    answer:
+      'Vi levererar helt nyckelfärdigt: kostnadsfri besiktning av elinstallationen, projektering och elanmälan, installation av Zaptec-laddare, konfiguration av Monta för debitering, lastbalansering, OCPP-kompatibelt system samt löpande fjärrövervakning och rapportering.',
+  },
+  {
+    question: 'Vem ansvarar för drift och support efter installationen?',
+    answer:
+      'Vi är er enda kontaktpunkt genom hela processen – från projektering till drift. Efter installationen sköter vi löpande fjärrövervakning, support och rapportering till fastighetsägaren så att laddningen alltid fungerar.',
+  },
+];
+
+const faq = faqJsonLd(faqEntries);
 
 const benefits = [
   {
@@ -85,6 +116,10 @@ export default function FastighetsbolagPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
       />
 
       {/* Hero */}
@@ -178,6 +213,8 @@ export default function FastighetsbolagPage() {
           </div>
         </div>
       </section>
+
+      <FaqSection entries={faqEntries} />
 
       <RelatedSolutions current="fastighetsbolag" />
 
