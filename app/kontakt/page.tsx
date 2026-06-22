@@ -5,6 +5,7 @@ import ClientLayout from '@/app/ClientLayout';
 import ContactSection from '@/components/ContactSection';
 import { LOCAL_BUSINESS_ID, ORGANIZATION_ID, SITE_URL, breadcrumbJsonLd } from '@/lib/jsonld';
 import { openGraphImages } from '@/lib/seo';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Kontakta Oss – Offert & Rådgivning',
@@ -75,6 +76,7 @@ export default function KontaktPage() {
 
         <div className="container mx-auto px-4 sm:px-6 relative z-10 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
           <div className="max-w-3xl">
+            <Breadcrumbs items={[{ name: 'Kontakt', href: '/kontakt' }]} variant="dark" />
             <div className="inline-flex items-center space-x-3 bg-cc-green/10 text-cc-green px-5 py-2.5 rounded-full border border-cc-green/20 mb-10">
               <MessageSquare className="w-4 h-4" />
               <span className="text-[12px] font-black uppercase tracking-[0.3em]">Vi finns här för dig</span>

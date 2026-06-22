@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Check, Zap, Smartphone, ShieldCheck, ArrowRight, Home, Star } from 'lucide-react';
 import { PRODUCTS } from '../constants';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 const PrivateChargingSection: React.FC = () => {
     // Filter products for private use (usually simpler ones like Zaptec Go, Easee Charge Lite)
@@ -20,6 +21,7 @@ const PrivateChargingSection: React.FC = () => {
                 <div className="absolute bottom-10 left-10 w-32 h-32 bg-cc-green/10 rounded-full blur-xl animate-pulse"></div>
 
                 <div className="container mx-auto px-4 sm:px-6 relative z-10 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
+                    <Breadcrumbs items={[{ name: 'Ladda Privat', href: '/privat' }]} variant="light" />
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div className="space-y-8">
                             <div className="inline-flex items-center space-x-2 text-cc-green bg-white border border-slate-100 px-5 py-2.5 rounded-full shadow-sm">

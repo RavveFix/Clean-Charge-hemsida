@@ -5,6 +5,7 @@ import AboutSection from '@/components/AboutSection';
 import { MapPin, Calendar, Award, Users, Phone, Mail, ArrowRight } from 'lucide-react';
 import { LOCAL_BUSINESS_ID, ORGANIZATION_ID, SITE_URL, breadcrumbJsonLd } from '@/lib/jsonld';
 import { openGraphImages } from '@/lib/seo';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 const breadcrumb = breadcrumbJsonLd([{ name: 'Om Oss', path: '/om-oss' }]);
 
@@ -73,6 +74,7 @@ export default function OmOssPage() {
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cc-green/5 rounded-full blur-[140px] -translate-y-1/3 translate-x-1/4 pointer-events-none" />
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-3xl">
+            <Breadcrumbs items={[{ name: 'Om Oss', href: '/om-oss' }]} variant="light" />
             <span className="text-cc-green font-black tracking-[0.3em] uppercase text-xs mb-4 block">Om Clean Charge</span>
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-slate-900 tracking-tighter leading-[0.95] mb-6 sm:mb-8">
               Vi är specialisterna<br />

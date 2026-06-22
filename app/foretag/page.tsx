@@ -6,6 +6,7 @@ import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/jsonld';
 import { openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Laddbox för Företag – AC & DC',
@@ -111,6 +112,7 @@ export default function ForetagPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-emerald-50/30 pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
+            <Breadcrumbs items={[{ name: 'För Företag', href: '/foretag' }]} variant="light" />
             <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-semibold mb-8">
               <Zap className="w-4 h-4" />
               Auktoriserad Zaptec & Monta Partner

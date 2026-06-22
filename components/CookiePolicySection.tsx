@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { Cookie, Settings, BarChart2 } from 'lucide-react';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 const CookiePolicySection: React.FC = () => {
   useEffect(() => {
@@ -12,6 +13,7 @@ const CookiePolicySection: React.FC = () => {
     <div className="bg-white font-monta animate-in fade-in duration-500">
       <section className="bg-slate-50 py-24 border-b border-slate-100">
         <div className="container mx-auto px-6 max-w-4xl text-center">
+            <Breadcrumbs items={[{ name: 'Cookies', href: '/cookies' }]} variant="light" className="text-left" />
             <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-8 shadow-sm text-slate-900">
                 <Cookie className="w-8 h-8" />
             </div>
