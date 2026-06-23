@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -18,16 +18,25 @@ const Navbar: React.FC<NavbarProps> = ({
   activeTab,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [solutionsOpen, setSolutionsOpen] = useState(false);
   const [logoError, setLogoError] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  const solutionsRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const pathname = usePathname();
 
-  const navLinks = [
-    { id: 'home', label: 'Hem', href: '/' },
-    { id: 'products', label: 'Produkter', href: '/produkter' },
+  const homeLink = { id: 'home', label: 'Hem', href: '/' };
+
+  const solutionLinks = [
     { id: 'private', label: 'Ladda Privat', href: '/privat' },
-    { id: 'commercial', label: 'Publik Laddning', href: '/publik' },
+    { id: 'foretag', label: 'Företag', href: '/foretag' },
+    { id: 'fastighet', label: 'BRF & Fastighet', href: '/fastighetsbolag' },
+    { id: 'publik', label: 'Publik Laddning', href: '/publik' },
+    { id: 'dc', label: 'DC-snabbladdning', href: '/dc-laddstation' },
+  ];
+
+  const tailLinks = [
+    { id: 'products', label: 'Produkter', href: '/produkter' },
     { id: 'about', label: 'Om Oss', href: '/om-oss' },
     { id: 'contact', label: 'Kontakta Oss', href: '/kontakt' },
   ];
@@ -36,6 +45,8 @@ const Navbar: React.FC<NavbarProps> = ({
     if (href === '/') return pathname === '/';
     return pathname.startsWith(href);
   };
+
+  const solutionsActive = solutionLinks.some((link) => isActive(link.href));
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -50,6 +61,31 @@ const Navbar: React.FC<NavbarProps> = ({
     }, navRef);
     return () => ctx.revert();
   }, []);
+
+  // Close menus on route change
+  useEffect(() => {
+    setSolutionsOpen(false);
+    setIsMenuOpen(false);
+  }, [pathname]);
+
+  // Close the Lösningar dropdown on outside click / Escape
+  useEffect(() => {
+    if (!solutionsOpen) return;
+    const handleClick = (e: MouseEvent) => {
+      if (solutionsRef.current && !solutionsRef.current.contains(e.target as Node)) {
+        setSolutionsOpen(false);
+      }
+    };
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSolutionsOpen(false);
+    };
+    document.addEventListener('mousedown', handleClick);
+    document.addEventListener('keydown', handleKey);
+    return () => {
+      document.removeEventListener('mousedown', handleClick);
+      document.removeEventListener('keydown', handleKey);
+    };
+  }, [solutionsOpen]);
 
   return (
     <>
@@ -81,7 +117,69 @@ const Navbar: React.FC<NavbarProps> = ({
 
         {/* Desktop Links */}
         <div className="hidden lg:flex items-center space-x-1 lg:space-x-2 ml-4 xl:ml-8">
-          {navLinks.map((tab) => (
+          <Link
+            href={homeLink.href}
+            className={`text-[15px] font-bold tracking-wide transition-all duration-300 px-5 py-2.5 rounded-[1.25rem] ${
+              isActive(homeLink.href)
+                ? 'border border-slate-200 text-text-primary bg-slate-50/80 shadow-sm'
+                : 'text-text-primary hover:bg-slate-50/80'
+            }`}
+          >
+            {homeLink.label}
+          </Link>
+
+          {/* Lösningar dropdown */}
+          <div ref={solutionsRef} className="relative group">
+            <button
+              type="button"
+              onClick={() => setSolutionsOpen((v) => !v)}
+              aria-haspopup="true"
+              aria-expanded={solutionsOpen}
+              className={`flex items-center gap-1.5 text-[15px] font-bold tracking-wide transition-all duration-300 px-5 py-2.5 rounded-[1.25rem] ${
+                solutionsActive
+                  ? 'border border-slate-200 text-text-primary bg-slate-50/80 shadow-sm'
+                  : 'text-text-primary hover:bg-slate-50/80'
+              }`}
+            >
+              Lösningar
+              <ChevronDown
+                className={`w-4 h-4 transition-transform duration-300 group-hover:rotate-180 ${
+                  solutionsOpen ? 'rotate-180' : ''
+                }`}
+              />
+            </button>
+
+            {/* Panel is always rendered (only visually toggled) so links stay crawlable */}
+            <div
+              role="menu"
+              aria-label="Lösningar"
+              className={`absolute left-0 top-full pt-3 w-64 transition-all duration-200 ${
+                solutionsOpen
+                  ? 'opacity-100 visible translate-y-0'
+                  : 'opacity-0 invisible -translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0'
+              }`}
+            >
+              <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-slate-200/80 p-2">
+                {solutionLinks.map((link) => (
+                  <Link
+                    key={link.id}
+                    href={link.href}
+                    role="menuitem"
+                    onClick={() => setSolutionsOpen(false)}
+                    className={`block px-4 py-2.5 rounded-xl text-[14px] font-bold transition-colors ${
+                      isActive(link.href)
+                        ? 'text-brand-green bg-slate-50'
+                        : 'text-text-primary hover:bg-slate-50'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {tailLinks.map((tab) => (
             <Link
               key={tab.id}
               href={tab.href}
@@ -132,7 +230,34 @@ const Navbar: React.FC<NavbarProps> = ({
           <X className="w-8 h-8" />
         </button>
         <div className="flex flex-col items-center space-y-6 w-full px-8">
-          {navLinks.map((tab) => (
+          <Link
+            href={homeLink.href}
+            onClick={() => setIsMenuOpen(false)}
+            className={`text-2xl sm:text-3xl font-black uppercase tracking-tight inline-flex items-center min-h-[48px] px-4 ${
+              isActive(homeLink.href) ? 'text-brand-green' : 'text-slate-800'
+            }`}
+          >
+            {homeLink.label}
+          </Link>
+
+          {/* Lösningar group */}
+          <div className="w-full flex flex-col items-center space-y-4">
+            <span className="text-[12px] font-black uppercase tracking-[0.3em] text-slate-400">Lösningar</span>
+            {solutionLinks.map((link) => (
+              <Link
+                key={link.id}
+                href={link.href}
+                onClick={() => setIsMenuOpen(false)}
+                className={`text-xl font-bold tracking-tight inline-flex items-center min-h-[44px] px-4 ${
+                  isActive(link.href) ? 'text-brand-green' : 'text-slate-700'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          {tailLinks.map((tab) => (
             <Link
               key={tab.id}
               href={tab.href}

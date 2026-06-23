@@ -67,7 +67,10 @@ const Footer: React.FC = () => {
                 { label: 'För Privatpersoner', href: '/privat' },
                 { label: 'För Företag', href: '/foretag' },
                 { label: 'För BRF', href: '/fastighetsbolag' },
+                { label: 'Publik Laddning', href: '/publik' },
                 { label: 'Snabbladdning (DC)', href: '/dc-laddstation' },
+                { label: 'Smart laddning (Monta)', href: '/monta' },
+                { label: 'Produkter', href: '/produkter' },
               ].map((item) => (
                 <li key={item.label}>
                   <Link href={item.href} className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors inline-flex items-center min-h-[44px]">
@@ -99,6 +102,7 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-[12px] font-black uppercase tracking-[0.3em] mb-10 text-cc-green">Kontakt</h4>
             <ul className="space-y-5">
+              <li><Link href="/om-oss" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors inline-flex items-center min-h-[44px]">Om oss</Link></li>
               <li><span className="text-sm font-bold text-slate-500">Dialoggatan 12B, Örebro</span></li>
               <li><a href="mailto:info@cleancharge.se" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors inline-flex items-center min-h-[44px]">info@cleancharge.se</a></li>
               <li><a href="tel:0197604290" className="text-sm font-bold text-slate-500 hover:text-cc-green transition-colors inline-flex items-center min-h-[44px]">019-760 42 90</a></li>

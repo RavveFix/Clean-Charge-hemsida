@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { ShoppingBag, Truck, RefreshCw, CreditCard, CheckCircle2 } from 'lucide-react';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 const TermsSection: React.FC = () => {
   useEffect(() => {
@@ -13,6 +14,7 @@ const TermsSection: React.FC = () => {
       <section className="bg-slate-900 text-white py-24 relative overflow-hidden">
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#003DFF]/20 rounded-full blur-[100px]"></div>
         <div className="container mx-auto px-6 relative z-10">
+          <Breadcrumbs items={[{ name: 'Allmänna Villkor', href: '/villkor' }]} variant="dark" />
           <div className="inline-flex items-center space-x-2 text-[#003DFF] mb-6 border border-[#003DFF]/30 bg-[#003DFF]/10 px-4 py-2 rounded-full backdrop-blur-md">
             <ShoppingBag className="w-4 h-4" />
             <span className="text-xs font-bold uppercase tracking-widest">Villkor & Info</span>

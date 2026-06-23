@@ -2,7 +2,11 @@ import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Zap, Shield, BarChart3, Wrench } from 'lucide-react';
-import { breadcrumbJsonLd, faqJsonLd } from '@/lib/jsonld';
+import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/jsonld';
+import { openGraphImages } from '@/lib/seo';
+import RelatedSolutions from '@/components/RelatedSolutions';
+import FaqSection from '@/components/FaqSection';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Laddbox för Företag – AC & DC',
@@ -22,33 +26,24 @@ export const metadata: Metadata = {
     title: 'Laddbox för Företag – Clean Charge AB',
     description: 'Skalbara laddlösningar för företag. Vi levererar, installerar och driftar – helt klart.',
     url: 'https://www.cleancharge.se/foretag',
-    images: ['/opengraph-image'],
+    images: openGraphImages('Laddbox för företag — installation, drift och Monta-konfiguration'),
     type: 'website',
   },
   alternates: { canonical: 'https://www.cleancharge.se/foretag' },
 };
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
+const jsonLd = serviceJsonLd({
   name: 'Laddbox Installation för Företag',
-  url: 'https://www.cleancharge.se/foretag',
-  provider: {
-    '@type': 'LocalBusiness',
-    name: 'Clean Charge AB',
-    telephone: '+46197604290',
-    url: 'https://www.cleancharge.se',
-  },
-  areaServed: 'SE',
+  path: '/foretag',
   description: 'Installation och drift av laddboxar för företag och arbetsplatser i Sverige.',
   serviceType: 'EV Charging Installation',
-};
+});
 
 const breadcrumb = breadcrumbJsonLd([
   { name: 'För Företag', path: '/foretag' },
 ]);
 
-const faq = faqJsonLd([
+const faqEntries = [
   {
     question: 'Hur lång tid tar en installation av laddboxar?',
     answer:
@@ -74,7 +69,9 @@ const faq = faqJsonLd([
     answer:
       'Vi övervakar era laddare på distans och agerar proaktivt vid driftstörningar. Support finns tillgänglig under kontorstid via telefon 019-760 42 90 och e-post. Garantihantering ingår i vårt drift- och serviceavtal.',
   },
-]);
+];
+
+const faq = faqJsonLd(faqEntries);
 
 const benefits = [
   { icon: <Zap className="w-6 h-6" />, title: 'Snabb installation', desc: 'Från offert till färdig installation på rekordtid med minimal störning för er verksamhet.' },
@@ -115,6 +112,7 @@ export default function ForetagPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-emerald-50/30 pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
+            <Breadcrumbs items={[{ name: 'För Företag', href: '/foretag' }]} variant="light" />
             <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-semibold mb-8">
               <Zap className="w-4 h-4" />
               Auktoriserad Zaptec & Monta Partner
@@ -201,6 +199,10 @@ export default function ForetagPage() {
           </div>
         </div>
       </section>
+
+      <FaqSection entries={faqEntries} />
+
+      <RelatedSolutions current="foretag" />
 
       {/* CTA */}
       <section className="py-24 bg-white">

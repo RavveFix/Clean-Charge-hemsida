@@ -3,9 +3,24 @@ import Link from 'next/link';
 import ClientLayout from '@/app/ClientLayout';
 import AboutSection from '@/components/AboutSection';
 import { MapPin, Calendar, Award, Users, Phone, Mail, ArrowRight } from 'lucide-react';
-import { breadcrumbJsonLd } from '@/lib/jsonld';
+import { LOCAL_BUSINESS_ID, ORGANIZATION_ID, SITE_URL, breadcrumbJsonLd } from '@/lib/jsonld';
+import { openGraphImages } from '@/lib/seo';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 const breadcrumb = breadcrumbJsonLd([{ name: 'Om Oss', path: '/om-oss' }]);
+
+const aboutPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  '@id': `${SITE_URL}/om-oss#aboutpage`,
+  url: `${SITE_URL}/om-oss`,
+  name: 'Om Clean Charge AB',
+  description:
+    'Clean Charge AB är en auktoriserad Zaptec- och Monta-partner från Örebro som levererar laddinfrastruktur för företag och fastighetsbolag.',
+  inLanguage: 'sv-SE',
+  mainEntity: { '@id': ORGANIZATION_ID },
+  about: { '@id': LOCAL_BUSINESS_ID },
+};
 
 export const metadata: Metadata = {
   title: 'Om Oss – Laddexperter i Örebro',
@@ -17,7 +32,7 @@ export const metadata: Metadata = {
     description:
       'Auktoriserad Zaptec- och Monta-partner från Örebro. Vi levererar komplett laddinfrastruktur för företag och fastighetsbolag.',
     url: 'https://www.cleancharge.se/om-oss',
-    images: ['/opengraph-image'],
+    images: openGraphImages('Om Clean Charge AB — laddexperter från Örebro sedan 2021'),
   },
 };
 
@@ -48,6 +63,10 @@ export default function OmOssPage() {
     <ClientLayout>
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
       {/* Hero */}
@@ -55,6 +74,7 @@ export default function OmOssPage() {
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cc-green/5 rounded-full blur-[140px] -translate-y-1/3 translate-x-1/4 pointer-events-none" />
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-3xl">
+            <Breadcrumbs items={[{ name: 'Om Oss', href: '/om-oss' }]} variant="light" />
             <span className="text-cc-green font-black tracking-[0.3em] uppercase text-xs mb-4 block">Om Clean Charge</span>
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-slate-900 tracking-tighter leading-[0.95] mb-6 sm:mb-8">
               Vi är specialisterna<br />

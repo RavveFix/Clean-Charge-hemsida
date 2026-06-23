@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Zap, Box, ArrowRight } from 'lucide-react';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 const ProductHero: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const ProductHero: React.FC = () => {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
         <div className="max-w-4xl">
+          <Breadcrumbs items={[{ name: 'Produkter', href: '/produkter' }]} variant="light" />
           <div className="inline-flex items-center space-x-3 bg-slate-50 border border-slate-100 px-4 py-2 rounded-full mb-8 shadow-sm">
             <Box className="w-4 h-4 text-cc-green" />
             <span className="text-[12px] font-black uppercase tracking-[0.3em] text-slate-500">Premium Sortiment</span>

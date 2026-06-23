@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { Shield, Lock, Eye, FileText } from 'lucide-react';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 const PrivacyPolicySection: React.FC = () => {
   useEffect(() => {
@@ -13,6 +14,7 @@ const PrivacyPolicySection: React.FC = () => {
       <section className="bg-slate-900 text-white py-24 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cc-green/10 rounded-full blur-[120px]"></div>
         <div className="container mx-auto px-6 relative z-10">
+          <Breadcrumbs items={[{ name: 'Integritetspolicy', href: '/integritetspolicy' }]} variant="dark" />
           <div className="inline-flex items-center space-x-2 text-cc-green mb-6 border border-cc-green/20 bg-cc-green/10 px-4 py-2 rounded-full backdrop-blur-md">
             <Shield className="w-4 h-4" />
             <span className="text-xs font-bold uppercase tracking-widest">GDPR & Säkerhet</span>

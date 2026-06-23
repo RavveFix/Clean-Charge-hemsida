@@ -2,7 +2,11 @@ import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Building2, Users, TrendingUp, Settings } from 'lucide-react';
-import { breadcrumbJsonLd } from '@/lib/jsonld';
+import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/jsonld';
+import { openGraphImages } from '@/lib/seo';
+import RelatedSolutions from '@/components/RelatedSolutions';
+import FaqSection from '@/components/FaqSection';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Laddbox BRF & Fastighetsbolag',
@@ -22,31 +26,52 @@ export const metadata: Metadata = {
     title: 'Laddbox Fastighetsbolag & BRF – Clean Charge AB',
     description: 'Komplett laddlösning för fastigheter. Från projektering till drift och debiteringshantering.',
     url: 'https://www.cleancharge.se/fastighetsbolag',
-    images: ['/opengraph-image'],
+    images: openGraphImages('Laddbox för fastighetsbolag och BRF — projektering, installation och debitering'),
     type: 'website',
   },
   alternates: { canonical: 'https://www.cleancharge.se/fastighetsbolag' },
 };
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
+const jsonLd = serviceJsonLd({
   name: 'Laddbox för Fastighetsbolag och BRF',
-  url: 'https://www.cleancharge.se/fastighetsbolag',
-  provider: {
-    '@type': 'LocalBusiness',
-    name: 'Clean Charge AB',
-    telephone: '+46197604290',
-    url: 'https://www.cleancharge.se',
-  },
-  areaServed: 'SE',
+  path: '/fastighetsbolag',
   description: 'Laddinfrastruktur för fastighetsbolag, bostadsrättsföreningar och hyresfastigheter.',
   serviceType: 'EV Charging Installation for Real Estate',
-};
+});
 
 const breadcrumb = breadcrumbJsonLd([
   { name: 'För BRF & Fastighet', path: '/fastighetsbolag' },
 ]);
+
+const faqEntries = [
+  {
+    question: 'Hur fungerar individuell debitering för boende?',
+    answer:
+      'Via Monta-plattformen faktureras varje boende eller hyresgäst automatiskt för sin faktiska förbrukning. Föreningen eller fastighetsägaren slipper hantera mellanhavanden och varje användare betalar bara för det den laddar.',
+  },
+  {
+    question: 'Kan vi börja med några laddare och bygga ut senare?',
+    answer:
+      'Ja. Lösningen är skalbar – börja med ett fåtal laddare och bygg ut efterhand när efterfrågan ökar. Vi förbereder infrastrukturen så att en framtida utbyggnad blir enkel och kostnadseffektiv.',
+  },
+  {
+    question: 'Behöver fastigheten uppgradera elanslutningen?',
+    answer:
+      'Oftast inte. Vi installerar smart lastbalansering (Dynamic Power Balance) som dynamiskt fördelar tillgänglig effekt mellan laddarna och fastighetens övriga förbrukning, så att elnätets kapacitet aldrig överskrids.',
+  },
+  {
+    question: 'Vad ingår i en installation för BRF eller fastighetsbolag?',
+    answer:
+      'Vi levererar helt nyckelfärdigt: kostnadsfri besiktning av elinstallationen, projektering och elanmälan, installation av Zaptec-laddare, konfiguration av Monta för debitering, lastbalansering, OCPP-kompatibelt system samt löpande fjärrövervakning och rapportering.',
+  },
+  {
+    question: 'Vem ansvarar för drift och support efter installationen?',
+    answer:
+      'Vi är er enda kontaktpunkt genom hela processen – från projektering till drift. Efter installationen sköter vi löpande fjärrövervakning, support och rapportering till fastighetsägaren så att laddningen alltid fungerar.',
+  },
+];
+
+const faq = faqJsonLd(faqEntries);
 
 const benefits = [
   {
@@ -93,12 +118,17 @@ export default function FastighetsbolagPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
+      />
 
       {/* Hero */}
       <section className="relative bg-white pt-40 pb-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-emerald-50/30 pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
+            <Breadcrumbs items={[{ name: 'För BRF & Fastighet', href: '/fastighetsbolag' }]} variant="light" />
             <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-semibold mb-8">
               <Building2 className="w-4 h-4" />
               Lösningar för Fastighetsbolag & BRF
@@ -185,6 +215,10 @@ export default function FastighetsbolagPage() {
           </div>
         </div>
       </section>
+
+      <FaqSection entries={faqEntries} />
+
+      <RelatedSolutions current="fastighetsbolag" />
 
       {/* CTA */}
       <section className="py-24 bg-white">

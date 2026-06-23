@@ -15,7 +15,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const isPremium = product.category === 'laddbox' || product.category === 'snabbladdare';
 
   return (
-    <div className={`group relative transition-all duration-700 ${isPremium ? 'magic-border p-[1px] rounded-[2.5rem]' : ''}`}>
+    <div
+      id={product.id}
+      className={`group relative transition-all duration-700 scroll-mt-32 ${isPremium ? 'magic-border p-[1px] rounded-[2.5rem]' : ''}`}
+    >
       <div className="bg-white rounded-[2.5rem] p-5 pb-8 border border-slate-100 group-hover:border-cc-green/20 group-hover:shadow-[0_40px_80px_-15px_rgba(0,177,130,0.15)] transition-all duration-500 flex flex-col h-full relative overflow-hidden">
         
         {/* Magic Shine Overlay */}

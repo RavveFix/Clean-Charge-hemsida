@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import PrivacyPolicySection from '@/components/PrivacyPolicySection';
+import RelatedSolutions from '@/components/RelatedSolutions';
 import { breadcrumbJsonLd } from '@/lib/jsonld';
+import { openGraphImages } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Integritetspolicy',
@@ -12,7 +14,7 @@ export const metadata: Metadata = {
     title: 'Integritetspolicy | Clean Charge AB',
     description: 'Så hanterar vi dina personuppgifter i enlighet med GDPR.',
     url: 'https://www.cleancharge.se/integritetspolicy',
-    images: ['/opengraph-image'],
+    images: openGraphImages('Integritetspolicy — Clean Charge AB'),
   },
 };
 
@@ -30,6 +32,7 @@ export default function IntegritetspolicyPage() {
       <div className="pt-32">
         <PrivacyPolicySection />
       </div>
+      <RelatedSolutions />
     </ClientLayout>
   );
 }

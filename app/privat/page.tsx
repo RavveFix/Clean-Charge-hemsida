@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import PrivateChargingSection from '@/components/PrivateChargingSection';
-import { breadcrumbJsonLd, faqJsonLd, SITE_URL } from '@/lib/jsonld';
+import { breadcrumbJsonLd, faqJsonLd, LOCAL_BUSINESS_ID, SITE_URL } from '@/lib/jsonld';
+import { openGraphImages } from '@/lib/seo';
+import RelatedSolutions from '@/components/RelatedSolutions';
+import FaqSection from '@/components/FaqSection';
 
 export const metadata: Metadata = {
   title: 'Ladda Privat – Laddbox Hemma',
@@ -13,7 +16,7 @@ export const metadata: Metadata = {
     description:
       '50% Grön Teknik-avdrag direkt på fakturan. Vi installerar marknadens säkraste laddboxar och sköter all administration åt dig.',
     url: 'https://www.cleancharge.se/privat',
-    images: ['/opengraph-image'],
+    images: openGraphImages('Ladda privat — laddbox hemma med Grön Teknik-avdrag'),
   },
 };
 
@@ -30,9 +33,11 @@ const productList = {
       position: 1,
       item: {
         '@type': 'Product',
+        '@id': `${SITE_URL}/privat#zaptec-go`,
         name: 'Zaptec Go',
         description:
           'Världens minsta 22kW laddare. Prisbelönt skandinavisk design som kombinerar kraft med minimalism.',
+        url: `${SITE_URL}/privat#zaptec-go`,
         image: `${SITE_URL}/images/products/zaptec-go.png`,
         brand: { '@type': 'Brand', name: 'Zaptec' },
         category: 'AC Laddbox',
@@ -42,7 +47,8 @@ const productList = {
           price: 3931,
           priceValidUntil: '2026-12-31',
           availability: 'https://schema.org/InStock',
-          seller: { '@type': 'Organization', name: 'Clean Charge AB' },
+          url: `${SITE_URL}/kontakt?product=Zaptec%20Go`,
+          seller: { '@id': LOCAL_BUSINESS_ID },
           description: 'Pris efter 50% Grön Teknik-avdrag',
         },
       },
@@ -52,9 +58,11 @@ const productList = {
       position: 2,
       item: {
         '@type': 'Product',
+        '@id': `${SITE_URL}/privat#easee-charge-lite`,
         name: 'Easee Charge Lite',
         description:
           'Smart, kraftfull och säker. Easee Charge Lite är designad för enkelhet och passar alla bilar och elnät.',
+        url: `${SITE_URL}/privat#easee-charge-lite`,
         image: `${SITE_URL}/images/products/easee-charge-lite.jpg`,
         brand: { '@type': 'Brand', name: 'Easee' },
         category: 'AC Laddbox',
@@ -64,7 +72,8 @@ const productList = {
           price: 3498,
           priceValidUntil: '2026-12-31',
           availability: 'https://schema.org/InStock',
-          seller: { '@type': 'Organization', name: 'Clean Charge AB' },
+          url: `${SITE_URL}/kontakt?product=Easee%20Charge%20Lite`,
+          seller: { '@id': LOCAL_BUSINESS_ID },
           description: 'Pris efter 50% Grön Teknik-avdrag',
         },
       },
@@ -72,7 +81,7 @@ const productList = {
   ],
 };
 
-const faq = faqJsonLd([
+const faqEntries = [
   {
     question: 'Hur fungerar 50% Grön Teknik-avdraget?',
     answer:
@@ -98,7 +107,9 @@ const faq = faqJsonLd([
     answer:
       'Ja. Vi ger 3 års produktgaranti på laddboxen och 2 års arbetsgaranti på installationen. Vid fel hjälper vi dig först felsöka på distans innan ett servicebesök bokas.',
   },
-]);
+];
+
+const faq = faqJsonLd(faqEntries);
 
 export default function PrivatPage() {
   return (
@@ -116,6 +127,8 @@ export default function PrivatPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
       />
       <PrivateChargingSection />
+      <FaqSection entries={faqEntries} />
+      <RelatedSolutions current="privat" />
     </ClientLayout>
   );
 }

@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Globe, Zap, CreditCard, ArrowLeft, Check } from 'lucide-react';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 const MontaHubSection: React.FC = () => {
   useEffect(() => {
@@ -19,7 +20,8 @@ const MontaHubSection: React.FC = () => {
         <div className="absolute bottom-0 left-0 w-1/3 h-2/3 bg-cc-green/20 rounded-tr-full blur-3xl pointer-events-none"></div>
 
         <div className="container mx-auto px-4 sm:px-6 relative z-10 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
-          <Link 
+          <Breadcrumbs items={[{ name: 'Monta & IT-drift', href: '/monta' }]} variant="dark" />
+          <Link
             href="/"
             className="group flex items-center space-x-2 text-blue-200 hover:text-white mb-8 transition-colors text-sm font-bold uppercase tracking-widest"
           >

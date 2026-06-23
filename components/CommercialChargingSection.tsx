@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Building2, ArrowRight, CheckCircle2, LayoutGrid, Users, Coins } from 'lucide-react';
 import { PRODUCTS } from '../constants';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 const CommercialChargingSection: React.FC = () => {
     // Filtrera produkter för kommersiellt bruk
@@ -46,6 +47,7 @@ const CommercialChargingSection: React.FC = () => {
                  </div>
                  
                  <div className="container mx-auto px-4 sm:px-6 relative z-10 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
+                    <Breadcrumbs items={[{ name: 'Publik Laddning', href: '/publik' }]} variant="dark" />
                     <div className="max-w-4xl animate-in fade-in slide-in-from-bottom-8 duration-1000">
                         <div className="inline-flex items-center space-x-2 text-cc-green mb-6 border border-cc-green/20 bg-cc-green/10 px-4 py-2 rounded-full backdrop-blur-md">
                              <Building2 className="w-4 h-4" />
@@ -115,7 +117,7 @@ const CommercialChargingSection: React.FC = () => {
 
                     <div className="grid lg:grid-cols-2 gap-6 sm:gap-10">
                          {commercialProducts.map((product) => (
-                            <div key={product.id} className="bg-white rounded-[2rem] sm:rounded-[3.5rem] p-6 sm:p-10 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-6 sm:gap-10 items-center group hover:shadow-2xl hover:border-cc-green/20 transition-all duration-500">
+                            <div key={product.id} id={product.id} className="bg-white rounded-[2rem] sm:rounded-[3.5rem] p-6 sm:p-10 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-6 sm:gap-10 items-center group hover:shadow-2xl hover:border-cc-green/20 transition-all duration-500 scroll-mt-32">
                                 <div className="w-full md:w-1/2 aspect-square bg-slate-50 rounded-[2.5rem] p-8 flex items-center justify-center relative overflow-hidden">
                                     <div className="absolute inset-0 bg-cc-green/5 rounded-[2.5rem] transform scale-0 group-hover:scale-100 transition-transform duration-700 rounded-full"></div>
                                     <Image src={product.image} alt={product.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-contain relative z-10 group-hover:scale-110 transition-transform duration-500" />

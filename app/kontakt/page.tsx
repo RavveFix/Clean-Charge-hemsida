@@ -3,7 +3,9 @@ import type { Metadata } from 'next';
 import { MessageSquare } from 'lucide-react';
 import ClientLayout from '@/app/ClientLayout';
 import ContactSection from '@/components/ContactSection';
-import { breadcrumbJsonLd } from '@/lib/jsonld';
+import { LOCAL_BUSINESS_ID, ORGANIZATION_ID, SITE_URL, breadcrumbJsonLd } from '@/lib/jsonld';
+import { openGraphImages } from '@/lib/seo';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Kontakta Oss – Offert & Rådgivning',
@@ -15,15 +17,40 @@ export const metadata: Metadata = {
     description:
       'Kostnadsfri rådgivning och offert. Svar samma dag under kontorstid. Ring 019-760 42 90.',
     url: 'https://www.cleancharge.se/kontakt',
-    images: ['/opengraph-image'],
+    images: openGraphImages('Kontakta Clean Charge AB — kostnadsfri rådgivning och offert'),
   },
 };
 
 const breadcrumb = breadcrumbJsonLd([{ name: 'Kontakt', path: '/kontakt' }]);
 
+const contactPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  '@id': `${SITE_URL}/kontakt#contactpage`,
+  url: `${SITE_URL}/kontakt`,
+  name: 'Kontakta Clean Charge AB',
+  description:
+    'Kontakt, offert och rådgivning för laddboxar, DC-laddstationer och drift av laddinfrastruktur.',
+  inLanguage: 'sv-SE',
+  mainEntity: { '@id': ORGANIZATION_ID },
+  about: { '@id': LOCAL_BUSINESS_ID },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+46197604290',
+    email: 'info@cleancharge.se',
+    contactType: 'sales and customer service',
+    areaServed: 'SE',
+    availableLanguage: ['Swedish', 'English'],
+  },
+};
+
 export default function KontaktPage() {
   return (
     <ClientLayout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageJsonLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
@@ -49,6 +76,7 @@ export default function KontaktPage() {
 
         <div className="container mx-auto px-4 sm:px-6 relative z-10 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
           <div className="max-w-3xl">
+            <Breadcrumbs items={[{ name: 'Kontakt', href: '/kontakt' }]} variant="dark" />
             <div className="inline-flex items-center space-x-3 bg-cc-green/10 text-cc-green px-5 py-2.5 rounded-full border border-cc-green/20 mb-10">
               <MessageSquare className="w-4 h-4" />
               <span className="text-[12px] font-black uppercase tracking-[0.3em]">Vi finns här för dig</span>

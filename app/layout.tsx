@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import { Instrument_Sans, Space_Grotesk } from 'next/font/google';
 import CookieBanner from '@/components/CookieBanner';
 import AnalyticsGate from '@/components/AnalyticsGate';
+import { LOCAL_BUSINESS_ID, ORGANIZATION_ID, SITE_URL } from '@/lib/jsonld';
+import { openGraphImages } from '@/lib/seo';
 import './globals.css';
 
 const instrumentSans = Instrument_Sans({
@@ -48,6 +50,7 @@ export const metadata: Metadata = {
     title: 'Clean Charge AB | Laddbox för Företag & Fastighetsbolag',
     description:
       'Vi levererar, konfigurerar och driftar er laddinfrastruktur – helt klart. Auktoriserad Zaptec & Monta-partner.',
+    images: openGraphImages(),
   },
   twitter: {
     card: 'summary_large_image',
@@ -83,7 +86,6 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
-const SITE_URL = 'https://www.cleancharge.se';
 const LOGO_URL = `${SITE_URL}/logo.png`;
 
 const jsonLd = {
@@ -91,7 +93,7 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'Organization',
-      '@id': `${SITE_URL}#organization`,
+      '@id': ORGANIZATION_ID,
       name: 'Clean Charge AB',
       url: SITE_URL,
       logo: {
@@ -120,7 +122,7 @@ const jsonLd = {
     },
     {
       '@type': 'LocalBusiness',
-      '@id': `${SITE_URL}#localbusiness`,
+      '@id': LOCAL_BUSINESS_ID,
       name: 'Clean Charge AB',
       image: LOGO_URL,
       logo: LOGO_URL,
@@ -164,7 +166,7 @@ const jsonLd = {
       '@id': `${SITE_URL}#website`,
       url: SITE_URL,
       name: 'Clean Charge AB',
-      publisher: { '@id': `${SITE_URL}#organization` },
+      publisher: { '@id': ORGANIZATION_ID },
       inLanguage: 'sv-SE',
     },
   ],

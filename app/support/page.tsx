@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import SupportSection from '@/components/SupportSection';
+import FaqSection from '@/components/FaqSection';
 import { breadcrumbJsonLd, faqJsonLd } from '@/lib/jsonld';
+import { openGraphImages } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Support & Hjälp med din Laddbox',
@@ -13,13 +15,13 @@ export const metadata: Metadata = {
     description:
       'Support måndag–fredag 08:00–17:00. Ring 019-760 42 90 eller mejla info@cleancharge.se så hjälper vi dig.',
     url: 'https://www.cleancharge.se/support',
-    images: ['/opengraph-image'],
+    images: openGraphImages('Support för laddbox — felsökning, garanti och hjälp med Monta'),
   },
 };
 
 const breadcrumb = breadcrumbJsonLd([{ name: 'Support', path: '/support' }]);
 
-const faq = faqJsonLd([
+const faqEntries = [
   {
     question: 'Vad gör jag om min laddbox inte fungerar?',
     answer:
@@ -45,7 +47,9 @@ const faq = faqJsonLd([
     answer:
       'Ja. Många kunder börjar med några laddare och bygger ut efter hand. Vi hjälper er att projektera utbyggnaden så att lastbalansering och elinstallation klarar den nya kapaciteten utan att huvudsäkringen behöver höjas.',
   },
-]);
+];
+
+const faq = faqJsonLd(faqEntries);
 
 export default function SupportPage() {
   return (
@@ -59,6 +63,7 @@ export default function SupportPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
       />
       <SupportSection />
+      <FaqSection entries={faqEntries} />
     </ClientLayout>
   );
 }

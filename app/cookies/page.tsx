@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import CookiePolicySection from '@/components/CookiePolicySection';
+import RelatedSolutions from '@/components/RelatedSolutions';
 import { breadcrumbJsonLd } from '@/lib/jsonld';
+import { openGraphImages } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Cookie-policy',
@@ -12,7 +14,7 @@ export const metadata: Metadata = {
     title: 'Cookie-policy | Clean Charge AB',
     description: 'Information om vilka cookies vi använder och hur du hanterar dem.',
     url: 'https://www.cleancharge.se/cookies',
-    images: ['/opengraph-image'],
+    images: openGraphImages('Cookie-policy — Clean Charge AB'),
   },
 };
 
@@ -30,6 +32,7 @@ export default function CookiesPage() {
       <div className="pt-32">
         <CookiePolicySection />
       </div>
+      <RelatedSolutions />
     </ClientLayout>
   );
 }

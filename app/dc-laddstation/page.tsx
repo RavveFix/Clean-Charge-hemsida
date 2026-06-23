@@ -2,7 +2,11 @@ import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Zap, Timer, Globe, ShieldCheck } from 'lucide-react';
-import { breadcrumbJsonLd } from '@/lib/jsonld';
+import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/jsonld';
+import { openGraphImages } from '@/lib/seo';
+import RelatedSolutions from '@/components/RelatedSolutions';
+import FaqSection from '@/components/FaqSection';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'DC Laddstation – Snabbladdare Publik Drift',
@@ -22,31 +26,52 @@ export const metadata: Metadata = {
     title: 'DC Laddstation & Snabbladdare – Clean Charge AB',
     description: 'Installation av DC-snabbladdare för publika och kommersiella anläggningar. OCPP och betalning ingår.',
     url: 'https://www.cleancharge.se/dc-laddstation',
-    images: ['/opengraph-image'],
+    images: openGraphImages('DC-laddstation och snabbladdare — publik drift med betalning och OCPP'),
     type: 'website',
   },
   alternates: { canonical: 'https://www.cleancharge.se/dc-laddstation' },
 };
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
+const jsonLd = serviceJsonLd({
   name: 'DC Laddstation Installation',
-  url: 'https://www.cleancharge.se/dc-laddstation',
-  provider: {
-    '@type': 'LocalBusiness',
-    name: 'Clean Charge AB',
-    telephone: '+46197604290',
-    url: 'https://www.cleancharge.se',
-  },
-  areaServed: 'SE',
+  path: '/dc-laddstation',
   description: 'Installation och drift av DC-snabbladdare för publik och kommersiell användning.',
   serviceType: 'DC EV Fast Charging Installation',
-};
+});
 
 const breadcrumb = breadcrumbJsonLd([
   { name: 'DC Laddstation', path: '/dc-laddstation' },
 ]);
+
+const faqEntries = [
+  {
+    question: 'Hur snabbt laddar en DC-snabbladdare?',
+    answer:
+      'En DC-snabbladdare på 50–360 kW laddar ett genomsnittligt elbilsbatteri till cirka 80 % på 20–40 minuter, beroende på laddarens effekt och bilmodell.',
+  },
+  {
+    question: 'Vilka laddstandarder och betalsätt stöds?',
+    answer:
+      'Våra DC-laddare stöder CCS och CHAdeMO och är OCPP-kompatibla. Betalning kan ske via app, kreditkort eller RFID, och systemet fungerar med nätverk som Monta, Recharge, Mer och ZapMap.',
+  },
+  {
+    question: 'Kan vi tjäna pengar på en publik laddstation?',
+    answer:
+      'Ja. Ni sätter er egen prissättning och tar betalt via app eller kort, så anläggningen kan generera intäkter från dag ett. Vi hjälper er att sätta upp intäktsmodellen och prissättningen.',
+  },
+  {
+    question: 'Vad ingår i en DC-installation?',
+    answer:
+      'Vi levererar nyckelfärdigt: behovsanalys och nätanslutningsutredning, projektering inklusive elnäts- och bygganmälan, installation av DC-laddare (50–360 kW), konfiguration i OCPP-backend, betalningslösning, skyltning, driftsättning samt fjärrövervakning och driftsupport.',
+  },
+  {
+    question: 'Var passar DC-snabbladdare bäst?',
+    answer:
+      'DC-snabbladdare passar publika parkeringar, handelsplatser, köpcentrum och motorvägsrastplatser – platser där bilar ska laddas snabbt under en kort stunds besök.',
+  },
+];
+
+const faq = faqJsonLd(faqEntries);
 
 const benefits = [
   {
@@ -93,12 +118,17 @@ export default function DcLaddstationPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
+      />
 
       {/* Hero */}
       <section className="relative bg-white pt-40 pb-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-emerald-50/30 pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
+            <Breadcrumbs items={[{ name: 'DC Laddstation', href: '/dc-laddstation' }]} variant="light" />
             <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-semibold mb-8">
               <Zap className="w-4 h-4" />
               DC Snabbladdning – Publik & Kommersiell
@@ -204,6 +234,10 @@ export default function DcLaddstationPage() {
           </div>
         </div>
       </section>
+
+      <FaqSection entries={faqEntries} />
+
+      <RelatedSolutions current="dc-laddstation" />
 
       {/* CTA */}
       <section className="py-24 bg-white">
