@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import CommercialChargingSection from '@/components/CommercialChargingSection';
-import { breadcrumbJsonLd, faqJsonLd, LOCAL_BUSINESS_ID, SITE_URL } from '@/lib/jsonld';
+import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd, LOCAL_BUSINESS_ID, SITE_URL } from '@/lib/jsonld';
 import { openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
@@ -53,6 +53,14 @@ const faqEntries = [
 ];
 
 const faq = faqJsonLd(faqEntries);
+
+const service = serviceJsonLd({
+  name: 'Publik laddinfrastruktur – installation och drift',
+  path: '/publik',
+  description:
+    'Vi installerar, konfigurerar och driftar publika laddstationer med Monta som betalplattform – nyckelfärdigt med fjärrövervakning.',
+  serviceType: 'Installation och drift av publika laddstationer',
+});
 
 const productList = {
   '@context': 'https://schema.org',
@@ -127,6 +135,10 @@ export default function PublikPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(service) }}
       />
       <CommercialChargingSection />
       <FaqSection entries={faqEntries} />
