@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import PrivateChargingSection from '@/components/PrivateChargingSection';
-import { breadcrumbJsonLd, faqJsonLd, LOCAL_BUSINESS_ID, SITE_URL } from '@/lib/jsonld';
+import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd, LOCAL_BUSINESS_ID, SITE_URL } from '@/lib/jsonld';
 import { openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
@@ -111,6 +111,14 @@ const faqEntries = [
 
 const faq = faqJsonLd(faqEntries);
 
+const service = serviceJsonLd({
+  name: 'Installation av laddbox hemma',
+  path: '/privat',
+  description:
+    'Vi hjälper privatpersoner välja, installera och koppla upp laddbox hemma – nyckelfärdigt med 50% Grön Teknik-avdrag.',
+  serviceType: 'Installation av hemmaladdbox',
+});
+
 export default function PrivatPage() {
   return (
     <ClientLayout>
@@ -125,6 +133,10 @@ export default function PrivatPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(service) }}
       />
       <PrivateChargingSection />
       <FaqSection entries={faqEntries} />
