@@ -22,8 +22,8 @@ const ProductHero: React.FC = () => {
           </div>
           
           <h1 className="text-[clamp(1.75rem,4.5vw,4.5rem)] font-black tracking-tighter leading-[0.85] uppercase mb-6 sm:mb-8">
-            Hårdvara i <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cc-green to-[#34d399]">Världsklass.</span>
+            Laddboxar i <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cc-green to-[#34d399]">världsklass.</span>
           </h1>
           
           <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-16">

@@ -44,8 +44,8 @@ const MontaHubSection: React.FC = () => {
               </div>
               
               <h1 className="text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-tight">
-                Ett operativsystem <br />
-                <span className="text-blue-300">för elbilister.</span>
+                Monta – operativsystemet <br />
+                <span className="text-blue-300">för din laddbox.</span>
               </h1>
               
               <p className="text-base sm:text-xl text-blue-100 font-medium leading-relaxed max-w-xl">
