@@ -33,6 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({
     { id: 'fastighet', label: 'BRF & Fastighet', href: '/fastighetsbolag' },
     { id: 'publik', label: 'Publik Laddning', href: '/publik' },
     { id: 'dc', label: 'DC-snabbladdning', href: '/dc-laddstation' },
+    { id: 'monta', label: 'Smart laddning (Monta)', href: '/monta' },
   ];
 
   const tailLinks = [

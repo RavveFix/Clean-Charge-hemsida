@@ -7,6 +7,7 @@ type SolutionKey =
   | 'fastighetsbolag'
   | 'publik'
   | 'dc-laddstation'
+  | 'monta'
   | 'produkter';
 
 type SolutionLink = {
@@ -41,6 +42,11 @@ const LINKS: Record<SolutionKey, SolutionLink> = {
     href: '/dc-laddstation',
     desc: 'Snabbladdare 50–360 kW för publika och kommersiella anläggningar.',
   },
+  monta: {
+    title: 'Smart laddning med Monta',
+    href: '/monta',
+    desc: 'Betalning, debitering och drift av dina laddare via Monta-plattformen.',
+  },
   produkter: {
     title: 'Våra produkter',
     href: '/produkter',
@@ -50,10 +56,11 @@ const LINKS: Record<SolutionKey, SolutionLink> = {
 
 const RELATED: Record<SolutionKey, SolutionKey[]> = {
   privat: ['produkter', 'foretag', 'fastighetsbolag'],
-  foretag: ['fastighetsbolag', 'publik', 'produkter'],
-  fastighetsbolag: ['foretag', 'publik', 'produkter'],
-  publik: ['dc-laddstation', 'foretag', 'fastighetsbolag'],
+  foretag: ['fastighetsbolag', 'monta', 'produkter'],
+  fastighetsbolag: ['foretag', 'monta', 'produkter'],
+  publik: ['dc-laddstation', 'foretag', 'monta'],
   'dc-laddstation': ['publik', 'foretag', 'produkter'],
+  monta: ['foretag', 'fastighetsbolag', 'publik'],
   produkter: ['foretag', 'privat', 'fastighetsbolag'],
 };
 
