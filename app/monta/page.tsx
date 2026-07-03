@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import MontaHubSection from '@/components/MontaHubSection';
 import FaqSection from '@/components/FaqSection';
+import RelatedSolutions from '@/components/RelatedSolutions';
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/jsonld';
 import { openGraphImages } from '@/lib/seo';
 
@@ -83,6 +84,7 @@ export default function MontaPage() {
       />
       <MontaHubSection />
       <FaqSection entries={faqEntries} />
+      <RelatedSolutions current="monta" />
     </ClientLayout>
   );
 }

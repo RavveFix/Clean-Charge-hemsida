@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import SupportSection from '@/components/SupportSection';
 import FaqSection from '@/components/FaqSection';
+import RelatedSolutions from '@/components/RelatedSolutions';
 import { breadcrumbJsonLd, faqJsonLd } from '@/lib/jsonld';
 import { openGraphImages } from '@/lib/seo';
 
@@ -64,6 +65,7 @@ export default function SupportPage() {
       />
       <SupportSection />
       <FaqSection entries={faqEntries} />
+      <RelatedSolutions />
     </ClientLayout>
   );
 }
