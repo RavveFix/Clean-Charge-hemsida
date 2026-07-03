@@ -12,6 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: '/fastighetsbolag', priority: 0.9, changeFrequency: 'monthly' as const, lastModified: '2026-06-22' },
     { url: '/dc-laddstation', priority: 0.85, changeFrequency: 'monthly' as const, lastModified: '2026-06-22' },
     { url: '/monta', priority: 0.8, changeFrequency: 'monthly' as const, lastModified: '2026-07-03' },
+    { url: '/laddbox-orebro', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-07-03' },
+    { url: '/ladda-bilen-bidrag', priority: 0.65, changeFrequency: 'monthly' as const, lastModified: '2026-07-03' },
     { url: '/produkter', priority: 0.8, changeFrequency: 'weekly' as const, lastModified: '2026-07-03' },
     { url: '/privat', priority: 0.75, changeFrequency: 'monthly' as const, lastModified: '2026-06-26' },
     { url: '/publik', priority: 0.75, changeFrequency: 'monthly' as const, lastModified: '2026-06-26' },
