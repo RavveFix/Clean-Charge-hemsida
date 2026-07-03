@@ -67,6 +67,7 @@ const Footer: React.FC = () => {
                 { label: 'För Privatpersoner', href: '/privat' },
                 { label: 'För Företag', href: '/foretag' },
                 { label: 'För BRF', href: '/fastighetsbolag' },
+                { label: 'För Samfällighet', href: '/samfallighet' },
                 { label: 'Publik Laddning', href: '/publik' },
                 { label: 'Snabbladdning (DC)', href: '/dc-laddstation' },
                 { label: 'Smart laddning (Monta)', href: '/monta' },
@@ -90,6 +91,8 @@ const Footer: React.FC = () => {
                 { label: 'Installation', href: '/support#installation' },
                 { label: 'Monta Hjälpcenter', href: 'https://monta.com/se/help-center/' },
                 { label: 'Ladda bilen-bidraget 2026', href: '/ladda-bilen-bidrag' },
+                { label: 'Vad kostar laddbox?', href: '/vad-kostar-laddbox' },
+                { label: 'Bästa laddboxen 2026', href: '/basta-laddboxen' },
                 { label: 'Felanmälan', href: '/kontakt' },
               ].map((item) => (
                 <li key={item.label}>
