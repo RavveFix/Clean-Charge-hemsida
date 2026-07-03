@@ -32,10 +32,10 @@ const TermsSection: React.FC = () => {
           {/* Grön Teknik Box */}
           <div className="bg-cc-green/5 border border-cc-green/20 p-8 rounded-3xl mb-16 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-cc-green/10 rounded-bl-full"></div>
-            <h3 className="text-2xl font-black text-slate-800 mb-4 flex items-center gap-2">
+            <h2 className="text-2xl font-black text-slate-800 mb-4 flex items-center gap-2">
               <CheckCircle2 className="text-cc-green w-6 h-6" />
               Skatteavdrag Grön Teknik
-            </h3>
+            </h2>
             <p className="text-slate-600 mb-4 leading-relaxed">
               Vi tillämpar fakturamodellen för Grön Teknik. Det innebär att du som privatperson får 50% avdrag direkt på fakturan för både arbete och material (laddbox och tillbehör).
             </p>
@@ -46,10 +46,10 @@ const TermsSection: React.FC = () => {
 
           <div className="grid gap-12">
             <div className="border-b border-slate-100 pb-12">
-              <h3 className="text-2xl font-black text-slate-800 mb-6 flex items-center gap-3">
+              <h2 className="text-2xl font-black text-slate-800 mb-6 flex items-center gap-3">
                 <CreditCard className="w-6 h-6 text-slate-400" />
                 1. Beställning & Betalning
-              </h3>
+              </h2>
               <p className="text-slate-500 leading-relaxed mb-4">
                 Alla priser anges i svenska kronor (SEK) inklusive 25% moms. I kassan visas priset både före och efter det preliminära skatteavdraget.
               </p>
@@ -61,10 +61,10 @@ const TermsSection: React.FC = () => {
             </div>
 
             <div className="border-b border-slate-100 pb-12">
-              <h3 className="text-2xl font-black text-slate-800 mb-6 flex items-center gap-3">
+              <h2 className="text-2xl font-black text-slate-800 mb-6 flex items-center gap-3">
                 <Truck className="w-6 h-6 text-slate-400" />
                 2. Leverans & Installation
-              </h3>
+              </h2>
               <p className="text-slate-500 leading-relaxed mb-4">
                 Vid köp inklusive installation tar installatören med sig laddboxen till installationstillfället.
               </p>
@@ -76,10 +76,10 @@ const TermsSection: React.FC = () => {
             </div>
 
             <div className="border-b border-slate-100 pb-12">
-              <h3 className="text-2xl font-black text-slate-800 mb-6 flex items-center gap-3">
+              <h2 className="text-2xl font-black text-slate-800 mb-6 flex items-center gap-3">
                 <RefreshCw className="w-6 h-6 text-slate-400" />
                 3. Ångerrätt & Retur
-              </h3>
+              </h2>
               <p className="text-slate-500 leading-relaxed mb-4">
                 Enligt Distansavtalslagen har du som privatperson 14 dagars ångerrätt från det att du mottagit varan.
               </p>
@@ -92,7 +92,7 @@ const TermsSection: React.FC = () => {
             </div>
 
             <div>
-              <h3 className="text-2xl font-black text-slate-800 mb-6">4. Garanti</h3>
+              <h2 className="text-2xl font-black text-slate-800 mb-6">4. Garanti</h2>
               <p className="text-slate-500 leading-relaxed">
                 Vi lämnar alltid minst 2 års garanti på installation och upp till 5 års produktgaranti beroende på tillverkare (se respektive produktblad för Easee och Zaptec).
               </p>

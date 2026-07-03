@@ -50,7 +50,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className="flex flex-col flex-1 px-2 space-y-4 relative z-10">
           <div className="flex justify-between items-start gap-2">
             <div>
-              <h3 className="text-xl font-black text-slate-900 tracking-tight leading-none group-hover:text-cc-green transition-colors">{product.name}</h3>
+              <h2 className="text-xl font-black text-slate-900 tracking-tight leading-none group-hover:text-cc-green transition-colors">{product.name}</h2>
               <p className="text-[12px] font-black text-slate-400 uppercase tracking-widest mt-2">{product.category === 'snabbladdare' ? 'DC Snabbladdare' : 'AC Laddbox'}</p>
             </div>
             <div className="flex flex-col items-end shrink-0">
