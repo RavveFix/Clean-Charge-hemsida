@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Landmark, Scale, CalendarClock, CarFront, Building2, Users } from 'lucide-react';
-import { breadcrumbJsonLd, faqJsonLd } from '@/lib/jsonld';
+import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from '@/lib/jsonld';
 import { openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
@@ -34,6 +34,15 @@ export const metadata: Metadata = {
 const breadcrumb = breadcrumbJsonLd([
   { name: 'Ladda bilen-bidraget 2026', path: '/ladda-bilen-bidrag' },
 ]);
+
+const article = articleJsonLd({
+  headline: 'Ladda Bilen-bidraget 2026 – Nya Regler & Nivåer',
+  path: '/ladda-bilen-bidrag',
+  description:
+    'Nya regler för Ladda bilen-bidraget från 1 februari 2026: stöd 20–50 % beroende på företagsstorlek, max 15 000 kr per laddpunkt och ansökan före installation.',
+  datePublished: '2026-07-03',
+  dateModified: '2026-07-05',
+});
 
 const faqEntries = [
   {
@@ -113,6 +122,10 @@ export default function LaddaBilenBidragPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(article) }}
       />
 
       {/* Hero */}

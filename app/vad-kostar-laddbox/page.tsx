@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Home, Building2, Landmark, Zap, BadgePercent } from 'lucide-react';
-import { breadcrumbJsonLd, faqJsonLd } from '@/lib/jsonld';
+import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from '@/lib/jsonld';
 import { openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
@@ -34,6 +34,15 @@ export const metadata: Metadata = {
 const breadcrumb = breadcrumbJsonLd([
   { name: 'Vad kostar en laddbox?', path: '/vad-kostar-laddbox' },
 ]);
+
+const article = articleJsonLd({
+  headline: 'Vad Kostar en Laddbox? Prisguide 2026',
+  path: '/vad-kostar-laddbox',
+  description:
+    'Vad kostar laddbox med installation 2026? Riktpriser för villa, BRF, samfällighet och företag – inklusive Grön Teknik-avdrag och Ladda bilen-bidrag.',
+  datePublished: '2026-07-03',
+  dateModified: '2026-07-05',
+});
 
 const faqEntries = [
   {
@@ -128,6 +137,10 @@ export default function VadKostarLaddboxPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(article) }}
       />
 
       {/* Hero */}
