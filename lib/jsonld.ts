@@ -8,6 +8,7 @@ type ServiceJsonLdInput = {
   path: string;
   description: string;
   serviceType: string;
+  areaServed?: { '@type': string; name: string };
 };
 
 export function breadcrumbJsonLd(crumbs: Crumb[]) {
@@ -53,6 +54,7 @@ export function serviceJsonLd({
   path,
   description,
   serviceType,
+  areaServed,
 }: ServiceJsonLdInput) {
   const url = `${SITE_URL}${path}`;
 
@@ -64,7 +66,7 @@ export function serviceJsonLd({
     url,
     mainEntityOfPage: url,
     provider: { '@id': LOCAL_BUSINESS_ID },
-    areaServed: { '@type': 'Country', name: 'Sweden' },
+    areaServed: areaServed ?? { '@type': 'Country', name: 'Sweden' },
     description,
     serviceType,
     availableChannel: {

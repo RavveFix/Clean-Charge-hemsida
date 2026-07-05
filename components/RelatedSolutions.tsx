@@ -5,6 +5,7 @@ type SolutionKey =
   | 'privat'
   | 'foretag'
   | 'fastighetsbolag'
+  | 'samfallighet'
   | 'publik'
   | 'dc-laddstation'
   | 'monta'
@@ -32,6 +33,11 @@ const LINKS: Record<SolutionKey, SolutionLink> = {
     href: '/fastighetsbolag',
     desc: 'Gemensam laddning med individuell debitering via Monta.',
   },
+  samfallighet: {
+    title: 'Samfälligheter',
+    href: '/samfallighet',
+    desc: 'Laddstolpar på gemensam parkering – från utredning och bidrag till drift.',
+  },
   publik: {
     title: 'Publik laddning',
     href: '/publik',
@@ -57,7 +63,8 @@ const LINKS: Record<SolutionKey, SolutionLink> = {
 const RELATED: Record<SolutionKey, SolutionKey[]> = {
   privat: ['produkter', 'foretag', 'fastighetsbolag'],
   foretag: ['fastighetsbolag', 'monta', 'produkter'],
-  fastighetsbolag: ['foretag', 'monta', 'produkter'],
+  fastighetsbolag: ['samfallighet', 'foretag', 'monta'],
+  samfallighet: ['fastighetsbolag', 'monta', 'foretag'],
   publik: ['dc-laddstation', 'foretag', 'monta'],
   'dc-laddstation': ['publik', 'foretag', 'produkter'],
   monta: ['foretag', 'fastighetsbolag', 'publik'],
