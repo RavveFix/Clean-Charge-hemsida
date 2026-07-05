@@ -49,6 +49,39 @@ export function faqJsonLd(entries: FaqEntry[]) {
   };
 }
 
+type ArticleJsonLdInput = {
+  headline: string;
+  path: string;
+  description: string;
+  datePublished: string;
+  dateModified: string;
+};
+
+export function articleJsonLd({
+  headline,
+  path,
+  description,
+  datePublished,
+  dateModified,
+}: ArticleJsonLdInput) {
+  const url = `${SITE_URL}${path}`;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `${url}#article`,
+    headline,
+    description,
+    url,
+    mainEntityOfPage: url,
+    inLanguage: 'sv-SE',
+    author: { '@id': ORGANIZATION_ID },
+    publisher: { '@id': ORGANIZATION_ID },
+    datePublished,
+    dateModified,
+  };
+}
+
 export function serviceJsonLd({
   name,
   path,

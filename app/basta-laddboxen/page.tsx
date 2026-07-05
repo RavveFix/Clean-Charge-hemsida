@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Trophy, Home, Building2, Zap, ShieldCheck } from 'lucide-react';
-import { breadcrumbJsonLd, faqJsonLd } from '@/lib/jsonld';
+import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from '@/lib/jsonld';
 import { openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
@@ -33,6 +33,15 @@ export const metadata: Metadata = {
 const breadcrumb = breadcrumbJsonLd([
   { name: 'Bästa laddboxen 2026', path: '/basta-laddboxen' },
 ]);
+
+const article = articleJsonLd({
+  headline: 'Bästa Laddboxen 2026 – Zaptec, Easee & Autel',
+  path: '/basta-laddboxen',
+  description:
+    'Vilken är bästa laddboxen 2026? Vi jämför Zaptec Go, Zaptec Pro och Easee utifrån behov – villa, BRF eller företag. Ärlig guide från auktoriserad installatör.',
+  datePublished: '2026-07-03',
+  dateModified: '2026-07-05',
+});
 
 const faqEntries = [
   {
@@ -114,6 +123,10 @@ export default function BastaLaddboxenPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(article) }}
       />
 
       {/* Hero */}
