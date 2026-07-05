@@ -31,6 +31,7 @@ const Navbar: React.FC<NavbarProps> = ({
     { id: 'private', label: 'Ladda Privat', href: '/privat' },
     { id: 'foretag', label: 'Företag', href: '/foretag' },
     { id: 'fastighet', label: 'BRF & Fastighet', href: '/fastighetsbolag' },
+    { id: 'samfallighet', label: 'Samfällighet', href: '/samfallighet' },
     { id: 'publik', label: 'Publik Laddning', href: '/publik' },
     { id: 'dc', label: 'DC-snabbladdning', href: '/dc-laddstation' },
     { id: 'monta', label: 'Smart laddning (Monta)', href: '/monta' },
