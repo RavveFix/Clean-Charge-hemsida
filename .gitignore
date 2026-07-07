@@ -42,3 +42,10 @@ build
 *.tsbuildinfo
 CLAUDE.md
 src/
+
+# Lokala arbetsfiler (audits, screenshots, offerter) – ska inte versioneras
+/audit-*.md
+/seo-audit-*.md
+/*.png
+/*.docx
+tsconfig.tsbuildinfo
