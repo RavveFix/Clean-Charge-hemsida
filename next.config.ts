@@ -66,6 +66,43 @@ const nextConfig: NextConfig = {
         destination: 'https://www.cleancharge.se/:path*',
         permanent: true,
       },
+      // 301-karta för gamla WordPress-sajtens URL:er (inventerade via Wayback
+      // CDX + Googles index 2026-07-13). Relansen till Next.js släppte alla
+      // gamla paths till 404 — dessa behåller länkkraft och fångar besökare
+      // från gamla SERP-träffar. Specifika regler före wildcard (första träff vinner).
+      { source: '/brf', destination: '/fastighetsbolag', permanent: true },
+      { source: '/kommersiellt', destination: '/foretag', permanent: true },
+      { source: '/kopvillkor', destination: '/villkor', permanent: true },
+      { source: '/gdpr', destination: '/integritetspolicy', permanent: true },
+      { source: '/vanliga-fragor', destination: '/support', permanent: true },
+      { source: '/skatteavdrag', destination: '/ladda-bilen-bidrag', permanent: true },
+      { source: '/installation', destination: '/vad-kostar-laddbox', permanent: true },
+      { source: '/installation-utford-i-orebro', destination: '/laddbox-orebro', permanent: true },
+      { source: '/installation-prylify-se-i-vasteras', destination: '/laddbox-orebro', permanent: true },
+      { source: '/installatorer', destination: '/kontakt', permanent: true },
+      { source: '/3-skal-att-valja-clean-charge', destination: '/om-oss', permanent: true },
+      { source: '/inkopslista', destination: '/produkter', permanent: true },
+      { source: '/webshop', destination: '/produkter', permanent: true },
+      { source: '/varukorg', destination: '/produkter', permanent: true },
+      // Siemens-produkterna var DC-laddare; övriga produkt-URL:er → /produkter.
+      { source: '/produkt/siemens-:slug', destination: '/dc-laddstation', permanent: true },
+      { source: '/produkt/:slug*', destination: '/produkter', permanent: true },
+      { source: '/produkt-kategori/snabbladdare', destination: '/dc-laddstation', permanent: true },
+      { source: '/produkt-kategori/:slug*', destination: '/produkter', permanent: true },
+      // Produktblad-PDF:er m.m. under wp-content → produktsidan.
+      { source: '/wp-content/:path*', destination: '/produkter', permanent: true },
+      // WP-cruft utan motsvarighet på nya sajten → startsidan.
+      { source: '/en/:path*', destination: '/', permanent: true },
+      { source: '/nyheter/:path*', destination: '/', permanent: true },
+      { source: '/mitt-konto/:path*', destination: '/', permanent: true },
+      { source: '/category/:path*', destination: '/', permanent: true },
+      { source: '/tag/:path*', destination: '/', permanent: true },
+      { source: '/author/:path*', destination: '/', permanent: true },
+      { source: '/comments/feed', destination: '/', permanent: true },
+      { source: '/feed', destination: '/', permanent: true },
+      { source: '/woodmart_slide/:path*', destination: '/', permanent: true },
+      { source: '/evercompare', destination: '/', permanent: true },
+      { source: '/404-2', destination: '/', permanent: true },
     ];
   },
 };
