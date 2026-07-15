@@ -25,7 +25,7 @@ const MontaSection: React.FC = () => {
                 <div className="inline-block pb-2 md:pb-4">
                   <Image
                     src="https://monta.com/app/themes/monta-sage-latest/public/build/assets/Monta_Logo-6IYbGNWl.svg"
-                    alt="Monta"
+                    alt="Monta-logotyp"
                     width={160}
                     height={48}
                     unoptimized

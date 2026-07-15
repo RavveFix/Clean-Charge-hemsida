@@ -60,9 +60,9 @@ const Hero: React.FC = () => {
             </div>
 
             <h1 className="hero-anim text-[clamp(2rem,5vw,5rem)] font-[800] text-text-primary tracking-tighter leading-[1.12] mb-5 sm:mb-6 md:mb-8 lg:pr-10 pb-2">
-              Vi levererar,{' '}<br className="hidden sm:block" />
-              konfigurerar och{' '}<br className="hidden sm:block" />
-              driftar era laddboxar.
+              Laddboxar för företag{' '}<br className="hidden sm:block" />
+              &amp; fastighetsbolag –{' '}<br className="hidden sm:block" />
+              levererat, konfigurerat, driftat.
             </h1>
             
             <p className="hero-anim text-base sm:text-lg md:text-xl text-text-primary font-medium leading-relaxed mb-8 sm:mb-10 md:mb-12 max-w-lg mx-auto lg:mx-0 pr-0 lg:pr-8">

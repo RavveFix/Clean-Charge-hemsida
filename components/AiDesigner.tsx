@@ -102,7 +102,7 @@ const AiDesigner: React.FC<AiDesignerProps> = ({ initialPrompt }) => {
                   </div>
                 ) : (
                   <div className="relative group aspect-video rounded-3xl overflow-hidden border-2 border-cc-green shadow-lg shadow-cc-green/10">
-                    <img src={sourceImage.base64} alt="Source" className="w-full h-full object-cover" />
+                    <img src={sourceImage.base64} alt="Uppladdad referensbild för AI-laddvision" className="w-full h-full object-cover" />
                     <button 
                       onClick={removeSourceImage}
                       className="absolute top-2 right-2 bg-red-500 text-white p-1.5 rounded-full shadow-lg hover:bg-red-600 transition-colors"
@@ -149,7 +149,7 @@ const AiDesigner: React.FC<AiDesignerProps> = ({ initialPrompt }) => {
             {resultImage ? (
               <div className="relative group">
                 <div className="relative rounded-[4rem] overflow-hidden shadow-[0_80px_120px_-30px_rgba(0,177,130,0.3)] border-[12px] border-slate-50">
-                  <img src={resultImage} alt="AI Vision" className="w-full h-auto aspect-video object-cover" />
+                  <img src={resultImage} alt="AI-genererad vision av laddbox på din plats" className="w-full h-auto aspect-video object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-tr from-cc-green/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                   
                   <div className="absolute bottom-10 left-10 right-10 flex justify-between items-center translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">

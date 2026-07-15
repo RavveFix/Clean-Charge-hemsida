@@ -34,7 +34,7 @@ const MontaHubSection: React.FC = () => {
               <div className="inline-flex items-center space-x-3 bg-white/10 border border-white/20 px-5 py-2 rounded-full backdrop-blur-md">
                 <Image
                   src="https://monta.com/app/themes/monta-sage-latest/public/build/assets/Monta_Logo-6IYbGNWl.svg"
-                  alt="Monta"
+                  alt="Monta-logotyp"
                   width={80}
                   height={16}
                   unoptimized
@@ -176,7 +176,7 @@ const MontaHubSection: React.FC = () => {
                     <div className="rounded-[2.5rem] overflow-hidden bg-[#0a0f1c] border border-slate-800">
                       <Image
                         src="/images/brand/Charge_1.png"
-                        alt="Monta admin-dashboard"
+                        alt="Monta admin-dashboard för drift av laddstationer"
                         width={600}
                         height={400}
                         className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"

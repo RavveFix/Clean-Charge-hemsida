@@ -3,7 +3,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight, Zap, PhoneCall, CheckCircle2, ShieldCheck, ZapIcon, CreditCard, HeadphonesIcon } from 'lucide-react';
 
 const PreFooterCTA: React.FC = () => {
@@ -138,10 +137,13 @@ const PreFooterCTA: React.FC = () => {
 
               {/* Trust Badge / Support Info */}
               <div className="mt-12 text-center lg:text-left flex items-center justify-center lg:justify-start gap-4">
-                <div className="flex -space-x-3">
-                  {[1,2,3,4].map(n => (
-                    <div key={n} className="w-10 h-10 rounded-full border-2 border-[#020617] bg-slate-800 flex items-center justify-center overflow-hidden">
-                      <Image src={`https://i.pravatar.cc/100?img=${n + 10}`} alt="Customer" width={40} height={40} className="w-full h-full object-cover opacity-80" />
+                <div className="flex -space-x-3" aria-hidden="true">
+                  {['BRF', 'AB', 'SF', 'PV'].map((label) => (
+                    <div
+                      key={label}
+                      className="w-10 h-10 rounded-full border-2 border-[#020617] bg-slate-800 flex items-center justify-center text-[10px] font-black tracking-wide text-cc-green"
+                    >
+                      {label}
                     </div>
                   ))}
                 </div>

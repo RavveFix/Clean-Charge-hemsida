@@ -9,7 +9,7 @@ import FaqSection from '@/components/FaqSection';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Ladda Bilen-bidraget 2026 – Nya Regler & Nivåer',
+  title: 'Ladda Bilen-bidraget 2026 – Nya Regler',
   description:
     'Nya regler för Ladda bilen-bidraget från 1 februari 2026: stöd 20–50 % beroende på företagsstorlek, max 15 000 kr per laddpunkt och ansökan före installation.',
   keywords: [

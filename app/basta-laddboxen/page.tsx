@@ -9,7 +9,7 @@ import FaqSection from '@/components/FaqSection';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Bästa Laddboxen 2026 – Zaptec, Easee & Autel',
+  title: 'Bästa Laddboxen 2026 – Jämförelse',
   description:
     'Vilken är bästa laddboxen 2026? Vi jämför Zaptec Go, Zaptec Pro och Easee utifrån behov – villa, BRF eller företag. Ärlig guide från auktoriserad installatör.',
   keywords: [

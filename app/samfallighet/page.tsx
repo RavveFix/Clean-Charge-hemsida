@@ -9,7 +9,7 @@ import FaqSection from '@/components/FaqSection';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Laddstolpar Samfällighet – Utredning till Drift',
+  title: 'Laddstolpar för Samfällighet',
   description:
     'Laddstolpar för samfälligheter – vi utreder, installerar och driftar med individuell debitering via Monta. Ladda bilen-bidrag för medlemmar. Kostnadsfri offert.',
   keywords: [

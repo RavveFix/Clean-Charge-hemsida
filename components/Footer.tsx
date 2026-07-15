@@ -137,7 +137,7 @@ const Footer: React.FC = () => {
                 width={80}
                 height={32}
                 className="h-8 w-auto opacity-30 grayscale"
-                alt="SOC 2 Type II certified"
+                alt="Monta SOC 2 Type II-certifierad plattform"
                 unoptimized
               />
             </div>
