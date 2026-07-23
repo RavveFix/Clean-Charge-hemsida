@@ -3,13 +3,13 @@ import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Landmark, Scale, CalendarClock, CarFront, Building2, Users } from 'lucide-react';
 import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from '@/lib/jsonld';
-import { openGraphImages } from '@/lib/seo';
+import { openGraphBase, openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Ladda Bilen-bidraget 2026 – Nya Regler & Nivåer',
+  title: 'Ladda Bilen-bidraget 2026 – Nya Regler',
   description:
     'Nya regler för Ladda bilen-bidraget från 1 februari 2026: stöd 20–50 % beroende på företagsstorlek, max 15 000 kr per laddpunkt och ansökan före installation.',
   keywords: [
@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     'bidrag laddinfrastruktur',
   ],
   openGraph: {
+    ...openGraphBase,
     title: 'Ladda bilen-bidraget 2026 – så fungerar de nya reglerna',
     description: 'Stödnivåer, maxbelopp och ansökningskrav för företag, BRF och samfälligheter från 1 februari 2026.',
     url: 'https://www.cleancharge.se/ladda-bilen-bidrag',

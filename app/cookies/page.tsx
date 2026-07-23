@@ -3,7 +3,7 @@ import ClientLayout from '@/app/ClientLayout';
 import CookiePolicySection from '@/components/CookiePolicySection';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import { breadcrumbJsonLd } from '@/lib/jsonld';
-import { openGraphImages } from '@/lib/seo';
+import { openGraphBase, openGraphImages } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Cookie-policy',
@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     'Cookie-policy för Clean Charge AB – vilka cookies vi använder för funktion, statistik och marknadsföring, varför de behövs och hur du hanterar ditt samtycke.',
   alternates: { canonical: 'https://www.cleancharge.se/cookies' },
   openGraph: {
+    ...openGraphBase,
     title: 'Cookie-policy | Clean Charge AB',
     description: 'Information om vilka cookies vi använder och hur du hanterar dem.',
     url: 'https://www.cleancharge.se/cookies',

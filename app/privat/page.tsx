@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import PrivateChargingSection from '@/components/PrivateChargingSection';
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd, LOCAL_BUSINESS_ID, SITE_URL } from '@/lib/jsonld';
-import { openGraphImages } from '@/lib/seo';
+import { openGraphBase, openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
 
@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     'Installera laddbox hemma med Clean Charge AB. Vi hjälper dig välja rätt produkt, ordnar installationen och sköter Monta-uppkopplingen – nyckelfärdigt åt dig.',
   alternates: { canonical: 'https://www.cleancharge.se/privat' },
   openGraph: {
+    ...openGraphBase,
     title: 'Ladda Privat – Laddbox Hemma | Clean Charge AB',
     description:
       '50% Grön Teknik-avdrag direkt på fakturan. Vi installerar marknadens säkraste laddboxar och sköter all administration åt dig.',

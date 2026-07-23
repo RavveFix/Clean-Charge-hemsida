@@ -3,13 +3,13 @@ import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Trophy, Home, Building2, Zap, ShieldCheck } from 'lucide-react';
 import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from '@/lib/jsonld';
-import { openGraphImages } from '@/lib/seo';
+import { openGraphBase, openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Bästa Laddboxen 2026 – Zaptec, Easee & Autel',
+  title: 'Bästa Laddboxen 2026 – Jämförelse',
   description:
     'Vilken är bästa laddboxen 2026? Vi jämför Zaptec Go, Zaptec Pro och Easee utifrån behov – villa, BRF eller företag. Ärlig guide från auktoriserad installatör.',
   keywords: [
@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     'vilken laddbox ska jag välja',
   ],
   openGraph: {
+    ...openGraphBase,
     title: 'Bästa laddboxen 2026 – jämförelse från installatör',
     description: 'Zaptec Go, Zaptec Pro, Easee eller Autel? Vi installerar alla – här är vår ärliga rekommendation per behov.',
     url: 'https://www.cleancharge.se/basta-laddboxen',

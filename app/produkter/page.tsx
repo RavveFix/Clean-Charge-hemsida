@@ -4,7 +4,7 @@ import ProductHero from '@/components/ProductHero';
 import ProductGrid from '@/components/ProductGrid';
 import { PRODUCTS } from '@/constants';
 import { breadcrumbJsonLd, faqJsonLd, LOCAL_BUSINESS_ID, SITE_URL } from '@/lib/jsonld';
-import { openGraphImages } from '@/lib/seo';
+import { openGraphBase, openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
 
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     'Köp och konfigurera AC- och DC-laddboxar från Zaptec, Easee och Autel hos Clean Charge AB. Vi hjälper dig välja rätt laddbox för företag, fastighet eller hem.',
   alternates: { canonical: 'https://www.cleancharge.se/produkter' },
   openGraph: {
+    ...openGraphBase,
     title: 'Produkter – AC & DC Laddboxar | Clean Charge AB',
     description:
       'AC- och DC-laddboxar från Zaptec, Easee och Autel. Handplockade för driftsäkerhet och design.',

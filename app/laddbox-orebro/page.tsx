@@ -3,7 +3,7 @@ import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Zap, MapPin, Wrench, BadgePercent, Home, Building2, Landmark } from 'lucide-react';
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/jsonld';
-import { openGraphImages } from '@/lib/seo';
+import { openGraphBase, openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     'grön teknik laddbox örebro',
   ],
   openGraph: {
+    ...openGraphBase,
     title: 'Laddbox Örebro – Clean Charge AB',
     description: 'Lokala laddexperter med kontor i Örebro. Installation av laddbox med 50 % Grön Teknik-avdrag.',
     url: 'https://www.cleancharge.se/laddbox-orebro',

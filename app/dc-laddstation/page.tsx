@@ -3,7 +3,7 @@ import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Zap, Timer, Globe, ShieldCheck } from 'lucide-react';
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/jsonld';
-import { openGraphImages } from '@/lib/seo';
+import { openGraphBase, openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     'laddnätverk operatör',
   ],
   openGraph: {
+    ...openGraphBase,
     title: 'DC Laddstation & Snabbladdare – Clean Charge AB',
     description: 'Installation av DC-snabbladdare för publika och kommersiella anläggningar. OCPP och betalning ingår.',
     url: 'https://www.cleancharge.se/dc-laddstation',

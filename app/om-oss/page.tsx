@@ -4,7 +4,7 @@ import ClientLayout from '@/app/ClientLayout';
 import AboutSection from '@/components/AboutSection';
 import { MapPin, Calendar, Award, Users, Phone, Mail, ArrowRight } from 'lucide-react';
 import { LOCAL_BUSINESS_ID, ORGANIZATION_ID, SITE_URL, breadcrumbJsonLd } from '@/lib/jsonld';
-import { openGraphImages } from '@/lib/seo';
+import { openGraphBase, openGraphImages } from '@/lib/seo';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 const breadcrumb = breadcrumbJsonLd([{ name: 'Om Oss', path: '/om-oss' }]);
@@ -28,6 +28,7 @@ export const metadata: Metadata = {
     'Clean Charge AB grundades 2021 i Örebro. Auktoriserad partner för Zaptec och Monta – vi hjälper företag och fastighetsbolag med komplett laddinfrastruktur.',
   alternates: { canonical: 'https://www.cleancharge.se/om-oss' },
   openGraph: {
+    ...openGraphBase,
     title: 'Om Clean Charge AB – Laddexperter sedan 2021',
     description:
       'Auktoriserad Zaptec- och Monta-partner från Örebro. Vi levererar komplett laddinfrastruktur för företag och fastighetsbolag.',

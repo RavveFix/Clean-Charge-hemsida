@@ -133,11 +133,11 @@ const Footer: React.FC = () => {
               <p className="text-[12px] font-black uppercase tracking-widest text-slate-400">© 2026 Clean Charge AB</p>
               <div className="h-4 w-px bg-slate-100"></div>
               <Image
-                src="https://monta.com/app/themes/monta-sage-latest/public/build/assets/logo_soc2-t2-BsbIKEuK.png"
+                src="/images/brand/monta-soc2.png"
                 width={80}
                 height={32}
                 className="h-8 w-auto opacity-30 grayscale"
-                alt="SOC 2 Type II certified"
+                alt="Monta SOC 2 Type II-certifierad plattform"
                 unoptimized
               />
             </div>

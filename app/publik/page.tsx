@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import CommercialChargingSection from '@/components/CommercialChargingSection';
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd, LOCAL_BUSINESS_ID, SITE_URL } from '@/lib/jsonld';
-import { openGraphImages } from '@/lib/seo';
+import { openGraphBase, openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
 
@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     'Sätt upp publika laddstationer med Clean Charge AB. Vi installerar, konfigurerar och driftar laddinfrastrukturen med Monta som betalplattform – nyckelfärdigt.',
   alternates: { canonical: 'https://www.cleancharge.se/publik' },
   openGraph: {
+    ...openGraphBase,
     title: 'Publik Laddning – Laddstation för Företag & Parkeringar | Clean Charge AB',
     description:
       'Driftsäker hårdvara, automatisk debitering via Monta och full kontroll på drift och intäkter. 98% drifttid garanterat.',
