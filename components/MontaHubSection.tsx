@@ -33,7 +33,7 @@ const MontaHubSection: React.FC = () => {
             <div className="space-y-8">
               <div className="inline-flex items-center space-x-3 bg-white/10 border border-white/20 px-5 py-2 rounded-full backdrop-blur-md">
                 <Image
-                  src="https://monta.com/app/themes/monta-sage-latest/public/build/assets/Monta_Logo-6IYbGNWl.svg"
+                  src="/images/brand/monta-logo.svg"
                   alt="Monta-logotyp"
                   width={80}
                   height={16}
