@@ -5,10 +5,11 @@ const DEFAULT_OG_IMAGE_ALT =
 
 export function openGraphImages(
   alt = DEFAULT_OG_IMAGE_ALT,
+  path = '/opengraph-image',
 ): NonNullable<NonNullable<Metadata['openGraph']>['images']> {
   return [
     {
-      url: '/opengraph-image',
+      url: path,
       width: 1200,
       height: 630,
       alt,
