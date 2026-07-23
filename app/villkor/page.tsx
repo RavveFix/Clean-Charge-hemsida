@@ -3,7 +3,7 @@ import ClientLayout from '@/app/ClientLayout';
 import TermsSection from '@/components/TermsSection';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import { breadcrumbJsonLd } from '@/lib/jsonld';
-import { openGraphImages } from '@/lib/seo';
+import { openGraphBase, openGraphImages } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Allmänna Villkor',
@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     'Allmänna villkor för Clean Charge AB – köp, leverans, installation och garanti för laddboxar och laddtjänster till företag, fastighetsbolag och privatpersoner.',
   alternates: { canonical: 'https://www.cleancharge.se/villkor' },
   openGraph: {
+    ...openGraphBase,
     title: 'Allmänna Villkor | Clean Charge AB',
     description: 'Köp- och leveransvillkor för Clean Charge AB:s tjänster och produkter.',
     url: 'https://www.cleancharge.se/villkor',

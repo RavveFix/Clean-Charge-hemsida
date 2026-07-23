@@ -3,7 +3,7 @@ import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Building2, Users, TrendingUp, Settings } from 'lucide-react';
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/jsonld';
-import { openGraphImages } from '@/lib/seo';
+import { openGraphBase, openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     'laddinfrastruktur brf',
   ],
   openGraph: {
+    ...openGraphBase,
     title: 'Laddbox Fastighetsbolag & BRF – Clean Charge AB',
     description: 'Komplett laddlösning för fastigheter. Från projektering till drift och debiteringshantering.',
     url: 'https://www.cleancharge.se/fastighetsbolag',

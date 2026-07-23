@@ -52,11 +52,11 @@ export const metadata: Metadata = {
       'Vi levererar, konfigurerar och driftar er laddinfrastruktur – helt klart. Auktoriserad Zaptec & Monta-partner.',
     images: openGraphImages(),
   },
+  // Endast korttypen sätts globalt – title/description utelämnas medvetet så
+  // att X/Slack/Discord faller tillbaka på respektive sidas og:title/og:description
+  // (ärvda twitter:title skulle annars visa startsidans titel på alla undersidor).
   twitter: {
     card: 'summary_large_image',
-    title: 'Clean Charge AB | Laddbox för Företag & Fastighetsbolag',
-    description:
-      'Vi levererar, konfigurerar och driftar er laddinfrastruktur – helt klart.',
   },
   alternates: {
     canonical: 'https://www.cleancharge.se',

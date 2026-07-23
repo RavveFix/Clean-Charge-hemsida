@@ -3,7 +3,7 @@ import ClientLayout from '@/app/ClientLayout';
 import PrivacyPolicySection from '@/components/PrivacyPolicySection';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import { breadcrumbJsonLd } from '@/lib/jsonld';
-import { openGraphImages } from '@/lib/seo';
+import { openGraphBase, openGraphImages } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Integritetspolicy',
@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     'Clean Charge AB:s integritetspolicy – så samlar vi in, använder och skyddar dina personuppgifter enligt GDPR. Läs om dina rättigheter och hur du kontaktar oss.',
   alternates: { canonical: 'https://www.cleancharge.se/integritetspolicy' },
   openGraph: {
+    ...openGraphBase,
     title: 'Integritetspolicy | Clean Charge AB',
     description: 'Så hanterar vi dina personuppgifter i enlighet med GDPR.',
     url: 'https://www.cleancharge.se/integritetspolicy',

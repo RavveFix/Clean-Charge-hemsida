@@ -4,7 +4,7 @@ import SupportSection from '@/components/SupportSection';
 import FaqSection from '@/components/FaqSection';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import { breadcrumbJsonLd, faqJsonLd } from '@/lib/jsonld';
-import { openGraphImages } from '@/lib/seo';
+import { openGraphBase, openGraphImages } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Support & Hjälp med din Laddbox',
@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     'Behöver du hjälp med din laddbox? Clean Charge AB ger support mån–fre 08–17 och felsöker oftast på distans. Ring 019-760 42 90 eller mejla info@cleancharge.se.',
   alternates: { canonical: 'https://www.cleancharge.se/support' },
   openGraph: {
+    ...openGraphBase,
     title: 'Support – Hjälp med din laddbox | Clean Charge AB',
     description:
       'Support måndag–fredag 08:00–17:00. Ring 019-760 42 90 eller mejla info@cleancharge.se så hjälper vi dig.',

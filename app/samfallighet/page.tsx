@@ -3,7 +3,7 @@ import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Landmark, Scale, CreditCard, Wrench, FileSearch } from 'lucide-react';
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/jsonld';
-import { openGraphImages } from '@/lib/seo';
+import { openGraphBase, openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     'anläggningsbeslut laddstolpar',
   ],
   openGraph: {
+    ...openGraphBase,
     title: 'Laddstolpar för Samfälligheter – Clean Charge AB',
     description: 'Gemensam elbilsladdning för samfälligheter – från utredning och bidrag till installation och drift.',
     url: 'https://www.cleancharge.se/samfallighet',

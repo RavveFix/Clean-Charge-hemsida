@@ -3,7 +3,7 @@ import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
 import { CheckCircle2, Phone, ArrowRight, Home, Building2, Landmark, Zap, BadgePercent } from 'lucide-react';
 import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from '@/lib/jsonld';
-import { openGraphImages } from '@/lib/seo';
+import { openGraphBase, openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     'pris laddstolpe företag',
   ],
   openGraph: {
+    ...openGraphBase,
     title: 'Vad kostar en laddbox 2026? – Komplett prisguide',
     description: 'Riktpriser för laddbox med installation: villa, BRF, samfällighet och företag – med avdrag och bidrag.',
     url: 'https://www.cleancharge.se/vad-kostar-laddbox',

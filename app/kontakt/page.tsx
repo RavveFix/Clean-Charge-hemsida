@@ -4,7 +4,7 @@ import { MessageSquare } from 'lucide-react';
 import ClientLayout from '@/app/ClientLayout';
 import ContactSection from '@/components/ContactSection';
 import { LOCAL_BUSINESS_ID, ORGANIZATION_ID, SITE_URL, breadcrumbJsonLd } from '@/lib/jsonld';
-import { openGraphImages } from '@/lib/seo';
+import { openGraphBase, openGraphImages } from '@/lib/seo';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     'Kontakta Clean Charge AB för kostnadsfri rådgivning och offert på laddboxar. Ring 019-760 42 90 eller fyll i formuläret så återkommer vi inom 2 timmar.',
   alternates: { canonical: 'https://www.cleancharge.se/kontakt' },
   openGraph: {
+    ...openGraphBase,
     title: 'Kontakta Oss – Offert & Rådgivning | Clean Charge AB',
     description:
       'Kostnadsfri rådgivning och offert. Svar samma dag under kontorstid. Ring 019-760 42 90.',
