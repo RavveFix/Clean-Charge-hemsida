@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     { url: '/', priority: 1.0, changeFrequency: 'weekly' as const, lastModified: '2026-06-25' },
     { url: '/foretag', priority: 0.9, changeFrequency: 'monthly' as const, lastModified: '2026-06-22' },
+    { url: '/hela-sverige', priority: 0.9, changeFrequency: 'monthly' as const, lastModified: '2026-07-24' },
     { url: '/fastighetsbolag', priority: 0.9, changeFrequency: 'monthly' as const, lastModified: '2026-06-22' },
     { url: '/dc-laddstation', priority: 0.85, changeFrequency: 'monthly' as const, lastModified: '2026-06-22' },
     { url: '/monta', priority: 0.8, changeFrequency: 'monthly' as const, lastModified: '2026-07-03' },

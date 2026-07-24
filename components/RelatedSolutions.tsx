@@ -9,7 +9,8 @@ type SolutionKey =
   | 'publik'
   | 'dc-laddstation'
   | 'monta'
-  | 'produkter';
+  | 'produkter'
+  | 'hela-sverige';
 
 type SolutionLink = {
   title: string;
@@ -58,17 +59,23 @@ const LINKS: Record<SolutionKey, SolutionLink> = {
     href: '/produkter',
     desc: 'AC- och DC-laddboxar från Zaptec, Easee och Autel.',
   },
+  'hela-sverige': {
+    title: 'Laddning i hela Sverige',
+    href: '/hela-sverige',
+    desc: 'Vi levererar och driftar nationellt – er lokala elektriker installerar.',
+  },
 };
 
 const RELATED: Record<SolutionKey, SolutionKey[]> = {
   privat: ['produkter', 'foretag', 'fastighetsbolag'],
-  foretag: ['fastighetsbolag', 'monta', 'produkter'],
-  fastighetsbolag: ['samfallighet', 'foretag', 'monta'],
+  foretag: ['fastighetsbolag', 'hela-sverige', 'monta'],
+  fastighetsbolag: ['hela-sverige', 'samfallighet', 'monta'],
   samfallighet: ['fastighetsbolag', 'monta', 'foretag'],
   publik: ['dc-laddstation', 'foretag', 'monta'],
   'dc-laddstation': ['publik', 'foretag', 'produkter'],
-  monta: ['foretag', 'fastighetsbolag', 'publik'],
+  monta: ['foretag', 'fastighetsbolag', 'hela-sverige'],
   produkter: ['foretag', 'privat', 'fastighetsbolag'],
+  'hela-sverige': ['foretag', 'fastighetsbolag', 'monta'],
 };
 
 const DEFAULT_RELATED: SolutionKey[] = ['privat', 'foretag', 'produkter'];

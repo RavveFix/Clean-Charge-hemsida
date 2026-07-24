@@ -71,6 +71,7 @@ const Footer: React.FC = () => {
                 { label: 'Publik Laddning', href: '/publik' },
                 { label: 'Snabbladdning (DC)', href: '/dc-laddstation' },
                 { label: 'Smart laddning (Monta)', href: '/monta' },
+                { label: 'Laddning i hela Sverige', href: '/hela-sverige' },
                 { label: 'Laddbox Örebro', href: '/laddbox-orebro' },
                 { label: 'Produkter', href: '/produkter' },
               ].map((item) => (
