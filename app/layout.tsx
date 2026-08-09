@@ -113,7 +113,7 @@ const jsonLd = {
         contactType: 'customer service',
         email: 'info@cleancharge.se',
         areaServed: 'SE',
-        availableLanguage: ['Swedish', 'English'],
+        availableLanguage: ['Swedish'],
       },
       sameAs: [
         'https://www.facebook.com/cleancharge',
@@ -137,11 +137,6 @@ const jsonLd = {
         addressLocality: 'Örebro',
         postalCode: '70374',
         addressCountry: 'SE',
-      },
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: 59.278,
-        longitude: 15.197,
       },
       openingHoursSpecification: {
         '@type': 'OpeningHoursSpecification',
@@ -192,16 +187,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased font-sans bg-white text-slate-900" suppressHydrationWarning>
-        {/* Accessibility: skip-to-content link */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:bg-cc-green focus:text-white focus:px-6 focus:py-3 focus:rounded-full focus:font-bold focus:text-sm focus:shadow-xl"
-        >
-          Hoppa till innehåll
-        </a>
-        <div id="main-content">
-          {children}
-        </div>
+        {children}
         <CookieBanner />
         <AnalyticsGate />
       </body>

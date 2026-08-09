@@ -42,28 +42,17 @@ const productListJsonLd = {
       },
       category:
         product.category === 'laddbox' ? 'AC Laddbox' : 'DC Snabbladdare',
-      offers:
-        product.price > 0
-          ? {
+      ...(product.price > 0
+        ? {
+            offers: {
               '@type': 'Offer',
               priceCurrency: 'SEK',
               price: product.price,
-              priceValidUntil: '2026-12-31',
-              availability: 'https://schema.org/InStock',
               url: `${SITE_URL}/kontakt?product=${encodeURIComponent(product.name)}`,
               seller: { '@id': LOCAL_BUSINESS_ID },
-            }
-          : {
-              '@type': 'Offer',
-              priceCurrency: 'SEK',
-              availability: 'https://schema.org/InStock',
-              url: `${SITE_URL}/kontakt?product=${encodeURIComponent(product.name)}`,
-              seller: { '@id': LOCAL_BUSINESS_ID },
-              priceSpecification: {
-                '@type': 'PriceSpecification',
-                description: 'Offert på begäran',
-              },
             },
+          }
+        : {}),
     },
   })),
 };

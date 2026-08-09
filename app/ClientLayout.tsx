@@ -35,7 +35,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-slate-900 focus:px-5 focus:py-3 focus:rounded-full focus:shadow-lg focus:font-bold focus:text-sm"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:bg-white focus:text-slate-900 focus:px-5 focus:py-3 focus:rounded-full focus:shadow-lg focus:font-bold focus:text-sm"
       >
         Hoppa till innehåll
       </a>
@@ -44,7 +44,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
       <Navbar
         activeTab={getActiveTab()}
       />
-      <main id="main" className="flex-grow">
+      <main id="main" tabIndex={-1} className="flex-grow">
         <PageTransition>
           {children}
         </PageTransition>

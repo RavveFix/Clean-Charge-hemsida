@@ -6,6 +6,7 @@ import type { Metadata } from 'next';
 export const openGraphBase = {
   siteName: 'Clean Charge AB',
   locale: 'sv_SE',
+  type: 'website',
 } satisfies Metadata['openGraph'];
 
 const DEFAULT_OG_IMAGE_ALT =

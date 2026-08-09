@@ -110,7 +110,7 @@ export function serviceJsonLd({
         telephone: '+46197604290',
         contactType: 'customer service',
         areaServed: 'SE',
-        availableLanguage: ['Swedish', 'English'],
+        availableLanguage: ['Swedish'],
       },
     },
   };

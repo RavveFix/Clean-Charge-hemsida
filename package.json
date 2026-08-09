@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "tsc --noEmit --incremental false",
-    "typecheck": "tsc --noEmit --incremental false"
+    "typecheck": "tsc --noEmit --incremental false",
+    "seo:check": "node scripts/seo-regression.mjs"
   },
   "dependencies": {
     "@google/genai": "^1.40.0",

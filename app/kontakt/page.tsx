@@ -41,7 +41,7 @@ const contactPageJsonLd = {
     email: 'info@cleancharge.se',
     contactType: 'sales and customer service',
     areaServed: 'SE',
-    availableLanguage: ['Swedish', 'English'],
+    availableLanguage: ['Swedish'],
   },
 };
 
