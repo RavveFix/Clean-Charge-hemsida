@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import CommercialChargingSection from '@/components/CommercialChargingSection';
-import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd, LOCAL_BUSINESS_ID, SITE_URL } from '@/lib/jsonld';
+import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd, SITE_URL } from '@/lib/jsonld';
 import { openGraphBase, openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
@@ -80,17 +80,6 @@ const productList = {
         image: `${SITE_URL}/images/products/zaptec-pro.png`,
         brand: { '@type': 'Brand', name: 'Zaptec' },
         category: 'AC Laddbox',
-        offers: {
-          '@type': 'Offer',
-          priceCurrency: 'SEK',
-          availability: 'https://schema.org/InStock',
-          url: `${SITE_URL}/kontakt?product=Zaptec%20Pro`,
-          seller: { '@id': LOCAL_BUSINESS_ID },
-          priceSpecification: {
-            '@type': 'PriceSpecification',
-            description: 'Pris på förfrågan',
-          },
-        },
       },
     },
     {
@@ -106,17 +95,6 @@ const productList = {
         image: `${SITE_URL}/images/products/autel-dh480-product.png`,
         brand: { '@type': 'Brand', name: 'Autel' },
         category: 'DC Snabbladdare',
-        offers: {
-          '@type': 'Offer',
-          priceCurrency: 'SEK',
-          availability: 'https://schema.org/InStock',
-          url: `${SITE_URL}/kontakt?product=Autel%20MaxiCharger%20DH480`,
-          seller: { '@id': LOCAL_BUSINESS_ID },
-          priceSpecification: {
-            '@type': 'PriceSpecification',
-            description: 'Pris på förfrågan',
-          },
-        },
       },
     },
   ],
