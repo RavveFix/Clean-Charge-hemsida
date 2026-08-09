@@ -137,10 +137,19 @@ try {
     .sort();
   assert.deepEqual(actualSitemapPaths, sitemapPaths, 'sitemap routes must match real public pages');
   assert.ok(!sitemapXml.includes('/api/'), 'sitemap must not include API routes');
-  for (const path of ['/produkter', '/privat', '/publik', '/kontakt']) {
+  for (const [path, lastModified] of [
+    ['/', '2026-07-23'],
+    ['/ladda-bilen-bidrag', '2026-07-23'],
+    ['/samfallighet', '2026-07-23'],
+    ['/basta-laddboxen', '2026-07-23'],
+    ['/produkter', '2026-08-09'],
+    ['/privat', '2026-08-09'],
+    ['/publik', '2026-08-09'],
+    ['/kontakt', '2026-08-09'],
+  ]) {
     assert.ok(
-      sitemapXml.includes(`<loc>${canonicalBase}${path}</loc>\n<lastmod>2026-08-09</lastmod>`),
-      `${path} sitemap lastModified must match the retained page change`,
+      sitemapXml.includes(`<loc>${canonicalBase}${path}</loc>\n<lastmod>${lastModified}</lastmod>`),
+      `${path} sitemap lastModified must match the evidenced page change`,
     );
   }
 
@@ -193,6 +202,58 @@ try {
   assert.equal(postActivationBox?.height, 1);
   console.log('PASS skip navigation: hidden -> focused/visible -> main focused');
 
+  await page.setViewportSize({ width: 390, height: 320 });
+  await goto('/');
+  await page.locator('[role="dialog"]').waitFor();
+  const compactSkipLink = page.getByRole('link', { name: 'Hoppa till innehåll' });
+  assert.equal(await compactSkipLink.count(), 1, 'compact viewport must retain exactly one skip link');
+  const compactHiddenState = await compactSkipLink.evaluate((link) => {
+    const box = link.getBoundingClientRect();
+    const style = getComputedStyle(link);
+    return { width: box.width, height: box.height, clip: style.clip, overflow: style.overflow };
+  });
+  assert.equal(compactHiddenState.width, 1);
+  assert.equal(compactHiddenState.height, 1);
+  assert.match(compactHiddenState.clip, /rect/);
+  assert.equal(compactHiddenState.overflow, 'hidden');
+  await page.keyboard.press('Tab');
+  assert.equal(await compactSkipLink.evaluate((link) => document.activeElement === link), true);
+  const compactLayering = await compactSkipLink.evaluate((link) => {
+    const skipBox = link.getBoundingClientRect();
+    const dialog = document.querySelector('[role="dialog"]');
+    const dialogBox = dialog.getBoundingClientRect();
+    const topElement = document.elementFromPoint(
+      skipBox.left + skipBox.width / 2,
+      skipBox.top + skipBox.height / 2,
+    );
+    return {
+      overlapsDialog:
+        skipBox.left < dialogBox.right &&
+        skipBox.right > dialogBox.left &&
+        skipBox.top < dialogBox.bottom &&
+        skipBox.bottom > dialogBox.top,
+      topElementIsSkipLink: topElement === link || link.contains(topElement),
+      skipZIndex: Number.parseInt(getComputedStyle(link).zIndex, 10),
+      dialogZIndex: Number.parseInt(getComputedStyle(dialog).zIndex, 10),
+      skipTop: skipBox.top,
+      skipBottom: skipBox.bottom,
+      viewportHeight: window.innerHeight,
+    };
+  });
+  assert.equal(compactLayering.overlapsDialog, true, 'compact check must exercise overlap with cookie dialog');
+  assert.equal(
+    compactLayering.topElementIsSkipLink,
+    true,
+    'focused skip link must be the visible top layer over the cookie dialog',
+  );
+  assert.ok(
+    compactLayering.skipZIndex > compactLayering.dialogZIndex,
+    'focused skip link z-index must exceed the cookie dialog z-index',
+  );
+  assert.ok(compactLayering.skipTop >= 0 && compactLayering.skipBottom <= compactLayering.viewportHeight);
+  console.log('PASS compact skip navigation: focused link measured above overlapping cookie dialog');
+  await page.setViewportSize({ width: 1440, height: 900 });
+
   await goto('/kontakt');
   const contactJsonLd = parseJsonLd(
     await page.locator('script[type="application/ld+json"]').allTextContents(),
@@ -203,6 +264,8 @@ try {
   const localBusiness = rootGraph.find((entry) => entry['@type'] === 'LocalBusiness');
   const contactPage = contactJsonLd.find((entry) => entry['@type'] === 'ContactPage');
   assert.deepEqual(organization?.contactPoint?.availableLanguage, ['Swedish']);
+  assert.equal(organization?.logo?.width, 1600, 'Organization logo width must match public/logo.png');
+  assert.equal(organization?.logo?.height, 291, 'Organization logo height must match public/logo.png');
   assert.deepEqual(contactPage?.contactPoint?.availableLanguage, ['Swedish']);
   assert.equal('geo' in localBusiness, false, 'unsupported LocalBusiness coordinates must be omitted');
   await page.waitForFunction(() => document.body.textContent?.includes('Vardagar 09:00–17:00'));

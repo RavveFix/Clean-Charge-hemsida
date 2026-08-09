@@ -99,8 +99,8 @@ const jsonLd = {
       logo: {
         '@type': 'ImageObject',
         url: LOGO_URL,
-        width: 512,
-        height: 512,
+        width: 1600,
+        height: 291,
       },
       foundingDate: '2021',
       founders: [{ '@type': 'Person', name: 'Ravon Eric Albin Strawder' }],
