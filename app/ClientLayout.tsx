@@ -33,12 +33,6 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
 
   return (
     <>
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[210] focus:bg-white focus:text-slate-900 focus:px-5 focus:py-3 focus:rounded-full focus:shadow-lg focus:font-bold focus:text-sm"
-      >
-        Hoppa till innehåll
-      </a>
       <LiveImpactWidget />
       <ScrollToTop />
       <Navbar

@@ -163,95 +163,27 @@ try {
 
   await goto('/');
   const skipLink = page.getByRole('link', { name: 'Hoppa till innehåll' });
-  assert.equal(await skipLink.count(), 1, 'exactly one skip link must exist');
-  const hiddenState = await skipLink.evaluate((link) => {
-    const box = link.getBoundingClientRect();
-    const style = getComputedStyle(link);
-    return {
-      href: link.getAttribute('href'),
-      width: box.width,
-      height: box.height,
-      clip: style.clip,
-      overflow: style.overflow,
-      targetExists: Boolean(document.querySelector(link.getAttribute('href'))),
-    };
-  });
-  assert.equal(hiddenState.href, '#main');
-  assert.equal(hiddenState.width, 1);
-  assert.equal(hiddenState.height, 1);
-  assert.match(hiddenState.clip, /rect/);
-  assert.equal(hiddenState.overflow, 'hidden');
-  assert.equal(hiddenState.targetExists, true);
-
-  await page.keyboard.press('Tab');
-  assert.equal(await skipLink.evaluate((link) => document.activeElement === link), true);
-  const focusedState = await skipLink.evaluate((link) => {
-    const box = link.getBoundingClientRect();
-    const style = getComputedStyle(link);
-    return { width: box.width, height: box.height, clip: style.clip, overflow: style.overflow };
-  });
-  assert.ok(focusedState.width > 1 && focusedState.height >= 44, 'focused skip link must be visible');
-  assert.equal(focusedState.clip, 'auto');
-  assert.equal(focusedState.overflow, 'visible');
-
-  await page.keyboard.press('Enter');
-  assert.equal(await page.evaluate(() => location.hash), '#main');
-  assert.equal(await page.evaluate(() => document.activeElement?.id), 'main');
-  const postActivationBox = await skipLink.boundingBox();
-  assert.equal(postActivationBox?.width, 1);
-  assert.equal(postActivationBox?.height, 1);
-  console.log('PASS skip navigation: hidden -> focused/visible -> main focused');
+  assert.equal(await skipLink.count(), 0, 'skip link must be removed at normal viewport');
+  assert.equal(
+    await page.getByText('Hoppa till innehåll', { exact: true }).count(),
+    0,
+    'skip-link text must be absent at normal viewport',
+  );
 
   await page.setViewportSize({ width: 390, height: 320 });
   await goto('/');
   await page.locator('[role="dialog"]').waitFor();
-  const compactSkipLink = page.getByRole('link', { name: 'Hoppa till innehåll' });
-  assert.equal(await compactSkipLink.count(), 1, 'compact viewport must retain exactly one skip link');
-  const compactHiddenState = await compactSkipLink.evaluate((link) => {
-    const box = link.getBoundingClientRect();
-    const style = getComputedStyle(link);
-    return { width: box.width, height: box.height, clip: style.clip, overflow: style.overflow };
-  });
-  assert.equal(compactHiddenState.width, 1);
-  assert.equal(compactHiddenState.height, 1);
-  assert.match(compactHiddenState.clip, /rect/);
-  assert.equal(compactHiddenState.overflow, 'hidden');
-  await page.keyboard.press('Tab');
-  assert.equal(await compactSkipLink.evaluate((link) => document.activeElement === link), true);
-  const compactLayering = await compactSkipLink.evaluate((link) => {
-    const skipBox = link.getBoundingClientRect();
-    const dialog = document.querySelector('[role="dialog"]');
-    const dialogBox = dialog.getBoundingClientRect();
-    const topElement = document.elementFromPoint(
-      skipBox.left + skipBox.width / 2,
-      skipBox.top + skipBox.height / 2,
-    );
-    return {
-      overlapsDialog:
-        skipBox.left < dialogBox.right &&
-        skipBox.right > dialogBox.left &&
-        skipBox.top < dialogBox.bottom &&
-        skipBox.bottom > dialogBox.top,
-      topElementIsSkipLink: topElement === link || link.contains(topElement),
-      skipZIndex: Number.parseInt(getComputedStyle(link).zIndex, 10),
-      dialogZIndex: Number.parseInt(getComputedStyle(dialog).zIndex, 10),
-      skipTop: skipBox.top,
-      skipBottom: skipBox.bottom,
-      viewportHeight: window.innerHeight,
-    };
-  });
-  assert.equal(compactLayering.overlapsDialog, true, 'compact check must exercise overlap with cookie dialog');
   assert.equal(
-    compactLayering.topElementIsSkipLink,
-    true,
-    'focused skip link must be the visible top layer over the cookie dialog',
+    await page.getByRole('link', { name: 'Hoppa till innehåll' }).count(),
+    0,
+    'skip link must be removed at compact viewport',
   );
-  assert.ok(
-    compactLayering.skipZIndex > compactLayering.dialogZIndex,
-    'focused skip link z-index must exceed the cookie dialog z-index',
+  assert.equal(
+    await page.getByText('Hoppa till innehåll', { exact: true }).count(),
+    0,
+    'skip-link text must be absent at compact viewport',
   );
-  assert.ok(compactLayering.skipTop >= 0 && compactLayering.skipBottom <= compactLayering.viewportHeight);
-  console.log('PASS compact skip navigation: focused link measured above overlapping cookie dialog');
+  console.log('PASS skip navigation removal: no link or text at normal/compact viewports');
   await page.setViewportSize({ width: 1440, height: 900 });
 
   await goto('/kontakt');
