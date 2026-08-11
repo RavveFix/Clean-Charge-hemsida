@@ -35,7 +35,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-28 focus:left-4 focus:z-[210] focus:bg-white focus:text-slate-900 focus:px-5 focus:py-3 focus:rounded-full focus:shadow-lg focus:font-bold focus:text-sm"
+        className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-28 focus-visible:left-4 focus-visible:z-[210] focus-visible:bg-white focus-visible:text-slate-900 focus-visible:px-5 focus-visible:py-3 focus-visible:rounded-full focus-visible:shadow-lg focus-visible:font-bold focus-visible:text-sm"
       >
         Hoppa till innehåll
       </a>
