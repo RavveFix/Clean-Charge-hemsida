@@ -78,7 +78,7 @@ const Hero: React.FC = () => {
                 href="/produkter"
                 strength={15}
                 magneticRadius={60}
-                className="group min-h-[52px] w-full sm:w-auto px-8 py-4 items-center justify-center gap-3 bg-white text-text-primary rounded-full font-bold text-[15px] transition-all duration-300 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] border border-slate-200 hover:border-slate-300"
+                className="group min-h-[52px] w-full sm:w-auto px-8 py-4 items-center justify-center gap-3 bg-brand-green-interactive text-white rounded-full font-bold text-[15px] transition-all duration-300 shadow-xl shadow-brand-green-interactive/20 hover:bg-brand-green-interactive/90 hover:shadow-2xl border border-brand-green-interactive hover:border-brand-green-interactive/90"
               >
                 Utforska Produkter
               </MagneticButton>

@@ -352,22 +352,36 @@ try {
       const link = [...document.querySelectorAll('a')].find(
         (candidate) => candidate.textContent?.trim() === text && candidate.closest('main section'),
       );
-      return link
-        ? { text: link.textContent?.trim(), href: link.getAttribute('href'), box: link.getBoundingClientRect().toJSON() }
-        : null;
+      if (!link) return null;
+      const style = getComputedStyle(link);
+      return {
+        text: link.textContent?.trim(),
+        href: link.getAttribute('href'),
+        box: link.getBoundingClientRect().toJSON(),
+        backgroundColor: style.backgroundColor,
+        color: style.color,
+      };
     }),
   );
   assert.deepEqual(heroCtas.map((cta) => cta && { text: cta.text, href: cta.href }), [
     { text: 'Utforska Produkter', href: '/produkter' },
     { text: 'Kontakta oss', href: '/kontakt' },
   ]);
+  assert.deepEqual(
+    heroCtas.map((cta) => cta && { backgroundColor: cta.backgroundColor, color: cta.color }),
+    [
+      { backgroundColor: 'rgb(0, 127, 95)', color: 'rgb(255, 255, 255)' },
+      { backgroundColor: 'rgba(0, 0, 0, 0)', color: 'rgb(15, 23, 42)' },
+    ],
+    'the existing first CTA must be primary and the contact CTA must remain secondary',
+  );
   assert.ok(heroCtas.every((cta) => cta && cta.box.bottom <= 900), 'hero CTAs must fit inside 1440×900');
 
   const montaCta = page.getByRole('link', { name: 'Läs mer om Monta Hub' });
   await montaCta.scrollIntoViewIfNeeded();
   await montaCta.focus();
   assert.equal(await montaCta.evaluate((element) => getComputedStyle(element).outlineColor), 'rgb(255, 255, 255)');
-  console.log('PASS hero/focus: exact CTA routes fit first viewport; Monta focus outline is white');
+  console.log('PASS hero/focus: exact CTA routes, primary/secondary hierarchy, first viewport, and white Monta outline');
 
   await goto('/kontakt');
   const contactJsonLd = parseJsonLd(
