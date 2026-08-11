@@ -2,12 +2,18 @@
 
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import useReducedMotion from '@/lib/useReducedMotion';
 
 const AboutSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      if (prefersReducedMotion) {
+        gsap.set('.stat-item', { clearProps: 'all' });
+        return;
+      }
       gsap.fromTo('.stat-item', 
         { y: 30, opacity: 0 },
         { 
@@ -25,7 +31,7 @@ const AboutSection: React.FC = () => {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <section ref={sectionRef} className="py-16 sm:py-24 md:py-32 bg-bg-surface overflow-hidden">
@@ -34,7 +40,7 @@ const AboutSection: React.FC = () => {
           
           {/* Text Content */}
           <div className="w-full lg:w-1/2">
-            <span className="text-brand-green font-bold tracking-wider uppercase text-sm mb-3 block">Varför Clean Charge?</span>
+            <span className="text-brand-green-interactive font-bold tracking-wider uppercase text-sm mb-3 block">Varför Clean Charge?</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-text-primary tracking-tight mb-4 sm:mb-6 leading-tight">
               Vi bygger infrastrukturen för imorgon.
             </h2>
@@ -48,7 +54,7 @@ const AboutSection: React.FC = () => {
                 <span className="text-sm font-semibold text-text-secondary uppercase">Certifierade</span>
               </div>
               <div className="stat-item">
-                <span className="block text-2xl sm:text-4xl font-bold text-brand-green mb-1">24/7</span>
+                <span className="block text-2xl sm:text-4xl font-bold text-brand-green-interactive mb-1">24/7</span>
                 <span className="text-sm font-semibold text-text-secondary uppercase">Support & Service</span>
               </div>
             </div>
@@ -57,7 +63,7 @@ const AboutSection: React.FC = () => {
           {/* Trusted Partners Grid */}
           <div className="w-full lg:w-1/2">
              <div className="bg-white p-6 sm:p-10 rounded-2xl sm:rounded-3xl shadow-sm border border-slate-100">
-                <h3 className="text-center text-xs sm:text-sm font-bold text-slate-400 uppercase tracking-widest mb-6 sm:mb-10">Våra Hårdvaru & Mjukvarupartners</h3>
+                <h3 className="text-center text-xs sm:text-sm font-bold text-slate-600 uppercase tracking-widest mb-6 sm:mb-10">Våra Hårdvaru & Mjukvarupartners</h3>
                 <div className="grid grid-cols-2 gap-4 sm:gap-8 items-center justify-items-center opacity-70">
                    
                    {/* Monta */}

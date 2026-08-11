@@ -1,97 +1,97 @@
-import React, { useRef, useEffect, useState } from 'react';
-import gsap from 'gsap';
+'use client';
 
-interface MagneticButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+import React, { useEffect, useRef } from 'react';
+import Link from 'next/link';
+import gsap from 'gsap';
+import useReducedMotion from '@/lib/useReducedMotion';
+
+interface MagneticButtonProps
+  extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> {
   children: React.ReactNode;
+  href: string;
   strength?: number;
   magneticRadius?: number;
 }
 
-const MagneticButton: React.FC<MagneticButtonProps> = ({ 
-  children, 
-  className = "", 
-  strength = 30, // How far it moves (pixels)
-  magneticRadius = 100, // Distance to react to mouse
-  ...props 
+const MagneticButton: React.FC<MagneticButtonProps> = ({
+  children,
+  className = '',
+  href,
+  strength = 30,
+  magneticRadius = 100,
+  ...props
 }) => {
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
+  const linkRef = useRef<HTMLAnchorElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
+  const isHovered = useRef(false);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
-    const button = buttonRef.current;
-    if (!button) return;
+    const link = linkRef.current;
+    const text = textRef.current;
+    const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-    // We use a global mouse move to check distance to button center
-    const onMouseMove = (e: MouseEvent) => {
-      const rect = button.getBoundingClientRect();
-      const btnCenterX = rect.left + rect.width / 2;
-      const btnCenterY = rect.top + rect.height / 2;
-      
-      const distX = e.clientX - btnCenterX;
-      const distY = e.clientY - btnCenterY;
-      const distance = Math.sqrt(distX * distX + distY * distY);
+    if (!link || prefersReducedMotion || !supportsHover) {
+      if (link) gsap.set(link, { clearProps: 'transform' });
+      if (text) gsap.set(text, { clearProps: 'transform' });
+      return;
+    }
 
-      if (distance < magneticRadius) {
-        if (!isHovered) setIsHovered(true);
-        // Pull the button towards cursor, but clamped by strength
-        const pullX = (distX / magneticRadius) * strength;
-        const pullY = (distY / magneticRadius) * strength;
-        
-        gsap.to(button, {
-          x: pullX,
-          y: pullY,
-          duration: 0.6,
-          ease: "power2.out"
-        });
-        
-        // Inner text moves slightly more for parallax effect
-        if(textRef.current) {
-            gsap.to(textRef.current, {
-                x: pullX * 0.4,
-                y: pullY * 0.4,
-                duration: 0.6,
-                ease: "power2.out"
-            });
-        }
-      } else {
-        if (isHovered) {
-          setIsHovered(false);
-          // Snap back
-          gsap.to(button, {
-            x: 0,
-            y: 0,
-            duration: 0.8,
-            ease: "elastic.out(1, 0.3)"
-          });
-          if(textRef.current) {
-            gsap.to(textRef.current, {
-                x: 0,
-                y: 0,
-                duration: 0.8,
-                ease: "elastic.out(1, 0.3)"
-            });
-          }
-        }
+    const resetPosition = () => {
+      isHovered.current = false;
+      gsap.to(link, { x: 0, y: 0, duration: 0.4, ease: 'power2.out' });
+      if (text) {
+        gsap.to(text, { x: 0, y: 0, duration: 0.4, ease: 'power2.out' });
       }
     };
 
-    window.addEventListener('mousemove', onMouseMove);
+    const onMouseMove = (event: MouseEvent) => {
+      const rect = link.getBoundingClientRect();
+      const distanceX = event.clientX - (rect.left + rect.width / 2);
+      const distanceY = event.clientY - (rect.top + rect.height / 2);
+      const distance = Math.hypot(distanceX, distanceY);
+
+      if (distance >= magneticRadius) {
+        if (isHovered.current) resetPosition();
+        return;
+      }
+
+      isHovered.current = true;
+      const pullX = (distanceX / magneticRadius) * strength;
+      const pullY = (distanceY / magneticRadius) * strength;
+
+      gsap.to(link, { x: pullX, y: pullY, duration: 0.4, ease: 'power2.out' });
+      if (text) {
+        gsap.to(text, {
+          x: pullX * 0.4,
+          y: pullY * 0.4,
+          duration: 0.4,
+          ease: 'power2.out',
+        });
+      }
+    };
+
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
     return () => {
       window.removeEventListener('mousemove', onMouseMove);
+      gsap.killTweensOf([link, text]);
     };
-  }, [strength, magneticRadius, isHovered]);
+  }, [magneticRadius, prefersReducedMotion, strength]);
 
   return (
-    <button 
-      ref={buttonRef} 
-      className={`relative inline-block ${className}`}
+    <Link
+      ref={linkRef}
+      href={href}
+      className={`relative inline-flex ${className}`}
       {...props}
     >
-      <div ref={textRef} className="pointer-events-none flex items-center justify-center w-full h-full gap-2">
+      <span
+        ref={textRef}
+        className="pointer-events-none flex h-full w-full items-center justify-center gap-2"
+      >
         {children}
-      </div>
-    </button>
+      </span>
+    </Link>
   );
 };
 

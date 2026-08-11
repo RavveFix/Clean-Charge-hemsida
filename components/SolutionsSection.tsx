@@ -6,14 +6,20 @@ import Image from 'next/image';
 import { ArrowRight, Home, Building2, Building } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import useReducedMotion from '@/lib/useReducedMotion';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const SolutionsSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      if (prefersReducedMotion) {
+        gsap.set(['.solution-card', '.solution-image'], { clearProps: 'all' });
+        return;
+      }
       gsap.fromTo('.solution-card',
         { y: 40, opacity: 0 },
         {
@@ -42,14 +48,14 @@ const SolutionsSection: React.FC = () => {
       });
     }, containerRef);
     return () => ctx.revert();
-  }, []);
+  }, [prefersReducedMotion]);
 
   const solutions = [
     {
       id: 'private',
       title: 'För Elektriker & Grossister',
       desc: 'Vi erbjuder anpassade laddlösningar och support för er som installerar hos privatpersoner. Nyttja Grön Teknik-avdraget direkt och säkerställ en premiumupplevelse för kund.',
-      icon: <Home className="w-5 h-5 text-brand-green" />,
+      icon: <Home className="w-5 h-5 text-brand-green-interactive" />,
       image: '/images/solutions/installer.png',
       href: '/privat',
     },
@@ -57,7 +63,7 @@ const SolutionsSection: React.FC = () => {
       id: 'brf',
       title: 'För Bostadsrättsföreningar',
       desc: 'Skapa mervärde för medlemmarna. Vi levererar skalbara system med automatisk debitering via Monta.',
-      icon: <Building className="w-5 h-5 text-brand-green" />,
+      icon: <Building className="w-5 h-5 text-brand-green-interactive" />,
       image: '/images/solutions/brf.png',
       href: '/publik',
     },
@@ -65,7 +71,7 @@ const SolutionsSection: React.FC = () => {
       id: 'commercial',
       title: 'För Företag',
       desc: 'Framtidssäkra arbetsplatsen. Smarta laddlösningar för anställda och besökare med full administrativ kontroll.',
-      icon: <Building2 className="w-5 h-5 text-brand-green" />,
+      icon: <Building2 className="w-5 h-5 text-brand-green-interactive" />,
       image: '/images/solutions/commercial.png',
       href: '/foretag',
     }
@@ -75,7 +81,7 @@ const SolutionsSection: React.FC = () => {
     <section ref={containerRef} className="py-14 sm:py-20 md:py-32 bg-white">
       <div className="container mx-auto px-4 sm:px-6 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
         <div className="text-center max-w-2xl mx-auto mb-16 md:mb-20">
-          <span className="text-brand-green font-bold tracking-wider uppercase text-xs sm:text-sm mb-3 block">Lösningar</span>
+          <span className="text-brand-green-interactive font-bold tracking-wider uppercase text-xs sm:text-sm mb-3 block">Lösningar</span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-text-primary tracking-tight mb-3 sm:mb-4 md:mb-6">
             Laddning anpassad för <br className="hidden sm:block" />din verklighet.
           </h2>
@@ -103,7 +109,7 @@ const SolutionsSection: React.FC = () => {
                 <div className="mb-4 md:mb-6 text-slate-700">{solution.icon}</div>
                 <h3 className="text-xl md:text-2xl font-bold text-text-primary mb-2 md:mb-3 leading-tight">{solution.title}</h3>
                 <p className="text-text-secondary leading-relaxed mb-6 md:mb-8 flex-grow text-sm md:text-base max-w-prose">{solution.desc}</p>
-                <div className="flex items-center text-text-primary font-bold text-sm group-hover:text-brand-green transition-colors mt-auto">
+                <div className="flex items-center text-text-primary font-bold text-sm group-hover:text-brand-green-interactive transition-colors mt-auto">
                   Läs mer
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </div>

@@ -161,30 +161,213 @@ try {
   assert.match(robotsText, /Host: https:\/\/www\.cleancharge\.se/);
   console.log(`PASS sitemap/robots: ${actualSitemapPaths.length} public routes, changed dates current, /api/ blocked`);
 
-  await goto('/');
-  const skipLink = page.getByRole('link', { name: 'Hoppa till innehåll' });
-  assert.equal(await skipLink.count(), 0, 'skip link must be removed at normal viewport');
+  const homepageResponse = await page.request.get(`${baseUrl}/`);
+  assert.equal(homepageResponse.status(), 200, 'homepage HTML must return 200');
+  const homepageHtml = await homepageResponse.text();
+  const serverVideoTag = homepageHtml.match(/<video\b[^>]*>/)?.[0] ?? '';
+  assert.ok(serverVideoTag, 'homepage HTML must contain the video element');
+  assert.doesNotMatch(serverVideoTag, /\bautoplay\b/i, 'server video must not autoplay');
+  assert.match(serverVideoTag, /\bpreload="none"/i, 'server video must use preload=none');
+  assert.doesNotMatch(serverVideoTag, /\bposter=/i, 'server video must defer the poster');
+  assert.match(serverVideoTag, /\bloading="lazy"/i, 'server video must request lazy loading');
+
+  const reducedPage = await browser.newPage({
+    viewport: { width: 1440, height: 900 },
+    reducedMotion: 'reduce',
+  });
+  await reducedPage.addInitScript(() => {
+    window.__videoPlayCalls = 0;
+    const originalPlay = HTMLMediaElement.prototype.play;
+    HTMLMediaElement.prototype.play = function patchedPlay(...args) {
+      window.__videoPlayCalls += 1;
+      return originalPlay.apply(this, args);
+    };
+  });
+  const reducedMediaRequests = [];
+  reducedPage.on('request', (request) => {
+    if (/pexels|charging-video-poster/.test(request.url())) reducedMediaRequests.push(request.url());
+  });
+  await reducedPage.goto(`${baseUrl}/`, { waitUntil: 'domcontentloaded' });
+  await reducedPage.waitForTimeout(500);
+  assert.equal(await reducedPage.evaluate(() => window.__videoPlayCalls), 0);
+  assert.equal(reducedMediaRequests.length, 0, 'offscreen reduced-motion media must not load');
+  await reducedPage.locator('video').scrollIntoViewIfNeeded();
+  await reducedPage.waitForSelector('img[src="/images/hero/charging-video-poster-1280.jpg"]');
+  await reducedPage.waitForTimeout(300);
+  assert.equal(await reducedPage.evaluate(() => window.__videoPlayCalls), 0);
   assert.equal(
-    await page.getByText('Hoppa till innehåll', { exact: true }).count(),
-    0,
-    'skip-link text must be absent at normal viewport',
+    reducedMediaRequests.some((url) => url.includes('videos.pexels.com')),
+    false,
+    'reduced motion must not request the video source',
   );
+  assert.equal(
+    reducedMediaRequests.some((url) => url.includes('charging-video-poster-1280.jpg')),
+    true,
+    'the optimized poster must load only near the video section',
+  );
+  await reducedPage.close();
+  const normalPage = await browser.newPage({
+    viewport: { width: 1440, height: 900 },
+    reducedMotion: 'no-preference',
+  });
+  await normalPage.addInitScript(() => {
+    window.__videoPlayCalls = 0;
+    const originalPlay = HTMLMediaElement.prototype.play;
+    HTMLMediaElement.prototype.play = function patchedPlay(...args) {
+      window.__videoPlayCalls += 1;
+      return originalPlay.apply(this, args);
+    };
+  });
+  const normalMediaRequests = [];
+  normalPage.on('request', (request) => {
+    if (/pexels|charging-video-poster/.test(request.url())) normalMediaRequests.push(request.url());
+  });
+  await normalPage.goto(`${baseUrl}/`, { waitUntil: 'domcontentloaded' });
+  await normalPage.waitForTimeout(500);
+  assert.equal(await normalPage.evaluate(() => window.__videoPlayCalls), 0);
+  assert.equal(normalMediaRequests.length, 0, 'offscreen normal-motion media must not load');
+  await normalPage.locator('video').scrollIntoViewIfNeeded();
+  await normalPage.waitForFunction(() => window.__videoPlayCalls > 0);
+  assert.equal(
+    await normalPage.locator('video').evaluate((element) => element.poster.endsWith('charging-video-poster-1280.jpg')),
+    true,
+  );
+  await normalPage.close();
+  console.log('PASS deferred video: static SSR, no offscreen load, reduced motion never plays, normal motion starts nearby');
+
+  await goto('/');
+  const desktopSkipLink = page.getByRole('link', { name: 'Hoppa till innehåll' });
+  assert.equal(await desktopSkipLink.count(), 1, 'skip link must exist at normal viewport');
+  const desktopHiddenBox = await desktopSkipLink.boundingBox();
+  assert.ok(
+    desktopHiddenBox && desktopHiddenBox.width <= 1 && desktopHiddenBox.height <= 1,
+    'skip link must be visually hidden before focus at normal viewport',
+  );
+  await page.keyboard.press('Tab');
+  assert.equal(
+    await page.evaluate(() => document.activeElement?.textContent?.trim()),
+    'Hoppa till innehåll',
+    'first Tab must focus the skip link at normal viewport',
+  );
+  const desktopFocusedBox = await desktopSkipLink.boundingBox();
+  assert.ok(
+    desktopFocusedBox && desktopFocusedBox.width >= 44 && desktopFocusedBox.height >= 44,
+    'focused skip link must be visibly usable at normal viewport',
+  );
+  await page.keyboard.press('Enter');
+  assert.equal(new URL(page.url()).hash, '#main', 'skip link must target #main');
+  assert.equal(await page.evaluate(() => document.activeElement?.id), 'main', 'skip link must focus #main');
 
   await page.setViewportSize({ width: 390, height: 320 });
   await goto('/');
-  await page.locator('[role="dialog"]').waitFor();
-  assert.equal(
-    await page.getByRole('link', { name: 'Hoppa till innehåll' }).count(),
-    0,
-    'skip link must be removed at compact viewport',
+  const compactSkipLink = page.getByRole('link', { name: 'Hoppa till innehåll' });
+  assert.equal(await compactSkipLink.count(), 1, 'skip link must exist at compact viewport');
+  const compactHiddenBox = await compactSkipLink.boundingBox();
+  assert.ok(
+    compactHiddenBox && compactHiddenBox.width <= 1 && compactHiddenBox.height <= 1,
+    'skip link must be visually hidden before focus at compact viewport',
   );
+  await page.keyboard.press('Tab');
   assert.equal(
-    await page.getByText('Hoppa till innehåll', { exact: true }).count(),
-    0,
-    'skip-link text must be absent at compact viewport',
+    await page.evaluate(() => document.activeElement?.textContent?.trim()),
+    'Hoppa till innehåll',
+    'first Tab must focus the skip link at compact viewport',
   );
-  console.log('PASS skip navigation removal: no link or text at normal/compact viewports');
+  const compactFocusedBox = await compactSkipLink.boundingBox();
+  assert.ok(
+    compactFocusedBox && compactFocusedBox.width >= 44 && compactFocusedBox.height >= 44,
+    'focused skip link must be visibly usable at compact viewport',
+  );
+  console.log('PASS skip navigation: hidden by default, first Tab reveals it, target focuses #main');
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await goto('/');
+  const mobileMenuTrigger = page.locator('button[aria-controls="mobile-navigation"]');
+  const mobileMenu = page.locator('#mobile-navigation');
+  await mobileMenuTrigger.click();
+  await page.waitForFunction(() => document.activeElement?.textContent?.trim() === 'Avvisa alla');
+  assert.equal(await mobileMenuTrigger.getAttribute('aria-expanded'), 'false');
+  assert.equal(await mobileMenu.getAttribute('aria-hidden'), 'true');
+  assert.equal(await mobileMenu.evaluate((element) => element.inert), true);
+  assert.equal(
+    await page.evaluate(() => document.activeElement?.textContent?.trim()),
+    'Avvisa alla',
+    'cookie controls must receive focus instead of opening the mobile menu',
+  );
+  console.log('PASS cookie/menu priority: visible consent blocks the menu and receives focus');
+
+  await page.getByRole('button', { name: 'Avvisa alla' }).click();
+  assert.equal(await mobileMenuTrigger.getAttribute('aria-label'), 'Öppna meny');
+  assert.equal(await mobileMenuTrigger.getAttribute('aria-expanded'), 'false');
+  assert.equal(await mobileMenuTrigger.getAttribute('aria-controls'), 'mobile-navigation');
+  await mobileMenuTrigger.click();
+  assert.equal(await mobileMenuTrigger.getAttribute('aria-expanded'), 'true');
+  assert.equal(await mobileMenu.getAttribute('aria-hidden'), 'false');
+  assert.equal(await mobileMenu.evaluate((element) => element.inert), false);
+  assert.equal(await page.evaluate(() => document.activeElement?.getAttribute('aria-label')), 'Stäng meny');
+  await page.keyboard.press('Shift+Tab');
+  assert.equal(await page.evaluate(() => document.activeElement?.getAttribute('href')), '/kontakt');
+  await page.keyboard.press('Tab');
+  assert.equal(await page.evaluate(() => document.activeElement?.getAttribute('aria-label')), 'Stäng meny');
+  await page.keyboard.press('Escape');
+  await page.waitForFunction(() => document.activeElement?.getAttribute('aria-label') === 'Öppna meny');
+  assert.equal(await mobileMenuTrigger.getAttribute('aria-expanded'), 'false');
+  assert.equal(await page.evaluate(() => document.body.style.overflow), '');
+
+  await page.setViewportSize({ width: 768, height: 900 });
+  await mobileMenuTrigger.click();
+  assert.equal(await mobileMenuTrigger.getAttribute('aria-expanded'), 'true');
+  await page.setViewportSize({ width: 1024, height: 900 });
+  await page.waitForFunction(() => {
+    const trigger = document.querySelector('button[aria-controls="mobile-navigation"]');
+    const menu = document.getElementById('mobile-navigation');
+    return trigger?.getAttribute('aria-expanded') === 'false' && menu?.getAttribute('aria-hidden') === 'true';
+  });
+  const desktopMenuState = await page.evaluate(() => {
+    const menu = document.getElementById('mobile-navigation');
+    return {
+      inert: menu?.inert,
+      overflow: document.body.style.overflow,
+      activeHref: document.activeElement?.getAttribute('href'),
+      activeVisible: document.activeElement?.getClientRects().length > 0,
+    };
+  });
+  assert.deepEqual(desktopMenuState, {
+    inert: true,
+    overflow: '',
+    activeHref: '/',
+    activeVisible: true,
+  });
+  console.log('PASS mobile menu: focus trap/Escape plus safe 768→1024 breakpoint close');
+
   await page.setViewportSize({ width: 1440, height: 900 });
+  await goto('/');
+  await page.evaluate(() => document.fonts.ready);
+  await page.waitForTimeout(1800);
+  await page.waitForFunction(
+    () => [...document.querySelectorAll('a')].some((link) => link.textContent?.trim() === 'Utforska Produkter'),
+  );
+  const heroCtas = await page.evaluate(() =>
+    ['Utforska Produkter', 'Kontakta oss'].map((text) => {
+      const link = [...document.querySelectorAll('a')].find(
+        (candidate) => candidate.textContent?.trim() === text && candidate.closest('main section'),
+      );
+      return link
+        ? { text: link.textContent?.trim(), href: link.getAttribute('href'), box: link.getBoundingClientRect().toJSON() }
+        : null;
+    }),
+  );
+  assert.deepEqual(heroCtas.map((cta) => cta && { text: cta.text, href: cta.href }), [
+    { text: 'Utforska Produkter', href: '/produkter' },
+    { text: 'Kontakta oss', href: '/kontakt' },
+  ]);
+  assert.ok(heroCtas.every((cta) => cta && cta.box.bottom <= 900), 'hero CTAs must fit inside 1440×900');
+
+  const montaCta = page.getByRole('link', { name: 'Läs mer om Monta Hub' });
+  await montaCta.scrollIntoViewIfNeeded();
+  await montaCta.focus();
+  assert.equal(await montaCta.evaluate((element) => getComputedStyle(element).outlineColor), 'rgb(255, 255, 255)');
+  console.log('PASS hero/focus: exact CTA routes fit first viewport; Monta focus outline is white');
 
   await goto('/kontakt');
   const contactJsonLd = parseJsonLd(
@@ -274,13 +457,22 @@ try {
   assert.equal(await page.locator('[role="dialog"]').count(), 0);
   console.log('PASS consent flow: custom choices persisted and dialog closed');
 
+  for (const width of [320, 375, 768, 1024, 1280, 1440, 1920]) {
+    await page.setViewportSize({ width, height: 900 });
+    await goto('/');
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    );
+    assert.equal(overflow, 0, `homepage must not overflow at ${width}px`);
+  }
+
   await page.setViewportSize({ width: 375, height: 812 });
   for (const path of ['/produkter', '/kontakt']) {
     await goto(path);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
     assert.equal(overflow, 0, `${path} must not overflow at 375px`);
   }
-  console.log('PASS mobile layout: no horizontal overflow on products/contact at 375px');
+  console.log('PASS responsive layout: homepage width matrix plus products/contact at 375px');
 } finally {
   await browser.close();
 }

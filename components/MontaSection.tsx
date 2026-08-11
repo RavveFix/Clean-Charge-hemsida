@@ -49,7 +49,7 @@ const MontaSection: React.FC = () => {
               
               <Link 
                 href="/monta"
-                className="inline-flex items-center justify-center w-full sm:w-auto bg-white text-[#003DFF] px-8 sm:px-10 md:px-12 py-3.5 sm:py-4 md:py-5 rounded-full font-black text-sm sm:text-base md:text-lg transition-all hover:bg-blue-50 hover:shadow-xl active:scale-95 group"
+                className="focus-on-dark inline-flex items-center justify-center w-full sm:w-auto bg-white text-[#003DFF] px-8 sm:px-10 md:px-12 py-3.5 sm:py-4 md:py-5 rounded-full font-black text-sm sm:text-base md:text-lg transition-all hover:bg-blue-50 hover:shadow-xl active:scale-95 group"
               >
                 Läs mer om Monta Hub
                 <ArrowRight className="ml-3 group-hover:translate-x-1 transition-transform" />
@@ -96,7 +96,7 @@ const MontaSection: React.FC = () => {
         <div className="flex items-center justify-between mb-10">
           <div className="flex items-center space-x-3">
             <div className="h-px w-12 bg-slate-200" />
-            <span className="text-[12px] font-black uppercase tracking-[0.3em] text-slate-400">Vad du får med Monta</span>
+            <span className="text-[12px] font-black uppercase tracking-[0.3em] text-slate-600">Vad du får med Monta</span>
           </div>
           <div className="h-px flex-1 bg-slate-100 ml-8 hidden md:block" />
         </div>
@@ -147,7 +147,7 @@ const MontaSection: React.FC = () => {
 
                 <div className="pt-5 border-t border-slate-50 flex items-baseline gap-2">
                   <span className="text-2xl font-black text-[#003DFF] tracking-tighter">{feature.stat}</span>
-                  <span className="text-[12px] font-black uppercase tracking-widest text-slate-400">{feature.statLabel}</span>
+                  <span className="text-[12px] font-black uppercase tracking-widest text-slate-600">{feature.statLabel}</span>
                 </div>
               </div>
             </div>

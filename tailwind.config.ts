@@ -13,6 +13,7 @@ const config: Config = {
       colors: {
         'brand-green': 'var(--brand-green)',
         'cc-green': 'var(--brand-green)',
+        'brand-green-interactive': 'var(--brand-green-interactive)',
         'brand-dark': '#111111',
         'brand-light': '#f5f3ee',
         'monta-blue': '#003dff',

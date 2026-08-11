@@ -3,6 +3,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Zap, Star, Calendar, Clock } from 'lucide-react';
+import useReducedMotion from '@/lib/useReducedMotion';
 
 interface StatItemProps {
   value: number;
@@ -17,8 +18,10 @@ const StatItem: React.FC<StatItemProps> = ({ value, suffix, label, sublabel, ico
   const [count, setCount] = useState(0);
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
+    if (prefersReducedMotion) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -30,46 +33,51 @@ const StatItem: React.FC<StatItemProps> = ({ value, suffix, label, sublabel, ico
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, []);
+  }, [prefersReducedMotion]);
 
   useEffect(() => {
-    if (!visible) return;
+    if (prefersReducedMotion || !visible) return;
+
+    let timer: ReturnType<typeof setInterval> | undefined;
     const timeout = setTimeout(() => {
       let start = 0;
       const duration = 1800;
       const step = 16;
       const increment = value / (duration / step);
-      const timer = setInterval(() => {
+      timer = setInterval(() => {
         start += increment;
         if (start >= value) {
           setCount(value);
-          clearInterval(timer);
+          if (timer) clearInterval(timer);
         } else {
           setCount(Math.floor(start));
         }
       }, step);
-      return () => clearInterval(timer);
     }, delay);
-    return () => clearTimeout(timeout);
-  }, [visible, value, delay]);
+
+    return () => {
+      clearTimeout(timeout);
+      if (timer) clearInterval(timer);
+    };
+  }, [visible, value, delay, prefersReducedMotion]);
 
   return (
     <div
       ref={ref}
-      className={`flex flex-col items-center text-center group transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-      style={{ transitionDelay: `${delay}ms` }}
+      className={`flex flex-col items-center text-center group transition-all duration-700 ${visible || prefersReducedMotion ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      style={{ transitionDelay: prefersReducedMotion ? '0ms' : `${delay}ms` }}
     >
-      <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-cc-green/10 flex items-center justify-center mb-3 sm:mb-5 group-hover:bg-cc-green group-hover:scale-110 transition-all duration-300">
-        <Icon className="w-4 h-4 sm:w-6 sm:h-6 text-cc-green group-hover:text-white transition-colors" />
+      <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-cc-green/10 flex items-center justify-center mb-3 sm:mb-5 group-hover:bg-brand-green-interactive group-hover:scale-110 transition-all duration-300">
+        <Icon className="w-4 h-4 sm:w-6 sm:h-6 text-brand-green-interactive group-hover:text-white transition-colors" />
       </div>
       <div className="flex items-end justify-center gap-1 mb-2">
         <span className="text-3xl sm:text-5xl md:text-6xl font-black text-slate-800 tracking-tighter leading-none tabular-nums">
-          {count.toLocaleString('sv-SE')}
+          {(prefersReducedMotion ? value : count).toLocaleString('sv-SE')}
         </span>
-        <span className="text-xl sm:text-3xl font-black text-cc-green mb-1">{suffix}</span>
+        <span className="text-xl sm:text-3xl font-black text-brand-green-interactive mb-1">{suffix}</span>
       </div>
       <p className="text-[12px] sm:text-sm font-black uppercase tracking-[0.1em] sm:tracking-[0.15em] text-slate-700">{label}</p>
-      <p className="text-[12px] sm:text-[12px] font-bold uppercase tracking-widest text-slate-400 mt-1 hidden sm:block">{sublabel}</p>
+      <p className="text-[12px] sm:text-[12px] font-bold uppercase tracking-widest text-slate-600 mt-1 hidden sm:block">{sublabel}</p>
     </div>
   );
 };
@@ -101,8 +109,8 @@ const StatsStrip: React.FC = () => {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
-          <div className="inline-flex items-center space-x-2 bg-cc-green/8 text-cc-green px-5 py-2 rounded-full border border-cc-green/15 mb-4 md:mb-6">
-            <Zap className="w-3.5 h-3.5 fill-cc-green" />
+          <div className="inline-flex items-center space-x-2 bg-cc-green/8 text-brand-green-interactive px-5 py-2 rounded-full border border-cc-green/15 mb-4 md:mb-6">
+            <Zap className="w-3.5 h-3.5 fill-brand-green-interactive" />
             <span className="text-[12px] md:text-[12px] font-black uppercase tracking-[0.3em]">Bevisad Expertis</span>
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-800 tracking-tight">
@@ -123,14 +131,14 @@ const StatsStrip: React.FC = () => {
 
         {/* Partner logos strip */}
         <div className="mt-12 sm:mt-20 pt-10 sm:pt-16 border-t border-slate-100">
-          <p className="text-center text-[12px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-slate-300 mb-6 sm:mb-10">
+          <p className="text-center text-[12px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-slate-600 mb-6 sm:mb-10">
             Auktoriserad partner för
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-12 md:gap-20">
             {['EASEE', 'ZAPTEC', 'MONTA', 'AUTEL'].map((brand) => (
               <span
                 key={brand}
-                className="text-sm md:text-base font-black uppercase tracking-[0.25em] text-slate-300 hover:text-cc-green transition-colors duration-300 cursor-default"
+                className="text-sm md:text-base font-black uppercase tracking-[0.25em] text-slate-500 hover:text-brand-green-interactive transition-colors duration-300 cursor-default"
               >
                 {brand}
               </span>

@@ -31,7 +31,7 @@ const HeroSegments: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
         <div className="flex items-end justify-between mb-7 sm:mb-10">
           <div>
-            <span className="text-cc-green font-black tracking-[0.3em] uppercase text-[12px] mb-2 block">
+            <span className="text-brand-green-interactive font-black tracking-[0.3em] uppercase text-[12px] mb-2 block">
               Välj din väg
             </span>
             <h2 className="text-[clamp(1.5rem,3vw,2.5rem)] font-black text-slate-900 tracking-tight leading-tight">
@@ -40,7 +40,7 @@ const HeroSegments: React.FC = () => {
           </div>
           <Link
             href="/produkter"
-            className="hidden sm:inline-flex items-center gap-2 text-[12px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-slate-700 transition-colors"
+            className="hidden sm:inline-flex min-h-[44px] items-center gap-2 text-[12px] font-black uppercase tracking-[0.2em] text-slate-600 hover:text-slate-900 transition-colors"
           >
             Alla produkter
             <ArrowRight className="w-3.5 h-3.5" />
@@ -58,18 +58,18 @@ const HeroSegments: React.FC = () => {
               <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-cc-green/0 group-hover:bg-cc-green/8 blur-2xl transition-all duration-500" />
 
               <div className="relative z-10 flex flex-col h-full">
-                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-700 group-hover:bg-cc-green group-hover:text-white group-hover:border-cc-green transition-all duration-300 mb-5 sm:mb-6">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-700 group-hover:bg-brand-green-interactive group-hover:text-white group-hover:border-brand-green-interactive transition-all duration-300 mb-5 sm:mb-6">
                   <Icon className="w-5 h-5" />
                 </div>
 
-                <h3 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight mb-2 group-hover:text-cc-green transition-colors">
+                <h3 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight mb-2 group-hover:text-brand-green-interactive transition-colors">
                   {label}
                 </h3>
                 <p className="text-sm sm:text-[15px] text-slate-500 font-medium leading-relaxed mb-6 max-w-prose">
                   {desc}
                 </p>
 
-                <div className="mt-auto inline-flex items-center gap-2 text-[12px] font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-cc-green transition-colors">
+                <div className="mt-auto inline-flex items-center gap-2 text-[12px] font-black uppercase tracking-[0.2em] text-slate-600 group-hover:text-brand-green-interactive transition-colors">
                   Läs mer
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>

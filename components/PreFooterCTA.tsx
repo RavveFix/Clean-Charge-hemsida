@@ -4,19 +4,23 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Zap, PhoneCall, CheckCircle2, ShieldCheck, ZapIcon, CreditCard, HeadphonesIcon } from 'lucide-react';
+import useReducedMotion from '@/lib/useReducedMotion';
 
 const PreFooterCTA: React.FC = () => {
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const isVisible = visible || prefersReducedMotion;
 
   useEffect(() => {
+    if (prefersReducedMotion) return;
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
       { threshold: 0.1 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, []);
+  }, [prefersReducedMotion]);
 
   const perks = [
     { title: 'Kostnadsfri rådgivning', desc: 'Personlig expertis för dina behov', icon: <ZapIcon className="w-5 h-5" /> },
@@ -28,7 +32,7 @@ const PreFooterCTA: React.FC = () => {
   return (
     <section
       ref={ref}
-      className={`mx-3 sm:mx-4 md:mx-10 mb-10 sm:mb-20 rounded-[1.5rem] sm:rounded-[2.5rem] md:rounded-[4rem] overflow-hidden relative transition-all duration-1000 ease-out ${visible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-[0.98]'}`}
+      className={`mx-3 sm:mx-4 md:mx-10 mb-10 sm:mb-20 rounded-[1.5rem] sm:rounded-[2.5rem] md:rounded-[4rem] overflow-hidden relative transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-[0.98]'}`}
     >
       {/* Background System */}
       <div className="absolute inset-0 bg-[#020617]" />
@@ -62,7 +66,7 @@ const PreFooterCTA: React.FC = () => {
                   Laddbox.
                   <br />
                   <span className="relative">
-                    <span className="bg-gradient-to-r from-cc-green via-[#4ade80] to-cc-green bg-clip-text text-transparent italic decoration-cc-green underline underline-offset-[12px] decoration-[1px]">
+                    <span className="text-cc-green italic decoration-cc-green underline underline-offset-[12px] decoration-[1px]">
                       Installerad.
                     </span>
                     {/* Subtle glow behind the main word */}
@@ -85,7 +89,7 @@ const PreFooterCTA: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Link
                   href="/kontakt"
-                  className="shimmer-btn group bg-cc-green text-white px-6 md:px-10 py-4 sm:py-5 md:py-6 rounded-2xl font-black text-xs sm:text-sm md:text-base uppercase tracking-wider md:tracking-widest flex items-center justify-center gap-3 sm:gap-4 hover:shadow-[0_20px_50px_rgba(0,177,130,0.3)] hover:-translate-y-1 transition-all duration-500 active:scale-95 w-full sm:w-auto"
+                  className="shimmer-btn group bg-brand-green-interactive hover:bg-brand-green-interactive/90 text-white px-6 md:px-10 py-4 sm:py-5 md:py-6 rounded-2xl font-black text-xs sm:text-sm md:text-base uppercase tracking-wider md:tracking-widest flex items-center justify-center gap-3 sm:gap-4 hover:shadow-[0_20px_50px_rgba(0,127,95,0.3)] hover:-translate-y-1 transition-all duration-500 active:scale-95 w-full sm:w-auto"
                 >
                   Boka kostnadsfri rådgivning
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-500" />
@@ -109,8 +113,8 @@ const PreFooterCTA: React.FC = () => {
                 {perks.map((perk, i) => (
                   <div
                     key={i}
-                    className={`card-hover group relative bg-white/[0.03] backdrop-blur-xl border border-white/10 p-5 md:p-6 rounded-3xl flex items-start space-x-4 transition-all duration-700 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
-                    style={{ transitionDelay: `${400 + i * 150}ms` }}
+                    className={`card-hover group relative bg-white/[0.03] backdrop-blur-xl border border-white/10 p-5 md:p-6 rounded-3xl flex items-start space-x-4 transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
+                    style={{ transitionDelay: prefersReducedMotion ? '0ms' : `${400 + i * 150}ms` }}
                   >
                     {/* Floating Glow on Hover */}
                     <div className="absolute inset-0 bg-cc-green/0 group-hover:bg-cc-green/[0.03] rounded-3xl transition-colors duration-500" />
@@ -147,7 +151,7 @@ const PreFooterCTA: React.FC = () => {
                     </div>
                   ))}
                 </div>
-                <p className="text-slate-500 text-sm font-bold">
+                <p className="text-slate-400 text-sm font-bold">
                   Hundratals nöjda kunder över hela landet
                 </p>
               </div>

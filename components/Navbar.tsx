@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -14,6 +14,8 @@ interface NavbarProps {
   activeTab?: string;
 }
 
+const MOBILE_MENU_ID = 'mobile-navigation';
+
 const Navbar: React.FC<NavbarProps> = ({
   activeTab,
 }) => {
@@ -22,7 +24,10 @@ const Navbar: React.FC<NavbarProps> = ({
   const [logoError, setLogoError] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const solutionsRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
+  const mobileMenuTriggerRef = useRef<HTMLButtonElement>(null);
+  const desktopHomeLinkRef = useRef<HTMLAnchorElement>(null);
+  const mobileMenuRef = useRef<HTMLElement>(null);
+  const mobileMenuCloseRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
 
   const homeLink = { id: 'home', label: 'Hem', href: '/' };
@@ -51,6 +56,18 @@ const Navbar: React.FC<NavbarProps> = ({
 
   const solutionsActive = solutionLinks.some((link) => isActive(link.href));
 
+  const focusVisibleCookieDialog = useCallback(() => {
+    const dialog = document.querySelector<HTMLElement>(
+      '[role="dialog"][aria-labelledby="cookie-banner-title"]',
+    );
+    if (!dialog || dialog.getClientRects().length === 0) return false;
+
+    setIsMenuOpen(false);
+    const firstControl = dialog.querySelector<HTMLElement>('button:not([disabled])');
+    requestAnimationFrame(() => firstControl?.focus());
+    return true;
+  }, []);
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
@@ -70,6 +87,85 @@ const Navbar: React.FC<NavbarProps> = ({
     setSolutionsOpen(false);
     setIsMenuOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    const desktopQuery = window.matchMedia('(min-width: 1024px)');
+    const closeForDesktop = () => {
+      if (!isMenuOpen) return;
+      setIsMenuOpen(false);
+      requestAnimationFrame(() => desktopHomeLinkRef.current?.focus());
+    };
+    const handleBreakpointChange = (event: MediaQueryListEvent) => {
+      if (event.matches) closeForDesktop();
+    };
+
+    if (desktopQuery.matches) closeForDesktop();
+    desktopQuery.addEventListener('change', handleBreakpointChange);
+    return () => desktopQuery.removeEventListener('change', handleBreakpointChange);
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (!isMenuOpen || focusVisibleCookieDialog()) return;
+
+    const observer = new MutationObserver(() => {
+      focusVisibleCookieDialog();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, [focusVisibleCookieDialog, isMenuOpen]);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    mobileMenuCloseRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setIsMenuOpen(false);
+        requestAnimationFrame(() => mobileMenuTriggerRef.current?.focus());
+        return;
+      }
+
+      if (event.key !== 'Tab') return;
+
+      const focusable = mobileMenuRef.current?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled])',
+      );
+      if (!focusable?.length) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isMenuOpen]);
+
+  const closeMobileMenu = () => {
+    setIsMenuOpen(false);
+    requestAnimationFrame(() => mobileMenuTriggerRef.current?.focus());
+  };
+
+  const toggleMobileMenu = () => {
+    if (isMenuOpen) {
+      closeMobileMenu();
+      return;
+    }
+    if (!focusVisibleCookieDialog()) setIsMenuOpen(true);
+  };
 
   // Close the Lösningar dropdown on outside click / Escape
   useEffect(() => {
@@ -121,6 +217,7 @@ const Navbar: React.FC<NavbarProps> = ({
         {/* Desktop Links */}
         <div className="hidden lg:flex items-center space-x-1 lg:space-x-2 ml-4 xl:ml-8">
           <Link
+            ref={desktopHomeLinkRef}
             href={homeLink.href}
             className={`text-[15px] font-bold tracking-wide transition-all duration-300 px-5 py-2.5 rounded-[1.25rem] ${
               isActive(homeLink.href)
@@ -171,7 +268,7 @@ const Navbar: React.FC<NavbarProps> = ({
                     onClick={() => setSolutionsOpen(false)}
                     className={`block px-4 py-2.5 rounded-xl text-[14px] font-bold transition-colors ${
                       isActive(link.href)
-                        ? 'text-brand-green bg-slate-50'
+                        ? 'text-brand-green-interactive bg-slate-50'
                         : 'text-text-primary hover:bg-slate-50'
                     }`}
                   >
@@ -201,7 +298,7 @@ const Navbar: React.FC<NavbarProps> = ({
           {/* Phone number – always visible on desktop */}
           <a
             href="tel:0197604290"
-            className="hidden lg:flex items-center gap-2 text-[15px] font-bold text-text-primary hover:text-brand-green transition-colors duration-300 px-3 py-2"
+            className="hidden lg:flex items-center gap-2 text-[15px] font-bold text-text-primary hover:text-brand-green-interactive transition-colors duration-300 px-3 py-2"
             aria-label="Ring oss"
           >
             <Phone className="w-[18px] h-[18px]" />
@@ -211,9 +308,13 @@ const Navbar: React.FC<NavbarProps> = ({
 
 
           <button
+            ref={mobileMenuTriggerRef}
+            type="button"
             className="lg:hidden p-3 rounded-full hover:bg-slate-100 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={toggleMobileMenu}
             aria-label={isMenuOpen ? 'Stäng meny' : 'Öppna meny'}
+            aria-expanded={isMenuOpen}
+            aria-controls={MOBILE_MENU_ID}
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -221,14 +322,22 @@ const Navbar: React.FC<NavbarProps> = ({
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div
+      <nav
+        id={MOBILE_MENU_ID}
+        ref={mobileMenuRef}
+        aria-label="Mobilmeny"
+        aria-hidden={!isMenuOpen}
+        inert={!isMenuOpen}
         className={`lg:hidden fixed inset-0 bg-white z-[150] transition-all duration-500 ease-in-out flex flex-col pt-24 pb-12 overflow-y-auto ${
           isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
         }`}
       >
         <button
-          className="absolute top-10 right-6 p-2 text-text-primary"
-          onClick={() => setIsMenuOpen(false)}
+          ref={mobileMenuCloseRef}
+          type="button"
+          aria-label="Stäng meny"
+          className="absolute top-8 right-5 min-w-[44px] min-h-[44px] p-2 text-text-primary rounded-full hover:bg-slate-100 flex items-center justify-center"
+          onClick={closeMobileMenu}
         >
           <X className="w-8 h-8" />
         </button>
@@ -237,7 +346,7 @@ const Navbar: React.FC<NavbarProps> = ({
             href={homeLink.href}
             onClick={() => setIsMenuOpen(false)}
             className={`text-2xl sm:text-3xl font-black uppercase tracking-tight inline-flex items-center min-h-[48px] px-4 ${
-              isActive(homeLink.href) ? 'text-brand-green' : 'text-slate-800'
+              isActive(homeLink.href) ? 'text-brand-green-interactive' : 'text-slate-800'
             }`}
           >
             {homeLink.label}
@@ -245,14 +354,14 @@ const Navbar: React.FC<NavbarProps> = ({
 
           {/* Lösningar group */}
           <div className="w-full flex flex-col items-center space-y-4">
-            <span className="text-[12px] font-black uppercase tracking-[0.3em] text-slate-400">Lösningar</span>
+            <span className="text-[12px] font-black uppercase tracking-[0.3em] text-slate-600">Lösningar</span>
             {solutionLinks.map((link) => (
               <Link
                 key={link.id}
                 href={link.href}
                 onClick={() => setIsMenuOpen(false)}
                 className={`text-xl font-bold tracking-tight inline-flex items-center min-h-[44px] px-4 ${
-                  isActive(link.href) ? 'text-brand-green' : 'text-slate-700'
+                  isActive(link.href) ? 'text-brand-green-interactive' : 'text-slate-700'
                 }`}
               >
                 {link.label}
@@ -266,7 +375,7 @@ const Navbar: React.FC<NavbarProps> = ({
               href={tab.href}
               onClick={() => setIsMenuOpen(false)}
               className={`text-2xl sm:text-3xl font-black uppercase tracking-tight inline-flex items-center min-h-[48px] px-4 ${
-                isActive(tab.href) ? 'text-brand-green' : 'text-slate-800'
+                isActive(tab.href) ? 'text-brand-green-interactive' : 'text-slate-800'
               }`}
             >
               {tab.label}
@@ -277,19 +386,19 @@ const Navbar: React.FC<NavbarProps> = ({
               href="tel:0197604290"
               className="w-full flex items-center justify-center gap-3 bg-slate-50 border border-slate-100 text-slate-800 text-base font-black uppercase tracking-widest py-5 rounded-[2rem] hover:bg-slate-100 transition-all"
             >
-              <Phone className="w-5 h-5 text-brand-green" />
+              <Phone className="w-5 h-5 text-brand-green-interactive" />
               019-760 42 90
             </a>
             <Link
               href="/kontakt"
               onClick={() => setIsMenuOpen(false)}
-              className="w-full block text-center bg-brand-green text-white text-base font-black uppercase tracking-widest py-5 rounded-[2rem] shadow-xl shadow-brand-green/20 active:scale-95 transition-all"
+              className="w-full block text-center bg-brand-green-interactive hover:bg-brand-green-interactive/90 text-white text-base font-black uppercase tracking-widest py-5 rounded-[2rem] shadow-xl shadow-brand-green-interactive/20 active:scale-95 transition-all"
             >
               Kontakta oss
             </Link>
           </div>
         </div>
-      </div>
+      </nav>
     </>
   );
 };

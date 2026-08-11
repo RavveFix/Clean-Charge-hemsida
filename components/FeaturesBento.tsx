@@ -2,37 +2,52 @@
 
 import React, { useState, useEffect } from 'react';
 import { Activity, ShieldCheck, Zap, Smartphone } from 'lucide-react';
+import useReducedMotion from '@/lib/useReducedMotion';
 
 const FeaturesBento: React.FC = () => {
   // Card 1 state: Diagnostic Shuffler -> Smart Load Balancing Visualizer
   const [isBox1Active, setIsBox1Active] = useState(true);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
+    if (prefersReducedMotion) {
+      setIsBox1Active(true);
+      return;
+    }
+
     const interval = setInterval(() => {
       setIsBox1Active((prev) => !prev);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [prefersReducedMotion]);
   // Card 2 state: Telemetry Typewriter
   const typewriterText = "SYSTEM NOMINAL. TEMP: -24°C. HEATER ACTIVE. CHARGING MAINTAINED.";
   const [displayedText, setDisplayedText] = useState("");
   const [cursorVisible, setCursorVisible] = useState(true);
 
   useEffect(() => {
+    if (prefersReducedMotion) {
+      setDisplayedText(typewriterText);
+      setCursorVisible(false);
+      return;
+    }
+
     let active = true;
-    const cursorInterval = setInterval(() => setCursorVisible((v) => !v), 500);
+    let typingInterval: ReturnType<typeof setInterval> | undefined;
+    let restartTimeout: ReturnType<typeof setTimeout> | undefined;
+    const cursorInterval = setInterval(() => setCursorVisible((visible) => !visible), 500);
 
     const runTyper = () => {
       if (!active) return;
-      let i = 0;
+      let index = 0;
       setDisplayedText('');
-      const typingInterval = setInterval(() => {
-        if (!active) { clearInterval(typingInterval); return; }
-        i++;
-        setDisplayedText(typewriterText.substring(0, i));
-        if (i >= typewriterText.length) {
+      typingInterval = setInterval(() => {
+        if (!active) return;
+        index += 1;
+        setDisplayedText(typewriterText.substring(0, index));
+        if (index >= typewriterText.length) {
           clearInterval(typingInterval);
-          setTimeout(() => { if (active) runTyper(); }, 3000);
+          restartTimeout = setTimeout(runTyper, 3000);
         }
       }, 80);
     };
@@ -41,8 +56,10 @@ const FeaturesBento: React.FC = () => {
     return () => {
       active = false;
       clearInterval(cursorInterval);
+      if (typingInterval) clearInterval(typingInterval);
+      if (restartTimeout) clearTimeout(restartTimeout);
     };
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <section className="py-12 sm:py-16 md:py-24 bg-white overflow-hidden">
@@ -76,10 +93,10 @@ const FeaturesBento: React.FC = () => {
                       scale: !isBox1Active ? 1 : 0.95,
                       zIndex: !isBox1Active ? 10 : 0,
                       opacity: !isBox1Active ? 1 : 0.4,
-                      backgroundColor: !isBox1Active ? '#00b182' : '#f8fafc',
+                      backgroundColor: !isBox1Active ? '#007f5f' : '#f8fafc',
                       color: !isBox1Active ? 'white' : '#64748b', // text-slate-500
                       borderColor: !isBox1Active ? 'transparent' : '#f1f5f9', // border-slate-100
-                      boxShadow: !isBox1Active ? '0 10px 20px rgba(0,177,130,0.2)' : 'none'
+                      boxShadow: !isBox1Active ? '0 10px 20px rgba(0,127,95,0.2)' : 'none'
                     }}
                   >
                     <span>Laddbox 2: 16A</span>
@@ -93,10 +110,10 @@ const FeaturesBento: React.FC = () => {
                       scale: isBox1Active ? 1 : 0.95,
                       zIndex: isBox1Active ? 10 : 0,
                       opacity: isBox1Active ? 1 : 0.4,
-                      backgroundColor: isBox1Active ? '#00b182' : '#f8fafc',
+                      backgroundColor: isBox1Active ? '#007f5f' : '#f8fafc',
                       color: isBox1Active ? 'white' : '#64748b',
                       borderColor: isBox1Active ? 'transparent' : '#f1f5f9',
-                      boxShadow: isBox1Active ? '0 10px 20px rgba(0,177,130,0.2)' : 'none'
+                      boxShadow: isBox1Active ? '0 10px 20px rgba(0,127,95,0.2)' : 'none'
                     }}
                   >
                     <span>Laddbox 1: 32A</span>
