@@ -129,22 +129,22 @@ const Hero: React.FC = () => {
 
           {/* Visual Content - Right Side */}
           <div className="w-full lg:w-[45%] relative flex justify-center lg:justify-end hero-anim mt-6 sm:mt-12 lg:mt-0">
-             <div className="relative w-full max-w-[320px] sm:max-w-[500px] aspect-[4/5] lg:aspect-square flex items-center justify-center">
+             <div className="relative w-full max-w-[320px] sm:max-w-[500px] aspect-square flex items-center justify-center">
                 
                 {/* Ambient Glow behind Spline Scene */}
                 <div className="absolute inset-0 bg-gradient-to-r from-cc-green/5 to-blue-500/5 rounded-full blur-[100px] -z-10 animate-pulse" />
                 
-                {/* En lätt produktbild finns alltid i HTML och är mobilens visual.
-                    Den tyngre 3D-scenen laddas bara på större skärmar. */}
+                {/* En optimerad stillbild från 3D-scenen finns alltid i HTML.
+                    På desktop tonas den över till scenen när canvasen är klar. */}
                 <div className="relative w-full h-full scale-100 sm:scale-110 md:scale-120 lg:scale-110 xl:scale-120 origin-center translate-x-0">
                   <Image
-                    src="/images/products/zaptec-go.png"
-                    alt="Zaptec Go laddbox för företag och fastigheter"
+                    src="/images/hero/hero-3d-poster.jpg"
+                    alt="Futuristisk elbil i Clean Charge 3D-miljö"
                     fill
                     loading="eager"
                     fetchPriority="high"
-                    sizes="(max-width: 1023px) 80vw, 45vw"
-                    className={`object-contain p-8 sm:p-12 transition-opacity duration-700 ease-out ${
+                    sizes="(max-width: 639px) 90vw, (max-width: 1023px) 500px, 45vw"
+                    className={`object-cover transition-opacity duration-700 ease-out ${
                       isEnhancedVisualReady ? 'opacity-0' : 'opacity-100'
                     }`}
                   />
