@@ -49,7 +49,7 @@ const MontaSection: React.FC = () => {
               
               <Link 
                 href="/monta"
-                className="focus-on-dark inline-flex items-center justify-center w-full sm:w-auto bg-white text-[#003DFF] px-8 sm:px-10 md:px-12 py-3.5 sm:py-4 md:py-5 rounded-full font-black text-sm sm:text-base md:text-lg transition-all hover:bg-blue-50 hover:shadow-xl active:scale-95 group"
+                className="focus-on-dark outline-white inline-flex items-center justify-center w-full sm:w-auto bg-white text-[#003DFF] px-8 sm:px-10 md:px-12 py-3.5 sm:py-4 md:py-5 rounded-full font-black text-sm sm:text-base md:text-lg transition-all hover:bg-blue-50 hover:shadow-xl active:scale-95 group"
               >
                 Läs mer om Monta Hub
                 <ArrowRight className="ml-3 group-hover:translate-x-1 transition-transform" />
