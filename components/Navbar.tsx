@@ -45,6 +45,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
   const tailLinks = [
     { id: 'products', label: 'Produkter', href: '/produkter' },
+    { id: 'knowledge', label: 'Guider', href: '/kunskap' },
     { id: 'about', label: 'Om Oss', href: '/om-oss' },
     { id: 'contact', label: 'Kontakta Oss', href: '/kontakt' },
   ];

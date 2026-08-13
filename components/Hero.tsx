@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { Zap } from 'lucide-react';
 import gsap from 'gsap';
@@ -22,6 +23,17 @@ const SplineScene = dynamic(
 const Hero: React.FC = () => {
   const containerRef = useRef<HTMLElement>(null);
   const prefersReducedMotion = useReducedMotion();
+  const [showEnhancedVisual, setShowEnhancedVisual] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(
+      '(min-width: 1024px) and (prefers-reduced-motion: no-preference)',
+    );
+    const updateVisual = () => setShowEnhancedVisual(media.matches);
+    updateVisual();
+    media.addEventListener('change', updateVisual);
+    return () => media.removeEventListener('change', updateVisual);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -96,7 +108,7 @@ const Hero: React.FC = () => {
             {/* Trust indicators */}
             <div className="hero-anim mt-10 sm:mt-16 pt-8 sm:pt-10 border-t border-slate-100 flex items-center justify-center lg:justify-start gap-6 sm:gap-12 lg:gap-16 opacity-90">
                <div className="text-xs sm:text-sm font-semibold text-text-secondary">
-                  <span className="block text-xl sm:text-[28px] font-bold text-text-primary leading-none mb-1">4.6/5</span>
+                  <span className="block text-xl sm:text-[28px] font-bold text-text-primary leading-none mb-1">4,6/5</span>
                   Kundnöjdhet
                </div>
                <div className="w-px h-10 sm:h-12 bg-slate-200"></div>
@@ -115,12 +127,26 @@ const Hero: React.FC = () => {
                 {/* Ambient Glow behind Spline Scene */}
                 <div className="absolute inset-0 bg-gradient-to-r from-cc-green/5 to-blue-500/5 rounded-full blur-[100px] -z-10 animate-pulse" />
                 
-                {/* Spline 3D Scene */}
+                {/* En lätt produktbild finns alltid i HTML och är mobilens visual.
+                    Den tyngre 3D-scenen laddas bara på större skärmar. */}
                 <div className="relative w-full h-full scale-100 sm:scale-110 md:scale-120 lg:scale-110 xl:scale-120 origin-center translate-x-0">
-                  <SplineScene 
-                    scene="https://prod.spline.design/NYnTe3YctwcC8ihb/scene.splinecode"
-                    className="w-full h-full"
+                  <Image
+                    src="/images/products/zaptec-go.png"
+                    alt="Zaptec Go laddbox för företag och fastigheter"
+                    fill
+                    loading="eager"
+                    fetchPriority="high"
+                    sizes="(max-width: 1023px) 80vw, 45vw"
+                    className="object-contain p-8 sm:p-12"
                   />
+                  {showEnhancedVisual && (
+                    <div className="absolute inset-0 bg-white">
+                      <SplineScene
+                        scene="https://prod.spline.design/NYnTe3YctwcC8ihb/scene.splinecode"
+                        className="w-full h-full"
+                      />
+                    </div>
+                  )}
                 </div>
              </div>
           </div>

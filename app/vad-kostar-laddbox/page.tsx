@@ -7,6 +7,11 @@ import { openGraphBase, openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import ArticleMeta from '@/components/ArticleMeta';
+import EditorialSources from '@/components/EditorialSources';
+
+const PUBLISHED_DATE = '2026-07-03';
+const MODIFIED_DATE = '2026-08-13';
 
 export const metadata: Metadata = {
   title: 'Vad Kostar en Laddbox? Prisguide 2026',
@@ -26,8 +31,11 @@ export const metadata: Metadata = {
     title: 'Vad kostar en laddbox 2026? – Komplett prisguide',
     description: 'Riktpriser för laddbox med installation: villa, BRF, samfällighet och företag – med avdrag och bidrag.',
     url: 'https://www.cleancharge.se/vad-kostar-laddbox',
-    images: openGraphImages('Vad kostar en laddbox 2026 — prisguide för villa, BRF och företag'),
-    type: 'website',
+    images: openGraphImages('Vad kostar en laddbox 2026 — prisguide för villa, BRF och företag', '/vad-kostar-laddbox/opengraph-image'),
+    type: 'article',
+    publishedTime: PUBLISHED_DATE,
+    modifiedTime: MODIFIED_DATE,
+    authors: ['Clean Charge AB'],
   },
   alternates: { canonical: 'https://www.cleancharge.se/vad-kostar-laddbox' },
 };
@@ -41,8 +49,8 @@ const article = articleJsonLd({
   path: '/vad-kostar-laddbox',
   description:
     'Vad kostar laddbox med installation 2026? Riktpriser för villa, BRF, samfällighet och företag – inklusive Grön Teknik-avdrag och Ladda bilen-bidrag.',
-  datePublished: '2026-07-03',
-  dateModified: '2026-07-05',
+  datePublished: PUBLISHED_DATE,
+  dateModified: MODIFIED_DATE,
 });
 
 const faqEntries = [
@@ -159,9 +167,10 @@ export default function VadKostarLaddboxPage() {
               <span className="text-[#00b182]">laddbox</span>{' '}
               2026? Ärliga riktpriser.
             </h1>
-            <p className="text-xl text-slate-600 font-medium leading-relaxed mb-12 max-w-2xl">
+            <p className="text-xl text-slate-600 font-medium leading-relaxed mb-7 max-w-2xl">
               Priset beror på var laddaren ska sitta och vad elen tillåter – men du förtjänar riktiga siffror innan du begär offert. Här är riktpriserna vi själva arbetar med, för villa, BRF, samfällighet och företag.
             </p>
+            <ArticleMeta published={PUBLISHED_DATE} modified={MODIFIED_DATE} />
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/kontakt"
@@ -247,6 +256,18 @@ export default function VadKostarLaddboxPage() {
               ))}
             </ul>
           </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <EditorialSources
+            sources={[
+              { label: 'Skatteverket – skattereduktion för Grön Teknik', href: 'https://www.skatteverket.se/privat/fastigheterochbostad/gronteknik/safungerarskattereduktionenforgronteknik.4.676f4884175c97df4192870.html' },
+              { label: 'Naturvårdsverket – förändringar i Ladda bilen-bidraget', href: 'https://www.naturvardsverket.se/bidrag/ladda-bilen/forandringar-i-ladda-bilen-bidraget/' },
+              { label: 'Elsäkerhetsverket – krav på registrerat elinstallationsföretag', href: 'https://www.elsakerhetsverket.se/privatpersoner/din-elanlaggning/bygga-och-renovera/installation-av-elbilsladdare/installera-din-laddningspunkt/' },
+            ]}
+          />
         </div>
       </section>
 

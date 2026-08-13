@@ -15,7 +15,9 @@ interface StatItemProps {
 }
 
 const StatItem: React.FC<StatItemProps> = ({ value, suffix, label, sublabel, icon: Icon, delay }) => {
-  const [count, setCount] = useState(0);
+  // Rendera slutvärdet i server-HTML så sökmotorer och användare utan JS inte
+  // möts av missvisande nollor. Animationen startas först efter hydrering.
+  const [count, setCount] = useState(value);
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
@@ -41,6 +43,7 @@ const StatItem: React.FC<StatItemProps> = ({ value, suffix, label, sublabel, ico
     let timer: ReturnType<typeof setInterval> | undefined;
     const timeout = setTimeout(() => {
       let start = 0;
+      setCount(0);
       const duration = 1800;
       const step = 16;
       const increment = value / (duration / step);
@@ -50,7 +53,7 @@ const StatItem: React.FC<StatItemProps> = ({ value, suffix, label, sublabel, ico
           setCount(value);
           if (timer) clearInterval(timer);
         } else {
-          setCount(Math.floor(start));
+          setCount(value % 1 === 0 ? Math.floor(start) : Math.floor(start * 10) / 10);
         }
       }, step);
     }, delay);
@@ -72,7 +75,10 @@ const StatItem: React.FC<StatItemProps> = ({ value, suffix, label, sublabel, ico
       </div>
       <div className="flex items-end justify-center gap-1 mb-2">
         <span className="text-3xl sm:text-5xl md:text-6xl font-black text-slate-800 tracking-tighter leading-none tabular-nums">
-          {(prefersReducedMotion ? value : count).toLocaleString('sv-SE')}
+          {(prefersReducedMotion ? value : count).toLocaleString('sv-SE', {
+            minimumFractionDigits: value % 1 === 0 ? 0 : 1,
+            maximumFractionDigits: value % 1 === 0 ? 0 : 1,
+          })}
         </span>
         <span className="text-xl sm:text-3xl font-black text-brand-green-interactive mb-1">{suffix}</span>
       </div>
@@ -85,7 +91,7 @@ const StatItem: React.FC<StatItemProps> = ({ value, suffix, label, sublabel, ico
 const StatsStrip: React.FC = () => {
   const stats = [
     { value: 50000, suffix: '+', label: 'Genomförda laddningar', sublabel: 'Via Monta-plattformen', icon: Zap, delay: 0 },
-    { value: 4, suffix: '.6★', label: 'Monta Operatörsbetyg', sublabel: 'Verifierat av våra användare', icon: Star, delay: 150 },
+    { value: 4.6, suffix: '★', label: 'Monta Operatörsbetyg', sublabel: 'Verifierat av våra användare', icon: Star, delay: 150 },
     { value: 5, suffix: ' år', label: 'Års erfarenhet', sublabel: 'Grundat 2021', icon: Calendar, delay: 300 },
     { value: 2, suffix: 'h', label: 'Svarstid support', sublabel: 'Under kontorstid', icon: Clock, delay: 450 },
   ];

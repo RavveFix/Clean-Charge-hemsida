@@ -55,6 +55,7 @@ type ArticleJsonLdInput = {
   description: string;
   datePublished: string;
   dateModified: string;
+  imagePath?: string;
 };
 
 export function articleJsonLd({
@@ -63,8 +64,10 @@ export function articleJsonLd({
   description,
   datePublished,
   dateModified,
+  imagePath,
 }: ArticleJsonLdInput) {
   const url = `${SITE_URL}${path}`;
+  const image = `${SITE_URL}${imagePath ?? `${path}/opengraph-image`}`;
 
   return {
     '@context': 'https://schema.org',
@@ -75,7 +78,13 @@ export function articleJsonLd({
     url,
     mainEntityOfPage: url,
     inLanguage: 'sv-SE',
-    author: { '@id': ORGANIZATION_ID },
+    image,
+    author: {
+      '@type': 'Organization',
+      '@id': ORGANIZATION_ID,
+      name: 'Clean Charge AB',
+      url: SITE_URL,
+    },
     publisher: { '@id': ORGANIZATION_ID },
     datePublished,
     dateModified,

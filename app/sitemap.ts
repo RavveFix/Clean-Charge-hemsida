@@ -7,17 +7,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Statiska datum (inte new Date()) så signalen är stabil mellan deploys –
   // uppdatera datumet när sidans innehåll faktiskt ändras.
   const routes = [
-    { url: '/', priority: 1.0, changeFrequency: 'weekly' as const, lastModified: '2026-07-23' },
+    { url: '/', priority: 1.0, changeFrequency: 'weekly' as const, lastModified: '2026-08-13' },
     { url: '/foretag', priority: 0.9, changeFrequency: 'monthly' as const, lastModified: '2026-06-22' },
     { url: '/hela-sverige', priority: 0.9, changeFrequency: 'monthly' as const, lastModified: '2026-07-24' },
     { url: '/fastighetsbolag', priority: 0.9, changeFrequency: 'monthly' as const, lastModified: '2026-06-22' },
     { url: '/dc-laddstation', priority: 0.85, changeFrequency: 'monthly' as const, lastModified: '2026-06-22' },
     { url: '/monta', priority: 0.8, changeFrequency: 'monthly' as const, lastModified: '2026-07-03' },
     { url: '/laddbox-orebro', priority: 0.7, changeFrequency: 'monthly' as const, lastModified: '2026-07-03' },
-    { url: '/ladda-bilen-bidrag', priority: 0.65, changeFrequency: 'monthly' as const, lastModified: '2026-07-23' },
+    { url: '/kunskap', priority: 0.8, changeFrequency: 'monthly' as const, lastModified: '2026-08-13' },
+    { url: '/ladda-bilen-bidrag', priority: 0.65, changeFrequency: 'monthly' as const, lastModified: '2026-08-13' },
     { url: '/samfallighet', priority: 0.8, changeFrequency: 'monthly' as const, lastModified: '2026-07-23' },
-    { url: '/vad-kostar-laddbox', priority: 0.65, changeFrequency: 'monthly' as const, lastModified: '2026-07-05' },
-    { url: '/basta-laddboxen', priority: 0.65, changeFrequency: 'monthly' as const, lastModified: '2026-07-23' },
+    { url: '/vad-kostar-laddbox', priority: 0.65, changeFrequency: 'monthly' as const, lastModified: '2026-08-13' },
+    { url: '/basta-laddboxen', priority: 0.65, changeFrequency: 'monthly' as const, lastModified: '2026-08-13' },
     { url: '/produkter', priority: 0.8, changeFrequency: 'weekly' as const, lastModified: '2026-08-09' },
     { url: '/privat', priority: 0.75, changeFrequency: 'monthly' as const, lastModified: '2026-08-09' },
     { url: '/publik', priority: 0.75, changeFrequency: 'monthly' as const, lastModified: '2026-08-09' },

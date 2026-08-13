@@ -7,6 +7,11 @@ import { openGraphBase, openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import ArticleMeta from '@/components/ArticleMeta';
+import EditorialSources from '@/components/EditorialSources';
+
+const PUBLISHED_DATE = '2026-07-03';
+const MODIFIED_DATE = '2026-08-13';
 
 export const metadata: Metadata = {
   title: 'Ladda Bilen-bidraget 2026 – Nya Regler',
@@ -26,8 +31,14 @@ export const metadata: Metadata = {
     title: 'Ladda bilen-bidraget 2026 – så fungerar de nya reglerna',
     description: 'Stödnivåer, maxbelopp och ansökningskrav för företag, BRF och samfälligheter från 1 februari 2026.',
     url: 'https://www.cleancharge.se/ladda-bilen-bidrag',
-    images: openGraphImages('Ladda bilen-bidraget 2026 — nya regler för företag och BRF'),
-    type: 'website',
+    images: openGraphImages(
+      'Ladda bilen-bidraget 2026 — nya regler för företag och BRF',
+      '/ladda-bilen-bidrag/opengraph-image',
+    ),
+    type: 'article',
+    publishedTime: PUBLISHED_DATE,
+    modifiedTime: MODIFIED_DATE,
+    authors: ['Clean Charge AB'],
   },
   alternates: { canonical: 'https://www.cleancharge.se/ladda-bilen-bidrag' },
 };
@@ -41,8 +52,8 @@ const article = articleJsonLd({
   path: '/ladda-bilen-bidrag',
   description:
     'Nya regler för Ladda bilen-bidraget från 1 februari 2026: stöd 20–50 % beroende på företagsstorlek, max 15 000 kr per laddpunkt och ansökan före installation.',
-  datePublished: '2026-07-03',
-  dateModified: '2026-07-05',
+  datePublished: PUBLISHED_DATE,
+  dateModified: MODIFIED_DATE,
 });
 
 const faqEntries = [
@@ -144,9 +155,10 @@ export default function LaddaBilenBidragPage() {
               <span className="text-[#00b182]">2026</span>{' '}
               – så fungerar de nya reglerna.
             </h1>
-            <p className="text-xl text-slate-600 font-medium leading-relaxed mb-12 max-w-2xl">
+            <p className="text-xl text-slate-600 font-medium leading-relaxed mb-7 max-w-2xl">
               Naturvårdsverkets stöd för laddpunkter görs om från 1 februari 2026. Här går vi igenom vad som gäller för företag, BRF:er och samfälligheter – och hur ni får ut mesta möjliga av bidraget.
             </p>
+            <ArticleMeta published={PUBLISHED_DATE} modified={MODIFIED_DATE} />
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/kontakt"
@@ -260,6 +272,18 @@ export default function LaddaBilenBidragPage() {
               </ul>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <EditorialSources
+            sources={[
+              { label: 'Naturvårdsverket – förändringar i Ladda bilen-bidraget', href: 'https://www.naturvardsverket.se/bidrag/ladda-bilen/forandringar-i-ladda-bilen-bidraget/' },
+              { label: 'Naturvårdsverket – frågor och svar om Ladda bilen', href: 'https://www.naturvardsverket.se/amnesomraden/klimatomstallningen/ladda-bilen/fragor-och-svar-om-ladda-bilen/' },
+              { label: 'Naturvårdsverket – regelverk för Ladda bilen', href: 'https://www.naturvardsverket.se/amnesomraden/klimatomstallningen/ladda-bilen/regelverk-for-ladda-bilen/' },
+            ]}
+          />
         </div>
       </section>
 

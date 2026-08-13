@@ -29,11 +29,24 @@ const priorityRoutes = [
     path: '/vad-kostar-laddbox',
     h1: /Vad kostar en laddbox/i,
     links: ['/kontakt', '/ladda-bilen-bidrag', '/privat', '/foretag'],
+    ogType: 'article',
   },
   {
     path: '/ladda-bilen-bidrag',
     h1: /Ladda bilen-bidraget 2026/i,
     links: ['/kontakt', '/fastighetsbolag'],
+    ogType: 'article',
+  },
+  {
+    path: '/basta-laddboxen',
+    h1: /Bästa laddboxen 2026/i,
+    links: ['/kontakt', '/produkter', '/privat', '/foretag'],
+    ogType: 'article',
+  },
+  {
+    path: '/kunskap',
+    h1: /Guider som gör valet av.*laddbox.*enklare/i,
+    links: ['/vad-kostar-laddbox', '/ladda-bilen-bidrag', '/basta-laddboxen', '/kontakt'],
   },
   {
     path: '/produkter',
@@ -52,6 +65,7 @@ const sitemapPaths = [
   '/hela-sverige',
   '/integritetspolicy',
   '/kontakt',
+  '/kunskap',
   '/ladda-bilen-bidrag',
   '/laddbox-orebro',
   '/monta',
@@ -106,7 +120,7 @@ try {
     assert.ok(row.title, `${route.path} needs a title`);
     assert.ok(row.description, `${route.path} needs a description`);
     assert.equal(row.canonical, `${canonicalBase}${route.path}`, `${route.path} canonical mismatch`);
-    assert.equal(row.ogType, 'website', `${route.path} needs og:type=website`);
+    assert.equal(row.ogType, route.ogType ?? 'website', `${route.path} has the wrong og:type`);
     assert.equal(row.h1.length, 1, `${route.path} must have exactly one H1`);
     assert.match(row.h1[0], route.h1, `${route.path} H1 does not match its search intent`);
     for (const expectedLink of route.links) {
@@ -138,10 +152,12 @@ try {
   assert.deepEqual(actualSitemapPaths, sitemapPaths, 'sitemap routes must match real public pages');
   assert.ok(!sitemapXml.includes('/api/'), 'sitemap must not include API routes');
   for (const [path, lastModified] of [
-    ['/', '2026-07-23'],
-    ['/ladda-bilen-bidrag', '2026-07-23'],
+    ['/', '2026-08-13'],
+    ['/kunskap', '2026-08-13'],
+    ['/ladda-bilen-bidrag', '2026-08-13'],
     ['/samfallighet', '2026-07-23'],
-    ['/basta-laddboxen', '2026-07-23'],
+    ['/basta-laddboxen', '2026-08-13'],
+    ['/vad-kostar-laddbox', '2026-08-13'],
     ['/produkter', '2026-08-09'],
     ['/privat', '2026-08-09'],
     ['/publik', '2026-08-09'],
@@ -339,7 +355,6 @@ try {
     activeVisible: true,
   });
   console.log('PASS mobile menu: focus trap/Escape plus safe 768→1024 breakpoint close');
-
   await page.setViewportSize({ width: 1440, height: 900 });
   await goto('/');
   await page.evaluate(() => document.fonts.ready);
@@ -379,7 +394,16 @@ try {
 
   const montaCta = page.getByRole('link', { name: 'Läs mer om Monta Hub' });
   await montaCta.scrollIntoViewIfNeeded();
-  await montaCta.focus();
+  await page.evaluate(() => (document.activeElement instanceof HTMLElement ? document.activeElement.blur() : undefined));
+  for (let index = 0; index < 50; index += 1) {
+    await page.keyboard.press('Tab');
+    if ((await page.evaluate(() => document.activeElement?.textContent?.trim())) === 'Läs mer om Monta Hub') break;
+  }
+  assert.equal(
+    await page.evaluate(() => document.activeElement?.textContent?.trim()),
+    'Läs mer om Monta Hub',
+    'keyboard navigation must reach the Monta CTA',
+  );
   assert.equal(await montaCta.evaluate((element) => getComputedStyle(element).outlineColor), 'rgb(255, 255, 255)');
   console.log('PASS hero/focus: exact CTA routes, primary/secondary hierarchy, first viewport, and white Monta outline');
 

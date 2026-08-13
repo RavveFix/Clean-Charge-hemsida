@@ -88,6 +88,7 @@ const Footer: React.FC = () => {
             <h4 className="text-[12px] font-black uppercase tracking-[0.3em] mb-10 text-cc-green">Support</h4>
             <ul className="space-y-5">
               {[
+                { label: 'Kunskapsbank', href: '/kunskap' },
                 { label: 'Support & Manualer', href: '/support' },
                 { label: 'Installation', href: '/support#installation' },
                 { label: 'Monta Hjälpcenter', href: 'https://monta.com/se/help-center/' },

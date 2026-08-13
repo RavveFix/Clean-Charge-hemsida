@@ -53,10 +53,11 @@ const SolutionsSection: React.FC = () => {
   const solutions = [
     {
       id: 'private',
-      title: 'För Elektriker & Grossister',
-      desc: 'Vi erbjuder anpassade laddlösningar och support för er som installerar hos privatpersoner. Nyttja Grön Teknik-avdraget direkt och säkerställ en premiumupplevelse för kund.',
+      title: 'För Villa & Radhus',
+      desc: 'Ladda tryggt hemma med en smart laddbox, dynamisk lastbalansering och 50 % Grön Teknik-avdrag direkt på fakturan.',
       icon: <Home className="w-5 h-5 text-brand-green-interactive" />,
       image: '/images/solutions/installer.png',
+      alt: 'Installation av laddbox hemma vid villa eller radhus',
       href: '/privat',
     },
     {
@@ -65,7 +66,8 @@ const SolutionsSection: React.FC = () => {
       desc: 'Skapa mervärde för medlemmarna. Vi levererar skalbara system med automatisk debitering via Monta.',
       icon: <Building className="w-5 h-5 text-brand-green-interactive" />,
       image: '/images/solutions/brf.png',
-      href: '/publik',
+      alt: 'Laddboxar för bostadsrättsförening och flerbostadshus',
+      href: '/fastighetsbolag',
     },
     {
       id: 'commercial',
@@ -73,6 +75,7 @@ const SolutionsSection: React.FC = () => {
       desc: 'Framtidssäkra arbetsplatsen. Smarta laddlösningar för anställda och besökare med full administrativ kontroll.',
       icon: <Building2 className="w-5 h-5 text-brand-green-interactive" />,
       image: '/images/solutions/commercial.png',
+      alt: 'Laddstationer för företag och arbetsplatser',
       href: '/foretag',
     }
   ];
@@ -99,7 +102,7 @@ const SolutionsSection: React.FC = () => {
               <div className="relative h-[200px] sm:h-[240px] overflow-hidden">
                 <Image
                   src={solution.image}
-                  alt={solution.title}
+                  alt={solution.alt}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="solution-image !top-[-15%] !h-[130%] object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"

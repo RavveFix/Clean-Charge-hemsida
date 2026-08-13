@@ -7,6 +7,11 @@ import { openGraphBase, openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import ArticleMeta from '@/components/ArticleMeta';
+import EditorialSources from '@/components/EditorialSources';
+
+const PUBLISHED_DATE = '2026-07-03';
+const MODIFIED_DATE = '2026-08-13';
 
 export const metadata: Metadata = {
   title: 'Bästa Laddboxen 2026 – Jämförelse',
@@ -25,8 +30,14 @@ export const metadata: Metadata = {
     title: 'Bästa laddboxen 2026 – jämförelse från installatör',
     description: 'Zaptec Go, Zaptec Pro, Easee eller Autel? Vi installerar alla – här är vår ärliga rekommendation per behov.',
     url: 'https://www.cleancharge.se/basta-laddboxen',
-    images: openGraphImages('Bästa laddboxen 2026 — Zaptec, Easee och Autel jämförda'),
-    type: 'website',
+    images: openGraphImages(
+      'Bästa laddboxen 2026 — Zaptec, Easee och Autel jämförda',
+      '/basta-laddboxen/opengraph-image',
+    ),
+    type: 'article',
+    publishedTime: PUBLISHED_DATE,
+    modifiedTime: MODIFIED_DATE,
+    authors: ['Clean Charge AB'],
   },
   alternates: { canonical: 'https://www.cleancharge.se/basta-laddboxen' },
 };
@@ -40,8 +51,8 @@ const article = articleJsonLd({
   path: '/basta-laddboxen',
   description:
     'Vilken är bästa laddboxen 2026? Vi jämför Zaptec Go, Zaptec Pro och Easee utifrån behov – villa, BRF eller företag. Ärlig guide från auktoriserad installatör.',
-  datePublished: '2026-07-03',
-  dateModified: '2026-07-05',
+  datePublished: PUBLISHED_DATE,
+  dateModified: MODIFIED_DATE,
 });
 
 const faqEntries = [
@@ -145,9 +156,10 @@ export default function BastaLaddboxenPage() {
               <span className="text-[#00b182]">laddboxen</span>{' '}
               2026 – vi jämför det vi själva installerar.
             </h1>
-            <p className="text-xl text-slate-600 font-medium leading-relaxed mb-12 max-w-2xl">
+            <p className="text-xl text-slate-600 font-medium leading-relaxed mb-7 max-w-2xl">
               Vi säljer inte allt – vi har handplockat Zaptec, Easee och Autel för att de håller. Här är vår ärliga rekommendation för vilken laddbox som passar villa, förening och företag 2026.
             </p>
+            <ArticleMeta published={PUBLISHED_DATE} modified={MODIFIED_DATE} />
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/produkter"
@@ -231,6 +243,18 @@ export default function BastaLaddboxenPage() {
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <EditorialSources
+            sources={[
+              { label: 'Zaptec Go – produktegenskaper och effekt', href: 'https://www.zaptec.com/sv/laddningslosningar/hemmaladdning/zaptec-go' },
+              { label: 'Zaptec – dynamisk fas- och lastbalansering', href: 'https://help.zaptec.com/using-products/about-zaptec-s-dynamic-phase-and-load-balancing' },
+              { label: 'Elsäkerhetsverket – installera laddningspunkt', href: 'https://www.elsakerhetsverket.se/privatpersoner/din-elanlaggning/bygga-och-renovera/installation-av-elbilsladdare/installera-din-laddningspunkt/' },
+            ]}
+          />
         </div>
       </section>
 

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Building2, Building, Wrench, ArrowRight } from 'lucide-react';
+import { Building2, Building, Home, ArrowRight } from 'lucide-react';
 
 const SEGMENTS = [
   {
@@ -18,10 +18,10 @@ const SEGMENTS = [
     icon: Building,
   },
   {
-    label: 'För Elektriker',
-    desc: 'Vi levererar hårdvara, support och Grön Teknik-avdrag till installatörer.',
+    label: 'För Villa & Radhus',
+    desc: 'Laddbox hemma med installation, lastbalansering och 50 % Grön Teknik-avdrag.',
     href: '/privat',
-    icon: Wrench,
+    icon: Home,
   },
 ];
 
