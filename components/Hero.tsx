@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { Zap } from 'lucide-react';
@@ -24,12 +24,19 @@ const Hero: React.FC = () => {
   const containerRef = useRef<HTMLElement>(null);
   const prefersReducedMotion = useReducedMotion();
   const [showEnhancedVisual, setShowEnhancedVisual] = useState(false);
+  const [isEnhancedVisualReady, setIsEnhancedVisualReady] = useState(false);
+
+  const handleEnhancedVisualLoad = useCallback(() => setIsEnhancedVisualReady(true), []);
+  const handleEnhancedVisualError = useCallback(() => setIsEnhancedVisualReady(false), []);
 
   useEffect(() => {
     const media = window.matchMedia(
       '(min-width: 1024px) and (prefers-reduced-motion: no-preference)',
     );
-    const updateVisual = () => setShowEnhancedVisual(media.matches);
+    const updateVisual = () => {
+      setShowEnhancedVisual(media.matches);
+      setIsEnhancedVisualReady(false);
+    };
     updateVisual();
     media.addEventListener('change', updateVisual);
     return () => media.removeEventListener('change', updateVisual);
@@ -137,13 +144,22 @@ const Hero: React.FC = () => {
                     loading="eager"
                     fetchPriority="high"
                     sizes="(max-width: 1023px) 80vw, 45vw"
-                    className="object-contain p-8 sm:p-12"
+                    className={`object-contain p-8 sm:p-12 transition-opacity duration-700 ease-out ${
+                      isEnhancedVisualReady ? 'opacity-0' : 'opacity-100'
+                    }`}
                   />
                   {showEnhancedVisual && (
-                    <div className="absolute inset-0 bg-white">
+                    <div
+                      data-enhanced-visual={isEnhancedVisualReady ? 'ready' : 'loading'}
+                      className={`absolute inset-0 bg-white transition-opacity duration-700 ease-out ${
+                        isEnhancedVisualReady ? 'opacity-100' : 'pointer-events-none opacity-0'
+                      }`}
+                    >
                       <SplineScene
                         scene="https://prod.spline.design/NYnTe3YctwcC8ihb/scene.splinecode"
                         className="w-full h-full"
+                        onLoad={handleEnhancedVisualLoad}
+                        onError={handleEnhancedVisualError}
                       />
                     </div>
                   )}

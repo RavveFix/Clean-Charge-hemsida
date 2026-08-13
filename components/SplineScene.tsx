@@ -7,6 +7,10 @@ interface SplineSceneProps {
     scene: string;
     /** CSS class to apply to the Spline canvas */
     className?: string;
+    /** Called once the scene is fully loaded and ready to display */
+    onLoad?: () => void;
+    /** Called if the scene cannot be loaded */
+    onError?: () => void;
 }
 
 /**
@@ -14,7 +18,7 @@ interface SplineSceneProps {
  * This utilizes the Vanilla JS `@splinetool/runtime` to render directly onto a canvas.
  * It bypasses Next.js 15 SSR conflicts and avoids the 403 Forbidden iframe endpoint issues.
  */
-export function SplineScene({ scene, className }: SplineSceneProps) {
+export function SplineScene({ scene, className, onLoad, onError }: SplineSceneProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
@@ -26,6 +30,7 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
         if (!scene || scene.trim() === '') {
             setHasError(true);
             setIsLoading(false);
+            onError?.();
             return;
         }
 
@@ -36,19 +41,23 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
                     app = new Application(canvasRef.current);
                     app.load(scene).then(() => {
                         setIsLoading(false);
+                        onLoad?.();
                     }).catch((err: any) => {
                         // Suppress the noisy buffer error from the console
                         setHasError(true);
                         setIsLoading(false);
+                        onError?.();
                     });
                 } catch (e) {
                     setHasError(true);
                     setIsLoading(false);
+                    onError?.();
                 }
             }
         }).catch(() => {
             setHasError(true);
             setIsLoading(false);
+            onError?.();
         });
 
         // Cleanup the Spline app when component unmounts
@@ -57,7 +66,7 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
                 app.dispose(); // Spline API to cleanup canvas memory
             }
         };
-    }, [scene]);
+    }, [scene, onLoad, onError]);
 
     // If the Spline URL is invalid or returns 403, show a graceful fallback instead of crashing
     if (hasError) {
