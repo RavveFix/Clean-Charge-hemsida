@@ -158,8 +158,15 @@ export default function FastighetsbolagPage() {
               <span className="text-[#00b182]">fastighetsbolag</span>{' '}
               & BRF – smart från start.
             </h1>
-            <p className="text-xl text-slate-600 font-medium leading-relaxed mb-12 max-w-2xl">
+            <p className="text-xl text-slate-600 font-medium leading-relaxed mb-6 max-w-2xl">
               Vi projekterar, installerar och driftar laddinfrastruktur i er fastighet. Med individuell debitering och smart lastbalansering är lösnigen rättvis och effektiv för alla boende.
+            </p>
+            <p className="text-base text-slate-500 font-medium mb-12 max-w-2xl">
+              Styrelsen vill först förstå lastbalansering och debitering? Läs guiden{' '}
+              <Link href="/laddbox-brf" className="text-[#00b182] font-bold hover:underline">
+                Laddbox till BRF
+              </Link>
+              .
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
