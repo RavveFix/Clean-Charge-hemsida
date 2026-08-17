@@ -1,3 +1,5 @@
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 import { ImageResponse } from 'next/og';
 
 export const ogSize = { width: 1200, height: 630 };
@@ -8,7 +10,12 @@ type OgImageProps = {
   subtitle: string;
 };
 
-export function createOgImage({ title, subtitle }: OgImageProps) {
+export async function createOgImage({ title, subtitle }: OgImageProps) {
+  const logo = await readFile(
+    join(process.cwd(), 'public/images/brand/cc-logo.png'),
+  );
+  const logoSrc = `data:image/png;base64,${logo.toString('base64')}`;
+
   return new ImageResponse(
     (
       <div
@@ -29,14 +36,17 @@ export function createOgImage({ title, subtitle }: OgImageProps) {
           style={{
             display: 'flex',
             alignItems: 'center',
-            fontSize: 36,
-            fontWeight: 900,
-            letterSpacing: '-0.02em',
-            textTransform: 'uppercase',
+            background: '#ffffff',
+            borderRadius: 999,
+            padding: '16px 28px',
           }}
         >
-          <span style={{ display: 'flex' }}>Clean Charge</span>
-          <span style={{ color: '#00b182', display: 'flex' }}>.</span>
+          <img
+            src={logoSrc}
+            alt="Clean Charge"
+            width={330}
+            height={60}
+          />
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
