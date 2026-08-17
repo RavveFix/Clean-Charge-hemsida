@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
-import { CheckCircle2, Phone, ArrowRight, Building2, Users, TrendingUp, Settings } from 'lucide-react';
+import { CheckCircle2, Phone, ArrowRight, Building2, Users, TrendingUp, Settings, MapPin } from 'lucide-react';
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/jsonld';
 import { openGraphBase, openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
@@ -108,6 +108,25 @@ const included = [
   'Rapportering till fastighetsägare',
 ];
 
+
+const cities = [
+  {
+    name: 'Stockholm',
+    href: '/fastighetsbolag/stockholm',
+    desc: 'Innerstadsgarage, tätt BRF-bestånd och lastbalansering där elen redan är trång.',
+  },
+  {
+    name: 'Göteborg',
+    href: '/fastighetsbolag/goteborg',
+    desc: 'Hamn och blandad bebyggelse – samma modell för BRF och hyresfastighet.',
+  },
+  {
+    name: 'Malmö',
+    href: '/fastighetsbolag/malmo',
+    desc: 'Nyare föreningsgarage i Malmö, Lund och Öresundsregionen.',
+  },
+];
+
 export default function FastighetsbolagPage() {
   return (
     <ClientLayout>
@@ -180,6 +199,34 @@ export default function FastighetsbolagPage() {
                 <h3 className="text-lg font-black text-slate-900 mb-3">{b.title}</h3>
                 <p className="text-slate-500 text-sm leading-relaxed">{b.desc}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* Cities */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-black text-slate-900 tracking-tighter mb-4">
+            Laddbox för BRF i tre storstäder
+          </h2>
+          <p className="text-slate-500 text-lg mb-16 max-w-xl">
+            Samma kedja – Zaptec, Monta-debitering och lastbalansering – beskriven mot stadens fastighetsbestånd.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {cities.map((city) => (
+              <Link
+                key={city.href}
+                href={city.href}
+                className="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:border-[#00b182]/30 hover:bg-emerald-50/30 transition-all duration-300"
+              >
+                <div className="w-12 h-12 bg-white border border-slate-200 rounded-2xl flex items-center justify-center text-[#00b182] mb-6 shadow-sm">
+                  <MapPin className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-black text-slate-900 mb-3">{city.name}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">{city.desc}</p>
+              </Link>
             ))}
           </div>
         </div>
