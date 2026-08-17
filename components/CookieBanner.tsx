@@ -50,33 +50,38 @@ export default function CookieBanner() {
 
   if (mode === 'hidden') return null;
 
+  const isCustomize = mode === 'customize';
+
   return (
     <div
       role="dialog"
       aria-labelledby="cookie-banner-title"
       aria-describedby="cookie-banner-description"
-      className="fixed inset-x-0 bottom-0 z-[200] p-3 sm:p-4 md:p-6 pointer-events-none"
+      className={
+        isCustomize
+          ? 'fixed z-[200] p-3 sm:p-4 inset-x-0 bottom-0 sm:inset-x-auto sm:left-auto sm:right-4 sm:bottom-4 sm:max-w-md pointer-events-none'
+          : 'fixed z-[200] p-3 inset-x-3 bottom-3 sm:inset-x-auto sm:left-auto sm:right-4 sm:bottom-4 sm:max-w-md pointer-events-none'
+      }
     >
-      <div className="mx-auto max-w-3xl rounded-[1.5rem] sm:rounded-[2rem] bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.25)] border border-slate-200 pointer-events-auto overflow-hidden">
+      <div className="rounded-2xl bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.25)] border border-slate-200 pointer-events-auto overflow-hidden">
         {mode === 'banner' && (
-          <div className="p-5 sm:p-6 md:p-8">
-            <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-5">
-              <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-700">
-                <Cookie className="w-5 h-5 sm:w-6 sm:h-6" />
+          <div className="p-3 sm:p-4">
+            <div className="flex items-start gap-3 mb-3">
+              <div className="shrink-0 w-9 h-9 rounded-xl bg-slate-50 flex items-center justify-center text-slate-700">
+                <Cookie className="w-4 h-4" />
               </div>
               <div className="min-w-0">
                 <h2
                   id="cookie-banner-title"
-                  className="text-base sm:text-lg font-black text-slate-900 tracking-tight mb-1"
+                  className="text-sm font-black text-slate-900 tracking-tight mb-0.5"
                 >
                   Vi använder cookies
                 </h2>
                 <p
                   id="cookie-banner-description"
-                  className="text-sm text-slate-600 leading-relaxed"
+                  className="text-xs text-slate-600 leading-relaxed"
                 >
-                  Vi använder nödvändiga cookies för att sajten ska fungera, och valfria
-                  cookies för analys och inställningar. Du väljer själv vad du godkänner.{' '}
+                  Nödvändiga cookies för sajten, valfria för analys.{' '}
                   <Link
                     href="/cookies"
                     className="underline font-bold text-slate-900 hover:text-brand-green"
@@ -88,38 +93,44 @@ export default function CookieBanner() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
+            <div className="grid grid-cols-3 gap-2">
               <button
                 onClick={rejectAll}
-                className="order-3 sm:order-1 inline-flex items-center justify-center min-h-[44px] px-5 py-3 rounded-full text-sm font-bold text-slate-700 bg-slate-50 hover:bg-slate-100 transition-colors border border-slate-100"
+                className="inline-flex items-center justify-center min-h-[44px] px-2 py-2 rounded-full text-xs font-bold text-slate-700 bg-slate-50 hover:bg-slate-100 transition-colors border border-slate-100"
               >
-                Avvisa alla
+                Avvisa
               </button>
               <button
                 onClick={() => setMode('customize')}
-                className="order-2 inline-flex items-center justify-center gap-2 min-h-[44px] px-5 py-3 rounded-full text-sm font-bold text-slate-700 bg-white hover:bg-slate-50 transition-colors border border-slate-200"
+                className="inline-flex items-center justify-center gap-1 min-h-[44px] px-2 py-2 rounded-full text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 transition-colors border border-slate-200"
               >
-                <Settings className="w-4 h-4" />
+                <Settings className="w-3.5 h-3.5" />
                 Anpassa
               </button>
               <button
                 onClick={acceptAll}
-                className="order-1 sm:order-3 inline-flex items-center justify-center min-h-[44px] px-5 py-3 rounded-full text-sm font-black text-white bg-cc-green hover:bg-cc-green/90 transition-colors shadow-lg shadow-cc-green/20"
+                className="inline-flex items-center justify-center min-h-[44px] px-2 py-2 rounded-full text-xs font-black text-white bg-cc-green hover:bg-cc-green/90 transition-colors shadow-lg shadow-cc-green/20"
               >
-                Acceptera alla
+                Acceptera
               </button>
             </div>
           </div>
         )}
 
         {mode === 'customize' && (
-          <div className="p-5 sm:p-6 md:p-8">
-            <div className="flex items-start justify-between gap-4 mb-5 sm:mb-6">
+          <div className="p-5 sm:p-6">
+            <div className="flex items-start justify-between gap-4 mb-5">
               <div>
-                <h2 className="text-base sm:text-lg font-black text-slate-900 tracking-tight mb-1">
+                <h2
+                  id="cookie-banner-title"
+                  className="text-base font-black text-slate-900 tracking-tight mb-1"
+                >
                   Anpassa cookies
                 </h2>
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <p
+                  id="cookie-banner-description"
+                  className="text-sm text-slate-600 leading-relaxed"
+                >
                   Välj vilka cookies du vill tillåta.
                 </p>
               </div>
@@ -132,7 +143,7 @@ export default function CookieBanner() {
               </button>
             </div>
 
-            <div className="space-y-3 mb-5 sm:mb-6">
+            <div className="space-y-3 mb-5">
               <CategoryRow
                 icon={<ShieldCheck className="w-5 h-5" />}
                 title="Nödvändiga"
