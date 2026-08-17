@@ -44,9 +44,15 @@ const priorityRoutes = [
     ogType: 'article',
   },
   {
+    path: '/laddbox-brf',
+    h1: /Laddbox till BRF/i,
+    links: ['/kontakt', '/fastighetsbolag', '/ladda-bilen-bidrag', '/kunskap'],
+    ogType: 'article',
+  },
+  {
     path: '/kunskap',
     h1: /Guider som gör valet av.*laddbox.*enklare/i,
-    links: ['/vad-kostar-laddbox', '/ladda-bilen-bidrag', '/basta-laddboxen', '/kontakt'],
+    links: ['/vad-kostar-laddbox', '/ladda-bilen-bidrag', '/basta-laddboxen', '/laddbox-brf', '/kontakt'],
   },
   {
     path: '/produkter',
@@ -70,6 +76,7 @@ const sitemapPaths = [
   '/kontakt',
   '/kunskap',
   '/ladda-bilen-bidrag',
+  '/laddbox-brf',
   '/laddbox-orebro',
   '/monta',
   '/om-oss',
@@ -156,8 +163,9 @@ try {
   assert.ok(!sitemapXml.includes('/api/'), 'sitemap must not include API routes');
   for (const [path, lastModified] of [
     ['/', '2026-08-13'],
-    ['/kunskap', '2026-08-13'],
+    ['/kunskap', '2026-08-17'],
     ['/ladda-bilen-bidrag', '2026-08-13'],
+    ['/laddbox-brf', '2026-08-17'],
     ['/samfallighet', '2026-07-23'],
     ['/basta-laddboxen', '2026-08-13'],
     ['/vad-kostar-laddbox', '2026-08-13'],

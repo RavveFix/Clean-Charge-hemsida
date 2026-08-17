@@ -26,6 +26,13 @@ export const metadata: Metadata = {
 
 const guides = [
   {
+    href: '/laddbox-brf',
+    title: 'Laddbox till BRF',
+    description: 'Lastbalansering, individuell debitering och underlag till styrelsen.',
+    label: 'BRF-guide',
+    icon: Building2,
+  },
+  {
     href: '/vad-kostar-laddbox',
     title: 'Vad kostar en laddbox 2026?',
     description: 'Riktpriser för villa, BRF, samfällighet, företag och DC-snabbladdning.',
