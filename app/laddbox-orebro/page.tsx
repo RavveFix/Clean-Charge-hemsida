@@ -26,7 +26,10 @@ export const metadata: Metadata = {
     title: 'Laddbox Örebro – Clean Charge AB',
     description: 'Lokala laddexperter med kontor i Örebro. Installation av laddbox med 50 % Grön Teknik-avdrag.',
     url: 'https://www.cleancharge.se/laddbox-orebro',
-    images: openGraphImages('Laddbox Örebro — installation av lokala laddexperter'),
+    images: openGraphImages(
+      'Laddbox Örebro — installation av lokala laddexperter',
+      '/laddbox-orebro/opengraph-image',
+    ),
     type: 'website',
   },
   alternates: { canonical: 'https://www.cleancharge.se/laddbox-orebro' },
