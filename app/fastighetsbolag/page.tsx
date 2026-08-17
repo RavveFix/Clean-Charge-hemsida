@@ -27,7 +27,10 @@ export const metadata: Metadata = {
     title: 'Laddbox Fastighetsbolag & BRF – Clean Charge AB',
     description: 'Komplett laddlösning för fastigheter. Från projektering till drift och debiteringshantering.',
     url: 'https://www.cleancharge.se/fastighetsbolag',
-    images: openGraphImages('Laddbox för fastighetsbolag och BRF — projektering, installation och debitering'),
+    images: openGraphImages(
+      'Laddbox för fastighetsbolag och BRF — projektering, installation och debitering',
+      '/fastighetsbolag/opengraph-image',
+    ),
     type: 'website',
   },
   alternates: { canonical: 'https://www.cleancharge.se/fastighetsbolag' },
@@ -159,7 +162,7 @@ export default function FastighetsbolagPage() {
               & BRF – smart från start.
             </h1>
             <p className="text-xl text-slate-600 font-medium leading-relaxed mb-6 max-w-2xl">
-              Vi projekterar, installerar och driftar laddinfrastruktur i er fastighet. Med individuell debitering och smart lastbalansering är lösnigen rättvis och effektiv för alla boende.
+              Vi projekterar, installerar och driftar laddinfrastruktur i er fastighet. Med individuell debitering och smart lastbalansering är lösningen rättvis och effektiv för alla boende.
             </p>
             <p className="text-base text-slate-500 font-medium mb-12 max-w-2xl">
               Styrelsen vill först förstå lastbalansering och debitering? Läs guiden{' '}
