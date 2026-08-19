@@ -89,6 +89,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-5">
               {[
                 { label: 'Kunskapsbank', href: '/kunskap' },
+                { label: 'Laddbox till BRF', href: '/laddbox-brf' },
                 { label: 'Support & Manualer', href: '/support' },
                 { label: 'Installation', href: '/support#installation' },
                 { label: 'Monta Hjälpcenter', href: 'https://monta.com/se/help-center/' },

@@ -57,7 +57,7 @@ const faqEntries = [
   {
     question: 'Vad kostar en laddbox med installation för villa?',
     answer:
-      'En komplett villainstallation landar typiskt på 15 000–25 000 kr före avdrag, beroende på laddbox och elförutsättningar. Med Grön Teknik-avdraget på 50 % betalar du ungefär 8 000–13 000 kr. Hos oss börjar Easee Charge Lite på 6 995 kr och Zaptec Go på 7 862 kr – priser inklusive rot-avdrag på hårdvaran.',
+      'En komplett villainstallation landar typiskt på 15 000–25 000 kr före avdrag, beroende på laddbox och elförutsättningar. Med Grön Teknik-avdraget på 50 % betalar du ungefär 8 000–13 000 kr. Hos oss börjar Easee Charge Lite på 6 995 kr och Zaptec Go på 7 862 kr – priser efter preliminär skattereduktion för grön teknik, när villkoren är uppfyllda.',
   },
   {
     question: 'Varför anges priser som spann och inte fasta belopp?',

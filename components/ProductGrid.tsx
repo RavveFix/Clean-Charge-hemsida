@@ -76,7 +76,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <div className="space-y-1">
               {product.price > 0 ? (
                 <>
-                  <p className="text-[12px] font-black text-slate-400 uppercase tracking-[0.2em] opacity-80">Pris inkl. rot</p>
+                  <p className="text-[12px] font-black text-slate-400 uppercase tracking-[0.2em] opacity-80">Pris efter Grön Teknik</p>
                   <p className="text-2xl font-black text-slate-900 tracking-tighter">{product.price.toLocaleString()} kr</p>
                 </>
               ) : (

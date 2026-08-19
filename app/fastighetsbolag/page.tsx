@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import ClientLayout from '@/app/ClientLayout';
 import Link from 'next/link';
-import { CheckCircle2, Phone, ArrowRight, Building2, Users, TrendingUp, Settings } from 'lucide-react';
+import { CheckCircle2, Phone, ArrowRight, Building2, Users, TrendingUp, Settings, MapPin } from 'lucide-react';
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/jsonld';
 import { openGraphBase, openGraphImages } from '@/lib/seo';
 import RelatedSolutions from '@/components/RelatedSolutions';
@@ -180,6 +180,38 @@ export default function FastighetsbolagPage() {
                 <h3 className="text-lg font-black text-slate-900 mb-3">{b.title}</h3>
                 <p className="text-slate-500 text-sm leading-relaxed">{b.desc}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-50 border-y border-slate-100 py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-black text-slate-900 tracking-tighter mb-4">
+            Laddbox för BRF i tre storstäder
+          </h2>
+          <p className="text-slate-500 text-lg mb-12 max-w-2xl">
+            Vi projekterar från Örebro och samordnar installation med behöriga elektriker på plats. Välj en lokal guide för era förutsättningar.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { city: 'Stockholm', href: '/fastighetsbolag/stockholm', desc: 'Innerstadsgarage där effekt och lastbalansering ofta sätter ramarna.' },
+              { city: 'Göteborg', href: '/fastighetsbolag/goteborg', desc: 'BRF och hyresfastigheter med flera användargrupper i samma anläggning.' },
+              { city: 'Malmö & Lund', href: '/fastighetsbolag/malmo', desc: 'Nyare garage som behöver en plan för effekt, utbyggnad och debitering.' },
+            ].map((location) => (
+              <Link
+                key={location.href}
+                href={location.href}
+                className="group rounded-3xl bg-white border border-slate-200 p-8 hover:border-[#00b182]/30 hover:shadow-lg transition-all duration-300"
+              >
+                <MapPin className="w-6 h-6 text-[#00b182] mb-6" />
+                <h3 className="text-xl font-black text-slate-900 mb-3">{location.city}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed mb-6">{location.desc}</p>
+                <span className="inline-flex items-center gap-2 text-[#00b182] font-bold text-sm uppercase tracking-wider">
+                  Läs lokal guide
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </Link>
             ))}
           </div>
         </div>

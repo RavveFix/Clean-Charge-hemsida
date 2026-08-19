@@ -46,6 +46,13 @@ const guides = [
     label: 'Jämförelse',
     icon: Trophy,
   },
+  {
+    href: '/laddbox-brf',
+    title: 'Laddbox till BRF',
+    description: 'Underlag för styrelsen: lastbalansering, debitering, bidrag och etappvis utbyggnad.',
+    label: 'BRF-guide',
+    icon: Building2,
+  },
 ];
 
 const audiences = [
@@ -105,7 +112,7 @@ export default function KnowledgePage() {
           <p className="text-lg text-slate-500 mb-14 max-w-2xl">
             Börja med frågan du vill lösa. Varje guide leder vidare till rätt lösning och rådgivning.
           </p>
-          <div className="grid lg:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {guides.map(({ href, title, description, label, icon: Icon }) => (
               <article key={href} className="flex flex-col bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:border-[#00b182]/30 hover:bg-emerald-50/30 transition-colors">
                 <div className="flex items-center justify-between mb-8">
