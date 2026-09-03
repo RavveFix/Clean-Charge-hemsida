@@ -66,7 +66,11 @@ const CookiePolicySection: React.FC = () => {
             <p className="text-slate-600 leading-relaxed mb-4">
               Du kan när som helst ändra eller dra tillbaka ditt samtycke till cookie-deklarationen på vår webbplats. Du kan också blockera cookies i din webbläsares inställningar, men observera att vissa delar av webbplatsen då kanske inte fungerar som tänkt.
             </p>
-            <button className="bg-slate-900 text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-cc-green transition-colors">
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent('cc-open-consent'))}
+              className="bg-slate-900 text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-cc-green transition-colors"
+            >
                 Öppna Cookie-inställningar
             </button>
           </div>

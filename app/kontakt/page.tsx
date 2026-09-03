@@ -10,13 +10,13 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Kontakta Oss – Offert & Rådgivning',
   description:
-    'Kontakta Clean Charge AB för kostnadsfri rådgivning och offert på laddboxar. Ring 019-760 42 90 eller fyll i formuläret så återkommer vi inom 2 timmar.',
+    'Kontakta Clean Charge AB för kostnadsfri rådgivning och offert på laddboxar. Ring 019-760 42 90 eller fyll i formuläret så återkommer vi inom 2 timmar under kontorstid.',
   alternates: { canonical: 'https://www.cleancharge.se/kontakt' },
   openGraph: {
     ...openGraphBase,
     title: 'Kontakta Oss – Offert & Rådgivning | Clean Charge AB',
     description:
-      'Kostnadsfri rådgivning och offert. Svar samma dag under kontorstid. Ring 019-760 42 90.',
+      'Kostnadsfri rådgivning och offert. Svar inom 2 timmar under kontorstid. Ring 019-760 42 90.',
     url: 'https://www.cleancharge.se/kontakt',
     images: openGraphImages('Kontakta Clean Charge AB — kostnadsfri rådgivning och offert'),
   },

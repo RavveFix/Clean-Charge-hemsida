@@ -29,9 +29,11 @@ export default function CookieBanner() {
       }
     };
     window.addEventListener(CONSENT_EVENT, onChange);
-    window.addEventListener('cc-open-consent', () => setMode('customize'));
+    const onOpenConsent = () => setMode('customize');
+    window.addEventListener('cc-open-consent', onOpenConsent);
     return () => {
       window.removeEventListener(CONSENT_EVENT, onChange);
+      window.removeEventListener('cc-open-consent', onOpenConsent);
     };
   }, []);
 

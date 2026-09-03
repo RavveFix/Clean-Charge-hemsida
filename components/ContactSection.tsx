@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import { Mail, Phone, MapPin, Send, User, CheckCircle2, ArrowRight, Clock } from 'lucide-react';
 
 const ContactSection: React.FC = () => {
@@ -66,7 +67,7 @@ const ContactSection: React.FC = () => {
             <div className="lg:col-span-3 min-w-0">
               <div className="bg-white rounded-[1.5rem] sm:rounded-[3rem] p-5 sm:p-8 md:p-12 shadow-xl shadow-slate-200/60 border border-slate-100">
                 {submitted ? (
-                  <div className="flex flex-col items-center justify-center py-20 text-center space-y-6">
+                  <div className="flex flex-col items-center justify-center py-20 text-center space-y-6" role="status" aria-live="polite">
                     <div className="w-20 h-20 bg-cc-green/10 rounded-full flex items-center justify-center">
                       <CheckCircle2 className="w-10 h-10 text-cc-green" />
                     </div>
@@ -104,6 +105,8 @@ const ContactSection: React.FC = () => {
                             name={id}
                             type={type}
                             placeholder={placeholder}
+                            autoComplete={id === 'name' ? 'name' : 'tel'}
+                            required={id === 'name'}
                             onFocus={() => setFocused(id)}
                             onBlur={() => setFocused(null)}
                             className={`w-full bg-slate-50 border rounded-2xl px-5 py-4 font-medium text-slate-800 focus:outline-none transition-all duration-200 ${focused === id ? 'border-cc-green bg-white shadow-md shadow-cc-green/10' : 'border-slate-100'}`}
@@ -119,6 +122,8 @@ const ContactSection: React.FC = () => {
                         name="email"
                         type="email"
                         placeholder="namn@exempel.se"
+                        autoComplete="email"
+                        required
                         onFocus={() => setFocused('email')}
                         onBlur={() => setFocused(null)}
                         className={`w-full bg-slate-50 border rounded-2xl px-5 py-4 font-medium text-slate-800 focus:outline-none transition-all duration-200 ${focused === 'email' ? 'border-cc-green bg-white shadow-md shadow-cc-green/10' : 'border-slate-100'}`}
@@ -149,11 +154,21 @@ const ContactSection: React.FC = () => {
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder="Berätta mer om ditt behov..."
+                        required
                         onFocus={() => setFocused('message')}
                         onBlur={() => setFocused(null)}
                         className={`w-full bg-slate-50 border rounded-2xl px-5 py-4 font-medium text-slate-800 h-36 resize-none focus:outline-none transition-all duration-200 ${focused === 'message' ? 'border-cc-green bg-white shadow-md shadow-cc-green/10' : 'border-slate-100'}`}
                       />
                     </div>
+
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      När du skickar formuläret behandlar vi uppgifterna för att hantera din
+                      förfrågan och återkomma till dig. Läs mer i vår{' '}
+                      <Link href="/integritetspolicy" className="font-bold text-slate-700 underline hover:text-cc-green">
+                        integritetspolicy
+                      </Link>
+                      .
+                    </p>
 
                     {errorMsg && (
                       <div role="alert" className="bg-red-50 border border-red-200 text-red-800 text-sm font-medium rounded-2xl px-5 py-4">
@@ -190,7 +205,7 @@ const ContactSection: React.FC = () => {
                   icon: Mail,
                   title: 'Mejla oss',
                   content: 'info@cleancharge.se',
-                  sub: 'Svar samma dag',
+                  sub: 'Svar inom 2 timmar under kontorstid',
                   action: 'mailto:info@cleancharge.se',
                 },
                 {

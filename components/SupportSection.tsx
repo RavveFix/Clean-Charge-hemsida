@@ -1,20 +1,74 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import Link from 'next/link';
 import { FileText, Wrench, AlertTriangle, Download, ChevronRight, CheckCircle2, Search } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 const SupportSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'manuals' | 'installation' | 'error'>('manuals');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [supportSubmitted, setSupportSubmitted] = useState(false);
+  const [supportSubmitting, setSupportSubmitting] = useState(false);
+  const [supportError, setSupportError] = useState<string | null>(null);
 
   const manuals = [
-    { name: "Zaptec Go - Användarmanual", size: "1.2 MB", type: "PDF" },
-    { name: "Zaptec Go - Installationsmanual", size: "2.4 MB", type: "PDF" },
-    { name: "Zaptec Pro - Produktblad", size: "0.8 MB", type: "PDF" },
-    { name: "Easee Charge Lite - Manual", size: "1.5 MB", type: "PDF" },
-    { name: "Autel DC Fast Charger - Specifikation", size: "3.1 MB", type: "PDF" },
-    { name: "Monta App - Kom igång guide", size: "0.5 MB", type: "PDF" }
+    { name: "Zaptec Go - Dokument och manualer", size: "Zaptec Help Centre", type: "Dokumentation", href: "https://help.zaptec.com/documentation/zaptec-go-documents-and-manuals" },
+    { name: "Zaptec Pro - Installation och hjälp", size: "Zaptec Help Centre", type: "Dokumentation", href: "https://help.zaptec.com/installation" },
+    { name: "Easee Charge Lite - Manualer", size: "Easee Hjälp", type: "Dokumentation", href: "https://support.easee.com/hc/sv/sections/30351315496337-Charge-Lite-guider-och-annan-dokumentation" },
+    { name: "Autel MaxiCharger - Manualer", size: "Autel Help Center", type: "Dokumentation", href: "https://store.autelenergy.com/pages/help-center" },
+    { name: "Monta App - Hjälpcenter", size: "Monta Help Center", type: "Hjälpcenter", href: "https://monta.com/se/help-center/" }
   ];
+
+  const filteredManuals = useMemo(() => {
+    const normalizedSearch = searchTerm.trim().toLocaleLowerCase('sv-SE');
+    if (!normalizedSearch) return manuals;
+    return manuals.filter((manual) =>
+      `${manual.name} ${manual.size} ${manual.type}`.toLocaleLowerCase('sv-SE').includes(normalizedSearch),
+    );
+  }, [manuals, searchTerm]);
+
+  useEffect(() => {
+    if (window.location.hash === '#installation') setActiveTab('installation');
+  }, []);
+
+  const handleSupportSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (supportSubmitting) return;
+    setSupportError(null);
+    setSupportSubmitting(true);
+
+    try {
+      const formData = new FormData(event.currentTarget);
+      const serialNumber = String(formData.get('serialNumber') ?? '').trim();
+      const phone = String(formData.get('phone') ?? '').trim();
+      const email = String(formData.get('email') ?? '').trim();
+      const description = String(formData.get('description') ?? '').trim();
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: `Supportärende${serialNumber ? ` – ${serialNumber}` : ''}`,
+          email,
+          phone,
+          subject: 'Service & Support',
+          message: `${serialNumber ? `Serienummer: ${serialNumber}\n\n` : ''}${description}`,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data?.error || 'Något gick fel. Försök igen eller ring oss direkt.');
+      }
+
+      setSupportSubmitted(true);
+      event.currentTarget.reset();
+    } catch (error) {
+      setSupportError(error instanceof Error ? error.message : 'Något gick fel.');
+    } finally {
+      setSupportSubmitting(false);
+    }
+  };
 
   return (
     <div className="bg-white font-monta min-h-screen animate-in fade-in duration-500">
@@ -27,9 +81,12 @@ const SupportSection: React.FC = () => {
           <h1 className="text-3xl sm:text-5xl md:text-7xl font-black mb-6 sm:mb-8 tracking-tighter">Hur kan vi <br/><span className="text-[#003DFF]">hjälpa dig?</span></h1>
           
           <div className="max-w-xl mx-auto relative">
-            <input 
+            <input
               type="text" 
-              placeholder="Sök manualer eller felkoder..." 
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+              aria-label="Sök manualer och dokument"
+              placeholder="Sök bland manualer och dokument..."
               className="w-full py-5 px-8 rounded-full bg-white/10 border border-white/10 backdrop-blur-md text-white placeholder-slate-400 focus:outline-none focus:bg-white/20 focus:border-cc-green transition-all"
             />
             <Search className="absolute right-6 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
@@ -70,8 +127,14 @@ const SupportSection: React.FC = () => {
           {/* MANUALS TAB */}
           {activeTab === 'manuals' && (
             <div className="grid md:grid-cols-2 gap-6 animate-in slide-in-from-bottom-4 duration-500">
-              {manuals.map((manual, i) => (
-                <div key={i} className="bg-white p-6 rounded-3xl border border-slate-100 hover:border-cc-green/30 hover:shadow-lg transition-all group flex items-center justify-between cursor-pointer">
+              {filteredManuals.map((manual) => (
+                <a
+                  key={manual.href}
+                  href={manual.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white p-6 rounded-3xl border border-slate-100 hover:border-cc-green/30 hover:shadow-lg transition-all group flex items-center justify-between"
+                >
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center group-hover:bg-cc-green group-hover:text-white transition-colors text-slate-400">
                       <FileText className="w-6 h-6" />
@@ -81,15 +144,24 @@ const SupportSection: React.FC = () => {
                       <p className="text-xs text-slate-400 font-medium uppercase tracking-wider">{manual.type} • {manual.size}</p>
                     </div>
                   </div>
-                  <Download className="w-5 h-5 text-slate-300 group-hover:text-cc-green transition-colors" />
-                </div>
+                  <Download className="w-5 h-5 text-slate-300 group-hover:text-cc-green transition-colors" aria-hidden="true" />
+                </a>
               ))}
+              {filteredManuals.length === 0 && (
+                <p className="md:col-span-2 text-center text-slate-500 py-8">
+                  Ingen dokumentation matchar din sökning.{' '}
+                  <Link href="/kontakt?subject=Service%20%26%20Support" className="font-bold text-cc-green underline">
+                    Kontakta supporten
+                  </Link>
+                  .
+                </p>
+              )}
             </div>
           )}
 
           {/* INSTALLATION TAB */}
           {activeTab === 'installation' && (
-            <div className="space-y-12 animate-in slide-in-from-bottom-4 duration-500">
+            <div id="installation" className="space-y-12 animate-in slide-in-from-bottom-4 duration-500">
               <div className="bg-white p-6 sm:p-10 rounded-[1.5rem] sm:rounded-[3rem] border border-slate-100 shadow-sm text-center">
                 <h2 className="text-3xl font-black text-slate-800 mb-4">Så går en installation till</h2>
                 <p className="text-slate-500 max-w-2xl mx-auto">Från beställning till första laddning. Vi sköter allt det tekniska och administrativa.</p>
@@ -119,35 +191,64 @@ const SupportSection: React.FC = () => {
           {/* ERROR REPORT TAB */}
           {activeTab === 'error' && (
             <div className="max-w-2xl mx-auto bg-white p-6 sm:p-10 rounded-[1.5rem] sm:rounded-[3rem] shadow-xl border border-slate-100 animate-in slide-in-from-bottom-4 duration-500">
+              {supportSubmitted ? (
+                <div className="py-12 text-center" role="status" aria-live="polite">
+                  <CheckCircle2 className="w-14 h-14 text-cc-green mx-auto mb-5" />
+                  <h2 className="text-3xl font-black text-slate-800">Tack för din felanmälan!</h2>
+                  <p className="text-slate-500 mt-3">Vi återkommer under kontorstid. Vid akuta problem kan du ringa 019-760 42 90.</p>
+                  <button
+                    type="button"
+                    onClick={() => setSupportSubmitted(false)}
+                    className="mt-8 inline-flex items-center justify-center min-h-[44px] px-6 py-3 rounded-full bg-slate-900 text-white font-bold hover:bg-cc-green transition-colors"
+                  >
+                    Skicka en ny felanmälan
+                  </button>
+                </div>
+              ) : (
+              <>
               <div className="text-center mb-10">
                 <div className="w-16 h-16 bg-red-50 text-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <AlertTriangle className="w-8 h-8" />
                 </div>
                 <h2 className="text-3xl font-black text-slate-800">Felanmälan</h2>
-                <p className="text-slate-500 mt-2">Beskriv problemet så återkommer vår tekniska support inom 24h.</p>
+                <p className="text-slate-500 mt-2">Beskriv problemet så återkommer vår tekniska support under kontorstid.</p>
               </div>
 
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-6" onSubmit={handleSupportSubmit}>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-[12px] font-black uppercase tracking-widest text-slate-400 ml-4">Serienummer (Laddbox)</label>
-                    <input type="text" className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 font-medium focus:outline-none focus:border-red-400 transition-all" placeholder="T.ex. ZAP-12345" />
+                    <label htmlFor="serialNumber" className="text-[12px] font-black uppercase tracking-widest text-slate-400 ml-4">Serienummer (laddbox)</label>
+                    <input id="serialNumber" name="serialNumber" type="text" autoComplete="off" className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 font-medium focus:outline-none focus:border-red-400 transition-all" placeholder="T.ex. ZAP-12345" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[12px] font-black uppercase tracking-widest text-slate-400 ml-4">Telefon</label>
-                    <input type="tel" className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 font-medium focus:outline-none focus:border-red-400 transition-all" placeholder="Ditt nummer" />
+                    <label htmlFor="supportPhone" className="text-[12px] font-black uppercase tracking-widest text-slate-400 ml-4">Telefon</label>
+                    <input id="supportPhone" name="phone" type="tel" autoComplete="tel" className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 font-medium focus:outline-none focus:border-red-400 transition-all" placeholder="Ditt nummer" />
                   </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="supportEmail" className="text-[12px] font-black uppercase tracking-widest text-slate-400 ml-4">E-post</label>
+                  <input id="supportEmail" name="email" type="email" autoComplete="email" required className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 font-medium focus:outline-none focus:border-red-400 transition-all" placeholder="namn@exempel.se" />
                 </div>
                 
                 <div className="space-y-2">
-                  <label className="text-[12px] font-black uppercase tracking-widest text-slate-400 ml-4">Beskrivning av felet</label>
-                  <textarea className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 font-medium h-32 resize-none focus:outline-none focus:border-red-400 transition-all" placeholder="Lyser laddboxen rött? Vad hände innan felet uppstod?" />
+                  <label htmlFor="description" className="text-[12px] font-black uppercase tracking-widest text-slate-400 ml-4">Beskrivning av felet</label>
+                  <textarea id="description" name="description" required minLength={5} className="w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 font-medium h-32 resize-none focus:outline-none focus:border-red-400 transition-all" placeholder="Lyser laddboxen rött? Vad hände innan felet uppstod?" />
                 </div>
 
-                <button className="w-full bg-slate-900 text-white py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-red-500 transition-colors shadow-lg">
-                  Skicka Felanmälan
+                {supportError && <div role="alert" className="bg-red-50 border border-red-200 text-red-800 text-sm font-medium rounded-2xl px-5 py-4">{supportError}</div>}
+
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  När du skickar formuläret behandlar vi uppgifterna för att hantera ditt supportärende. Läs mer i vår{' '}
+                  <Link href="/integritetspolicy" className="font-bold text-slate-700 underline hover:text-cc-green">integritetspolicy</Link>.
+                </p>
+
+                <button type="submit" disabled={supportSubmitting} className="w-full bg-slate-900 text-white py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-red-500 transition-colors shadow-lg disabled:opacity-60 disabled:cursor-not-allowed">
+                  {supportSubmitting ? 'Skickar…' : 'Skicka Felanmälan'}
                 </button>
               </form>
+              </>
+              )}
             </div>
           )}
 
