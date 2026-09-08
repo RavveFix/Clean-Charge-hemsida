@@ -10,13 +10,13 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 export const metadata: Metadata = {
   title: 'Kontakta Oss – Offert & Rådgivning',
   description:
-    'Kontakta Clean Charge AB för kostnadsfri rådgivning och offert på laddboxar. Ring 019-760 42 90 eller fyll i formuläret så återkommer vi inom 2 timmar.',
+    'Kontakta Clean Charge AB för kostnadsfri rådgivning och offert på laddboxar, laddstationer och drift. Ring 019-760 42 90 eller fyll i formuläret.',
   alternates: { canonical: 'https://www.cleancharge.se/kontakt' },
   openGraph: {
     ...openGraphBase,
     title: 'Kontakta Oss – Offert & Rådgivning | Clean Charge AB',
     description:
-      'Kostnadsfri rådgivning och offert. Svar samma dag under kontorstid. Ring 019-760 42 90.',
+      'Kostnadsfri rådgivning och offert för laddboxar, laddstationer och drift. Ring 019-760 42 90.',
     url: 'https://www.cleancharge.se/kontakt',
     images: openGraphImages('Kontakta Clean Charge AB — kostnadsfri rådgivning och offert'),
   },
@@ -90,12 +90,12 @@ export default function KontaktPage() {
               Oavsett om du representerar en BRF, ett företag eller vill ladda hemma – våra experter hjälper dig hitta rätt lösning.
             </p>
 
-            {/* Quick stats row */}
+            {/* Verifierbara styrkor i stället för obestyrkta statistikclaims */}
             <div className="flex flex-wrap gap-6 sm:gap-10 mt-8 sm:mt-12 pt-8 sm:pt-10 border-t border-white/10">
               {[
-                { label: 'Svarstid', value: '< 2h' },
-                { label: 'Monta Operatörsbetyg', value: '4.6 ★' },
-                { label: 'Genomf. laddningar', value: '50 000+' },
+                { label: 'Rådgivning', value: 'Personlig' },
+                { label: 'Operatör', value: 'Monta' },
+                { label: 'Leverans', value: 'Helhetsansvar' },
               ].map((s, i) => (
                 <div key={i} className="space-y-1">
                   <p className="text-2xl font-black text-white tracking-tighter">{s.value}</p>
