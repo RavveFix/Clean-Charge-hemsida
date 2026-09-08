@@ -15,13 +15,13 @@ import { openGraphBase, openGraphImages } from '@/lib/seo';
 export const metadata: Metadata = {
   title: { absolute: 'Clean Charge AB | Laddbox för Företag & Fastighetsbolag' },
   description:
-    'Clean Charge AB levererar, konfigurerar och driftar laddboxar för företag och fastighetsbolag i Sverige. Auktoriserad Zaptec & Monta-partner. Få offert idag.',
+    'Clean Charge AB levererar, konfigurerar och driftar laddboxar för företag och fastighetsbolag i Sverige. Zaptec-partner och Monta-operatör. Få offert idag.',
   alternates: { canonical: 'https://www.cleancharge.se' },
   openGraph: {
     ...openGraphBase,
     title: 'Clean Charge AB | Laddbox för Företag & Fastighetsbolag',
     description:
-      'Vi levererar, konfigurerar och driftar er laddinfrastruktur – från offert till färdig drift. Auktoriserad Zaptec & Monta-partner.',
+      'Vi levererar, konfigurerar och driftar er laddinfrastruktur – från offert till färdig drift. Zaptec-partner och Monta-operatör.',
     url: 'https://www.cleancharge.se',
     images: openGraphImages(),
   },
@@ -31,7 +31,7 @@ const faqEntries = [
   {
     question: 'Vad gör Clean Charge AB?',
     answer:
-      'Vi levererar, konfigurerar och driftar laddboxar och laddstationer för företag, fastighetsbolag och privatpersoner – från offert och projektering till installation av behörig elektriker och löpande drift. Vi är auktoriserad Zaptec- och Monta-partner.',
+      'Vi levererar, konfigurerar och driftar laddboxar och laddstationer för företag, fastighetsbolag och privatpersoner – från offert och projektering till installation av behörig elektriker och löpande drift. Vi arbetar som Zaptec-partner och Monta-operatör.',
   },
   {
     question: 'Installerar ni laddboxar i hela Sverige?',
