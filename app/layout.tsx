@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: '%s | Clean Charge AB',
   },
   description:
-    'Clean Charge AB levererar, konfigurerar och driftar laddboxar för företag och fastighetsbolag. Auktoriserad Zaptec & Monta-partner. Ring 019-760 42 90.',
+    'Clean Charge AB levererar, konfigurerar och driftar laddboxar för företag och fastighetsbolag. Zaptec-partner och Monta-operatör. Ring 019-760 42 90.',
   keywords: [
     'laddbox företag',
     'laddstation fastighetsbolag',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     siteName: 'Clean Charge AB',
     title: 'Clean Charge AB | Laddbox för Företag & Fastighetsbolag',
     description:
-      'Vi levererar, konfigurerar och driftar er laddinfrastruktur – helt klart. Auktoriserad Zaptec & Monta-partner.',
+      'Vi levererar, konfigurerar och driftar er laddinfrastruktur – helt klart. Zaptec-partner och Monta-operatör.',
     images: openGraphImages(),
   },
   // Endast korttypen sätts globalt – title/description utelämnas medvetet så
@@ -130,7 +130,7 @@ const jsonLd = {
       telephone: '+46197604290',
       email: 'info@cleancharge.se',
       description:
-        'Auktoriserad Zaptec & Monta-partner som installerar och driftar laddboxar för företag och fastighetsbolag i Sverige.',
+        'Zaptec-partner och Monta-operatör som installerar och driftar laddboxar för företag och fastighetsbolag i Sverige.',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Dialoggatan 12B',
