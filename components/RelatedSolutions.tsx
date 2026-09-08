@@ -10,7 +10,10 @@ type SolutionKey =
   | 'dc-laddstation'
   | 'monta'
   | 'produkter'
-  | 'hela-sverige';
+  | 'hela-sverige'
+  | 'lastbalansering-laddbox'
+  | 'individuell-debitering-laddbox'
+  | 'projektexempel-brf-laddning';
 
 type SolutionLink = {
   title: string;
@@ -64,21 +67,39 @@ const LINKS: Record<SolutionKey, SolutionLink> = {
     href: '/hela-sverige',
     desc: 'Vi levererar och driftar nationellt – er lokala elektriker installerar.',
   },
+  'lastbalansering-laddbox': {
+    title: 'Guide: Lastbalansering',
+    href: '/lastbalansering-laddbox',
+    desc: 'Så fördelas tillgänglig effekt mellan fastigheten och en eller flera laddboxar.',
+  },
+  'individuell-debitering-laddbox': {
+    title: 'Guide: Individuell debitering',
+    href: '/individuell-debitering-laddbox',
+    desc: 'Så fungerar mätning, användaridentifiering, prissättning och automatisk debitering.',
+  },
+  'projektexempel-brf-laddning': {
+    title: 'Projektexempel: BRF',
+    href: '/projektexempel-brf-laddning',
+    desc: 'Se hur ett typiskt BRF-projekt kan planeras från elkapacitet till lastbalansering och debitering.',
+  },
 };
 
 const RELATED: Record<SolutionKey, SolutionKey[]> = {
-  privat: ['produkter', 'foretag', 'fastighetsbolag'],
-  foretag: ['fastighetsbolag', 'hela-sverige', 'monta'],
-  fastighetsbolag: ['hela-sverige', 'samfallighet', 'monta'],
-  samfallighet: ['fastighetsbolag', 'monta', 'foretag'],
-  publik: ['dc-laddstation', 'foretag', 'monta'],
-  'dc-laddstation': ['publik', 'foretag', 'produkter'],
-  monta: ['foretag', 'fastighetsbolag', 'hela-sverige'],
-  produkter: ['foretag', 'privat', 'fastighetsbolag'],
-  'hela-sverige': ['foretag', 'fastighetsbolag', 'monta'],
+  privat: ['produkter', 'lastbalansering-laddbox', 'foretag', 'fastighetsbolag'],
+  foretag: ['lastbalansering-laddbox', 'individuell-debitering-laddbox', 'hela-sverige', 'monta'],
+  fastighetsbolag: ['projektexempel-brf-laddning', 'individuell-debitering-laddbox', 'lastbalansering-laddbox', 'monta'],
+  samfallighet: ['individuell-debitering-laddbox', 'lastbalansering-laddbox', 'fastighetsbolag', 'monta'],
+  publik: ['dc-laddstation', 'individuell-debitering-laddbox', 'foretag', 'monta'],
+  'dc-laddstation': ['publik', 'foretag', 'produkter', 'monta'],
+  monta: ['individuell-debitering-laddbox', 'projektexempel-brf-laddning', 'fastighetsbolag', 'publik'],
+  produkter: ['foretag', 'privat', 'fastighetsbolag', 'lastbalansering-laddbox'],
+  'hela-sverige': ['foretag', 'fastighetsbolag', 'monta', 'lastbalansering-laddbox'],
+  'lastbalansering-laddbox': ['projektexempel-brf-laddning', 'foretag', 'fastighetsbolag', 'samfallighet'],
+  'individuell-debitering-laddbox': ['projektexempel-brf-laddning', 'monta', 'fastighetsbolag', 'samfallighet'],
+  'projektexempel-brf-laddning': ['fastighetsbolag', 'lastbalansering-laddbox', 'individuell-debitering-laddbox', 'monta'],
 };
 
-const DEFAULT_RELATED: SolutionKey[] = ['privat', 'foretag', 'produkter'];
+const DEFAULT_RELATED: SolutionKey[] = ['privat', 'foretag', 'produkter', 'fastighetsbolag'];
 
 export default function RelatedSolutions({ current }: { current?: SolutionKey }) {
   const items = (current ? RELATED[current] : DEFAULT_RELATED).map((key) => LINKS[key]);
@@ -90,9 +111,9 @@ export default function RelatedSolutions({ current }: { current?: SolutionKey })
           Utforska fler lösningar
         </h2>
         <p className="text-slate-500 text-lg mb-12 max-w-xl">
-          Vi täcker hela kedjan – hitta laddlösningen som passar ditt behov.
+          Vi täcker hela kedjan – hitta laddlösningen eller guiden som passar ditt behov.
         </p>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {items.map((item) => (
             <Link
               key={item.href}
