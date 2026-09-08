@@ -6,9 +6,6 @@ import Image from 'next/image';
 import { ShieldCheck, Smartphone, BarChart3, ArrowRight } from 'lucide-react';
 
 const MontaSection: React.FC = () => {
-  // Använder samma bild som tidigare för konsekvens
-  const montaImage = "/images/brand/Charge_grey.png";
-
   return (
     <section className="py-12 sm:py-16 md:py-24 bg-white overflow-hidden font-monta">
       <div className="container mx-auto px-4 sm:px-6 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
@@ -33,17 +30,17 @@ const MontaSection: React.FC = () => {
                   />
                 </div>
                 <div className="flex items-center space-x-3 text-blue-200">
-                  <span className="text-[12px] md:text-[12px] font-black uppercase tracking-[0.3em]">Authorized Operator Partner</span>
+                  <span className="text-[12px] md:text-[12px] font-black uppercase tracking-[0.3em]">Monta-operatör</span>
                   <div className="h-px w-8 md:w-12 bg-blue-400"></div>
                 </div>
                 
                 <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-black tracking-tighter leading-[1.05] text-white uppercase">
-                  Marknadens smartaste <br />
-                  <span className="text-blue-300 italic">Betallösning.</span>
+                  Betallösning för <br />
+                  <span className="text-blue-300 italic">laddinfrastruktur.</span>
                 </h2>
                 
                 <p className="text-sm sm:text-lg md:text-xl text-blue-50 font-medium leading-relaxed max-w-xl opacity-90">
-                  Vi fokuserar på kraftfulla betallösningar för publika anläggningar. Med Monta automatiserar ni debiteringsflödet och gör era laddstationer till en lönsam tillgång.
+                  Med Monta kan ni automatisera debiteringsflödet och hantera betalning, prissättning och administration för era laddstationer.
                 </p>
               </div>
               
@@ -57,9 +54,7 @@ const MontaSection: React.FC = () => {
             </div>
 
             <div className="relative min-w-0">
-              {/* Premium Dual-Image Layout */}
               <div className="relative">
-                {/* Background Image - App Collage */}
                 <div className="rounded-[2.5rem] overflow-hidden shadow-2xl bg-white border-4 border-white/10 transform hover:scale-[1.02] transition-all duration-500 w-full max-w-full">
                   <Image
                     src="/images/brand/Charge_2.png"
@@ -71,7 +66,6 @@ const MontaSection: React.FC = () => {
                   />
                 </div>
                 
-                {/* Overlapping Image - Admin Interface (Glassmorphic Polish & Sizing) */}
                 <div className="absolute -bottom-4 -right-4 sm:-bottom-8 sm:-right-8 w-[60%] sm:w-1/2 md:w-[60%] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,61,255,0.15)] bg-slate-950/90 border border-white/80 backdrop-blur-md group hover:scale-105 transition-all duration-500 cursor-pointer">
                   <Image
                     src="/images/brand/Charge_1.png"
@@ -80,8 +74,6 @@ const MontaSection: React.FC = () => {
                     height={400}
                     className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100"
                   />
-                  
-                  {/* Badge on the admin interface */}
                   <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 bg-white/95 backdrop-blur-md px-2 sm:px-3 py-1 sm:py-2 rounded-lg sm:rounded-xl shadow-lg flex items-center gap-1.5 sm:gap-2">
                     <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full animate-pulse"></div>
                     <span className="text-xs font-black text-slate-900 uppercase tracking-wider">Live Dashboard</span>
@@ -92,7 +84,6 @@ const MontaSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Feature strip header */}
         <div className="flex items-center justify-between mb-10">
           <div className="flex items-center space-x-3">
             <div className="h-px w-12 bg-slate-200" />
@@ -105,36 +96,34 @@ const MontaSection: React.FC = () => {
           {[
             {
               icon: BarChart3,
-              title: "Automatisk Debitering",
-              text: "Vi automatiserar hela betalflödet. Pengarna betalas ut direkt till er, medan vi sköter kvittohantering och skatter.",
-              stat: "100%",
-              statLabel: "Automatiserat"
+              title: 'Automatisk Debitering',
+              text: 'Monta kan automatisera betalflödet och förenkla kvittohantering och administration.',
+              stat: 'Automatisk',
+              statLabel: 'Debitering',
             },
             {
               icon: Smartphone,
-              title: "Publik Tillgänglighet",
-              text: "Gör era laddare tillgängliga för allmänheten. Med Monta kan vem som helst ladda och betala med kort, Apple Pay eller Google Pay.",
-              stat: "Plug & Pay",
-              statLabel: "Enkelhet"
+              title: 'Publik Tillgänglighet',
+              text: 'Gör era laddare tillgängliga för allmänheten. Med Monta kan användare ladda och betala med kort, Apple Pay eller Google Pay.',
+              stat: 'Plug & Pay',
+              statLabel: 'Enkelhet',
             },
             {
               icon: ShieldCheck,
-              title: "Smart Förvaltning",
-              text: "Vi tar hand om driften av er publika anläggning. Övervakning dygnet runt säkerställer att laddarna alltid fungerar.",
-              stat: "24/7",
-              statLabel: "Monitorering"
-            }
+              title: 'Smart Förvaltning',
+              text: 'Vi hjälper till med driften av er publika anläggning. Fjärrövervakning och löpande uppföljning gör det enklare att upptäcka och hantera avvikelser.',
+              stat: 'Löpande',
+              statLabel: 'Övervakning',
+            },
           ].map((feature, i) => (
             <div
               key={i}
               className="relative p-6 sm:p-10 rounded-[1.5rem] sm:rounded-[2.5rem] border border-slate-100 bg-white hover:shadow-2xl hover:shadow-blue-500/8 hover:-translate-y-2 transition-all duration-500 group overflow-hidden"
             >
-              {/* Number accent */}
               <span className="absolute top-8 right-10 text-[72px] font-black text-slate-50 leading-none select-none group-hover:text-blue-50 transition-colors duration-500">
                 0{i + 1}
               </span>
 
-              {/* Top accent line on hover */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#003DFF] to-[#0055ff] rounded-t-[2.5rem] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
 
               <div className="relative z-10">
