@@ -12,7 +12,8 @@ type SolutionKey =
   | 'produkter'
   | 'hela-sverige'
   | 'lastbalansering-laddbox'
-  | 'individuell-debitering-laddbox';
+  | 'individuell-debitering-laddbox'
+  | 'projektexempel-brf-laddning';
 
 type SolutionLink = {
   title: string;
@@ -76,20 +77,26 @@ const LINKS: Record<SolutionKey, SolutionLink> = {
     href: '/individuell-debitering-laddbox',
     desc: 'Så fungerar mätning, användaridentifiering, prissättning och automatisk debitering.',
   },
+  'projektexempel-brf-laddning': {
+    title: 'Projektexempel: BRF',
+    href: '/projektexempel-brf-laddning',
+    desc: 'Se hur ett typiskt BRF-projekt kan planeras från elkapacitet till lastbalansering och debitering.',
+  },
 };
 
 const RELATED: Record<SolutionKey, SolutionKey[]> = {
   privat: ['produkter', 'lastbalansering-laddbox', 'foretag', 'fastighetsbolag'],
   foretag: ['lastbalansering-laddbox', 'individuell-debitering-laddbox', 'hela-sverige', 'monta'],
-  fastighetsbolag: ['individuell-debitering-laddbox', 'lastbalansering-laddbox', 'samfallighet', 'monta'],
+  fastighetsbolag: ['projektexempel-brf-laddning', 'individuell-debitering-laddbox', 'lastbalansering-laddbox', 'monta'],
   samfallighet: ['individuell-debitering-laddbox', 'lastbalansering-laddbox', 'fastighetsbolag', 'monta'],
   publik: ['dc-laddstation', 'individuell-debitering-laddbox', 'foretag', 'monta'],
   'dc-laddstation': ['publik', 'foretag', 'produkter', 'monta'],
-  monta: ['individuell-debitering-laddbox', 'foretag', 'fastighetsbolag', 'publik'],
+  monta: ['individuell-debitering-laddbox', 'projektexempel-brf-laddning', 'fastighetsbolag', 'publik'],
   produkter: ['foretag', 'privat', 'fastighetsbolag', 'lastbalansering-laddbox'],
   'hela-sverige': ['foretag', 'fastighetsbolag', 'monta', 'lastbalansering-laddbox'],
-  'lastbalansering-laddbox': ['foretag', 'fastighetsbolag', 'samfallighet', 'produkter'],
-  'individuell-debitering-laddbox': ['monta', 'fastighetsbolag', 'samfallighet', 'foretag'],
+  'lastbalansering-laddbox': ['projektexempel-brf-laddning', 'foretag', 'fastighetsbolag', 'samfallighet'],
+  'individuell-debitering-laddbox': ['projektexempel-brf-laddning', 'monta', 'fastighetsbolag', 'samfallighet'],
+  'projektexempel-brf-laddning': ['fastighetsbolag', 'lastbalansering-laddbox', 'individuell-debitering-laddbox', 'monta'],
 };
 
 const DEFAULT_RELATED: SolutionKey[] = ['privat', 'foretag', 'produkter', 'fastighetsbolag'];
