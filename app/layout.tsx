@@ -147,7 +147,7 @@ const jsonLd = {
           'Thursday',
           'Friday',
         ],
-        opens: '08:00',
+        opens: '09:00',
         closes: '17:00',
       },
       areaServed: { '@type': 'Country', name: 'Sweden' },
