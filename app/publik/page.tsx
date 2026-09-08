@@ -7,15 +7,23 @@ import RelatedSolutions from '@/components/RelatedSolutions';
 import FaqSection from '@/components/FaqSection';
 
 export const metadata: Metadata = {
-  title: 'Publik Laddning för Företag & Parkeringar',
+  title: 'Publik Laddstation för Företag & Parkeringar',
   description:
-    'Sätt upp publika laddstationer med Clean Charge AB. Vi installerar, konfigurerar och driftar laddinfrastrukturen med Monta som betalplattform – nyckelfärdigt.',
+    'Publika laddstationer för företag, parkeringar och handelsplatser. Clean Charge installerar, konfigurerar och driftar AC- och DC-laddning med Monta som betalplattform.',
+  keywords: [
+    'publik laddstation',
+    'publik laddning företag',
+    'laddstation parkering',
+    'laddstation handelsplats',
+    'betallösning laddstation',
+    'publik elbilsladdning',
+  ],
   alternates: { canonical: 'https://www.cleancharge.se/publik' },
   openGraph: {
     ...openGraphBase,
-    title: 'Publik Laddning – Laddstation för Företag & Parkeringar | Clean Charge AB',
+    title: 'Publik Laddstation för Företag & Parkeringar | Clean Charge AB',
     description:
-      'Driftsäker hårdvara, automatisk debitering via Monta och full kontroll på drift och intäkter. 98% drifttid garanterat.',
+      'Driftsäker AC- och DC-laddning, automatisk debitering via Monta och löpande fjärrövervakning för publika laddanläggningar.',
     url: 'https://www.cleancharge.se/publik',
     images: openGraphImages('Publik laddning — laddstationer för företag, parkeringar och laddnätverk'),
   },
@@ -34,32 +42,32 @@ const faqEntries = [
   {
     question: 'Vilken hårdvara använder ni för publik laddning?',
     answer:
-      'Vi installerar driftsäker hårdvara anpassad efter anläggningen – till exempel Zaptec Pro (AC med intelligent lastbalansering och 4G) och Autel MaxiCharger DH480 (modulär 480 kW DC-snabbladdare).',
+      'Vi installerar driftsäker hårdvara anpassad efter anläggningen – till exempel Zaptec Pro för skalbar AC-laddning och Autel MaxiCharger DH480 för DC-snabbladdning.',
   },
   {
-    question: 'Hur hög drifttid kan vi räkna med?',
+    question: 'Hur arbetar ni med driftsäkerhet?',
     answer:
-      'Vår publika laddinfrastruktur är byggd för hög tillgänglighet med driftsäker hårdvara och fjärrövervakning dygnet runt – med omkring 98 % drifttid.',
+      'Vi kombinerar hårdvara anpassad för hög belastning med fjärrövervakning och löpande drift. Upplägget dimensioneras efter anläggningens användning och krav på tillgänglighet.',
   },
   {
     question: 'Är lösningen nyckelfärdig – sköter ni installation och drift?',
     answer:
-      'Ja. Vi installerar, konfigurerar och driftar hela laddinfrastrukturen nyckelfärdigt, med Monta som betalplattform och löpande fjärrövervakning så att stationerna alltid fungerar.',
+      'Ja. Vi installerar, konfigurerar och driftar hela laddinfrastrukturen nyckelfärdigt, med Monta som betalplattform och löpande fjärrövervakning.',
   },
   {
     question: 'Var passar publika laddstationer?',
     answer:
-      'Publika laddstationer passar företag, parkeringar, handelsplatser och laddnätverk – platser där besökare, kunder eller anställda ska kunna ladda och betala enkelt.',
+      'Publika laddstationer passar företag, parkeringar, handelsplatser och andra platser där besökare eller kunder ska kunna ladda och betala enkelt.',
   },
 ];
 
 const faq = faqJsonLd(faqEntries);
 
 const service = serviceJsonLd({
-  name: 'Publik laddinfrastruktur – installation och drift',
+  name: 'Publik laddstation – installation, betalning och drift',
   path: '/publik',
   description:
-    'Vi installerar, konfigurerar och driftar publika laddstationer med Monta som betalplattform – nyckelfärdigt med fjärrövervakning.',
+    'Installation, konfiguration och drift av publika AC- och DC-laddstationer med Monta som betalplattform.',
   serviceType: 'Installation och drift av publika laddstationer',
 });
 
@@ -75,7 +83,7 @@ const productList = {
         '@id': `${SITE_URL}/publik#zaptec-pro`,
         name: 'Zaptec Pro',
         description:
-          'Den ultimata lösningen för större anläggningar och BRF. Levererar intelligent lastbalansering och 4G-stöd.',
+          'Skalbar AC-laddbox för större anläggningar med intelligent lastbalansering och uppkoppling.',
         url: `${SITE_URL}/publik#zaptec-pro`,
         image: `${SITE_URL}/images/products/zaptec-pro.png`,
         brand: { '@type': 'Brand', name: 'Zaptec' },
@@ -90,7 +98,7 @@ const productList = {
         '@id': `${SITE_URL}/publik#autel-dh480`,
         name: 'Autel MaxiCharger DH480',
         description:
-          'Fullt modulär 480 kW allt-i-ett-laddare. Ultrasnabb laddning med 98% drifttid, optimerad för publika nätverk och flottor.',
+          'Modulär DC-snabbladdare för publika och kommersiella anläggningar med höga effektbehov.',
         url: `${SITE_URL}/publik#autel-dh480`,
         image: `${SITE_URL}/images/products/autel-dh480-product.png`,
         brand: { '@type': 'Brand', name: 'Autel' },
