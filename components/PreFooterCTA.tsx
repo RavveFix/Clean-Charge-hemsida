@@ -83,7 +83,7 @@ const PreFooterCTA: React.FC = () => {
               </div>
 
               <p className="text-slate-400 text-base sm:text-xl font-medium leading-relaxed max-w-lg">
-                Vi bygger framtidens laddinfrastruktur. Från offert till färdig installation på rekordtid, med marknadens ledande produkter.
+                Vi bygger laddinfrastruktur från offert och projektering till färdig installation, med etablerade produkter och löpande stöd.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -152,7 +152,7 @@ const PreFooterCTA: React.FC = () => {
                   ))}
                 </div>
                 <p className="text-slate-400 text-sm font-bold">
-                  Hundratals nöjda kunder över hela landet
+                  Laddlösningar för företag, BRF:er och fastigheter i hela Sverige
                 </p>
               </div>
             </div>
