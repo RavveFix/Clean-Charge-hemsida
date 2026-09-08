@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, BadgePercent, Calculator, Trophy, Building2, BriefcaseBusiness, Home } from 'lucide-react';
+import { ArrowRight, BadgePercent, Calculator, Trophy, Building2, BriefcaseBusiness, Home, Gauge, CreditCard } from 'lucide-react';
 import ClientLayout from '@/app/ClientLayout';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { breadcrumbJsonLd, SITE_URL } from '@/lib/jsonld';
@@ -9,13 +9,13 @@ import { openGraphBase, openGraphImages } from '@/lib/seo';
 export const metadata: Metadata = {
   title: 'Kunskapsbank – Guider om Laddboxar',
   description:
-    'Guider från Clean Charges laddexperter: priser, bidrag, produktval och planering av laddbox för villa, BRF, samfällighet och företag.',
+    'Guider från Clean Charges laddexperter: priser, bidrag, lastbalansering, individuell debitering och planering av laddbox för villa, BRF, samfällighet och företag.',
   alternates: { canonical: 'https://www.cleancharge.se/kunskap' },
   openGraph: {
     ...openGraphBase,
     title: 'Kunskapsbank – Guider om laddboxar | Clean Charge AB',
     description:
-      'Praktiska och faktagranskade guider om kostnader, bidrag och val av laddbox.',
+      'Praktiska och faktagranskade guider om kostnader, bidrag, lastbalansering, debitering och val av laddbox.',
     url: 'https://www.cleancharge.se/kunskap',
     images: openGraphImages(
       'Clean Charges kunskapsbank — guider om laddboxar, priser och bidrag',
@@ -31,6 +31,20 @@ const guides = [
     description: 'Lastbalansering, individuell debitering och underlag till styrelsen.',
     label: 'BRF-guide',
     icon: Building2,
+  },
+  {
+    href: '/lastbalansering-laddbox',
+    title: 'Lastbalansering för laddbox',
+    description: 'Så används fastighetens tillgängliga effekt smartare mellan en eller flera laddpunkter.',
+    label: 'Teknikguide',
+    icon: Gauge,
+  },
+  {
+    href: '/individuell-debitering-laddbox',
+    title: 'Individuell debitering av laddbox',
+    description: 'Så fungerar användaridentifiering, mätning, prissättning och automatiserad betalning.',
+    label: 'Driftguide',
+    icon: CreditCard,
   },
   {
     href: '/vad-kostar-laddbox',
@@ -98,7 +112,7 @@ export default function KnowledgePage() {
               Guider som gör valet av <span className="text-[#00b182]">laddbox</span> enklare.
             </h1>
             <p className="text-xl text-slate-600 font-medium leading-relaxed max-w-3xl">
-              Här samlar vi faktagranskade råd om pris, stöd, installation och produktval – baserade på vår erfarenhet av laddinfrastruktur för hem, föreningar och företag.
+              Här samlar vi faktagranskade råd om pris, stöd, installation, lastbalansering, debitering och produktval – baserade på vår erfarenhet av laddinfrastruktur för hem, föreningar och företag.
             </p>
           </div>
         </div>
@@ -107,12 +121,12 @@ export default function KnowledgePage() {
       <section className="py-24 bg-white" aria-labelledby="guides-heading">
         <div className="max-w-7xl mx-auto px-6">
           <h2 id="guides-heading" className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter mb-4">
-            Våra mest lästa guider
+            Våra guider
           </h2>
           <p className="text-lg text-slate-500 mb-14 max-w-2xl">
             Börja med frågan du vill lösa. Varje guide leder vidare till rätt lösning och rådgivning.
           </p>
-          <div className="grid lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {guides.map(({ href, title, description, label, icon: Icon }) => (
               <article key={href} className="flex flex-col bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:border-[#00b182]/30 hover:bg-emerald-50/30 transition-colors">
                 <div className="flex items-center justify-between mb-8">
