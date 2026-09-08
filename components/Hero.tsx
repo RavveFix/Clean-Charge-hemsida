@@ -115,13 +115,13 @@ const Hero: React.FC = () => {
             {/* Trust indicators */}
             <div className="hero-anim mt-10 sm:mt-16 pt-8 sm:pt-10 border-t border-slate-100 flex items-center justify-center lg:justify-start gap-6 sm:gap-12 lg:gap-16 opacity-90">
                <div className="text-xs sm:text-sm font-semibold text-text-secondary">
-                  <span className="block text-xl sm:text-[28px] font-bold text-text-primary leading-none mb-1">4,6/5</span>
-                  Kundnöjdhet
+                  <span className="block text-xl sm:text-[28px] font-bold text-text-primary leading-none mb-1">Personlig</span>
+                  Rådgivning
                </div>
                <div className="w-px h-10 sm:h-12 bg-slate-200"></div>
                <div className="text-xs sm:text-sm font-semibold text-text-secondary">
-                  <span className="block text-xl sm:text-[28px] font-bold text-text-primary leading-none mb-1">50 000+</span>
-                  Genomförda laddningar
+                  <span className="block text-xl sm:text-[28px] font-bold text-text-primary leading-none mb-1">Helhetsansvar</span>
+                  Från offert till drift
                </div>
             </div>
 
