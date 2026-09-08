@@ -21,4 +21,4 @@ npm run typecheck
 npm run seo:check
 ```
 
-SEO strategy, keyword ownership and content roadmap: `docs/seo-growth-plan-2026-09.md`.
+SEO strategy and roadmap are documented in `docs/seo-growth-plan-2026-09.md`.
