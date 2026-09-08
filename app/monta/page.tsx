@@ -71,7 +71,7 @@ const faqEntries = [
   {
     question: 'Sköter ni driften om en laddare slutar fungera?',
     answer:
-      'Ja. Vi konfigurerar och fjärrövervakar laddarna via Monta och agerar proaktivt vid driftstörningar. Många fel kan vi felsöka och åtgärda på distans, och vid behov bokar vi servicebesök – så att laddarna alltid är online.',
+      'Ja. Vi konfigurerar och fjärrövervakar laddarna via Monta och agerar proaktivt vid driftstörningar. Många fel kan vi felsöka och åtgärda på distans, och vid behov bokar vi servicebesök för att minska avbrottstiden.',
   },
 ];
 
