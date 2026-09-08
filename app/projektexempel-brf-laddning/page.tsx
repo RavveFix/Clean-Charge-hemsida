@@ -35,6 +35,7 @@ const article = articleJsonLd({
     'Illustrativt projektexempel för hur en BRF kan planera 20 parkeringsplatser med skalbar laddinfrastruktur, lastbalansering och individuell debitering.',
   datePublished: '2026-09-08',
   dateModified: '2026-09-08',
+  imagePath: '/opengraph-image',
 });
 
 const projectSteps = [
