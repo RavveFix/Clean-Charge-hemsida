@@ -7,17 +7,26 @@ import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/jsonld';
 import { openGraphBase, openGraphImages } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Monta & IT-drift – Konfiguration',
+  title: 'Monta för Laddbox – Betallösning & Drift',
   description:
-    'Clean Charge AB programmerar och konfigurerar dina laddboxar med Monta som betalplattform. Vi sköter driften och ser till att laddarna alltid är online.',
+    'Clean Charge är Monta-operatör för företag, BRF och publika laddstationer. Vi sköter konfiguration, automatisk debitering, betalning, fjärrövervakning och drift.',
+  keywords: [
+    'Monta operatör',
+    'Monta laddbox',
+    'betallösning laddbox',
+    'debitering laddbox',
+    'betalning laddstation',
+    'laddbox BRF debitering',
+    'laddbox företag betalning',
+  ],
   alternates: { canonical: 'https://www.cleancharge.se/monta' },
   openGraph: {
     ...openGraphBase,
-    title: 'Monta Hub – Operativsystem för Elbilister | Clean Charge AB',
+    title: 'Monta för Laddbox – Betallösning & Drift | Clean Charge AB',
     description:
-      'SmartCharge, roaming till 500 000+ laddpunkter och betalning via app eller terminal. Authorized Operator Partner.',
+      'Automatisk debitering, betalning och fjärrdrift för företag, BRF och publika laddstationer via Monta.',
     url: 'https://www.cleancharge.se/monta',
-    images: openGraphImages('Monta och IT-drift — konfiguration, betalning och fjärrövervakning'),
+    images: openGraphImages('Monta för laddbox — betalning, debitering och fjärrdrift'),
   },
 };
 
@@ -26,11 +35,11 @@ const breadcrumb = breadcrumbJsonLd([
 ]);
 
 const jsonLd = serviceJsonLd({
-  name: 'Monta Konfiguration och IT-drift',
+  name: 'Monta-operatör för betalning, debitering och drift',
   path: '/monta',
   description:
-    'Konfiguration, betalplattform, fjärrövervakning och löpande IT-drift för laddboxar via Monta.',
-  serviceType: 'EV Charging Software Configuration and Operations',
+    'Monta-konfiguration, automatisk debitering, betalplattform, fjärrövervakning och löpande drift för laddboxar och laddstationer.',
+  serviceType: 'EV Charging Payment Platform Configuration and Operations',
 });
 
 const faqEntries = [
