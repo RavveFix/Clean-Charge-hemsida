@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import ClientLayout from '@/app/ClientLayout';
 import AboutSection from '@/components/AboutSection';
-import { MapPin, Calendar, Award, Users, Phone, Mail, ArrowRight } from 'lucide-react';
+import { MapPin, Calendar, CreditCard, Zap, Phone, Mail, ArrowRight } from 'lucide-react';
 import { LOCAL_BUSINESS_ID, ORGANIZATION_ID, SITE_URL, breadcrumbJsonLd } from '@/lib/jsonld';
 import { openGraphBase, openGraphImages } from '@/lib/seo';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -16,7 +16,7 @@ const aboutPageJsonLd = {
   url: `${SITE_URL}/om-oss`,
   name: 'Om Clean Charge AB',
   description:
-    'Clean Charge AB är en auktoriserad Zaptec- och Monta-partner från Örebro som levererar laddinfrastruktur för företag och fastighetsbolag.',
+    'Clean Charge AB grundades 2021 i Örebro och arbetar med laddinfrastruktur för företag och fastighetsbolag som Zaptec-partner och Monta-operatör.',
   inLanguage: 'sv-SE',
   mainEntity: { '@id': ORGANIZATION_ID },
   about: { '@id': LOCAL_BUSINESS_ID },
@@ -25,13 +25,13 @@ const aboutPageJsonLd = {
 export const metadata: Metadata = {
   title: 'Om Oss – Laddexperter i Örebro',
   description:
-    'Clean Charge AB grundades 2021 i Örebro. Auktoriserad partner för Zaptec och Monta – vi hjälper företag och fastighetsbolag med komplett laddinfrastruktur.',
+    'Clean Charge AB grundades 2021 i Örebro. Som Zaptec-partner och Monta-operatör hjälper vi företag och fastighetsbolag med komplett laddinfrastruktur.',
   alternates: { canonical: 'https://www.cleancharge.se/om-oss' },
   openGraph: {
     ...openGraphBase,
     title: 'Om Clean Charge AB – Laddexperter sedan 2021',
     description:
-      'Auktoriserad Zaptec- och Monta-partner från Örebro. Vi levererar komplett laddinfrastruktur för företag och fastighetsbolag.',
+      'Zaptec-partner och Monta-operatör från Örebro. Vi levererar komplett laddinfrastruktur för företag och fastighetsbolag.',
     url: 'https://www.cleancharge.se/om-oss',
     images: openGraphImages('Om Clean Charge AB — laddexperter från Örebro sedan 2021'),
   },
@@ -48,15 +48,15 @@ const VALUES = [
   },
   {
     title: 'Långsiktiga relationer',
-    body: 'En laddinstallation håller i 10+ år. Vi finns kvar för att underhålla, optimera och bygga ut när behoven växer.',
+    body: 'En laddinstallation är en långsiktig investering. Vi finns kvar för att underhålla, optimera och bygga ut när behoven växer.',
   },
 ];
 
 const FACTS = [
   { icon: Calendar, label: 'Grundat', value: '2021' },
   { icon: MapPin, label: 'Huvudkontor', value: 'Örebro' },
-  { icon: Award, label: 'Monta-betyg', value: '4.6 ★' },
-  { icon: Users, label: 'Genomförda laddningar', value: '50 000+' },
+  { icon: CreditCard, label: 'Operatör', value: 'Monta' },
+  { icon: Zap, label: 'Partner', value: 'Zaptec' },
 ];
 
 export default function OmOssPage() {
@@ -125,7 +125,7 @@ export default function OmOssPage() {
                 Clean Charge byggdes som motsatsen. Vi paketerade hårdvara, installation, mjukvara och drift i en lösning där en kontaktperson ansvarar för hela kedjan. Inga svarta hål mellan elektriker, plattformsleverantör och kund.
               </p>
               <p>
-                Idag är vi auktoriserad partner till Zaptec och Monta-operatör med <span className="font-black text-slate-900">4.6 ★</span> i betyg och över <span className="font-black text-slate-900">50 000 genomförda laddningar</span> via vår plattform. Vi installerar i hela Sverige – med teamet baserat i Örebro.
+                Idag arbetar vi som Zaptec-partner och Monta-operatör. Vi installerar i hela Sverige – med teamet baserat i Örebro – och hjälper kunder med projektering, installation, betalning och löpande drift.
               </p>
             </div>
           </div>
