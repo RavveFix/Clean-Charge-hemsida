@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
               </div>
             </div>
             <p className="text-slate-500 font-medium leading-relaxed max-w-xs">
-              Vi skapar smartare laddlösningar för en hållbar framtid. Som din certifierade Zaptec-partner och Monta-operatör garanterar vi högsta kvalitet.
+              Vi skapar smartare laddlösningar för en hållbar framtid. Som certifierad Zaptec-partner och Monta-operatör fokuserar vi på rätt dimensionering, säker installation och stabil drift.
             </p>
             <div className="flex space-x-4">
               {[
