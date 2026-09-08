@@ -33,9 +33,9 @@ export const PRODUCTS: Product[] = [
     id: 'autel-dh480',
     name: 'Autel MaxiCharger DH480',
     price: 0,
-    description: 'Fullt modulär 480 kW allt-i-ett-laddare. Ultrasnabb laddning med 98% drifttid, optimerad för publika nätverk och flottor.',
+    description: 'Fullt modulär 480 kW allt-i-ett-laddare för publika nätverk och flottor. Autel anger över 98% uptime för DH-seriens modulära arkitektur.',
     category: 'snabbladdare',
-    features: ['480 kW effekt', 'Modulär arkitektur', '98% Uptime'],
+    features: ['480 kW effekt', 'Modulär arkitektur', 'Autel: 98%+ uptime'],
     image: '/images/products/autel-dh480-product.png'
   }
 ];
@@ -55,7 +55,7 @@ export const SOLUTIONS: Solution[] = [
   },
   {
     title: 'Publika Anläggningar',
-    description: 'Vi tar hand om era publika laddstationer. Driftsäkerhet och service i världsklass för maximal tillgänglighet.',
+    description: 'Vi tar hand om era publika laddstationer. Driftsäkerhet och service för hög tillgänglighet.',
     image: '/images/products/autel-dh480-lifestyle.jpg',
     link: '#/brf'
   }

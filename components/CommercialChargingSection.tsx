@@ -15,17 +15,17 @@ const CommercialChargingSection: React.FC = () => {
         {
             icon: LayoutGrid,
             title: "Publika Anläggningar",
-            desc: "Vi specialiserar oss på publika laddmiljöer där driftsäkerhet är avgörande. Våra system är byggda för hög belastning och maximal tillgänglighet för allmänheten."
+            desc: "Vi specialiserar oss på publika laddmiljöer där driftsäkerhet är avgörande. Våra system är byggda för hög belastning och hög tillgänglighet för allmänheten."
         },
         {
             icon: Coins,
             title: "Betallösning i Fokus",
-            desc: "Maximera avkastningen på din investering. Vi implementerar marknadsledande betallösningar som låter besökare betala direkt via app, QR eller kort."
+            desc: "Skapa en tydlig intäktsmodell för laddningen. Vi implementerar betallösningar som låter besökare betala direkt via app, QR eller kort."
         },
         {
             icon: Users,
             title: "Helhetsansvar",
-            desc: "Det är viktigt att ta hand om publika anläggningar. Vi erbjuder kompletta serviceavtal med proaktiv övervakning och snabb support på plats."
+            desc: "Det är viktigt att ta hand om publika anläggningar. Vi erbjuder serviceavtal med fjärrövervakning, support och planerade åtgärder vid behov."
         }
     ];
 
@@ -58,7 +58,7 @@ const CommercialChargingSection: React.FC = () => {
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cc-green to-[#34d399]">Laddning.</span>
                         </h1>
                         <p className="text-base sm:text-xl md:text-2xl text-slate-300 font-medium leading-relaxed max-w-2xl mb-8 sm:mb-12">
-                             Vi är experter på betallösningar för publika anläggningar. Clean Charge säkerställer att era laddstationer är driftsäkra, lättillgängliga och genererar intäkter från dag ett.
+                             Vi bygger publika laddlösningar med fokus på driftsäkerhet, enkel betalning och tydlig uppföljning av användning och intäkter.
                         </p>
                         
                         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
@@ -112,7 +112,7 @@ const CommercialChargingSection: React.FC = () => {
                     <div className="mb-20 text-center max-w-3xl mx-auto">
                         <div className="h-1 w-20 bg-cc-green mx-auto mb-8"></div>
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tight mb-4 sm:mb-6">Professionell Hårdvara</h2>
-                        <p className="text-slate-500 text-xl font-medium max-w-prose mx-auto">Vi arbetar uteslutande med marknadsledande tillverkare som garanterar driftsäkerhet och lång livslängd.</p>
+                        <p className="text-slate-500 text-xl font-medium max-w-prose mx-auto">Vi arbetar med etablerade tillverkare och väljer hårdvara utifrån anläggningens effektbehov, driftsmiljö och servicekrav.</p>
                     </div>
 
                     <div className="grid lg:grid-cols-2 gap-6 sm:gap-10">
@@ -158,7 +158,7 @@ const CommercialChargingSection: React.FC = () => {
                 <div className="absolute top-0 right-0 w-2/3 h-full bg-white/5 rounded-l-full blur-3xl pointer-events-none"></div>
                 <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
                     <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-6 sm:mb-8 uppercase tracking-tight">Redo att växla upp?</h2>
-                    <p className="text-white/90 text-base sm:text-xl max-w-2xl mx-auto mb-8 sm:mb-12 font-medium">Boka en kostnadsfri genomgång av er fastighet. Vi tar fram en skräddarsydd kalkyl som visar investering och återbetalningstid.</p>
+                    <p className="text-white/90 text-base sm:text-xl max-w-2xl mx-auto mb-8 sm:mb-12 font-medium">Boka en kostnadsfri genomgång av er fastighet. Vi tar fram en skräddarsydd kalkyl som visar investering och möjliga intäktsmodeller.</p>
                     <Link 
                         href="/kontakt"
                         className="inline-block bg-white text-cc-green px-12 py-6 rounded-full font-black uppercase tracking-widest hover:bg-slate-900 hover:text-white transition-all shadow-2xl hover:scale-105 active:scale-95"
