@@ -39,8 +39,8 @@ Utgångsläge vid granskningen:
 | 14 | laddbox BRF | Mixed | P1 | `/fastighetsbolag` | Transactional huvud-URL; guide stödjer |
 | 15 | hur fungerar laddbox i BRF | Informational | P2 | `/laddbox-brf` | Guide-intent |
 | 16 | lastbalansering BRF | Informational | P1 | `/laddbox-brf` | Befintligt starkt ämne |
-| 17 | individuell debitering laddbox BRF | Commercial | P1 | `/laddbox-brf` | Länk vidare till `/monta` |
-| 18 | debitering laddbox BRF | Commercial | P1 | `/laddbox-brf` | Samma guidekluster |
+| 17 | individuell debitering laddbox BRF | Commercial | P1 | `/individuell-debitering-laddbox` | Stödguide, länkar till `/fastighetsbolag` och `/monta` |
+| 18 | debitering laddbox BRF | Commercial | P1 | `/individuell-debitering-laddbox` | Samma guidekluster |
 | 19 | bidrag laddbox BRF | Informational | P1 | `/ladda-bilen-bidrag` | Bidragssida äger intentionen |
 | 20 | ladda bilen bidrag 2026 | Informational | P1 | `/ladda-bilen-bidrag` | Uppdatera vid regeländringar |
 | 21 | ladda bilen bidrag företag | Informational | P1 | `/ladda-bilen-bidrag` | Företagssektion |
@@ -55,9 +55,9 @@ Utgångsläge vid granskningen:
 | 30 | automatisk debitering laddbox | Commercial | P1 | `/monta` | FAQ + BRF/företag |
 | 31 | betalning laddstation | Commercial | P1 | `/monta` | Länk mot publik laddning |
 | 32 | betalplattform laddstation | Commercial | P2 | `/monta` | Teknisk buyer-intent |
-| 33 | publik laddstation | Transactional | P1 | `/publik` | Förstärk huvudterm |
+| 33 | publik laddstation | Transactional | P1 | `/publik` | Förstärkt i denna branch |
 | 34 | publik laddning företag | Transactional | P1 | `/publik` | Befintlig stark intent |
-| 35 | laddstation parkering | Transactional | P1 | `/publik` | Lägg parkering-case/sektion |
+| 35 | laddstation parkering | Transactional | P1 | `/publik` | Metadata/body-kluster |
 | 36 | laddstation handelsplats | Transactional | P2 | `/publik` | Kommersiell långsvans |
 | 37 | betallösning publik laddning | Commercial | P1 | `/publik` | Internlänk `/monta` |
 | 38 | DC laddstation | Transactional | P1 | `/dc-laddstation` | Befintlig huvudterm |
@@ -70,15 +70,15 @@ Utgångsläge vid granskningen:
 | 45 | laddbox Örebro | Local transactional | P1 | `/laddbox-orebro` | Lokal kärnsida |
 | 46 | vad kostar laddbox | Informational/commercial | P1 | `/vad-kostar-laddbox` | Befintlig prisguide |
 | 47 | bästa laddboxen 2026 | Informational/commercial | P2 | `/basta-laddboxen` | Håll produktdata aktuell |
-| 48 | laddinfrastruktur hela Sverige | Commercial | P2 | `/hela-sverige` | Nationell B2B-intent |
+| 48 | lastbalansering laddbox | Informational | P1 | `/lastbalansering-laddbox` | Ny stödguide i denna branch |
 
 ## Kannibalisering att bevaka
 
 ### `/fastighetsbolag` vs `/laddbox-brf`
 
 - `/fastighetsbolag` ska vara köp-/offertsidan: installation, projektering, fastighetsägare, BRF, hyresfastighet, offert.
-- `/laddbox-brf` ska vara informationsguiden: hur det fungerar, lastbalansering, debitering, styrelseunderlag och bidrag.
-- Guider ska länka med tydliga kommersiella ankare till `/fastighetsbolag` när användaren är redo att begära offert.
+- `/laddbox-brf` ska vara informationsguiden: hur det fungerar, styrelseunderlag och bidrag.
+- `/lastbalansering-laddbox` och `/individuell-debitering-laddbox` fördjupar två separata delfrågor och länkar tillbaka till kommersiella sidor.
 
 ### `/monta` vs `/publik`
 
@@ -91,6 +91,17 @@ Utgångsläge vid granskningen:
 - Prisguiden äger generella prisfrågor.
 - Tjänstesidorna ska ha korta prisankare och länka till prisguiden i stället för att duplicera hela kalkylen.
 
+## Genomfört i denna branch
+
+1. Permanent 308 från `cleancharge.se` till canonical `www.cleancharge.se` på applikationsnivå.
+2. `/monta` förstärkt mot Monta-operatör, betallösning, debitering och drift.
+3. Ny guide: `/lastbalansering-laddbox`.
+4. Ny guide: `/individuell-debitering-laddbox`.
+5. `/kunskap` utökad från fyra till sex guider.
+6. Gemensam internlänkning uppgraderad så de kommersiella sidorna länkar till stödguiderna och tillbaka.
+7. `/publik` metadata och copy skärpt mot publik laddstation, parkering och handelsplats.
+8. Absolut formulering om garanterad drifttid på `/publik` borttagen och ersatt med mer verifierbar driftbeskrivning.
+
 ## Nya sidor — bygg bara efter validering
 
 Följande är kandidater, inte automatiska publiceringar:
@@ -101,25 +112,24 @@ Följande är kandidater, inte automatiska publiceringar:
 4. `/case/...` — verkliga kundcase är högre prioritet än många tunna stadssidor.
 5. En separat sida om laddbox för arbetsplats ska bara skapas om Search Console visar att `/foretag` inte kan bära intenten själv.
 
-## Content roadmap — första 8 publiceringarna
+## Nästa content roadmap
 
-1. Case: BRF/fastighetsprojekt med antal platser, effektförutsättningar, lastbalansering och debitering.
-2. Guide: individuell debitering av laddbox i BRF — modeller, ansvar och exempel.
-3. Guide: laddbox på arbetsplats — anställd, tjänstebil, besökare och debitering.
-4. Guide: laddbox i hyresfastighet — hyresvärdens ansvar, prismodell och drift.
-5. Guide: publik laddstation på kundparkering — betalning, prissättning och drift.
-6. Guide: AC vs DC för företag — när 22 kW räcker och när DC behövs.
-7. Guide: lastbalansering för 10, 20 och 50 laddplatser.
-8. Case: Monta-operatör — från laddare till automatisk debitering och support.
+1. Verkligt kundcase: BRF/fastighetsprojekt med antal platser, effektförutsättningar, lastbalansering och debitering.
+2. Guide: laddbox på arbetsplats — anställd, tjänstebil, besökare och debitering.
+3. Guide: laddbox i hyresfastighet — hyresvärdens behov, prismodell och drift.
+4. Guide: publik laddstation på kundparkering — betalning, prissättning och drift.
+5. Guide: AC vs DC för företag — när 22 kW räcker och när DC behövs.
+6. Case: Monta-operatör — från laddare till automatisk debitering och support.
 
 ## Internlänkning
 
-- `/foretag` -> `/monta`, `/vad-kostar-laddbox`, `/dc-laddstation`, `/hela-sverige`
-- `/fastighetsbolag` -> `/laddbox-brf`, `/ladda-bilen-bidrag`, `/monta`, lokala BRF-sidor
+- `/foretag` -> `/lastbalansering-laddbox`, `/individuell-debitering-laddbox`, `/monta`, `/hela-sverige`
+- `/fastighetsbolag` -> `/laddbox-brf`, `/lastbalansering-laddbox`, `/individuell-debitering-laddbox`, `/monta`
 - `/laddbox-brf` -> `/fastighetsbolag`, `/monta`, `/ladda-bilen-bidrag`
-- `/samfallighet` -> `/ladda-bilen-bidrag`, `/monta`, `/fastighetsbolag`
-- `/publik` -> `/monta`, `/dc-laddstation`, `/foretag`
-- `/dc-laddstation` -> `/publik`, `/vad-kostar-laddbox`, `/kontakt`
+- `/samfallighet` -> `/lastbalansering-laddbox`, `/individuell-debitering-laddbox`, `/ladda-bilen-bidrag`, `/monta`
+- `/publik` -> `/monta`, `/dc-laddstation`, `/individuell-debitering-laddbox`, `/foretag`
+- `/monta` -> `/individuell-debitering-laddbox`, `/foretag`, `/fastighetsbolag`, `/publik`
+- `/kunskap` -> alla större informationsguider
 - Alla informationsguider -> minst en tydlig transaktionssida + `/kontakt`
 
 ## Local SEO
@@ -131,13 +141,6 @@ Prioritera kvalitet före antal ortssidor.
 - Nästa ort ska väljas efter Search Console-impressions, faktiska förfrågningar och möjlighet att leverera.
 - Skapa/optimera Google Business Profile med konsekvent NAP: Clean Charge AB, Dialoggatan 12B, Örebro, telefon 019-760 42 90.
 - Bygg citations/länkar från relevanta leverantörer, installationspartners, branschregister och verkliga kundcase.
-
-## Teknisk SEO — genomfört i denna branch
-
-- Permanent 308 från `cleancharge.se` till canonical `www.cleancharge.se` på applikationsnivå.
-- Vercel production aliases fortsätter redirectas till canonical host.
-- Preview deployments fortsätter få `X-Robots-Tag: noindex, nofollow`.
-- `/monta` metadata och Service JSON-LD har tydligare payment/operator-intent.
 
 ## Nästa mätpunkter
 
@@ -156,3 +159,5 @@ Mät varje månad:
 - Leads från organic per landningssida.
 - Backlinks/referring domains till tjänste- och guidesidor.
 - Andel trafik till B2B-sidor jämfört med generiska produkt-/privatsökningar.
+
+Semrush batch keyword-volume/KD kunde inte köras i denna etapp eftersom kontots API-unit balance var 0. Keyword-mapen är därför baserad på befintlig Semrush-snapshot, live-crawl, nuvarande SERP-intent och sidstruktur. Uppdatera volym/KD när Semrush-enheter finns igen.
